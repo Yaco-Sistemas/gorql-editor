@@ -1,0 +1,9 @@
+{
+    "name": "query-assistant",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "forever": "0.8.5",
+        "express": "2.5.4"
+    }
+}
