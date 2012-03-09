@@ -4,6 +4,7 @@
     "private": true,
     "dependencies": {
         "forever": "0.8.5",
-        "express": "2.5.4"
+        "express": "2.5.4",
+        "backbone": "0.9.1"
     }
 }
