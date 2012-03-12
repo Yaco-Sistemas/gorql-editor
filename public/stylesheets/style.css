@@ -14,6 +14,7 @@ body {
 #tabs > ol {
     list-style-type: none;
     padding-left: 0px;
+    margin: 0px;
 }
 
 #tabs > ol li.tab {
@@ -28,10 +29,20 @@ body {
     cursor: pointer;
 }
 
+#content {
+    border: 1px solid black;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
 a.button {
     border: 1px solid black;
     padding: 3px;
     text-decoration: none;
     color: black;
     cursor: pointer;
+}
+
+#preview {
+    margin-top: 10px;
 }

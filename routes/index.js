@@ -25,17 +25,20 @@
 var app = require.main,
     async = require('async'),
     fs = require('fs'),
-    path = require('path'),
-    renderResults;
+    path = require('path');
 
-renderResults = function (request, response, templates) {
+exports.renderLayout = function (request, response, stepTpl, templates) {
     "use strict";
 
     response.render('layout', {
         layout: false,
         locals: {
             debugJS: app.exports.settings.debugJS,
-            templates: templates
+            templates: templates,
+            content: stepTpl,
+            preview: {
+                chart: false
+            }
         }
     });
 };
@@ -50,9 +53,9 @@ exports.index = function (request, response) {
     var callback = function (error, templates) {
         if (error) {
             console.log(error);
-            renderResults(request, response);
+            exports.renderLayout(request, response, 's1choose');
         }
-        renderResults(request, response, templates);
+        exports.renderLayout(request, response, 's1choose', templates);
     };
 
     async.parallel([
