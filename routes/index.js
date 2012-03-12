@@ -34,7 +34,7 @@ renderResults = function (request, response, templates) {
     response.render('layout', {
         layout: false,
         locals: {
-            debugJS: app.exports.set('debugJS'),
+            debugJS: app.exports.settings.debugJS,
             templates: templates
         }
     });
@@ -56,8 +56,11 @@ exports.index = function (request, response) {
     };
 
     async.parallel([
-        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s2join.html"),
-        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s3filter.html"),
-        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s4paint.html")
+        async.apply(fs.readFile,
+                    path.dirname(app.filename) + "/views/s2join.html"),
+        async.apply(fs.readFile,
+                    path.dirname(app.filename) + "/views/s3filter.html"),
+        async.apply(fs.readFile,
+                    path.dirname(app.filename) + "/views/s4paint.html")
     ], callback);
 };
