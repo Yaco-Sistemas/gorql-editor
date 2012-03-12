@@ -1,8 +1,37 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 0px;
+    margin: 0px;
 }
 
-a {
-  color: #00B7FF;
+#page {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #EEE;
+    padding: 5px;
+}
+
+#tabs > ol {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+#tabs > ol li.tab {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 3px;
+}
+
+#tabs > ol li.tab a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+a.button {
+    border: 1px solid black;
+    padding: 3px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
 }
