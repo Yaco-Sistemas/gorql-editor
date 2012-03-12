@@ -25,10 +25,11 @@ UJSFLAGS=-nc
 all: qba-core
 	cat qba-core.js > qba.min.js
 
-qba-core: ../../node_modules/uglify-js/bin/uglifyjs ../../node_modules/jqtpl/lib/jqtpl.js
+qba-core: ../../node_modules/uglify-js/bin/uglifyjs ../../node_modules/jqtpl/lib/jqtpl.js ../../node_modules/backbone/backbone-min.js
 	echo "// Copyright 2012 Yaco Sistemas S.L. - Developed by <ablanco@yaco.es> - EUPL 1.1 License - http://joinup.ec.europa.eu/software/page/eupl" > qba-core.js
 	echo "var exports = {};" >> qba-core.js
 	$(UJS) $(UJSFLAGS) ../../node_modules/jqtpl/lib/jqtpl.js >> qba-core.js
+	cat ../../node_modules/backbone/backbone-min.js >> qba-core.js
 
 clean: qba.min.js qba-core.js
 	rm -f qba.min.js
