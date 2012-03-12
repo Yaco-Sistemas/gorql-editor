@@ -22,10 +22,9 @@
 UJS=../../node_modules/uglify-js/bin/uglifyjs
 UJSFLAGS=-nc
 
-all: ../../node_modules/uglify-js/bin/uglifyjs ../../client/html5.js ../../node_modules/jqtpl/lib/jqtpl.js ../../node_modules/backbone/backbone-min.js ../../client/models.js
+all: ../../node_modules/uglify-js/bin/uglifyjs ../../node_modules/jqtpl/lib/jqtpl.js ../../node_modules/backbone/backbone-min.js ../../client/models.js
 	echo "// Copyright 2012 Yaco Sistemas S.L. - Developed by <ablanco@yaco.es> - EUPL 1.1 License - http://joinup.ec.europa.eu/software/page/eupl" > qba.min.js
 	echo "var exports = {};" >> qba.min.js
-	cat ../../client/html5.js >> qba.min.js
 	$(UJS) $(UJSFLAGS) ../../node_modules/jqtpl/lib/jqtpl.js >> qba.min.js
 	cat ../../node_modules/backbone/backbone-min.js >> qba.min.js
 	$(UJS) $(UJSFLAGS) ../../client/models.js >> qba.min.js
@@ -33,14 +32,12 @@ all: ../../node_modules/uglify-js/bin/uglifyjs ../../client/html5.js ../../node_
 clean: qba.min.js
 	rm -f qba.min.js
 
-debug: ../../node_modules/uglify-js/bin/uglifyjs ../../client/html5.js ../../node_modules/jqtpl/lib/jqtpl.js ../../node_modules/backbone/backbone-min.js ../../client/models.js
-	cp ../../client/html5.js html5-min.js
+debug: ../../node_modules/uglify-js/bin/uglifyjs ../../node_modules/jqtpl/lib/jqtpl.js ../../node_modules/backbone/backbone-min.js ../../client/models.js
 	$(UJS) $(UJSFLAGS) ../../node_modules/jqtpl/lib/jqtpl.js > jqtpl-min.js
 	cp ../../node_modules/backbone/backbone-min.js .
 	cp ../../client/models.js .
 
-cleandebug: jqtpl-min.js backbone-min.js html5-min.js models.js
-	rm -f html5-min.js
+cleandebug: jqtpl-min.js backbone-min.js models.js
 	rm -f jqtpl.js
 	rm -f backbone-min.js
 	rm -f models.js
