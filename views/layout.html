@@ -5,10 +5,11 @@
     <title>Query Builder Assistant</title>
 <!--     <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'> -->
     <link href='/stylesheets/style.css' rel='stylesheet' type='text/css'>
-
-    <script type="text/plain" id="step2Tpl"></script>
-    <script type="text/plain" id="step3Tpl"></script>
-    <script type="text/plain" id="step4Tpl"></script>
+    {{if templates}}
+    <script type="text/plain" id="step2Tpl">{{html templates[0]}}</script>
+    <script type="text/plain" id="step3Tpl">{{html templates[1]}}</script>
+    <script type="text/plain" id="step4Tpl">{{html templates[2]}}</script>
+    {{/if}}
 </head>
 <body>
     <h1>Query Builder Assistant</h1>

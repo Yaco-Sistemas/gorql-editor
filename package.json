@@ -7,6 +7,7 @@
         "express": "2.5.4",
         "backbone": "0.9.1",
         "jqtpl": "1.0.7",
-        "uglify-js": "1.2.5"
+        "uglify-js": "1.2.5",
+        "async": "0.1.18"
     }
 }

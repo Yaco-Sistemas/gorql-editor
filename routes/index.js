@@ -26,7 +26,36 @@
  * GET home page.
  */
 
-exports.index = function (req, res) {
+var app = require.main,
+    async = require('async'),
+    fs = require('fs'),
+    path = require('path'),
+    renderResults;
+
+renderResults = function (request, response, templates) {
     "use strict";
-    res.render('layout', {});
+
+    response.render('layout', {
+        layout: false,
+        locals: {
+            templates: templates
+        }
+    });
+};
+
+exports.index = function (request, response) {
+    "use strict";
+
+    var finalCallback = function (error, templates) {
+        if (error) {
+            console.log(error);
+        }
+        renderResults(request, response, templates);
+    };
+
+    async.parallel([
+        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s2join.html"),
+        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s3filter.html"),
+        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s4paint.html")
+    ], finalCallback);
 };
