@@ -28,7 +28,7 @@
 
 var express = require('express'),
     routes = require('./routes'),
-    settings = require('./settings'),
+    settings = require('./settings').settings,
     app = module.exports = express.createServer();
 
 // Configuration
