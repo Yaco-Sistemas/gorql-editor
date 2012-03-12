@@ -31,3 +31,13 @@ all: ../../node_modules/uglify-js/bin/uglifyjs ../../node_modules/jqtpl/lib/jqtp
 
 clean: qba.min.js
 	rm -f qba.min.js
+
+debug: ../../node_modules/uglify-js/bin/uglifyjs ../../node_modules/jqtpl/lib/jqtpl.js ../../node_modules/backbone/backbone-min.js ../../client/models.js
+	$(UJS) $(UJSFLAGS) ../../node_modules/jqtpl/lib/jqtpl.js > jqtpl-min.js
+	cp ../../node_modules/backbone/backbone-min.js .
+	cp ../../client/models.js .
+
+cleandebug: jqtpl-min.js backbone-min.js models.js
+	rm -f jqtpl.js
+	rm -f backbone-min.js
+	rm -f models.js

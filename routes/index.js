@@ -34,6 +34,7 @@ renderResults = function (request, response, templates) {
     response.render('layout', {
         layout: false,
         locals: {
+            debugJS: app.exports.set('debugJS'),
             templates: templates
         }
     });

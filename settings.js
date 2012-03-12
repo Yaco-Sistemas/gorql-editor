@@ -25,6 +25,7 @@
 exports.settings = {
     global: {
         root: "",
+        debug: true,
         port: 3000
     },
 

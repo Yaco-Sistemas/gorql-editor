@@ -44,6 +44,8 @@ app.configure(function () {
     app.use(app.router);
     // static is not in dot notation because of JSLint
     app.use(express['static'](__dirname + '/public'));
+
+    app.set('debugJS', settings.global.debug);
 });
 
 app.configure('development', function () {
