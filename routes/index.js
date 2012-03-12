@@ -22,10 +22,6 @@
 // See the Licence for the specific language governing
 // permissions and limitations under the Licence.
 
-/*
- * GET home page.
- */
-
 var app = require.main,
     async = require('async'),
     fs = require('fs'),
@@ -43,12 +39,17 @@ renderResults = function (request, response, templates) {
     });
 };
 
+/*
+ * GET home page.
+ */
+
 exports.index = function (request, response) {
     "use strict";
 
-    var finalCallback = function (error, templates) {
+    var callback = function (error, templates) {
         if (error) {
             console.log(error);
+            renderResults(request, response);
         }
         renderResults(request, response, templates);
     };
@@ -57,5 +58,5 @@ exports.index = function (request, response) {
         async.apply(fs.readFile, path.dirname(app.filename) + "/views/s2join.html"),
         async.apply(fs.readFile, path.dirname(app.filename) + "/views/s3filter.html"),
         async.apply(fs.readFile, path.dirname(app.filename) + "/views/s4paint.html")
-    ], finalCallback);
+    ], callback);
 };
