@@ -6,6 +6,7 @@
         "forever": "0.8.5",
         "express": "2.5.4",
         "backbone": "0.9.1",
-        "jqtpl": "1.0.7"
+        "jqtpl": "1.0.7",
+        "uglify-js": "1.2.5"
     }
 }
