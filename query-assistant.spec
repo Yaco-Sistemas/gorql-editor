@@ -29,10 +29,13 @@ cp -R * %{installdir}
 cd %{installdir}
 mkdir .forever
 npm install -d
+cd %{installdir}/public/javascripts/
+make all
 
 # clean files not needed
 rm -rf %{installdir}/.hg
-rm -r %{installdir}/%{name}.spec
+rm -rf %{installdir}/client
+rm -f %{installdir}/%{name}.spec
 rm -f %{installdir}/make_dev_rpm.sh
 
 %install
@@ -55,8 +58,12 @@ rm -rf $RPM_BUILD_ROOT
 %doc %{docdir}/COPYING
 %doc %{docdir}/README
 %{installdir}/node_modules
-%attr(755,%{name},%{name}) %{installdir}/.forever
+%{installdir}/public
+%{installdir}/routes
+%{installdir}/views
+%{installdir}/app.js
 %{installdir}/package.json
+%attr(755,%{name},%{name}) %{installdir}/.forever
 %config %attr(755,%{name},%{name}) %{installdir}/settings.js
 /etc/%{name}
 %attr(755,%{name},%{name}) %{installdir}/%{name}.sh
