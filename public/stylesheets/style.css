@@ -11,29 +11,6 @@ body {
     padding: 5px;
 }
 
-#tabs > ol {
-    list-style-type: none;
-    padding-left: 0px;
-    margin: 0px;
-}
-
-#tabs > ol li.tab {
-    display: inline-block;
-    border: 1px solid black;
-}
-
-#tabs > ol li.tab a {
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
-}
-
-#content {
-    border: 1px solid black;
-    margin-top: 0px;
-    margin-bottom: 10px;
-}
-
 a.button {
     border: 1px solid black;
     padding: 3px;
@@ -44,4 +21,8 @@ a.button {
 
 #preview {
     margin-top: 10px;
+}
+
+body.js a.up.button {
+    display: none;
 }
