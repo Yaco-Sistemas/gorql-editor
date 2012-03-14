@@ -20,7 +20,6 @@ body {
 #tabs > ol li.tab {
     display: inline-block;
     border: 1px solid black;
-    padding: 3px;
 }
 
 #tabs > ol li.tab a {
