@@ -22,7 +22,9 @@
 // See the Licence for the specific language governing
 // permissions and limitations under the Licence.
 
-var app = require.main;
+var app = require.main,
+    path = require('path'),
+    fs = require('fs');
 
 /*
  * GET home page.
@@ -31,12 +33,21 @@ var app = require.main;
 exports.index = function (request, response) {
     "use strict";
 
-    response.render('layout', {
-        layout: false,
-        locals: {
-            debugJS: app.exports.settings.debugJS
-        }
-    });
+    fs.readFile(path.dirname(app.filename) + app.exports.settings.schema,
+        function (err, data) {
+            if (err) {
+                // TODO
+                console.log(err);
+                response.send("Oops", 500);
+            } else {
+                response.render('layout', {
+                    layout: false,
+                    locals: {
+                        debugJS: app.exports.settings.debugJS
+                    }
+                });
+            }
+        });
 };
 
 exports.form = function (request, response) {

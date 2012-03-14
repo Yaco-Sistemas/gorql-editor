@@ -46,6 +46,7 @@ app.configure(function () {
     app.use(express['static'](__dirname + '/public'));
 
     app.set('debugJS', settings.global.debug);
+    app.set('schema', settings.global.schema);
 });
 
 app.configure('development', function () {
