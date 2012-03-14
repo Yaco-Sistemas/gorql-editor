@@ -13,34 +13,30 @@
     {{if debugJS}}{{partial "debug"}}{{else}}
     <script type="text/javascript" src="/javascripts/qba.min.js"></script>
     {{/if}}
-    {{if templates}}
-    <script type="text/plain" id="step2Tpl">{{html templates[0]}}</script>
-    <script type="text/plain" id="step3Tpl">{{html templates[1]}}</script>
-    <script type="text/plain" id="step4Tpl">{{html templates[2]}}</script>
-    {{/if}}
 </head>
-<body>
+<body class="no-js">
 <div id="page">
     <h1>Query Builder Assistant</h1>
-    <form action="">
+    <form action="/form" method="get">
         <nav id="tabs">
             <ol>
-                <li class="tab"><a href="/setp1" id="step1Tab">Step 1</a></li>
-                <li class="tab"><a href="/step2" id="step2Tab">Step 2</a></li>
-                <li class="tab"><a href="/step3" id="step3Tab">Step 3</a></li>
-                <li class="tab"><a href="/step4" id="step4Tab">Step 4</a></li>
+                <li class="tab"><input type="submit" name="step" value="step1"/></li>
+                <li class="tab"><input type="submit" name="step" value="step1"/></li>
+                <li class="tab"><input type="submit" name="step" value="step1"/></li>
+                <li class="tab"><input type="submit" name="step" value="step1"/></li>
             </ol>
         </nav>
-        <section class="subform">{{partial "s1choose"}}</section>
-        <a href="" id="prev" class="button">Up</a>
-        <section class="subform">{{partial "s2join"}}</section>
-        <a href="" id="prev" class="button">Up</a>
-        <section class="subform">{{partial "s3filter"}}</section>
-        <a href="" id="prev" class="button">Up</a>
-        <section class="subform">{{partial "s4paint"}}</section>
-        <a href="" id="prev" class="button">Up</a>
+        <section name="s1" class="subform">{{partial "s1choose"}}</section>
+        <a href="#s1" id="prev" class="button">Up</a>
+        <section name="s2" class="subform">{{partial "s2join"}}</section>
+        <a href="#s2" id="prev" class="button">Up</a>
+        <section name="s3" class="subform">{{partial "s3filter"}}</section>
+        <a href="#s3" id="prev" class="button">Up</a>
+        <section name="s4" class="subform">{{partial "s4paint"}}</section>
+        <a href="#s4" id="prev" class="button">Up</a>
+        <input type="submit" name="done" value="done"/>
     </form>
-    <section id="preview">{{partial(preview) "preview"}}</section>
+    <section id="preview">{{partial "preview"}}</section>
 </div>
 </body>
 </html>

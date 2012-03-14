@@ -34,10 +34,7 @@ exports.index = function (request, response) {
     response.render('layout', {
         layout: false,
         locals: {
-            debugJS: app.exports.settings.debugJS,
-            preview: {
-                chart: false
-            }
+            debugJS: app.exports.settings.debugJS
         }
     });
 };
