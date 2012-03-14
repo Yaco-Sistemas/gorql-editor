@@ -22,26 +22,7 @@
 // See the Licence for the specific language governing
 // permissions and limitations under the Licence.
 
-var app = require.main,
-    async = require('async'),
-    fs = require('fs'),
-    path = require('path');
-
-exports.renderLayout = function (request, response, stepTpl, templates) {
-    "use strict";
-
-    response.render('layout', {
-        layout: false,
-        locals: {
-            debugJS: app.exports.settings.debugJS,
-            templates: templates,
-            content: stepTpl,
-            preview: {
-                chart: false
-            }
-        }
-    });
-};
+var app = require.main;
 
 /*
  * GET home page.
@@ -50,20 +31,19 @@ exports.renderLayout = function (request, response, stepTpl, templates) {
 exports.index = function (request, response) {
     "use strict";
 
-    var callback = function (error, templates) {
-        if (error) {
-            console.log(error);
-            exports.renderLayout(request, response, 's1choose');
+    response.render('layout', {
+        layout: false,
+        locals: {
+            debugJS: app.exports.settings.debugJS,
+            preview: {
+                chart: false
+            }
         }
-        exports.renderLayout(request, response, 's1choose', templates);
-    };
+    });
+};
 
-    async.parallel([
-        async.apply(fs.readFile,
-                    path.dirname(app.filename) + "/views/s2join.html"),
-        async.apply(fs.readFile,
-                    path.dirname(app.filename) + "/views/s3filter.html"),
-        async.apply(fs.readFile,
-                    path.dirname(app.filename) + "/views/s4paint.html")
-    ], callback);
+exports.form = function (request, response) {
+    "use strict";
+
+    response.send("oh! hai! :)");
 };

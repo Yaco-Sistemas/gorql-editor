@@ -8,6 +8,8 @@
     <!--[if lt IE 9]>
     <script type="text/javascript" src="/javascripts/html5-min.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
     {{if debugJS}}{{partial "debug"}}{{else}}
     <script type="text/javascript" src="/javascripts/qba.min.js"></script>
     {{/if}}
@@ -20,16 +22,24 @@
 <body>
 <div id="page">
     <h1>Query Builder Assistant</h1>
-    <nav id="tabs">
-        <ol>
-            <li class="tab"><a href="/" id="step1Tab">Step 1</a></li>
-            <li class="tab"><a href="/step2" id="step2Tab">Step 2</a></li>
-            <li class="tab"><a href="/step3" id="step3Tab">Step 3</a></li>
-            <li class="tab"><a href="/step4" id="step4Tab">Step 4</a></li>
-        </ol>
-    </nav>
-    <section id="content">{{partial content}}</section>
-    <a href="" id="prev" class="button">Previous</a><a href="" id="next" class="button">Next</a>
+    <form action="">
+        <nav id="tabs">
+            <ol>
+                <li class="tab"><a href="/setp1" id="step1Tab">Step 1</a></li>
+                <li class="tab"><a href="/step2" id="step2Tab">Step 2</a></li>
+                <li class="tab"><a href="/step3" id="step3Tab">Step 3</a></li>
+                <li class="tab"><a href="/step4" id="step4Tab">Step 4</a></li>
+            </ol>
+        </nav>
+        <section class="subform">{{partial "s1choose"}}</section>
+        <a href="" id="prev" class="button">Up</a>
+        <section class="subform">{{partial "s2join"}}</section>
+        <a href="" id="prev" class="button">Up</a>
+        <section class="subform">{{partial "s3filter"}}</section>
+        <a href="" id="prev" class="button">Up</a>
+        <section class="subform">{{partial "s4paint"}}</section>
+        <a href="" id="prev" class="button">Up</a>
+    </form>
     <section id="preview">{{partial(preview) "preview"}}</section>
 </div>
 </body>
