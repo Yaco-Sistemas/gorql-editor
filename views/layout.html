@@ -17,6 +17,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $(".tabable").tabs();
+            $(".accordionable").accordion();
             $(document.body).addClass("js").removeClass("no-js");
         });
     </script>
@@ -33,7 +34,7 @@
                 <li class="tab"><a href="#step4">Step 4</a></li>
             </ol>
         </nav>
-        <section id="step1" class="subform">{{partial "s1choose"}}</section>
+        <section id="step1" class="subform">{{partial(schema) "s1choose"}}</section>
         <a href="#step1" id="prev" class="button up">Up</a>
         <section id="step2" class="subform">{{partial "s2join"}}</section>
         <a href="#step2" id="prev" class="button up">Up</a>

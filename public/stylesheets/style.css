@@ -26,3 +26,7 @@ a.button {
 body.js a.up.button {
     display: none;
 }
+
+body.js ul.category {
+    margin: 0px;
+}

@@ -1,5 +1,16 @@
-        <fieldset class="choose">
-            <legend>Available categories</legend>
-            <label for="collection1">Collection1</label>
-            <input type="checkbox" name="collection1"/>
-        </fieldset>
+<fieldset class="choose">
+    <legend>Available categories</legend>
+    <div class="categories accordionable">
+        {{each(idx_cat, category) categories}}
+        <h3><a href="#" class="category_name">${category.meta.name}</a></h3>
+        <div><ul class="category">
+            {{each(idx_col, collection) category.collections}}
+            <li>
+                <label for="collection${idx_cat}${idx_col}">${collection.name}</label>
+                <input type="checkbox" name="collection${idx_cat}${idx_col}"/>
+            </li>
+            {{/each}}
+        </ul></div>
+        {{/each}}
+    </div>
+</fieldset>

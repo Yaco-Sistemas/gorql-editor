@@ -33,8 +33,10 @@ var app = require.main,
 exports.index = function (request, response) {
     "use strict";
 
-    fs.readFile(path.dirname(app.filename) + app.exports.settings.schema,
+    fs.readFile(path.dirname(app.filename) + '/' + app.exports.settings.schema,
         function (err, data) {
+            var schema = JSON.parse(data);
+
             if (err) {
                 // TODO
                 console.log(err);
@@ -43,7 +45,8 @@ exports.index = function (request, response) {
                 response.render('layout', {
                     layout: false,
                     locals: {
-                        debugJS: app.exports.settings.debugJS
+                        debugJS: app.exports.settings.debugJS,
+                        schema: { categories: schema }
                     }
                 });
             }
