@@ -16,13 +16,30 @@
     },
     "collections": [{
             "name": "American rock musicians",
-            "url": "http://dbpedia.org/page/Category:American_rock_musicians"
+            "url": "http://dbpedia.org/page/Category:American_rock_musicians",
+            "fields": [
+                "rdfs:label",
+                "rdfs:comment",
+                "dbpprop:dateOfBirth"
+            ]
         }, {
             "name": "Irish rock musicians",
-            "url": "http://dbpedia.org/page/Category:Irish_rock_musicians"
+            "url": "http://dbpedia.org/page/Category:Irish_rock_musicians",
+            "fields": [
+                "rdfs:label",
+                "rdfs:comment",
+                "dbpprop:dateOfBirth",
+                "foaf:page"
+            ]
         }, {
             "name": "British rock musicians",
-            "url": "http://dbpedia.org/page/Category:British_rock_musicians"
+            "url": "http://dbpedia.org/page/Category:British_rock_musicians",
+            "fields": [
+                "rdfs:label",
+                "dbpprop:dateOfBirth",
+                "foaf:homepage",
+                "foaf:page"
+            ]
         }
     ]
 }, {
@@ -47,13 +64,44 @@
     },
     "collections": [{
             "name": "Hard rock albums",
-            "url": "http://dbpedia.org/page/Category:Hard_rock_albums"
+            "url": "http://dbpedia.org/page/Category:Hard_rock_albums",
+            "fields": [
+                "rdfs:label",
+                "rdfs:comment",
+                "foaf:page",
+                "dbpprop:released",
+                "dbpprop:artist",
+                "dbpprop:genre",
+                "dbpprop:label",
+                "dbpprop:length"
+            ]
         }, {
             "name": "Alternative rock albums",
-            "url": "http://dbpedia.org/page/Category:Alternative_rock_albums"
+            "url": "http://dbpedia.org/page/Category:Alternative_rock_albums",
+            "fields": [
+                "rdfs:label",
+                "rdfs:comment",
+                "foaf:page",
+                "dbpprop:released",
+                "dbpprop:artist",
+                "dbpprop:producer",
+                "dbpprop:genre",
+                "dbpprop:label",
+                "dbpprop:length"
+            ]
         }, {
             "name": "Progressive rock albums",
-            "url": "http://dbpedia.org/page/Category:Progressive_rock_albums"
+            "url": "http://dbpedia.org/page/Category:Progressive_rock_albums",
+            "fields": [
+                "rdfs:label",
+                "rdfs:comment",
+                "dbpprop:released",
+                "dbpprop:artist",
+                "dbpprop:producer",
+                "dbpprop:genre",
+                "dbpprop:label",
+                "dbpprop:length"
+            ]
         }
     ]
 }, {
@@ -78,16 +126,56 @@
     },
     "collections": [{
             "name": "Irish rock music groups",
-            "url": "http://dbpedia.org/page/Category:Irish_rock_music_groups"
+            "url": "http://dbpedia.org/page/Category:Irish_rock_music_groups",
+            "fields": [
+                "rdfs:label",
+                "rdfs:comment",
+                "foaf:homepage",
+                "foaf:page",
+                "dbpprop:genre",
+                "dbpprop:origin",
+                "dbpprop:yearsActive",
+                "dbpprop:currentMembers"
+            ]
         }, {
             "name": "American rock music groups",
-            "url": "http://dbpedia.org/page/Category:American_rock_music_groups"
+            "url": "http://dbpedia.org/page/Category:American_rock_music_groups",
+            "fields": [
+                "rdfs:label",
+                "rdfs:comment",
+                "foaf:homepage",
+                "foaf:page",
+                "dbpprop:genre",
+                "dbpprop:label",
+                "dbpprop:origin",
+                "dbpprop:yearsActive",
+                "dbpprop:currentMembers"
+            ]
         }, {
             "name": "Spanish rock music groups",
-            "url": "http://dbpedia.org/page/Category:Spanish_rock_music_groups"
+            "url": "http://dbpedia.org/page/Category:Spanish_rock_music_groups",
+            "fields": [
+                "rdfs:label",
+                "rdfs:comment",
+                "dbpprop:genre",
+                "dbpprop:label",
+                "dbpprop:origin",
+                "dbpprop:yearsActive",
+                "dbpprop:currentMembers"
+            ]
         }, {
             "name": "German rock music groups",
-            "url": "http://dbpedia.org/page/Category:German_rock_music_groups"
+            "url": "http://dbpedia.org/page/Category:German_rock_music_groups",
+            "fields": [
+                "rdfs:label",
+                "rdfs:comment",
+                "foaf:page",
+                "dbpprop:genre",
+                "dbpprop:label",
+                "dbpprop:origin",
+                "dbpprop:yearsActive",
+                "dbpprop:currentMembers"
+            ]
         }
     ]
 }]
