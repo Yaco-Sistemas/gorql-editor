@@ -26,7 +26,7 @@ exports.settings = {
     global: {
         root: "",
         debug: true,
-        port: 3000,
+        port: 3010,
         schema: "endpoints/dbpedia.json"
     },
 

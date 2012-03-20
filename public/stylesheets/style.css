@@ -31,3 +31,11 @@ body.js ul.category,
 body.js ul.collection {
     margin: 0px;
 }
+
+.half-width {
+    width: 49%;
+}
+
+.inline {
+    display: inline-block;
+}
