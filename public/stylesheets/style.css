@@ -34,6 +34,10 @@ body.js ul.collection {
     margin: 0px;
 }
 
+ul {
+    list-style-type: none;
+}
+
 .half-width {
     width: 49%;
 }

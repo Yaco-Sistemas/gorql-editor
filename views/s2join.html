@@ -8,8 +8,8 @@
         <div><ul class="collection">
             {{each(idx_fie, field) collection.fields}}
             <li>
-                <label for="field${idx_cat}${idx_col}${idx_fie}">${field}</label>
                 <input type="checkbox" name="field${idx_cat}${idx_col}${idx_fie}"/>
+                <label for="field${idx_cat}${idx_col}${idx_fie}">${field}</label>
             </li>
             {{/each}}
         </ul></div>

@@ -6,8 +6,8 @@
         <div><ul class="category">
             {{each(idx_col, collection) category.collections}}
             <li>
-                <label for="collection${idx_cat}${idx_col}">${collection.name}</label>
                 <input type="checkbox" name="collection${idx_cat}${idx_col}"/>
+                <label for="collection${idx_cat}${idx_col}">${collection.name}</label>
             </li>
             {{/each}}
         </ul></div>
