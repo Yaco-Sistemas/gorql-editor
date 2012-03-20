@@ -23,7 +23,9 @@ a.button {
     margin-top: 10px;
 }
 
-body.js a.up.button {
+body.no-js .js,
+body.js .no-js,
+.hidden {
     display: none;
 }
 

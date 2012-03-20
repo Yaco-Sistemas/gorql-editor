@@ -46,7 +46,13 @@ exports.index = function (request, response) {
                     layout: false,
                     locals: {
                         debugJS: app.exports.settings.debugJS,
-                        schema: { categories: schema }
+                        schema: { categories: schema },
+                        steps: {
+                            s1: '',
+                            s2: 'hidden',
+                            s3: 'hidden',
+                            s4: 'hidden'
+                        }
                     }
                 });
             }

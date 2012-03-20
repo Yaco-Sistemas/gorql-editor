@@ -18,6 +18,7 @@
         $(document).ready(function () {
             $(".tabable").tabs();
             $(".accordionable").accordion();
+            $(".step").removeClass("hidden");
             $(document.body).addClass("js").removeClass("no-js");
         });
     </script>
@@ -26,7 +27,7 @@
 <div id="page">
     <h1>Query Builder Assistant</h1>
     <form action="/form" method="get" class="tabable">
-        <nav>
+        <nav class="js">
             <ol>
                 <li class="tab"><a href="#step1">Step 1</a></li>
                 <li class="tab"><a href="#step2">Step 2</a></li>
@@ -34,15 +35,29 @@
                 <li class="tab"><a href="#step4">Step 4</a></li>
             </ol>
         </nav>
-        <section id="step1" class="subform">{{partial(schema) "s1choose"}}</section>
-        <a href="#step1" id="prev" class="button up">Up</a>
-        <section id="step2" class="subform">{{partial(schema) "s2join"}}</section>
-        <a href="#step2" id="prev" class="button up">Up</a>
-        <section id="step3" class="subform">{{partial(schema) "s3filter"}}</section>
-        <a href="#step3" id="prev" class="button up">Up</a>
-        <section id="step4" class="subform">{{partial(schema) "s4paint"}}</section>
-        <a href="#step4" id="prev" class="button up">Up</a>
-        <input type="submit" name="done" value="done"/>
+
+        <section id="step1" class="step ${steps.s1}">
+            {{partial(schema) "s1choose"}}
+            <input type="submit" class="no-js" name="s1_next" value="Next"/>
+        </section>
+
+        <section id="step2" class="step ${steps.s2}">
+            {{partial(schema) "s2join"}}
+            <input type="submit" class="no-js" name="s2_prev" value="Previous"/>
+            <input type="submit" class="no-js" name="s2_next" value="Next"/>
+        </section>
+
+        <section id="step3" class="step ${steps.s3}">
+            {{partial(schema) "s3filter"}}
+            <input type="submit" class="no-js" name="s3_prev" value="Previous"/>
+            <input type="submit" class="no-js" name="s3_next" value="Next"/>
+        </section>
+
+        <section id="step4" class="step ${steps.s4}">
+            {{partial(schema) "s4paint"}}
+            <input type="submit" class="no-js" name="s4_prev" value="Previous"/>
+            <input type="submit" name="done" value="Done"/>
+        </section>
     </form>
     <section id="preview">{{partial "preview"}}</section>
 </div>
