@@ -14,9 +14,11 @@
     {{if debugJS}}{{partial "debug"}}{{else}}
     <script type="text/javascript" src="/javascripts/qba.min.js"></script>
     {{/if}}
+    {{if templates}}
     <script type="text/plain" id="step2Tpl">{{html templates[0]}}</script>
     <script type="text/plain" id="step3Tpl">{{html templates[1]}}</script>
     <script type="text/plain" id="step4Tpl">{{html templates[2]}}</script>
+    {{/if}}
     <script type="text/javascript">
         $(document).ready(function () {
             $(".tabable").tabs();
