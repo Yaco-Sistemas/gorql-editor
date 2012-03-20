@@ -39,3 +39,11 @@ body.js ul.collection {
 .inline {
     display: inline-block;
 }
+
+.narrow-field {
+    max-width: 100px;
+}
+
+.wide-field {
+    max-width: 300px,
+}

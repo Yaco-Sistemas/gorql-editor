@@ -1,3 +1,30 @@
-        <fieldset class="chart">
-            <legend>Visualize the results</legend>
-        </fieldset>
+<fieldset class="chart">
+    <legend>Visualize the results</legend>
+    <div class="half-width inline">
+        <h3>Chart type</h3>
+        <ul>
+            <li><input type="radio" name="chart_type" value="bar" />Bars</li>
+            <li><input type="radio" name="chart_type" value="line" />Lines</li>
+            <li><input type="radio" name="chart_type" value="pie" />Sectors (Pie)</li>
+            <li><input type="radio" name="chart_type" value="timeline" />Timeline</li>
+            <li><input type="radio" name="chart_type" value="map" />Open Street Maps</li>
+            <li><input type="radio" name="chart_type" value="mapea" />Mapea</li>
+        </ul>
+    </div>
+    <div class="half-width inline">
+        <h3>Parameters</h3>
+        <div class="parameter">
+            <input type="text" class="narrow-field" />: <input type="text" class="wide-field" />
+        </div>
+        <div class="parameter">
+            <input type="text" class="narrow-field" />: <input type="text" class="wide-field" />
+        </div>
+        <div class="parameter">
+            <input type="text" class="narrow-field" />: <input type="text" class="wide-field" />
+        </div>
+        <div class="parameter">
+            <input type="text" class="narrow-field" />: <input type="text" class="wide-field" />
+        </div>
+        <input type="submit" value="New parameter" />
+    </div>
+</fieldset>
