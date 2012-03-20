@@ -1,4 +1,38 @@
-        <fieldset class="join">
-            <legend>Join selected collections</legend>
-            <span style="color: red;">TODO</span>
-        </fieldset>
+<fieldset class="join">
+    <legend>Join selected collections</legend>
+    <h3>Columns</h3>
+    <div class="collections accordionable">
+        {{each(idx_cat, category) categories}}
+        {{each(idx_col, collection) category.collections}}
+        <h3><a href="#" class="collection_name">${collection.name}</a></h3>
+        <div><ul class="collection">
+            {{each(idx_fie, field) collection.fields}}
+            <li>
+                <label for="field${idx_cat}${idx_col}${idx_fie}">${field}</label>
+                <input type="checkbox" name="field${idx_cat}${idx_col}${idx_fie}"/>
+            </li>
+            {{/each}}
+        </ul></div>
+        {{/each}}
+        {{/each}}
+    </div>
+    <h3>Join columns</h3>
+    <table id="join"><tbody>
+        <tr>
+            <td><input type="text" name="join00" class="wide-field"/></td>
+            <td><input type="text" name="join01" class="wide-field"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="join10" class="wide-field"/></td>
+            <td><input type="text" name="join11" class="wide-field"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="join20" class="wide-field"/></td>
+            <td><input type="text" name="join21" class="wide-field"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="join30" class="wide-field"/></td>
+            <td><input type="text" name="join30" class="wide-field"/></td>
+        </tr>
+    </tbody></table>
+</fieldset>

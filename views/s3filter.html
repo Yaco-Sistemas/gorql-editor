@@ -1,45 +1,24 @@
 <fieldset class="filter">
     <legend>Filter the collections contents</legend>
-    <div class="half-width inline">
-        <h3>Columns</h3>
-        <div class="collections accordionable">
-            {{each(idx_cat, category) categories}}
-            {{each(idx_col, collection) category.collections}}
-            <h3><a href="#" class="collection_name">${collection.name}</a></h3>
-            <div><ul class="collection">
-                {{each(idx_fie, field) collection.fields}}
-                <li>
-                    <label for="field${idx_cat}${idx_col}${idx_fie}">${field}</label>
-                    <input type="checkbox" name="field${idx_cat}${idx_col}${idx_fie}"/>
-                </li>
-                {{/each}}
-            </ul></div>
-            {{/each}}
-            {{/each}}
-        </div>
+    <div class="filter">
+        <input type="text" class="field_name narrow-field" name="field_name0" />
+        <select name="field_filter_type0"></select>
+        <input type="text" class="field_filter_value narrow-field" name="field_filter_value0" />
     </div>
-    <div class="filters half-width inline">
-        <h3>Filters</h3>
-        <div class="filter">
-            <input type="text" class="field_name narrow-field" name="field_name0" />
-            <select name="field_filter_type0"></select>
-            <input type="text" class="field_filter_value narrow-field" name="field_filter_value0" />
-        </div>
-        <div class="filter">
-            <input type="text" class="field_name narrow-field" name="field_name1" />
-            <select name="field_filter_type1"></select>
-            <input type="text" class="field_filter_value narrow-field" name="field_filter_value1" />
-        </div>
-        <div class="filter">
-            <input type="text" class="field_name narrow-field" name="field_name2" />
-            <select name="field_filter_type2"></select>
-            <input type="text" class="field_filter_value narrow-field" name="field_filter_value2" />
-        </div>
-        <div class="filter">
-            <input type="text" class="field_name narrow-field" name="field_name3" />
-            <select name="field_filter_type3"></select>
-            <input type="text" class="field_filter_value narrow-field" name="field_filter_value3" />
-        </div>
-        <input type="submit" value="New filter" />
+    <div class="filter">
+        <input type="text" class="field_name narrow-field" name="field_name1" />
+        <select name="field_filter_type1"></select>
+        <input type="text" class="field_filter_value narrow-field" name="field_filter_value1" />
     </div>
+    <div class="filter">
+        <input type="text" class="field_name narrow-field" name="field_name2" />
+        <select name="field_filter_type2"></select>
+        <input type="text" class="field_filter_value narrow-field" name="field_filter_value2" />
+    </div>
+    <div class="filter">
+        <input type="text" class="field_name narrow-field" name="field_name3" />
+        <select name="field_filter_type3"></select>
+        <input type="text" class="field_filter_value narrow-field" name="field_filter_value3" />
+    </div>
+    <input type="submit" value="New filter" />
 </fieldset>
