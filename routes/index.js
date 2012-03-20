@@ -23,6 +23,7 @@
 // permissions and limitations under the Licence.
 
 var app = require.main,
+    async = require('async'),
     path = require('path'),
     fs = require('fs');
 
@@ -33,30 +34,41 @@ var app = require.main,
 exports.index = function (request, response) {
     "use strict";
 
-    fs.readFile(path.dirname(app.filename) + '/' + app.exports.settings.schema,
-        function (err, data) {
-            var schema = JSON.parse(data);
+    var callback = function (error, data) {
+        var schema,
+            templates;
 
-            if (err) {
-                // TODO
-                console.log(err);
-                response.send("Oops", 500);
-            } else {
-                response.render('layout', {
-                    layout: false,
-                    locals: {
-                        debugJS: app.exports.settings.debugJS,
-                        schema: { categories: schema },
-                        steps: {
-                            s1: '',
-                            s2: 'hidden',
-                            s3: 'hidden',
-                            s4: 'hidden'
-                        }
+        if (error) {
+            // TODO
+            console.log(error);
+            response.send("Oops", 500);
+        } else {
+            schema = JSON.parse(data[0]);
+            templates = [data[1], data[2], data[3]];
+
+            response.render('layout', {
+                layout: false,
+                locals: {
+                    debugJS: app.exports.settings.debugJS,
+                    schema: { categories: schema },
+                    templates: templates,
+                    steps: {
+                        s1: '',
+                        s2: 'hidden',
+                        s3: 'hidden',
+                        s4: 'hidden'
                     }
-                });
-            }
-        });
+                }
+            });
+        }
+    };
+
+    async.parallel([
+        async.apply(fs.readFile, path.dirname(app.filename) + '/' + app.exports.settings.schema),
+        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s2join.html"),
+        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s3filter.html"),
+        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s4paint.html")
+    ], callback);
 };
 
 exports.form = function (request, response) {
