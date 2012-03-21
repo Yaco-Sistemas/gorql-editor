@@ -1,5 +1,5 @@
 /*jslint vars: false, browser: true */
-/*global QBA: true */
+/*global QBA: true, $ */
 
 // Copyright 2012 Yaco Sistemas S.L.
 //
@@ -26,8 +26,59 @@ if (typeof QBA === 'undefined') {
     window.QBA = {};
 }
 
-QBA.step1Events = {
-    init: function () {
+QBA.events = {
+    navigation: function () {
         "use strict";
+        $("li.tab a").click(function () {
+            var step = this.href.split('#')[1];
+
+            // Release old events of the target tab
+            QBA.events[step].release();
+
+            // TODO process template
+
+            // Bind events to the new content of the target tab
+            QBA.events[step].bind();
+        });
+    },
+
+    step1: {
+        bind: function () {
+            "use strict";
+        },
+
+        release: function () {
+            "use strict";
+        }
+    },
+
+    step2: {
+        bind: function () {
+            "use strict";
+        },
+
+        release: function () {
+            "use strict";
+        }
+    },
+
+    step3: {
+        bind: function () {
+            "use strict";
+        },
+
+        release: function () {
+            "use strict";
+        }
+    },
+
+    step4: {
+        bind: function () {
+            "use strict";
+        },
+
+        release: function () {
+            "use strict";
+        }
     }
 };

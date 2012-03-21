@@ -25,6 +25,8 @@
             $(".accordionable").accordion();
             $(".step").removeClass("hidden");
             $(document.body).addClass("js").removeClass("no-js");
+            QBA.events.navigation();
+            QBA.events.step1.bind();
         });
     </script>
 </head>
