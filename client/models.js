@@ -1,5 +1,5 @@
-/*jslint vars: false, browser: true */
-/*global Backbone */
+/*jslint vars: false, browser: true, nomen: true */
+/*global QBA: true, Backbone, _ */
 
 // Copyright 2012 Yaco Sistemas S.L.
 //
@@ -22,22 +22,40 @@
 // See the Licence for the specific language governing
 // permissions and limitations under the Licence.
 
-var TheModel = Backbone.Model.extend({
-    collections: [],
+if (typeof QBA === 'undefined') {
+    window.QBA = {};
+}
 
-    addCollection: function () {
+QBA.theQuery = {};
+
+QBA.Collection = Backbone.Model.extend({
+    defauts: function () {
         "use strict";
+        return {
+            fields: [],
+            original_fields: []
+        };
     },
 
-    filters: [],
-
-    addFilter: function () {
+    validate: function (attrs) {
         "use strict";
+        var diff = _.difference(this.original_fields, _.union(attrs.fields, this.original_fields));
+        if (diff.length > 0) {
+            return "Field doesn't belong to the collection";
+        }
     },
 
-    params: [],
-
-    addParam: function () {
+    addField: function (field) {
         "use strict";
+        this.set({ fields: _.uniq(this.fields.push(field)) });
+    },
+
+    getChosenFields: function () {
+        "use strict";
+        return _.intersection(this.fields, this.original_fields);
     }
+});
+
+QBA.theQuery.collections = Backbone.Collection.extend({
+    model: QBA.Collection
 });
