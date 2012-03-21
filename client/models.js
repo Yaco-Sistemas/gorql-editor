@@ -26,9 +26,9 @@ if (typeof QBA === 'undefined') {
     window.QBA = {};
 }
 
-QBA.theQuery = {};
+QBA.models.theQuery = {};
 
-QBA.Collection = Backbone.Model.extend({
+QBA.models.Collection = Backbone.Model.extend({
     defauts: function () {
         "use strict";
         return {
@@ -56,6 +56,6 @@ QBA.Collection = Backbone.Model.extend({
     }
 });
 
-QBA.theQuery.collections = Backbone.Collection.extend({
-    model: QBA.Collection
+QBA.models.theQuery.collections = Backbone.Collection.extend({
+    model: QBA.models.Collection
 });
