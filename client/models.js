@@ -53,6 +53,7 @@ QBA.models.Collection = Backbone.Model.extend({
         return {
             name: '',
             url: '',
+            checked: false,
             fieldList: new QBA.models.FieldList()
         };
     },
@@ -70,7 +71,9 @@ QBA.models.Collection = Backbone.Model.extend({
 
     getCheckedFields: function () {
         "use strict";
-        return this.attributes.fieldList.filter(function (field) {return field.checked; });
+        return this.attributes.fieldList.filter(function (field) {
+            return field.get("checked");
+        });
     },
 
     addField: function (name) {
@@ -109,6 +112,13 @@ QBA.models.Category = Backbone.Model.extend({
         return result;
     },
 
+    getCheckedCollections: function () {
+        "use strict";
+        return this.attributes.collectionList.filter(function (collection) {
+            return collection.get("checked");
+        });
+    },
+
     addField: function (name) {
         "use strict";
         this.attributes.fieldList.add(
@@ -139,8 +149,7 @@ QBA.theQuery = new QBA.models.CategoryList();
 
 QBA.models.loadSchema = function () {
     "use strict";
-    var schema = JSON.parse($("#schema").html()),
-        category,
+    var category,
         categoryObj,
         collection,
         collectionObj,
@@ -148,8 +157,10 @@ QBA.models.loadSchema = function () {
         j,
         h;
 
-    for (i = 0; i < schema.length; i += 1) {
-        category = schema[i];
+    QBA.theSchema = JSON.parse($("#schema").html());
+
+    for (i = 0; i < QBA.theSchema.length; i += 1) {
+        category = QBA.theSchema[i];
         categoryObj = new QBA.models.Category({
             name: category.meta.name,
             prefixes: category.meta.prefixes
