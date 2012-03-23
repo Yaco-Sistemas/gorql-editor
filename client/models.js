@@ -1,5 +1,5 @@
 /*jslint vars: false, browser: true, nomen: true */
-/*global QBA: true, Backbone, _ */
+/*global QBA: true, Backbone, $ */
 
 // Copyright 2012 Yaco Sistemas S.L.
 //
@@ -26,6 +26,8 @@ if (typeof QBA === 'undefined') {
     window.QBA = {};
 }
 
+QBA.models = {};
+
 QBA.models.Field = Backbone.Model.extend({
     defaults: function () {
         "use strict";
@@ -37,24 +39,39 @@ QBA.models.Field = Backbone.Model.extend({
 
     toJSON: function () {
         "use strict";
-        return this.name;
+        return this.attributes.name;
     }
 });
 
+QBA.models.FieldList = Backbone.Collection.extend({
+    model: QBA.models.Field
+});
+
 QBA.models.Collection = Backbone.Model.extend({
-    defauts: function () {
+    defaults: function () {
         "use strict";
         return {
             name: '',
             url: '',
-            fields: Backbone.Collection.extend({ model: QBA.models.Field })
+            fields: new QBA.models.FieldList()
         };
     },
 
     getCheckedFields: function () {
         "use strict";
-        return this.fields.filter(function (field) {return field.checked; });
+        return this.attributes.fields.filter(function (field) {return field.checked; });
+    },
+
+    addField: function (name) {
+        "use strict";
+        this.attributes.fields.add(
+            new QBA.models.Field({ name: name })
+        );
     }
+});
+
+QBA.models.CollectionList = Backbone.Collection.extend({
+    model: QBA.models.Collection
 });
 
 QBA.models.Category = Backbone.Model.extend({
@@ -63,8 +80,8 @@ QBA.models.Category = Backbone.Model.extend({
         return {
             name: '',
             prefixes: {},
-            fieldList: Backbone.Collection.extend({ model: QBA.models.Field }),
-            collectionList: Backbone.Collection.extend({ model: QBA.models.Collection })
+            fieldList: new QBA.models.FieldList(),
+            collectionList: new QBA.models.CollectionList()
         };
     },
 
@@ -74,14 +91,63 @@ QBA.models.Category = Backbone.Model.extend({
             meta: {}
         };
 
-        result.meta.name = this.name;
-        result.meta.prefixes = this.prefixes;
-        result.meta.fields = this.fieldList.toJSON();
-        result.collections = this.collectionList.toJSON();
+        result.meta.name = this.attributes.name;
+        result.meta.prefixes = this.attributes.prefixes;
+        result.meta.fields = this.attributes.fieldList.toJSON();
+        result.collections = this.attributes.collectionList.toJSON();
         return result;
+    },
+
+    addField: function (name) {
+        "use strict";
+        this.attributes.fieldList.add(
+            new QBA.models.Field({ name: name })
+        );
+    },
+
+    addCollection: function (category) {
+        "use strict";
+        this.attributes.collectionList.add(category);
     }
 });
 
 QBA.models.CategoryList = Backbone.Collection.extend({
     model: QBA.models.Category
 });
+
+QBA.theQuery = new QBA.models.CategoryList();
+
+QBA.models.loadSchema = function () {
+    "use strict";
+    var schema = JSON.parse($("#schema").html()),
+        category,
+        categoryObj,
+        collection,
+        collectionObj,
+        i,
+        j,
+        h;
+
+    for (i = 0; i < schema.length; i += 1) {
+        category = schema[i];
+        categoryObj = new QBA.models.Category({
+            name: category.meta.name,
+            prefixes: category.meta.prefixes
+        });
+        for (j = 0; j < category.meta.fields.length; j += 1) {
+            categoryObj.addField(category.meta.fields[j]);
+        }
+        for (j = 0; j < category.collections.length; j += 1) {
+            collection = category.collections[j];
+            collectionObj = new QBA.models.Collection({
+                name: collection.name,
+                url: collection.url
+            });
+            for (h = 0; h < collection.fields.length; h += 1) {
+                collectionObj.addField(collection.fields[h]);
+            }
+            categoryObj.addCollection(collectionObj);
+        }
+        QBA.theQuery.add(categoryObj);
+    }
+};

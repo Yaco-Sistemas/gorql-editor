@@ -26,6 +26,8 @@ if (typeof QBA === 'undefined') {
     window.QBA = {};
 }
 
+QBA.views = {};
+
 QBA.views.step = Backbone.View.extend({
     render: function () {
         "use strict";

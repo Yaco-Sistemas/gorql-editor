@@ -51,6 +51,7 @@ exports.index = function (request, response) {
                 locals: {
                     debugJS: app.exports.settings.debugJS,
                     schema: { categories: schema },
+                    schemaJSON: JSON.stringify(schema),
                     templates: templates,
                     steps: {
                         s1: '',

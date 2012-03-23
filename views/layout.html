@@ -19,6 +19,7 @@
     <script type="text/plain" id="step3Tpl">{{html templates[1]}}</script>
     <script type="text/plain" id="step4Tpl">{{html templates[2]}}</script>
     {{/if}}
+    <script type="text/plain" id="schema">{{html schemaJSON}}</script>
     <script type="text/javascript">
         $(document).ready(function () {
             $(".tabable").tabs();
@@ -27,6 +28,7 @@
             $(document.body).addClass("js").removeClass("no-js");
             QBA.events.navigation();
             QBA.events.step1.bind();
+            QBA.models.loadSchema();
         });
     </script>
 </head>
