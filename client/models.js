@@ -37,14 +37,21 @@ QBA.models.Field = Backbone.Model.extend({
         };
     },
 
-    toJSON: function () {
+    toJSON: function (step) {
         "use strict";
         return this.attributes.name;
     }
 });
 
 QBA.models.FieldList = Backbone.Collection.extend({
-    model: QBA.models.Field
+    model: QBA.models.Field,
+
+    toJSON: function (step) {
+        "use strict";
+        return _.map(this.models, function (field) {
+            return field.toJSON(step);
+        });
+    }
 });
 
 QBA.models.Collection = Backbone.Model.extend({
@@ -58,14 +65,21 @@ QBA.models.Collection = Backbone.Model.extend({
         };
     },
 
-    toJSON: function () {
+    toJSON: function (step) {
         "use strict";
         var result = {};
+        step = step || 1;
         result.name = this.attributes.name;
         result.url = this.attributes.url;
-        result.fields = this.attributes.fieldList.map(function (field) {
-            return field.toJSON();
-        });
+        if (step > 2) {
+            result.fields = _.map(this.getCheckedFields(), function (field) {
+                return field.toJSON(step);
+            });
+        } else {
+            result.fields = this.attributes.fieldList.map(function (field) {
+                return field.toJSON(step);
+            });
+        }
         return result;
     },
 
@@ -85,7 +99,14 @@ QBA.models.Collection = Backbone.Model.extend({
 });
 
 QBA.models.CollectionList = Backbone.Collection.extend({
-    model: QBA.models.Collection
+    model: QBA.models.Collection,
+
+    toJSON: function (step) {
+        "use strict";
+        return _.map(this.models, function (collection) {
+            return collection.toJSON(step);
+        });
+    }
 });
 
 QBA.models.Category = Backbone.Model.extend({
@@ -99,16 +120,24 @@ QBA.models.Category = Backbone.Model.extend({
         };
     },
 
-    toJSON: function () {
+    toJSON: function (step) {
         "use strict";
         var result = {
             meta: {}
         };
 
+        step = step || 1;
+
         result.meta.name = this.attributes.name;
         result.meta.prefixes = this.attributes.prefixes;
         result.meta.fields = this.attributes.fieldList.toJSON();
-        result.collections = this.attributes.collectionList.toJSON();
+        if (step > 1) {
+            result.collection = _.map(this.getCheckedCollections(), function (collection) {
+                return collection.toJSON(step);
+            });
+        } else {
+            result.collections = this.attributes.collectionList.toJSON(step);
+        }
         return result;
     },
 
@@ -135,11 +164,11 @@ QBA.models.Category = Backbone.Model.extend({
 QBA.models.CategoryList = Backbone.Collection.extend({
     model: QBA.models.Category,
 
-    toJSON: function () {
+    toJSON: function (step) {
         "use strict";
         return {
             categories: _.map(this.models, function (category) {
-                return category.toJSON();
+                return category.toJSON(step);
             })
         };
     }
