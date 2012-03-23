@@ -1,5 +1,5 @@
 /*jslint vars: false, browser: true */
-/*global QBA: true, Backbone */
+/*global QBA: true, Backbone, $ */
 
 // Copyright 2012 Yaco Sistemas S.L.
 //
@@ -28,10 +28,15 @@ if (typeof QBA === 'undefined') {
 
 QBA.views = {};
 
-QBA.views.step = Backbone.View.extend({
+QBA.views.Step = Backbone.View.extend({
+    initialize: function (options) {
+        "use strict";
+        this.templateName = options.template;
+    },
+
     render: function () {
         "use strict";
-        // TODO
+        var html = $.tmpl(this.templateName, QBA.theQuery.toJSON());
         return this;
     }
 });

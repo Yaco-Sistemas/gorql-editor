@@ -22,23 +22,26 @@
 UJS=../../node_modules/uglify-js/bin/uglifyjs
 UJSFLAGS=-nc
 
-all: ../../node_modules/uglify-js/bin/uglifyjs underscore.js ../../node_modules/backbone/backbone-min.js ../../client/models.js jqtpl-min.js ../../client/models.js ../../client/events.js
+all: ../../node_modules/uglify-js/bin/uglifyjs underscore.js ../../node_modules/backbone/backbone-min.js ../../client/models.js jqtpl-min.js ../../client/models.js ../../client/events.js ../../client/views.js
 	echo "// Copyright 2012 Yaco Sistemas S.L. - Developed by <ablanco@yaco.es> - EUPL 1.1 License - http://joinup.ec.europa.eu/software/page/eupl" > qba.min.js
 	$(UJS) $(UJSFLAGS) underscore.js >> qba.min.js
 	cat ../../node_modules/backbone/backbone-min.js >> qba.min.js
 	cat jqtpl-min.js >> qba.min.js
 	$(UJS) $(UJSFLAGS) ../../client/models.js >> qba.min.js
 	$(UJS) $(UJSFLAGS) ../../client/events.js >> qba.min.js
+	$(UJS) $(UJSFLAGS) ../../client/views.js >> qba.min.js
 
 clean: qba.min.js
 	rm -f qba.min.js
 
-debug: ../../node_modules/backbone/backbone.js ../../client/models.js ../../client/events.js
+debug: ../../node_modules/backbone/backbone.js ../../client/models.js ../../client/events.js ../../client/views.js
 	cp ../../node_modules/backbone/backbone.js .
 	cp ../../client/models.js .
 	cp ../../client/events.js .
+	cp ../../client/views.js .
 
-cleandebug: backbone.js models.js
+cleandebug: backbone.js models.js events.js views.js
 	rm -f backbone.js
 	rm -f models.js
 	rm -f events.js
+	rm -f views.js

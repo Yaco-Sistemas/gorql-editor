@@ -1,5 +1,5 @@
 /*jslint vars: false, browser: true, nomen: true */
-/*global QBA: true, Backbone, $ */
+/*global QBA: true, Backbone, $, _ */
 
 // Copyright 2012 Yaco Sistemas S.L.
 //
@@ -112,7 +112,16 @@ QBA.models.Category = Backbone.Model.extend({
 });
 
 QBA.models.CategoryList = Backbone.Collection.extend({
-    model: QBA.models.Category
+    model: QBA.models.Category,
+
+    toJSON: function () {
+        "use strict";
+        return {
+            categories: _.map(this.models, function (category) {
+                return category.toJSON();
+            })
+        };
+    }
 });
 
 QBA.theQuery = new QBA.models.CategoryList();

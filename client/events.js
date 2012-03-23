@@ -27,15 +27,25 @@ if (typeof QBA === 'undefined') {
 }
 
 QBA.events = {
+    views: {},
+
     navigation: function () {
         "use strict";
         $("li.tab a").click(function () {
-            var step = this.href.split('#')[1];
+            var step = this.href.split('#')[1],
+                view;
 
             // Release old events of the target tab
             QBA.events[step].release();
 
-            // TODO process template
+            if (typeof QBA.events.views[step] === "undefined") {
+                $.template(step, $("#" + step + "Tpl").html());
+                view = new QBA.views.Step({ template: step });
+                QBA.events.views[step] = view;
+            } else {
+                view = QBA.events.views[step];
+            }
+            view.render();
 
             // Bind events to the new content of the target tab
             QBA.events[step].bind();
