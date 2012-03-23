@@ -26,36 +26,62 @@ if (typeof QBA === 'undefined') {
     window.QBA = {};
 }
 
-QBA.models.theQuery = {};
+QBA.models.Field = Backbone.Model.extend({
+    defaults: function () {
+        "use strict";
+        return {
+            name: '',
+            checked: false
+        };
+    },
+
+    toJSON: function () {
+        "use strict";
+        return this.name;
+    }
+});
 
 QBA.models.Collection = Backbone.Model.extend({
     defauts: function () {
         "use strict";
         return {
-            fields: [],
-            original_fields: []
+            name: '',
+            url: '',
+            fields: Backbone.Collection.extend({ model: QBA.models.Field })
         };
     },
 
-    validate: function (attrs) {
+    getCheckedFields: function () {
         "use strict";
-        var diff = _.difference(this.original_fields, _.union(attrs.fields, this.original_fields));
-        if (diff.length > 0) {
-            return "Field doesn't belong to the collection";
-        }
-    },
-
-    addField: function (field) {
-        "use strict";
-        this.set({ fields: _.uniq(this.fields.push(field)) });
-    },
-
-    getChosenFields: function () {
-        "use strict";
-        return _.intersection(this.fields, this.original_fields);
+        return this.fields.filter(function (field) {return field.checked; });
     }
 });
 
-QBA.models.theQuery.collections = Backbone.Collection.extend({
-    model: QBA.models.Collection
+QBA.models.Category = Backbone.Model.extend({
+    defaults: function () {
+        "use strict";
+        return {
+            name: '',
+            prefixes: {},
+            fieldList: Backbone.Collection.extend({ model: QBA.models.Field }),
+            collectionList: Backbone.Collection.extend({ model: QBA.models.Collection })
+        };
+    },
+
+    toJSON: function () {
+        "use strict";
+        var result = {
+            meta: {}
+        };
+
+        result.meta.name = this.name;
+        result.meta.prefixes = this.prefixes;
+        result.meta.fields = this.fieldList.toJSON();
+        result.collections = this.collectionList.toJSON();
+        return result;
+    }
+});
+
+QBA.models.CategoryList = Backbone.Collection.extend({
+    model: QBA.models.Category
 });
