@@ -28,7 +28,15 @@ if (typeof QBA === 'undefined') {
 
 QBA.views = {};
 
+QBA.views.jQueryUI = function () {
+    "use strict";
+    $(".tabable").tabs();
+    $(".accordionable").accordion();
+};
+
 QBA.views.Step = Backbone.View.extend({
+    tagName: "section",
+
     initialize: function (options) {
         "use strict";
         this.templateName = options.template;
@@ -37,6 +45,7 @@ QBA.views.Step = Backbone.View.extend({
     render: function () {
         "use strict";
         var html = $.tmpl(this.templateName, QBA.theQuery.toJSON());
-        return this;
+        this.$el.html(html);
+        QBA.views.jQueryUI();
     }
 });

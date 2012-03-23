@@ -53,18 +53,29 @@ QBA.models.Collection = Backbone.Model.extend({
         return {
             name: '',
             url: '',
-            fields: new QBA.models.FieldList()
+            fieldList: new QBA.models.FieldList()
         };
+    },
+
+    toJSON: function () {
+        "use strict";
+        var result = {};
+        result.name = this.attributes.name;
+        result.url = this.attributes.url;
+        result.fields = this.attributes.fieldList.map(function (field) {
+            return field.toJSON();
+        });
+        return result;
     },
 
     getCheckedFields: function () {
         "use strict";
-        return this.attributes.fields.filter(function (field) {return field.checked; });
+        return this.attributes.fieldList.filter(function (field) {return field.checked; });
     },
 
     addField: function (name) {
         "use strict";
-        this.attributes.fields.add(
+        this.attributes.fieldList.add(
             new QBA.models.Field({ name: name })
         );
     }

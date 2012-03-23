@@ -40,7 +40,10 @@ QBA.events = {
 
             if (typeof QBA.events.views[step] === "undefined") {
                 $.template(step, $("#" + step + "Tpl").html());
-                view = new QBA.views.Step({ template: step });
+                view = new QBA.views.Step({
+                    el: $('#' + step)[0],
+                    template: step
+                });
                 QBA.events.views[step] = view;
             } else {
                 view = QBA.events.views[step];
