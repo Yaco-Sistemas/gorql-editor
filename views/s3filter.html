@@ -4,7 +4,7 @@
     <input type="submit" id="new_filter" value="New filter" />
 </fieldset>
 <script type="text/plain" id="filterTpl">
-    <select name="filter_field_name_###field_name###" class="filter-field-name">
+    <select name="filter_field_######" class="filter-field">
         {{each(idx_cat, category) categories}}
         {{each(idx_col, collection) category.collections}}
         <optgroup label="${collection.name}">

@@ -122,11 +122,35 @@ QBA.events = {
     },
 
     step3: {
+        filtersCounter: 0,
+
         bind: function () {
             "use strict";
-            $("#step3 #new_filter").click(function () {
-                var html = $("#step3 #filterTpl").html();
-                // TODO
+            var categories = QBA.theQuery.getCategoriesWithCheckedCollections(),
+                category,
+                collections,
+                disabled = true,
+                i,
+                j;
+
+            for (i = 0; i < categories.length && disabled; i += 1) {
+                category = categories[i];
+                collections = category.getCheckedCollections();
+                for (j = 0; j < collections.length && disabled; j += 1) {
+                    disabled = collections[j].getCheckedFields().length === 0;
+                }
+            }
+
+            $("#step3 #new_filter").attr("disabled", disabled).click(function (evt) {
+                var html = $("#step3 #filterTpl").html(),
+                    container = $("<div class='filter'></div>");
+
+                evt.stopPropagation();
+                evt.preventDefault();
+                html = html.replace("######", QBA.events.step3.filtersCounter);
+                QBA.events.step3.filtersCounter += 1;
+
+                $("#step3 #filters").append(container.append(html));
             });
         },
 
