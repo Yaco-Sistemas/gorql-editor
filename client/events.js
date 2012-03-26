@@ -58,7 +58,7 @@ QBA.events = {
     step1: {
         bind: function () {
             "use strict";
-            $("#step1 input[type=checkbox]").change(function (evt) {
+            $("#step1 input[type=checkbox]").change(function () {
                 // collection has 10 chars
                 var success = false,
                     indexes = this.name.substr(10).split('-'),
@@ -89,7 +89,7 @@ QBA.events = {
     step2: {
         bind: function () {
             "use strict";
-            $("#step2 input[type=checkbox]").change(function (evt) {
+            $("#step2 input[type=checkbox]").change(function () {
                 // field has 5 chars
                 var success = false,
                     indexes = this.name.substr(5).split('-'),
@@ -124,6 +124,10 @@ QBA.events = {
     step3: {
         bind: function () {
             "use strict";
+            $("#step3 #new_filter").click(function () {
+                var html = $("#step3 #filterTpl").html();
+                // TODO
+            });
         },
 
         release: function () {
@@ -135,6 +139,7 @@ QBA.events = {
     step4: {
         bind: function () {
             "use strict";
+            // TODO
         },
 
         release: function () {

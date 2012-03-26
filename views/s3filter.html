@@ -1,18 +1,18 @@
 <fieldset class="filter">
     <legend>Filter the collections contents</legend>
-    <div id="filterTpl" style="display: none;">
-        <select name="filter_field_name_###field_name###" class="filter-field-name">
-            {{each(idx_cat, category) categories}}
-            {{each(idx_col, collection) category.collections}}
-            <optgroup label="${collection.name}">
-                {{each(idx_fie, field) collection.fields}}
-                <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
-                {{/each}}
-            </optgroup>
-            {{/each}}
-            {{/each}}
-        </select>
-    </div>
     <div id="filters"></div>
-    <input type="submit" value="New filter" />
+    <input type="submit" id="new_filter" value="New filter" />
 </fieldset>
+<script type="text/plain" id="filterTpl">
+    <select name="filter_field_name_###field_name###" class="filter-field-name">
+        {{each(idx_cat, category) categories}}
+        {{each(idx_col, collection) category.collections}}
+        <optgroup label="${collection.name}">
+            {{each(idx_fie, field) collection.fields}}
+            <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+            {{/each}}
+        </optgroup>
+        {{/each}}
+        {{/each}}
+    </select>
+</script>
