@@ -7,11 +7,49 @@
             "foaf": "<http://xmlns.com/foaf/0.1/>"
         },
         "fields": [
-            { "name": "rdfs:label" },
-            { "name": "rdfs:comment" },
-            { "name": "dbpprop:dateOfBirth" },
-            { "name": "foaf:homepage" },
-            { "name": "foaf:page" }
+            {
+                "name": "rdfs:label",
+                "filters" : [
+                    {
+                        "name": "Equal",
+                        "widget": "text",
+                        "parameters": {}
+                    },
+                    {
+                        "name": "Contains",
+                        "widget": "text",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "rdfs:comment",
+                "filters": [
+                    {
+                        "name": "Contains",
+                        "widget": "text",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "dbpprop:dateOfBirth",
+                "filters": [
+                    {
+                        "name": "Between",
+                        "widget": "date_range",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "foaf:homepage",
+                "filters": []
+            },
+            {
+                "name": "foaf:page",
+                "filters": []
+            }
         ]
     },
     "collections": [{
@@ -51,15 +89,117 @@
             "foaf": "<http://xmlns.com/foaf/0.1/>"
         },
         "fields": [
-            { "name": "rdfs:label" },
-            { "name": "rdfs:comment" },
-            { "name": "foaf:page" },
-            { "name": "dbpprop:released" },
-            { "name": "dbpprop:artist" },
-            { "name": "dbpprop:producer" },
-            { "name": "dbpprop:genre" },
-            { "name": "dbpprop:label" },
-            { "name": "dbpprop:length" }
+            {
+                "name": "rdfs:label",
+                "fields": [
+                    {
+                        "name": "Equal",
+                        "widget": "text",
+                        "parameters": {}
+                    },
+                    {
+                        "name": "Contains",
+                        "widget": "text",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "rdfs:comment",
+                "filters": [
+                    {
+                        "name": "Contains",
+                        "widget": "text",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "foaf:page",
+                "filters": []
+            },
+            {
+                "name": "dbpprop:released",
+                "filters": [
+                    {
+                        "name": "Between",
+                        "widget": "date_range",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "dbpprop:artist",
+                "fields": [
+                    {
+                        "name": "Equal",
+                        "widget": "text",
+                        "parameters": {}
+                    },
+                    {
+                        "name": "Contains",
+                        "widget": "text",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "dbpprop:producer",
+                "filters": [
+                    {
+                        "name": "Equal",
+                        "widget": "text",
+                        "parameters": {}
+                    },
+                    {
+                        "name": "Contains",
+                        "widget": "text",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "dbpprop:genre",
+                "filters": [
+                    {
+                        "name": "Equal",
+                        "widget": "text",
+                        "parameters": {}
+                    },
+                    {
+                        "name": "Contains",
+                        "widget": "text",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "dbpprop:label",
+                "filters" : [
+                    {
+                        "name": "Equal",
+                        "widget": "text",
+                        "parameters": {}
+                    },
+                    {
+                        "name": "Contains",
+                        "widget": "text",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "dbpprop:length",
+                "filters": [
+                    {
+                        "name": "Between (minutes)",
+                        "widget": "number_range",
+                        "parameters": {
+                            "min": 0
+                        }
+                    }
+                ]
+            }
         ]
     },
     "collections": [{
@@ -113,15 +253,89 @@
             "foaf": "<http://xmlns.com/foaf/0.1/>"
         },
         "fields": [
-            { "name": "rdfs:label" },
-            { "name": "rdfs:comment" },
-            { "name": "foaf:homepage" },
-            { "name": "foaf:page" },
-            { "name": "dbpprop:genre" },
-            { "name": "dbpprop:label" },
-            { "name": "dbpprop:origin" },
-            { "name": "dbpprop:yearsActive" },
-            { "name": "dbpprop:currentMembers" }
+            {
+                "name": "rdfs:label",
+                "filters": [
+                    {
+                        "name": "Equal",
+                        "widget": "text",
+                        "parameters": {}
+                    },
+                    {
+                        "name": "Contains",
+                        "widget": "text",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "rdfs:comment",
+                "filters": [
+                    {
+                        "name": "Contains",
+                        "widget": "text",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "foaf:homepage",
+                "filters": []
+            },
+            {
+                "name": "foaf:page",
+                "filters": []
+            },
+            {
+                "name": "dbpprop:genre",
+                "filters": [
+                    {
+                        "name": "Equal",
+                        "widget": "text",
+                        "parameters": {}
+                    },
+                    {
+                        "name": "Contains",
+                        "widget": "text",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "dbpprop:label",
+                "filters" : [
+                    {
+                        "name": "Equal",
+                        "widget": "text",
+                        "parameters": {}
+                    },
+                    {
+                        "name": "Contains",
+                        "widget": "text",
+                        "parameters": {}
+                    }
+                ]
+            },
+            {
+                "name": "dbpprop:origin",
+                "filters": []
+            },
+            {
+                "name": "dbpprop:yearsActive",
+                "filters": [
+                    {
+                        "name": "Between (years)",
+                        "widget": "number_range",
+                        "parameters": {
+                            "min": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "dbpprop:currentMembers",
+                "filters": []
+            }
         ]
     },
     "collections": [{
