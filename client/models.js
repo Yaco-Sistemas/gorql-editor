@@ -28,25 +28,47 @@ if (typeof QBA === 'undefined') {
 
 QBA.models = {};
 
+QBA.models.Filter = Backbone.Model.extend({
+    defaults: function () {
+        "use strict";
+        return {
+            name: "",
+            widget: "",
+            parameters: {}
+        };
+    }
+});
+
+QBA.models.FilterList = Backbone.Collection.extend({
+    model: QBA.models.Filter
+});
+
 QBA.models.Field = Backbone.Model.extend({
     defaults: function () {
         "use strict";
         return {
             name: '',
-            checked: false
+            checked: false,
+            filterList: new QBA.models.FilterList()
         };
+    },
+
+    toJSON: function () {
+        "use strict";
+        var result = {};
+
+        result.name = this.attributes.name;
+        result.checked = this.attributes.checked;
+        if (this.attributes.filterList.length > 0) {
+            result.filters = this.attributes.filterList.toJSON();
+        }
+
+        return result;
     }
 });
 
 QBA.models.FieldList = Backbone.Collection.extend({
-    model: QBA.models.Field,
-
-    toJSON: function (step) {
-        "use strict";
-        return _.map(this.models, function (field) {
-            return field.toJSON(step);
-        });
-    }
+    model: QBA.models.Field
 });
 
 QBA.models.Collection = Backbone.Model.extend({
@@ -86,10 +108,10 @@ QBA.models.Collection = Backbone.Model.extend({
         });
     },
 
-    addField: function (name) {
+    addField: function (field) {
         "use strict";
         this.attributes.fieldList.add(
-            new QBA.models.Field({ name: name })
+            new QBA.models.Field({ name: field.name })
         );
     }
 });
@@ -144,10 +166,21 @@ QBA.models.Category = Backbone.Model.extend({
         });
     },
 
-    addField: function (name) {
+    addField: function (field) {
         "use strict";
+        var filterList = new QBA.models.FilterList(),
+            filters = field.filters || [],
+            i;
+
+        for (i = 0; i < filters.length; i += 1) {
+            filterList.add(new QBA.models.Filter(filters[i]));
+        }
+
         this.attributes.fieldList.add(
-            new QBA.models.Field({ name: name })
+            new QBA.models.Field({
+                name: field.name,
+                filterList: filterList
+            })
         );
     },
 
@@ -201,9 +234,11 @@ QBA.models.loadSchema = function () {
             name: category.meta.name,
             prefixes: category.meta.prefixes
         });
+
         for (j = 0; j < category.meta.fields.length; j += 1) {
-            categoryObj.addField(category.meta.fields[j].name);
+            categoryObj.addField(category.meta.fields[j]);
         }
+
         for (j = 0; j < category.collections.length; j += 1) {
             collection = category.collections[j];
             collectionObj = new QBA.models.Collection({
@@ -211,7 +246,7 @@ QBA.models.loadSchema = function () {
                 url: collection.url
             });
             for (h = 0; h < collection.fields.length; h += 1) {
-                collectionObj.addField(collection.fields[h].name);
+                collectionObj.addField(collection.fields[h]);
             }
             categoryObj.addCollection(collectionObj);
         }

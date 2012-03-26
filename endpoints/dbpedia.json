@@ -12,13 +12,11 @@
                 "filters" : [
                     {
                         "name": "Equal",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     },
                     {
                         "name": "Contains",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     }
                 ]
             },
@@ -27,8 +25,7 @@
                 "filters": [
                     {
                         "name": "Contains",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     }
                 ]
             },
@@ -37,8 +34,7 @@
                 "filters": [
                     {
                         "name": "Between",
-                        "widget": "date_range",
-                        "parameters": {}
+                        "widget": "date_range"
                     }
                 ]
             },
@@ -94,13 +90,11 @@
                 "fields": [
                     {
                         "name": "Equal",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     },
                     {
                         "name": "Contains",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     }
                 ]
             },
@@ -109,8 +103,7 @@
                 "filters": [
                     {
                         "name": "Contains",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     }
                 ]
             },
@@ -123,8 +116,7 @@
                 "filters": [
                     {
                         "name": "Between",
-                        "widget": "date_range",
-                        "parameters": {}
+                        "widget": "date_range"
                     }
                 ]
             },
@@ -133,13 +125,11 @@
                 "fields": [
                     {
                         "name": "Equal",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     },
                     {
                         "name": "Contains",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     }
                 ]
             },
@@ -148,13 +138,11 @@
                 "filters": [
                     {
                         "name": "Equal",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     },
                     {
                         "name": "Contains",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     }
                 ]
             },
@@ -163,13 +151,11 @@
                 "filters": [
                     {
                         "name": "Equal",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     },
                     {
                         "name": "Contains",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     }
                 ]
             },
@@ -178,13 +164,11 @@
                 "filters" : [
                     {
                         "name": "Equal",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     },
                     {
                         "name": "Contains",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     }
                 ]
             },
@@ -258,13 +242,11 @@
                 "filters": [
                     {
                         "name": "Equal",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     },
                     {
                         "name": "Contains",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     }
                 ]
             },
@@ -273,8 +255,7 @@
                 "filters": [
                     {
                         "name": "Contains",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     }
                 ]
             },
@@ -291,13 +272,11 @@
                 "filters": [
                     {
                         "name": "Equal",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     },
                     {
                         "name": "Contains",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     }
                 ]
             },
@@ -306,13 +285,11 @@
                 "filters" : [
                     {
                         "name": "Equal",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     },
                     {
                         "name": "Contains",
-                        "widget": "text",
-                        "parameters": {}
+                        "widget": "text"
                     }
                 ]
             },
