@@ -1,24 +1,18 @@
 <fieldset class="filter">
     <legend>Filter the collections contents</legend>
-    <div class="filter">
-        <input type="text" class="field_name narrow-field" name="field_name0" />
-        <select name="field_filter_type0"></select>
-        <input type="text" class="field_filter_value narrow-field" name="field_filter_value0" />
+    <div id="filterTpl" style="display: none;">
+        <select name="filter_field_name_###field_name###" class="filter-field-name">
+            {{each(idx_cat, category) categories}}
+            {{each(idx_col, collection) category.collections}}
+            <optgroup label="${collection.name}">
+                {{each(idx_fie, field) collection.fields}}
+                <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+                {{/each}}
+            </optgroup>
+            {{/each}}
+            {{/each}}
+        </select>
     </div>
-    <div class="filter">
-        <input type="text" class="field_name narrow-field" name="field_name1" />
-        <select name="field_filter_type1"></select>
-        <input type="text" class="field_filter_value narrow-field" name="field_filter_value1" />
-    </div>
-    <div class="filter">
-        <input type="text" class="field_name narrow-field" name="field_name2" />
-        <select name="field_filter_type2"></select>
-        <input type="text" class="field_filter_value narrow-field" name="field_filter_value2" />
-    </div>
-    <div class="filter">
-        <input type="text" class="field_name narrow-field" name="field_name3" />
-        <select name="field_filter_type3"></select>
-        <input type="text" class="field_filter_value narrow-field" name="field_filter_value3" />
-    </div>
+    <div id="filters"></div>
     <input type="submit" value="New filter" />
 </fieldset>
