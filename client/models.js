@@ -35,11 +35,6 @@ QBA.models.Field = Backbone.Model.extend({
             name: '',
             checked: false
         };
-    },
-
-    toJSON: function (step) {
-        "use strict";
-        return this.attributes.name;
     }
 });
 
@@ -71,6 +66,7 @@ QBA.models.Collection = Backbone.Model.extend({
         step = step || 1;
         result.name = this.attributes.name;
         result.url = this.attributes.url;
+        result.checked = this.attributes.checked;
         if (step > 2) {
             result.fields = _.map(this.getCheckedFields(), function (field) {
                 return field.toJSON(step);
@@ -199,7 +195,7 @@ QBA.models.loadSchema = function () {
             prefixes: category.meta.prefixes
         });
         for (j = 0; j < category.meta.fields.length; j += 1) {
-            categoryObj.addField(category.meta.fields[j]);
+            categoryObj.addField(category.meta.fields[j].name);
         }
         for (j = 0; j < category.collections.length; j += 1) {
             collection = category.collections[j];
@@ -208,7 +204,7 @@ QBA.models.loadSchema = function () {
                 url: collection.url
             });
             for (h = 0; h < collection.fields.length; h += 1) {
-                collectionObj.addField(collection.fields[h]);
+                collectionObj.addField(collection.fields[h].name);
             }
             categoryObj.addCollection(collectionObj);
         }
