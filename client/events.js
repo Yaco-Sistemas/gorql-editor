@@ -124,6 +124,42 @@ QBA.events = {
     step3: {
         filtersCounter: 0,
 
+        getFilters: function (catIdx, fieldName) {
+            "use strict";
+            var category = QBA.theQuery.getCategoriesWithCheckedCollections()[catIdx],
+                fields = category.get("fieldList"),
+                field;
+
+            field = fields.filter(function (field) {
+                return field.name === fieldName;
+            })[0];
+
+            return field.get("filterList");
+        },
+
+        updateFilterTypes: function (evt) {
+            "use strict";
+            var indexes = this.selectedOptions[0].value.split('-'),
+                filters = QBA.events.step3.getFilters(
+                    parseInt(indexes[0], 10),
+                    this.selectedOptions[0].innerHTML
+                ),
+                filterIdx = this.name.split('_'),
+                html = "<select name='filter_type_" + filterIdx[filterIdx.length - 1] + "' class='filter-type'>",
+                filter,
+                i;
+
+            for (i = 0; i < filters.length; i += 1) {
+                filter = filters[i];
+                html += "<option value='" + i + "'>" + filter.get("name") + "</option>";
+            }
+
+            html += "</select>";
+
+            $(this.parentElement).remove("select.filter-type");
+            $(this.parentElement).append(html);
+        },
+
         bind: function () {
             "use strict";
             var categories = QBA.theQuery.getCategoriesWithCheckedCollections(),
@@ -133,6 +169,7 @@ QBA.events = {
                 i,
                 j;
 
+            // Look for checked fields, if none the button will be disabled
             for (i = 0; i < categories.length && disabled; i += 1) {
                 category = categories[i];
                 collections = category.getCheckedCollections();
@@ -150,7 +187,9 @@ QBA.events = {
                 html = html.replace("######", QBA.events.step3.filtersCounter);
                 QBA.events.step3.filtersCounter += 1;
 
-                $("#step3 #filters").append(container.append(html));
+                container.append(html);
+                container.find("select.filter-field").change(QBA.events.step3.updateFilterTypes);
+                $("#step3 #filters").append(container);
             });
         },
 
