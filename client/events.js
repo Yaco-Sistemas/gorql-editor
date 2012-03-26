@@ -69,8 +69,8 @@ QBA.events = {
                     collection = category.get("collectionList").at(parseInt(indexes[1], 10));
                     if (collection) {
                         collection.set("checked", this.checked);
+                        success = true;
                     }
-                    success = true;
                 }
 
                 if (!success) {
@@ -82,16 +82,42 @@ QBA.events = {
 
         release: function () {
             "use strict";
+            // TODO
         }
     },
 
     step2: {
         bind: function () {
             "use strict";
+            $("#step2 input[type=checkbox]").change(function (evt) {
+                // field has 5 chars
+                var success = false,
+                    indexes = this.name.substr(5).split('-'),
+                    category = QBA.theQuery.getCategoriesWithCheckedCollections()[parseInt(indexes[0], 10)],
+                    collection,
+                    field;
+
+                if (category) {
+                    collection = category.getCheckedCollections()[parseInt(indexes[1], 10)];
+                    if (collection) {
+                        field = collection.get("fieldList").at(parseInt(indexes[2], 10));
+                        if (field) {
+                            field.set("checked", this.checked);
+                            success = true;
+                        }
+                    }
+                }
+
+                if (!success) {
+                    // TODO error
+                    alert('error');
+                }
+            });
         },
 
         release: function () {
             "use strict";
+            // TODO
         }
     },
 
@@ -102,6 +128,7 @@ QBA.events = {
 
         release: function () {
             "use strict";
+            // TODO
         }
     },
 
@@ -112,6 +139,7 @@ QBA.events = {
 
         release: function () {
             "use strict";
+            // TODO
         }
     }
 };

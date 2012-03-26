@@ -171,6 +171,13 @@ QBA.models.CategoryList = Backbone.Collection.extend({
                 return category.collections.length > 0;
             })
         };
+    },
+
+    getCategoriesWithCheckedCollections: function () {
+        "use strict";
+        return _.filter(this.models, function (category) {
+            return category.getCheckedCollections().length > 0;
+        });
     }
 });
 
