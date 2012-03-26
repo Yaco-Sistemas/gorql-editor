@@ -39,12 +39,13 @@ QBA.views.Step = Backbone.View.extend({
 
     initialize: function (options) {
         "use strict";
-        this.templateName = options.template;
+        this.step = options.step;
     },
 
     render: function () {
         "use strict";
-        var html = $.tmpl(this.templateName, QBA.theQuery.toJSON());
+        var stepIdx = parseInt(this.step.substr(4), 10),
+            html = $.tmpl(this.step, QBA.theQuery.toJSON(stepIdx));
         this.$el.html(html);
         QBA.views.jQueryUI();
     }

@@ -132,7 +132,7 @@ QBA.models.Category = Backbone.Model.extend({
         result.meta.prefixes = this.attributes.prefixes;
         result.meta.fields = this.attributes.fieldList.toJSON();
         if (step > 1) {
-            result.collection = _.map(this.getCheckedCollections(), function (collection) {
+            result.collections = _.map(this.getCheckedCollections(), function (collection) {
                 return collection.toJSON(step);
             });
         } else {
@@ -166,9 +166,13 @@ QBA.models.CategoryList = Backbone.Collection.extend({
 
     toJSON: function (step) {
         "use strict";
-        return {
-            categories: _.map(this.models, function (category) {
+        var categories = _.map(this.models, function (category) {
                 return category.toJSON(step);
+            });
+
+        return {
+            categories: _.filter(categories, function (category) {
+                return category.collections.length > 0;
             })
         };
     }
