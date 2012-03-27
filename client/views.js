@@ -78,10 +78,12 @@ QBA.views.Filter = Backbone.View.extend({
 
     render: function () {
         "use strict";
-        var html,
+        var model = this.model,
+            html,
             widget;
 
-        html = "<label for='filter_type_" + this.filterNumber + "'>" + this.model.get("collection").get("name") + " - " + this.model.get("field").get("name") + "</label>";
+        html = "<input type='submit' class='remove' value='X' />";
+        html += "<label for='filter_type_" + this.filterNumber + "'>" + this.model.get("collection").get("name") + " - " + this.model.get("field").get("name") + "</label>";
         html += "<select name='filter_type_" + this.filterNumber + "' class='filter-type'>";
         this.filters.each(function (filter, i) {
             html += "<option value='" + i + "'>" + filter.get("name") + "</option>";
@@ -90,6 +92,12 @@ QBA.views.Filter = Backbone.View.extend({
         html += this.widget.html(this.filterNumber);
 
         $(this.el).html(html);
+        $(this.el).find("input.remove").click(function (evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            QBA.theQuery.userFilterList.remove(model);
+            $(this.parentElement).remove();
+        });
         QBA.views.jQueryUI(this.el);
 
         return this;
