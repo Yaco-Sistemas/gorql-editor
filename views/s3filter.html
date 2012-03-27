@@ -1,10 +1,10 @@
 <fieldset class="filter">
     <legend>Filter the collections contents</legend>
     <div id="filters"></div>
-    <input type="submit" id="new_filter" value="New filter" />
-</fieldset>
-<script type="text/plain" id="filterTpl">
-    <select name="filter_field_######" class="filter-field">
+    <input type="submit" class="no-js" value="Add filter" />
+    <label for="add_filter_field" class="js">Add filter for: </label>
+    <select name="add_filter_field" id="addFilterField">
+        <option value="false"></option>
         {{each(idx_cat, category) categories}}
         {{each(idx_col, collection) category.collections}}
         <optgroup label="${collection.name}">
@@ -15,4 +15,4 @@
         {{/each}}
         {{/each}}
     </select>
-</script>
+</fieldset>

@@ -214,7 +214,27 @@ QBA.models.CategoryList = Backbone.Collection.extend({
     }
 });
 
-QBA.theQuery = new QBA.models.CategoryList();
+QBA.models.UserFilter = Backbone.Model.extend({
+    defaults: function () {
+        "use strict";
+        return {
+            collection: undefined,
+            field: undefined,
+            filter: undefined,
+            value: ""
+        };
+    }
+});
+
+QBA.models.UserFilterList = Backbone.Collection.extend({
+    model: QBA.models.UserFilter
+});
+
+QBA.theQuery = {
+    schema: new QBA.models.CategoryList(),
+
+    userFilterList: new QBA.models.UserFilterList()
+};
 
 QBA.models.loadSchema = function () {
     "use strict";
@@ -250,6 +270,6 @@ QBA.models.loadSchema = function () {
             }
             categoryObj.addCollection(collectionObj);
         }
-        QBA.theQuery.add(categoryObj);
+        QBA.theQuery.schema.add(categoryObj);
     }
 };

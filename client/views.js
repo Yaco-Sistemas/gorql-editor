@@ -45,8 +45,51 @@ QBA.views.Step = Backbone.View.extend({
     render: function () {
         "use strict";
         var stepIdx = parseInt(this.step.substr(4), 10),
-            html = $.tmpl(this.step, QBA.theQuery.toJSON(stepIdx));
+            html = $.tmpl(this.step, QBA.theQuery.schema.toJSON(stepIdx));
         this.$el.html(html);
         QBA.views.jQueryUI();
+        return this;
+    }
+});
+
+QBA.views.Filter = Backbone.View.extend({
+    tagName: "div",
+
+    className: "filter",
+
+    initialize: function (options) {
+        "use strict";
+        this.filters = options.filters;
+        this.chosenFilter = 0;
+        this.filterNumber = options.filterNumber;
+        this.widget = QBA.utils.getFilterWidget(this.filters.at(this.chosenFilter), this.filterNumber);
+    },
+
+    events: {
+        "change select.filter-type": "updateFilterWidget"
+    },
+
+    render: function () {
+        "use strict";
+        var html,
+            widget;
+
+        html = "<label for='filter_type_" + this.filterNumber + "'>" + this.model.get("field").get("name") + "</label>";
+        html += "<select name='filter_type_" + this.filterNumber + "' class='filter-type'>";
+        this.filters.each(function (filter, i) {
+            html += "<option value='" + i + "'>" + filter.get("name") + "</option>";
+        });
+        html += "</select>";
+        html += this.widget.html();
+
+        $(this.el).html(html);
+
+        return this;
+    },
+
+    updateFilterWidget: function () {
+        "use strict";
+        // TODO
+        parseInt(this.selectedOptions[0].value, 10);
     }
 });

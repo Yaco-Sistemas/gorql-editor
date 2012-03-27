@@ -62,7 +62,7 @@ QBA.events = {
                 // collection has 10 chars
                 var success = false,
                     indexes = this.name.substr(10).split('-'),
-                    category = QBA.theQuery.at(parseInt(indexes[0], 10)),
+                    category = QBA.theQuery.schema.at(parseInt(indexes[0], 10)),
                     collection;
 
                 if (category) {
@@ -93,7 +93,7 @@ QBA.events = {
                 // field has 5 chars
                 var success = false,
                     indexes = this.name.substr(5).split('-'),
-                    category = QBA.theQuery.getCategoriesWithCheckedCollections()[parseInt(indexes[0], 10)],
+                    category = QBA.theQuery.schema.getCategoriesWithCheckedCollections()[parseInt(indexes[0], 10)],
                     collection,
                     field;
 
@@ -126,7 +126,7 @@ QBA.events = {
 
         getFilters: function (catIdx, fieldName) {
             "use strict";
-            var category = QBA.theQuery.getCategoriesWithCheckedCollections()[catIdx],
+            var category = QBA.theQuery.schema.getCategoriesWithCheckedCollections()[catIdx],
                 fields = category.get("fieldList"),
                 field;
 
@@ -137,53 +137,17 @@ QBA.events = {
             return field.get("filterList");
         },
 
-        updateFilterWidget: function (context, filters) {
-            "use strict";
-            var filter = filters[parseInt(context.selectedOptions[0].value, 10)],
-                html = QBA.utils.getFilterWidgetHTML(filter),
-                parentElement = $(context.parentElement);
-
-            parentElement.find(".filter-widget").remove();
-            parentElement.append(html);
-        },
-
-        updateFilterTypes: function () {
-            "use strict";
-            var indexes = this.selectedOptions[0].value.split('-'),
-                filters = QBA.events.step3.getFilters(
-                    parseInt(indexes[0], 10),
-                    this.selectedOptions[0].innerHTML
-                ),
-                filterIdx = this.name.split('_'),
-                html = "<select name='filter_type_" + filterIdx[filterIdx.length - 1] + "' class='filter-type'>",
-                parentElement;
-
-            filters.each(function (filter, i) {
-                html += "<option value='" + i + "'>" + filter.get("name") + "</option>";
-            });
-
-            html += "</select>";
-
-            parentElement = $(this.parentElement);
-            parentElement.find("select.filter-type").remove();
-            parentElement.append(html);
-
-            parentElement.find("select.filter-type").change(function () {
-                QBA.events.step3.updateFilterWidget(this, filters);
-            });
-            parentElement.find("select.filter-type").trigger("change");
-        },
-
         bind: function () {
             "use strict";
-            var categories = QBA.theQuery.getCategoriesWithCheckedCollections(),
+            var categories = QBA.theQuery.schema.getCategoriesWithCheckedCollections(),
                 category,
                 collections,
                 disabled = true,
                 i,
                 j;
 
-            // Look for checked fields, if none the button will be disabled
+            // Look for checked fields, if none the add field select will be
+            // disabled
             for (i = 0; i < categories.length && disabled; i += 1) {
                 category = categories[i];
                 collections = category.getCheckedCollections();
@@ -192,19 +156,44 @@ QBA.events = {
                 }
             }
 
-            $("#step3 #new_filter").attr("disabled", disabled).click(function (evt) {
-                var html = $("#step3 #filterTpl").html(),
-                    container = $("<div class='filter'></div>");
+            $("#step3 #addFilterField").attr("disabled", disabled).change(function () {
+                var filterNumber = QBA.events.step3.filtersCounter,
+                    value = this.selectedOptions[0].value,
+                    indexes,
+                    filters,
+                    collection,
+                    field,
+                    userFilter,
+                    view;
 
-                evt.stopPropagation();
-                evt.preventDefault();
-                html = html.replace("######", QBA.events.step3.filtersCounter);
+                if (value === "false") {
+                    return;
+                }
+
                 QBA.events.step3.filtersCounter += 1;
+                indexes = value.split('-');
+                indexes = [
+                    parseInt(indexes[0], 10),
+                    parseInt(indexes[1], 10),
+                    parseInt(indexes[2], 10)
+                ];
+                collection = categories[indexes[0]].getCheckedCollections()[indexes[1]];
+                field = collection.getCheckedFields()[indexes[2]];
+                filters = QBA.events.step3.getFilters(indexes[0], this.selectedOptions[0].innerHTML);
 
-                container.append(html);
-                container.find("select.filter-field").change(QBA.events.step3.updateFilterTypes);
-                container.find("select.filter-field").trigger("change");
-                $("#step3 #filters").append(container);
+                userFilter = new QBA.models.UserFilter({
+                    collection: collection,
+                    field: field,
+                    filter: filters.at(0)
+                });
+                QBA.theQuery.userFilterList.add(userFilter);
+
+                view = new QBA.views.Filter({
+                    model: userFilter,
+                    filters: filters,
+                    filterNumber: filterNumber
+                });
+                $("#step3 #filters").append(view.render().el);
             });
         },
 

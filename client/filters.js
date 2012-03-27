@@ -30,7 +30,7 @@ if (typeof QBA.utils === 'undefined') {
     QBA.utils = {};
 }
 
-QBA.utils.getFilterWidgetHTML = function (filter) {
+QBA.utils.getFilterWidget = function (filter) {
     "use strict";
     var className = "filter-widget",
         html;
@@ -38,7 +38,7 @@ QBA.utils.getFilterWidgetHTML = function (filter) {
     html = "<input type='text' class='" + className + "' />";
     // TODO
 
-    return html;
+    return { html: function () { return html; } };
 };
 
 // Browser
@@ -46,4 +46,4 @@ if (typeof exports === "undefined") {
     window.exports = {};
 }
 
-exports.getFilterWidgetHTML = QBA.utils.getFilterWidgetHTML;
+exports.getFilterWidget = QBA.utils.getFilterWidget;
