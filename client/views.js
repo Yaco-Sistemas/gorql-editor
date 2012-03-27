@@ -81,7 +81,7 @@ QBA.views.Filter = Backbone.View.extend({
         var html,
             widget;
 
-        html = "<label for='filter_type_" + this.filterNumber + "'>" + this.model.get("field").get("name") + "</label>";
+        html = "<label for='filter_type_" + this.filterNumber + "'>" + this.model.get("collection").get("name") + " - " + this.model.get("field").get("name") + "</label>";
         html += "<select name='filter_type_" + this.filterNumber + "' class='filter-type'>";
         this.filters.each(function (filter, i) {
             html += "<option value='" + i + "'>" + filter.get("name") + "</option>";

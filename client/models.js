@@ -150,13 +150,11 @@ QBA.models.Category = Backbone.Model.extend({
 
     toJSON: function (step) {
         "use strict";
-        var result = {
-            meta: {}
-        };
+        var result = {};
 
         step = step || 1;
 
-        result.meta.name = this.attributes.name;
+        result.name = this.attributes.name;
         if (step > 1) {
             result.collections = _.map(this.getCheckedCollections(), function (collection) {
                 return collection.toJSON(step);
