@@ -158,7 +158,7 @@ QBA.events = {
 
             $("#step3 #addFilterField").attr("disabled", disabled).change(function () {
                 var filterNumber = QBA.events.step3.filtersCounter,
-                    value = this.selectedOptions[0].value,
+                    option = this.options[this.selectedIndex],
                     indexes,
                     filters,
                     collection,
@@ -166,12 +166,12 @@ QBA.events = {
                     userFilter,
                     view;
 
-                if (value === "false") {
+                if (option.value === "false") {
                     return;
                 }
 
                 QBA.events.step3.filtersCounter += 1;
-                indexes = value.split('-');
+                indexes = option.value.split('-');
                 indexes = [
                     parseInt(indexes[0], 10),
                     parseInt(indexes[1], 10),
@@ -179,7 +179,7 @@ QBA.events = {
                 ];
                 collection = categories[indexes[0]].getCheckedCollections()[indexes[1]];
                 field = collection.getCheckedFields()[indexes[2]];
-                filters = QBA.events.step3.getFilters(indexes[0], this.selectedOptions[0].innerHTML);
+                filters = QBA.events.step3.getFilters(indexes[0], option.innerHTML);
 
                 userFilter = new QBA.models.UserFilter({
                     collection: collection,

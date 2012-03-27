@@ -30,15 +30,38 @@ if (typeof QBA.utils === 'undefined') {
     QBA.utils = {};
 }
 
+QBA.utils.filterWidgets = {
+    text: {
+        html: function (filterNumber) {
+            "use strict";
+            return "<input type='text' class='filter-widget' name='filter_widget_" + filterNumber + "'/>";
+        }
+    },
+
+    date_range: {
+        html: function (filterNumber) {
+            "use strict";
+            var html = "<input type='date' class='filter-widget' name='filter_widget_" + filterNumber + "_from'/>";
+            html += " to <input type='date' class='filter-widget' name='filter_widget_" + filterNumber + "_to'/>";
+            return html;
+        }
+    },
+
+    number_range: {}
+};
+
 QBA.utils.getFilterWidget = function (filter) {
     "use strict";
-    var className = "filter-widget",
-        html;
+    var key = filter.get("widget"),
+        widget;
 
-    html = "<input type='text' class='" + className + "' />";
-    // TODO
+    if (QBA.utils.filterWidgets.hasOwnProperty(key)) {
+        widget = QBA.utils.filterWidgets[key];
+    } else {
+        widget = QBA.utils.filterWidgets.text;
+    }
 
-    return { html: function () { return html; } };
+    return widget;
 };
 
 // Browser

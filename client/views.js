@@ -62,7 +62,7 @@ QBA.views.Filter = Backbone.View.extend({
         this.filters = options.filters;
         this.chosenFilter = 0;
         this.filterNumber = options.filterNumber;
-        this.widget = QBA.utils.getFilterWidget(this.filters.at(this.chosenFilter), this.filterNumber);
+        this.widget = QBA.utils.getFilterWidget(this.filters.at(this.chosenFilter));
     },
 
     events: {
@@ -80,7 +80,7 @@ QBA.views.Filter = Backbone.View.extend({
             html += "<option value='" + i + "'>" + filter.get("name") + "</option>";
         });
         html += "</select>";
-        html += this.widget.html();
+        html += this.widget.html(this.filterNumber);
 
         $(this.el).html(html);
 
@@ -89,12 +89,13 @@ QBA.views.Filter = Backbone.View.extend({
 
     updateFilterWidget: function () {
         "use strict";
-        var value = this.$el.find(".filter-type")[0].selectedOptions[0].value;
+        var node = this.$el.find(".filter-type")[0],
+            value = node.options[node.selectedIndex].value;
 
         this.$el.find(".filter-widget").remove();
         this.chosenFilter = parseInt(value, 10);
-        this.widget = QBA.utils.getFilterWidget(this.filters.at(this.chosenFilter), this.filterNumber);
+        this.widget = QBA.utils.getFilterWidget(this.filters.at(this.chosenFilter));
 
-        this.$el.append($(this.widget.html()));
+        this.$el.append($(this.widget.html(this.filterNumber)));
     }
 });
