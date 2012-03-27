@@ -1,371 +1,830 @@
 [{
-    "meta": {
-        "name": "Rock musicians",
-        "prefixes": {
-            "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
-            "dbpprop": "<http://dbpedia.org/property/>",
-            "foaf": "<http://xmlns.com/foaf/0.1/>"
-        },
-        "fields": [
-            {
-                "name": "rdfs:label",
-                "filters" : [
-                    {
-                        "name": "Equal",
-                        "widget": "text"
-                    },
-                    {
-                        "name": "Contains",
-                        "widget": "text"
-                    }
-                ]
-            },
-            {
-                "name": "rdfs:comment",
-                "filters": [
-                    {
-                        "name": "Contains",
-                        "widget": "text"
-                    }
-                ]
-            },
-            {
-                "name": "dbpprop:dateOfBirth",
-                "filters": [
-                    {
-                        "name": "Between",
-                        "widget": "date_range"
-                    }
-                ]
-            },
-            {
-                "name": "foaf:homepage",
-                "filters": []
-            },
-            {
-                "name": "foaf:page",
-                "filters": []
-            }
-        ]
-    },
+    "name": "Rock musicians",
     "collections": [{
             "name": "American rock musicians",
             "url": "http://dbpedia.org/page/Category:American_rock_musicians",
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://xmlns.com/foaf/0.1/>"
+            },
             "fields": [
-                { "name": "rdfs:label" },
-                { "name": "rdfs:comment" },
-                { "name": "dbpprop:dateOfBirth" }
+                {
+                    "name": "rdfs:label",
+                    "filters" : [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "rdfs:comment",
+                    "filters": [
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:dateOfBirth",
+                    "filters": [
+                        {
+                            "name": "Between",
+                            "widget": "date_range"
+                        }
+                    ]
+                },
+                {
+                    "name": "foaf:homepage",
+                    "filters": []
+                },
+                {
+                    "name": "foaf:page",
+                    "filters": []
+                }
             ]
         }, {
             "name": "Irish rock musicians",
             "url": "http://dbpedia.org/page/Category:Irish_rock_musicians",
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://xmlns.com/foaf/0.1/>"
+            },
             "fields": [
-                { "name": "rdfs:label" },
-                { "name": "rdfs:comment" },
-                { "name": "dbpprop:dateOfBirth" },
-                { "name": "foaf:page" }
+                {
+                    "name": "rdfs:label",
+                    "filters" : [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "rdfs:comment",
+                    "filters": [
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:dateOfBirth",
+                    "filters": [
+                        {
+                            "name": "Between",
+                            "widget": "date_range"
+                        }
+                    ]
+                },
+                {
+                    "name": "foaf:homepage",
+                    "filters": []
+                },
+                {
+                    "name": "foaf:page",
+                    "filters": []
+                }
             ]
         }, {
             "name": "British rock musicians",
             "url": "http://dbpedia.org/page/Category:British_rock_musicians",
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://xmlns.com/foaf/0.1/>"
+            },
             "fields": [
-                { "name": "rdfs:label" },
-                { "name": "dbpprop:dateOfBirth" },
-                { "name": "foaf:homepage" },
-                { "name": "foaf:page" }
+                {
+                    "name": "rdfs:label",
+                    "filters" : [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "rdfs:comment",
+                    "filters": [
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:dateOfBirth",
+                    "filters": [
+                        {
+                            "name": "Between",
+                            "widget": "date_range"
+                        }
+                    ]
+                },
+                {
+                    "name": "foaf:homepage",
+                    "filters": []
+                },
+                {
+                    "name": "foaf:page",
+                    "filters": []
+                }
             ]
         }
     ]
 }, {
-    "meta": {
-        "name": "Rock albums",
-        "prefixes": {
-            "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
-            "dbpprop": "<http://dbpedia.org/property/>",
-            "foaf": "<http://xmlns.com/foaf/0.1/>"
-        },
-        "fields": [
-            {
-                "name": "rdfs:label",
-                "fields": [
-                    {
-                        "name": "Equal",
-                        "widget": "text"
-                    },
-                    {
-                        "name": "Contains",
-                        "widget": "text"
-                    }
-                ]
-            },
-            {
-                "name": "rdfs:comment",
-                "filters": [
-                    {
-                        "name": "Contains",
-                        "widget": "text"
-                    }
-                ]
-            },
-            {
-                "name": "foaf:page",
-                "filters": []
-            },
-            {
-                "name": "dbpprop:released",
-                "filters": [
-                    {
-                        "name": "Between",
-                        "widget": "date_range"
-                    }
-                ]
-            },
-            {
-                "name": "dbpprop:artist",
-                "fields": [
-                    {
-                        "name": "Equal",
-                        "widget": "text"
-                    },
-                    {
-                        "name": "Contains",
-                        "widget": "text"
-                    }
-                ]
-            },
-            {
-                "name": "dbpprop:producer",
-                "filters": [
-                    {
-                        "name": "Equal",
-                        "widget": "text"
-                    },
-                    {
-                        "name": "Contains",
-                        "widget": "text"
-                    }
-                ]
-            },
-            {
-                "name": "dbpprop:genre",
-                "filters": [
-                    {
-                        "name": "Equal",
-                        "widget": "text"
-                    },
-                    {
-                        "name": "Contains",
-                        "widget": "text"
-                    }
-                ]
-            },
-            {
-                "name": "dbpprop:label",
-                "filters" : [
-                    {
-                        "name": "Equal",
-                        "widget": "text"
-                    },
-                    {
-                        "name": "Contains",
-                        "widget": "text"
-                    }
-                ]
-            },
-            {
-                "name": "dbpprop:length",
-                "filters": [
-                    {
-                        "name": "Between (minutes)",
-                        "widget": "number_range",
-                        "parameters": {
-                            "min": 0
-                        }
-                    }
-                ]
-            }
-        ]
-    },
+    "name": "Rock albums",
     "collections": [{
             "name": "Hard rock albums",
             "url": "http://dbpedia.org/page/Category:Hard_rock_albums",
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://xmlns.com/foaf/0.1/>"
+            },
             "fields": [
-                { "name": "rdfs:label" },
-                { "name": "rdfs:comment" },
-                { "name": "foaf:page" },
-                { "name": "dbpprop:released" },
-                { "name": "dbpprop:artist" },
-                { "name": "dbpprop:genre" },
-                { "name": "dbpprop:label" },
-                { "name": "dbpprop:length" }
+                {
+                    "name": "rdfs:label",
+                    "fields": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "rdfs:comment",
+                    "filters": [
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "foaf:page",
+                    "filters": []
+                },
+                {
+                    "name": "dbpprop:released",
+                    "filters": [
+                        {
+                            "name": "Between",
+                            "widget": "date_range"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:artist",
+                    "fields": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:producer",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:genre",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:label",
+                    "filters" : [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:length",
+                    "filters": [
+                        {
+                            "name": "Between (minutes)",
+                            "widget": "number_range",
+                            "parameters": {
+                                "min": 0
+                            }
+                        }
+                    ]
+                }
             ]
         }, {
             "name": "Alternative rock albums",
             "url": "http://dbpedia.org/page/Category:Alternative_rock_albums",
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://xmlns.com/foaf/0.1/>"
+            },
             "fields": [
-                { "name": "rdfs:label" },
-                { "name": "rdfs:comment" },
-                { "name": "foaf:page" },
-                { "name": "dbpprop:released" },
-                { "name": "dbpprop:artist" },
-                { "name": "dbpprop:producer" },
-                { "name": "dbpprop:genre" },
-                { "name": "dbpprop:label" },
-                { "name": "dbpprop:length" }
+                {
+                    "name": "rdfs:label",
+                    "fields": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "rdfs:comment",
+                    "filters": [
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "foaf:page",
+                    "filters": []
+                },
+                {
+                    "name": "dbpprop:released",
+                    "filters": [
+                        {
+                            "name": "Between",
+                            "widget": "date_range"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:artist",
+                    "fields": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:producer",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:genre",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:label",
+                    "filters" : [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:length",
+                    "filters": [
+                        {
+                            "name": "Between (minutes)",
+                            "widget": "number_range",
+                            "parameters": {
+                                "min": 0
+                            }
+                        }
+                    ]
+                }
             ]
         }, {
             "name": "Progressive rock albums",
             "url": "http://dbpedia.org/page/Category:Progressive_rock_albums",
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://xmlns.com/foaf/0.1/>"
+            },
             "fields": [
-                { "name": "rdfs:label" },
-                { "name": "rdfs:comment" },
-                { "name": "dbpprop:released" },
-                { "name": "dbpprop:artist" },
-                { "name": "dbpprop:producer" },
-                { "name": "dbpprop:genre" },
-                { "name": "dbpprop:label" },
-                { "name": "dbpprop:length" }
+                {
+                    "name": "rdfs:label",
+                    "fields": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "rdfs:comment",
+                    "filters": [
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "foaf:page",
+                    "filters": []
+                },
+                {
+                    "name": "dbpprop:released",
+                    "filters": [
+                        {
+                            "name": "Between",
+                            "widget": "date_range"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:artist",
+                    "fields": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:producer",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:genre",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:label",
+                    "filters" : [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:length",
+                    "filters": [
+                        {
+                            "name": "Between (minutes)",
+                            "widget": "number_range",
+                            "parameters": {
+                                "min": 0
+                            }
+                        }
+                    ]
+                }
             ]
         }
     ]
 }, {
-    "meta": {
-        "name": "Rock music groups",
-        "prefixes": {
-            "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
-            "dbpprop": "<http://dbpedia.org/property/>",
-            "foaf": "<http://xmlns.com/foaf/0.1/>"
-        },
-        "fields": [
-            {
-                "name": "rdfs:label",
-                "filters": [
-                    {
-                        "name": "Equal",
-                        "widget": "text"
-                    },
-                    {
-                        "name": "Contains",
-                        "widget": "text"
-                    }
-                ]
-            },
-            {
-                "name": "rdfs:comment",
-                "filters": [
-                    {
-                        "name": "Contains",
-                        "widget": "text"
-                    }
-                ]
-            },
-            {
-                "name": "foaf:homepage",
-                "filters": []
-            },
-            {
-                "name": "foaf:page",
-                "filters": []
-            },
-            {
-                "name": "dbpprop:genre",
-                "filters": [
-                    {
-                        "name": "Equal",
-                        "widget": "text"
-                    },
-                    {
-                        "name": "Contains",
-                        "widget": "text"
-                    }
-                ]
-            },
-            {
-                "name": "dbpprop:label",
-                "filters" : [
-                    {
-                        "name": "Equal",
-                        "widget": "text"
-                    },
-                    {
-                        "name": "Contains",
-                        "widget": "text"
-                    }
-                ]
-            },
-            {
-                "name": "dbpprop:origin",
-                "filters": []
-            },
-            {
-                "name": "dbpprop:yearsActive",
-                "filters": [
-                    {
-                        "name": "Between (years)",
-                        "widget": "number_range",
-                        "parameters": {
-                            "min": 0
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "dbpprop:currentMembers",
-                "filters": []
-            }
-        ]
-    },
+    "name": "Rock music groups",
     "collections": [{
             "name": "Irish rock music groups",
             "url": "http://dbpedia.org/page/Category:Irish_rock_music_groups",
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://xmlns.com/foaf/0.1/>"
+            },
             "fields": [
-                { "name": "rdfs:label" },
-                { "name": "rdfs:comment" },
-                { "name": "foaf:homepage" },
-                { "name": "foaf:page" },
-                { "name": "dbpprop:genre" },
-                { "name": "dbpprop:origin" },
-                { "name": "dbpprop:yearsActive" },
-                { "name": "dbpprop:currentMembers" }
+                {
+                    "name": "rdfs:label",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "rdfs:comment",
+                    "filters": [
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "foaf:homepage",
+                    "filters": []
+                },
+                {
+                    "name": "foaf:page",
+                    "filters": []
+                },
+                {
+                    "name": "dbpprop:genre",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:label",
+                    "filters" : [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:origin",
+                    "filters": []
+                },
+                {
+                    "name": "dbpprop:yearsActive",
+                    "filters": [
+                        {
+                            "name": "Between (years)",
+                            "widget": "number_range",
+                            "parameters": {
+                                "min": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:currentMembers",
+                    "filters": []
+                }
             ]
         }, {
             "name": "American rock music groups",
             "url": "http://dbpedia.org/page/Category:American_rock_music_groups",
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://xmlns.com/foaf/0.1/>"
+            },
             "fields": [
-                { "name": "rdfs:label" },
-                { "name": "rdfs:comment" },
-                { "name": "foaf:homepage" },
-                { "name": "foaf:page" },
-                { "name": "dbpprop:genre" },
-                { "name": "dbpprop:label" },
-                { "name": "dbpprop:origin" },
-                { "name": "dbpprop:yearsActive" },
-                { "name": "dbpprop:currentMembers" }
+                {
+                    "name": "rdfs:label",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "rdfs:comment",
+                    "filters": [
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "foaf:homepage",
+                    "filters": []
+                },
+                {
+                    "name": "foaf:page",
+                    "filters": []
+                },
+                {
+                    "name": "dbpprop:genre",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:label",
+                    "filters" : [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:origin",
+                    "filters": []
+                },
+                {
+                    "name": "dbpprop:yearsActive",
+                    "filters": [
+                        {
+                            "name": "Between (years)",
+                            "widget": "number_range",
+                            "parameters": {
+                                "min": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:currentMembers",
+                    "filters": []
+                }
             ]
         }, {
             "name": "Spanish rock music groups",
             "url": "http://dbpedia.org/page/Category:Spanish_rock_music_groups",
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://xmlns.com/foaf/0.1/>"
+            },
             "fields": [
-                { "name": "rdfs:label" },
-                { "name": "rdfs:comment" },
-                { "name": "dbpprop:genre" },
-                { "name": "dbpprop:label" },
-                { "name": "dbpprop:origin" },
-                { "name": "dbpprop:yearsActive" },
-                { "name": "dbpprop:currentMembers" }
+                {
+                    "name": "rdfs:label",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "rdfs:comment",
+                    "filters": [
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "foaf:homepage",
+                    "filters": []
+                },
+                {
+                    "name": "foaf:page",
+                    "filters": []
+                },
+                {
+                    "name": "dbpprop:genre",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:label",
+                    "filters" : [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:origin",
+                    "filters": []
+                },
+                {
+                    "name": "dbpprop:yearsActive",
+                    "filters": [
+                        {
+                            "name": "Between (years)",
+                            "widget": "number_range",
+                            "parameters": {
+                                "min": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:currentMembers",
+                    "filters": []
+                }
             ]
         }, {
             "name": "German rock music groups",
             "url": "http://dbpedia.org/page/Category:German_rock_music_groups",
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://xmlns.com/foaf/0.1/>"
+            },
             "fields": [
-                { "name": "rdfs:label" },
-                { "name": "rdfs:comment" },
-                { "name": "foaf:page" },
-                { "name": "dbpprop:genre" },
-                { "name": "dbpprop:label" },
-                { "name": "dbpprop:origin" },
-                { "name": "dbpprop:yearsActive" },
-                { "name": "dbpprop:currentMembers" }
+                {
+                    "name": "rdfs:label",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "rdfs:comment",
+                    "filters": [
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "foaf:homepage",
+                    "filters": []
+                },
+                {
+                    "name": "foaf:page",
+                    "filters": []
+                },
+                {
+                    "name": "dbpprop:genre",
+                    "filters": [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:label",
+                    "filters" : [
+                        {
+                            "name": "Equal",
+                            "widget": "text"
+                        },
+                        {
+                            "name": "Contains",
+                            "widget": "text"
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:origin",
+                    "filters": []
+                },
+                {
+                    "name": "dbpprop:yearsActive",
+                    "filters": [
+                        {
+                            "name": "Between (years)",
+                            "widget": "number_range",
+                            "parameters": {
+                                "min": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "dbpprop:currentMembers",
+                    "filters": []
+                }
             ]
         }
     ]

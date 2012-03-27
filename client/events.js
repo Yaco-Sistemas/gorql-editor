@@ -124,19 +124,6 @@ QBA.events = {
     step3: {
         filtersCounter: 0,
 
-        getFilters: function (catIdx, fieldName) {
-            "use strict";
-            var category = QBA.theQuery.schema.getCategoriesWithCheckedCollections()[catIdx],
-                fields = category.get("fieldList"),
-                field;
-
-            field = fields.filter(function (field) {
-                return field.get("name") === fieldName;
-            })[0];
-
-            return field.get("filterList");
-        },
-
         bind: function () {
             "use strict";
             var categories = QBA.theQuery.schema.getCategoriesWithCheckedCollections(),
@@ -179,7 +166,7 @@ QBA.events = {
                 ];
                 collection = categories[indexes[0]].getCheckedCollections()[indexes[1]];
                 field = collection.getCheckedFields()[indexes[2]];
-                filters = QBA.events.step3.getFilters(indexes[0], option.innerHTML);
+                filters = field.get("filterList");
 
                 userFilter = new QBA.models.UserFilter({
                     collection: collection,
