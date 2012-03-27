@@ -137,7 +137,17 @@ QBA.events = {
             return field.get("filterList");
         },
 
-        updateFilterTypes: function (evt) {
+        updateFilterWidget: function (context, filters) {
+            "use strict";
+            var filter = filters[parseInt(context.selectedOptions[0].value, 10)],
+                html = QBA.utils.getFilterWidgetHTML(filter),
+                parentElement = $(context.parentElement);
+
+            parentElement.find(".filter-widget").remove();
+            parentElement.append(html);
+        },
+
+        updateFilterTypes: function () {
             "use strict";
             var indexes = this.selectedOptions[0].value.split('-'),
                 filters = QBA.events.step3.getFilters(
@@ -145,7 +155,8 @@ QBA.events = {
                     this.selectedOptions[0].innerHTML
                 ),
                 filterIdx = this.name.split('_'),
-                html = "<select name='filter_type_" + filterIdx[filterIdx.length - 1] + "' class='filter-type'>";
+                html = "<select name='filter_type_" + filterIdx[filterIdx.length - 1] + "' class='filter-type'>",
+                parentElement;
 
             filters.each(function (filter, i) {
                 html += "<option value='" + i + "'>" + filter.get("name") + "</option>";
@@ -153,8 +164,14 @@ QBA.events = {
 
             html += "</select>";
 
-            $(this.parentElement).find("select.filter-type").remove();
-            $(this.parentElement).append(html);
+            parentElement = $(this.parentElement);
+            parentElement.find("select.filter-type").remove();
+            parentElement.append(html);
+
+            parentElement.find("select.filter-type").change(function () {
+                QBA.events.step3.updateFilterWidget(this, filters);
+            });
+            parentElement.find("select.filter-type").trigger("change");
         },
 
         bind: function () {
@@ -186,6 +203,7 @@ QBA.events = {
 
                 container.append(html);
                 container.find("select.filter-field").change(QBA.events.step3.updateFilterTypes);
+                container.find("select.filter-field").trigger("change");
                 $("#step3 #filters").append(container);
             });
         },
