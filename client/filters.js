@@ -35,19 +35,30 @@ QBA.utils.filterWidgets = {
         html: function (filterNumber) {
             "use strict";
             return "<input type='text' class='filter-widget' name='filter_widget_" + filterNumber + "'/>";
-        }
+        },
+
+        selectors: ["input.filter-widget"]
     },
 
     date_range: {
         html: function (filterNumber) {
             "use strict";
-            var html = "<input type='date' class='filter-widget' name='filter_widget_" + filterNumber + "_from'/>";
-            html += " to <input type='date' class='filter-widget' name='filter_widget_" + filterNumber + "_to'/>";
+            var html = "<input type='date' class='filter-widget from datepicker' name='filter_widget_" + filterNumber + "_from'/>";
+            html += " to <input type='date' class='filter-widget to datepicker' name='filter_widget_" + filterNumber + "_to'/>";
             return html;
-        }
+        },
+
+        selectors: ["input.filter-widget.from", "input.filter-widget.to"]
     },
 
-    number_range: {}
+    number_range: {
+        html: function (filterNumber) {
+            "use strict";
+            // TODO
+        },
+
+        selectors: []
+    }
 };
 
 QBA.utils.getFilterWidget = function (filter) {

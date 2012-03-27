@@ -28,10 +28,17 @@ if (typeof QBA === 'undefined') {
 
 QBA.views = {};
 
-QBA.views.jQueryUI = function () {
+QBA.views.jQueryUI = function (elem) {
     "use strict";
-    $(".tabable").tabs();
-    $(".accordionable").accordion();
+    if (typeof elem === 'undefined') {
+        $(".tabable").tabs();
+        $(".accordionable").accordion();
+        $(".datepicker").datepicker();
+    } else {
+        $(elem).find(".tabable").tabs();
+        $(elem).find(".accordionable").accordion();
+        $(elem).find(".datepicker").datepicker();
+    }
 };
 
 QBA.views.Step = Backbone.View.extend({
@@ -83,6 +90,7 @@ QBA.views.Filter = Backbone.View.extend({
         html += this.widget.html(this.filterNumber);
 
         $(this.el).html(html);
+        QBA.views.jQueryUI(this.el);
 
         return this;
     },
@@ -97,5 +105,6 @@ QBA.views.Filter = Backbone.View.extend({
         this.widget = QBA.utils.getFilterWidget(this.filters.at(this.chosenFilter));
 
         this.$el.append($(this.widget.html(this.filterNumber)));
+        QBA.views.jQueryUI(this.$el);
     }
 });

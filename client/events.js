@@ -194,6 +194,7 @@ QBA.events = {
                     filterNumber: filterNumber
                 });
                 $("#step3 #filters").append(view.render().el);
+                this.selectedIndex = 0;
             });
         },
 
