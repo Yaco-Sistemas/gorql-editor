@@ -89,7 +89,12 @@ QBA.views.Filter = Backbone.View.extend({
 
     updateFilterWidget: function () {
         "use strict";
-        // TODO
-        parseInt(this.selectedOptions[0].value, 10);
+        var value = this.$el.find(".filter-type")[0].selectedOptions[0].value;
+
+        this.$el.find(".filter-widget").remove();
+        this.chosenFilter = parseInt(value, 10);
+        this.widget = QBA.utils.getFilterWidget(this.filters.at(this.chosenFilter), this.filterNumber);
+
+        this.$el.append($(this.widget.html()));
     }
 });
