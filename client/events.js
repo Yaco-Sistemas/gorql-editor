@@ -131,7 +131,7 @@ QBA.events = {
                 field;
 
             field = fields.filter(function (field) {
-                return field.name === fieldName;
+                return field.get("name") === fieldName;
             })[0];
 
             return field.get("filterList");
@@ -145,18 +145,15 @@ QBA.events = {
                     this.selectedOptions[0].innerHTML
                 ),
                 filterIdx = this.name.split('_'),
-                html = "<select name='filter_type_" + filterIdx[filterIdx.length - 1] + "' class='filter-type'>",
-                filter,
-                i;
+                html = "<select name='filter_type_" + filterIdx[filterIdx.length - 1] + "' class='filter-type'>";
 
-            for (i = 0; i < filters.length; i += 1) {
-                filter = filters[i];
+            filters.each(function (filter, i) {
                 html += "<option value='" + i + "'>" + filter.get("name") + "</option>";
-            }
+            });
 
             html += "</select>";
 
-            $(this.parentElement).remove("select.filter-type");
+            $(this.parentElement).find("select.filter-type").remove();
             $(this.parentElement).append(html);
         },
 
