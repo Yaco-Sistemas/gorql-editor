@@ -254,7 +254,8 @@
                             "name": "Between (minutes)",
                             "widget": "number_range",
                             "parameters": {
-                                "min": 0
+                                "min": 0,
+                                "max": 400
                             }
                         }
                     ]
@@ -363,7 +364,8 @@
                             "name": "Between (minutes)",
                             "widget": "number_range",
                             "parameters": {
-                                "min": 0
+                                "min": 0,
+                                "max": 400
                             }
                         }
                     ]
@@ -472,7 +474,8 @@
                             "name": "Between (minutes)",
                             "widget": "number_range",
                             "parameters": {
-                                "min": 0
+                                "min": 0,
+                                "max": 400
                             }
                         }
                     ]
@@ -558,7 +561,8 @@
                             "name": "Between (years)",
                             "widget": "number_range",
                             "parameters": {
-                                "min": 0
+                                "min": 1900,
+                                "max": 2100
                             }
                         }
                     ]
@@ -644,7 +648,8 @@
                             "name": "Between (years)",
                             "widget": "number_range",
                             "parameters": {
-                                "min": 0
+                                "min": 1900,
+                                "max": 2100
                             }
                         }
                     ]
@@ -730,7 +735,8 @@
                             "name": "Between (years)",
                             "widget": "number_range",
                             "parameters": {
-                                "min": 0
+                                "min": 1900,
+                                "max": 2100
                             }
                         }
                     ]
@@ -816,7 +822,8 @@
                             "name": "Between (years)",
                             "widget": "number_range",
                             "parameters": {
-                                "min": 0
+                                "min": 1900,
+                                "max": 2100
                             }
                         }
                     ]

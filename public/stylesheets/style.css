@@ -34,6 +34,10 @@ body.js ul.collection {
     margin: 0px;
 }
 
+body.js div.filter {
+    border: solid 1px #DDD;
+}
+
 ul {
     list-style-type: none;
 }
