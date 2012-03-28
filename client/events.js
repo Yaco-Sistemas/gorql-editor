@@ -147,7 +147,6 @@ QBA.events = {
                 var filterNumber = QBA.events.step3.filtersCounter,
                     option = this.options[this.selectedIndex],
                     indexes,
-                    filters,
                     collection,
                     field,
                     userFilter,
@@ -166,18 +165,16 @@ QBA.events = {
                 ];
                 collection = categories[indexes[0]].getCheckedCollections()[indexes[1]];
                 field = collection.getCheckedFields()[indexes[2]];
-                filters = field.get("filterList");
 
                 userFilter = new QBA.models.UserFilter({
                     collection: collection,
                     field: field,
-                    filter: filters.at(0)
+                    filter: field.get("filterList").at(0)
                 });
                 QBA.theQuery.userFilterList.add(userFilter);
 
                 view = new QBA.views.Filter({
                     model: userFilter,
-                    filters: filters,
                     filterNumber: filterNumber
                 });
                 $("#step3 #filters").append(view.render().el);
