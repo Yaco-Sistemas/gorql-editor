@@ -81,8 +81,12 @@ QBA.views.Filter = Backbone.View.extend({
 
     initialize: function (options) {
         "use strict";
+        var View = QBA.utils.getFilterWidgetView(this.model.get("field").get("filterList").at(0).get("widget"));
         this.chosenFilter = 0;
-        this.widget = QBA.utils.getFilterWidget(this.model.get("field").get("filterList").at(this.chosenFilter).get("widget"));
+        this.widgetView = new View({
+            model: this.model,
+            el: this.el
+        });
     },
 
     events: {
@@ -93,8 +97,7 @@ QBA.views.Filter = Backbone.View.extend({
         "use strict";
         var model = this.model,
             filter = this.model.get("field").get("filterList").at(this.chosenFilter),
-            html,
-            widget;
+            html;
 
         html = "<input type='submit' class='remove' value='X' />";
         html += "<label for='filter_type_" + this.model.get("number") + "'>" + this.model.get("collection").get("name") + " - " + this.model.get("field").get("name") + "</label>";
@@ -103,10 +106,10 @@ QBA.views.Filter = Backbone.View.extend({
             html += "<option value='" + i + "'>" + filter.get("name") + "</option>";
         });
         html += "</select>";
-        html += this.widget.html(filter.get("parameters"), this.model.get("number"));
-
         $(this.el).html(html);
-        this.widget.init(filter.get("parameters"), this.model.get("number"), this.el);
+
+        this.widgetView.render();
+
         $(this.el).find("input.remove").click(function (evt) {
             evt.stopPropagation();
             evt.preventDefault();
@@ -122,16 +125,21 @@ QBA.views.Filter = Backbone.View.extend({
         "use strict";
         var node = this.$el.find(".filter-type")[0],
             value = node.options[node.selectedIndex].value,
-            filter;
+            filter,
+            View;
 
-        this.$el.find(".filter-widget").remove();
+        this.widgetView.remove();
         this.chosenFilter = parseInt(value, 10);
         filter = this.model.get("field").get("filterList").at(this.chosenFilter);
         this.model.set({ filter: filter });
-        this.widget = QBA.utils.getFilterWidget(filter.get("widget"));
+        View = QBA.utils.getFilterWidgetView(filter.get("widget"));
+        this.widgetView = new View({
+            model: this.model,
+            el: this.el
+        });
 
-        this.$el.append($(this.widget.html(filter.get("parameters"), this.model.get("number"))));
-        this.widget.init(filter.get("parameters"), this.model.get("number"), this.el);
+        this.widgetView.render();
+
         QBA.views.jQueryUI(this.$el);
     }
 });

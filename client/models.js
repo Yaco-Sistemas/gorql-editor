@@ -35,7 +35,7 @@ QBA.models.UserFilter = Backbone.Model.extend({
             collection: undefined,
             field: undefined,
             filter: undefined,
-            value: "",
+            value: undefined,
             number: -1
         };
     }

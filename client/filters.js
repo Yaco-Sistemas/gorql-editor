@@ -1,5 +1,5 @@
-/*jslint vars: false */
-/*global QBA: true, exports, $ */
+/*jslint vars: false, nomen: true */
+/*global QBA: true, exports, $, Backbone, _ */
 
 // Copyright 2012 Yaco Sistemas S.L.
 //
@@ -31,63 +31,114 @@ if (typeof QBA.utils === 'undefined') {
 }
 
 QBA.utils.filterWidgets = {
-    text: {
-        html: function (parameters, filterNumber) {
-            "use strict";
-            return "<input type='text' class='filter-widget' name='filter_widget_" + filterNumber + "'/>";
+    text: Backbone.View.extend({
+        events: {
+            "change input.filter-widget": "process"
         },
 
-        init: function (parameters, filterNumber, el) {
+        render: function () {
             "use strict";
+            var html = "<input type='text' class='filter-widget' name='filter_widget_" + this.model.get("number") + "'";
+            if (!_.isUndefined(this.model.get("value")) && _.isString(this.model.get("value"))) {
+                html += " value='" + this.model.get("value") + "'";
+            }
+            html += "/>";
+            this.$el.append(html);
+            return this;
         },
 
-        selectors: ["input.filter-widget"]
-    },
-
-    date_range: {
-        html: function (parameters, filterNumber) {
+        remove: function () {
             "use strict";
-            var html = "<input type='date' class='filter-widget from datepicker' name='filter_widget_" + filterNumber + "_from'/>";
-            html += " to <input type='date' class='filter-widget to datepicker' name='filter_widget_" + filterNumber + "_to'/>";
-            return html;
+            this.$el.find("input.filter-widget").remove();
         },
 
-        init: function (parameters, filterNumber, el) {
+        process: function () {
             "use strict";
+            var value = this.$el.find("input.filter-widget").val();
+            this.model.set({ value: value });
+        }
+    }),
+
+    date_range: Backbone.View.extend({
+        events: {
+            "change input.filter-widget.from": "process",
+            "change input.filter-widget.to": "process"
         },
 
-        selectors: ["input.filter-widget.from", "input.filter-widget.to"]
-    },
-
-    number_range: {
-        html: function (parameters, filterNumber) {
+        render: function () {
             "use strict";
-            var html = "<div class='filter-widget range' name='filter_widget_" + filterNumber + "' min='" + parameters.min + "' max='" + parameters.max + "' />";
-            html += "<span class='filter-widget-help'>(From " + parameters.min + " to " + parameters.max + ")</span>";
-            html += "<input type='number' class='filter-widget range from' name='filter_widget_" + filterNumber + "_from' min='" + parameters.min + "' max='" + parameters.max + "'/> to ";
-            html += "<input type='number' class='filter-widget range to' name='filter_widget_" + filterNumber + "_to' min='" + parameters.min + "' max='" + parameters.max + "'/>";
-            return html;
+            var value = this.model.get("value"),
+                html;
+
+            if (_.isUndefined(value) || !_.isArray(value)) {
+                value = ["", ""];
+            }
+
+            html = "<input type='date' class='filter-widget from datepicker' name='filter_widget_" + this.model.get("number");
+            html += "_from' value='" + value[0] + "'/>";
+            html += "<span class='filter-widget'> to </span>";
+            html += "<input type='date' class='filter-widget to datepicker' name='filter_widget_" + this.model.get("number");
+            html += "_to' value='" + value[1] + "'/>";
+            this.$el.append(html);
+            return this;
         },
 
-        init: function (parameters, filterNumber, el) {
+        remove: function () {
             "use strict";
-            $(el).find("div.filter-widget.range").slider({
+            this.$el.find(".filter-widget").remove();
+        },
+
+        process: function () {
+            "use strict";
+            var value = [
+                this.$el.find("input.filter-widget.from").val(),
+                this.$el.find("input.filter-widget.to").val()
+            ];
+            this.model.set({ value: value });
+        }
+    }),
+
+    number_range: Backbone.View.extend({
+        render: function () {
+            "use strict";
+            var parameters = this.model.get("filter").get("parameters"),
+                html = "<div class='filter-widget range'></div>",
+                value = this.model.get("value"),
+                $el = this.$el,
+                model = this.model;
+
+            if (_.isUndefined(value) || !_.isArray(value)) {
+                value = [parameters.min, parameters.max];
+            }
+
+            html += "<span class='filter-widget hint'>(From " + parameters.min + " to " + parameters.max + ")</span>";
+            html += "<input type='number' class='filter-widget range from' name='filter_widget_" + this.model.get("number") + "_from' min='" + parameters.min + "' max='" + parameters.max + "' disabled='true' value='" + value[0] + "' /> to ";
+            html += "<input type='number' class='filter-widget range to' name='filter_widget_" + this.model.get("number") + "_to' min='" + parameters.min + "' max='" + parameters.max + "' disabled='true' value='" + value[1] + "' />";
+            this.$el.append(html);
+
+            this.$el.find("div.filter-widget.range").slider({
                 range: true,
                 min: parameters.min,
                 max: parameters.max,
-                values: [parameters.min, parameters.max],
+                values: value,
                 slide: function (event, ui) {
-                    $(el).find("input.filter-widget.range.from").val(ui.values[0]);
-                    $(el).find("input.filter-widget.range.to").val(ui.values[1]);
+                    $el.find("input.filter-widget.range.from").val(ui.values[0]);
+                    $el.find("input.filter-widget.range.to").val(ui.values[1]);
+                    model.set({ value: ui.values });
                 }
             });
+
+            return this;
         },
 
-        selectors: []
-    }
+        remove: function () {
+            "use strict";
+            this.$el.find(".filter-widget").remove();
+        }
+    })
 };
 
-QBA.utils.getFilterWidget = function (key) {
+QBA.utils.getFilterWidgetView = function (key) {
     "use strict";
     var widget;
 
@@ -101,8 +152,6 @@ QBA.utils.getFilterWidget = function (key) {
 };
 
 // Browser
-if (typeof exports === "undefined") {
-    window.exports = {};
+if (typeof exports !== "undefined") {
+    exports.getFilterWidgetView = QBA.utils.getFilterWidgetView;
 }
-
-exports.getFilterWidget = QBA.utils.getFilterWidget;
