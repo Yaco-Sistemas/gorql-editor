@@ -1,5 +1,5 @@
-/*jslint vars: false, browser: true */
-/*global QBA: true, Backbone, $ */
+/*jslint vars: false, browser: true, nomen: true */
+/*global QBA: true, Backbone, $, _ */
 
 // Copyright 2012 Yaco Sistemas S.L.
 //
@@ -52,7 +52,7 @@ QBA.views.Step = Backbone.View.extend({
     render: function () {
         "use strict";
         var stepIdx = parseInt(this.step.substr(4), 10),
-            html = $.tmpl(this.step, QBA.theQuery.schema.toJSON(stepIdx));
+            html = $.tmpl(this.step, QBA.theQuery.toJSON(stepIdx));
         this.$el.html(html);
 
         if (this.step === "step3") {
@@ -65,12 +65,10 @@ QBA.views.Step = Backbone.View.extend({
 
     renderS3: function () {
         "use strict";
-        QBA.theQuery.userFilterList.each(function (filter, i) {
+        _.each(QBA.theQuery.getUserFilterList(), function (userFilter) {
             var view = new QBA.views.Filter({
-                model: filter,
-                filterNumber: i
+                model: userFilter
             });
-            QBA.events.step3.filtersCounter = i + 1;
             $("#step3 #filters").append(view.render().el);
         });
     }
@@ -84,7 +82,6 @@ QBA.views.Filter = Backbone.View.extend({
     initialize: function (options) {
         "use strict";
         this.chosenFilter = 0;
-        this.filterNumber = options.filterNumber;
         this.widget = QBA.utils.getFilterWidget(this.model.get("field").get("filterList").at(this.chosenFilter).get("widget"));
     },
 
@@ -100,20 +97,20 @@ QBA.views.Filter = Backbone.View.extend({
             widget;
 
         html = "<input type='submit' class='remove' value='X' />";
-        html += "<label for='filter_type_" + this.filterNumber + "'>" + this.model.get("collection").get("name") + " - " + this.model.get("field").get("name") + "</label>";
-        html += "<select name='filter_type_" + this.filterNumber + "' class='filter-type'>";
+        html += "<label for='filter_type_" + this.model.get("number") + "'>" + this.model.get("collection").get("name") + " - " + this.model.get("field").get("name") + "</label>";
+        html += "<select name='filter_type_" + this.model.get("number") + "' class='filter-type'>";
         this.model.get("field").get("filterList").each(function (filter, i) {
             html += "<option value='" + i + "'>" + filter.get("name") + "</option>";
         });
         html += "</select>";
-        html += this.widget.html(filter.get("parameters"), this.filterNumber);
+        html += this.widget.html(filter.get("parameters"), this.model.get("number"));
 
         $(this.el).html(html);
-        this.widget.init(filter.get("parameters"), this.filterNumber, this.el);
+        this.widget.init(filter.get("parameters"), this.model.get("number"), this.el);
         $(this.el).find("input.remove").click(function (evt) {
             evt.stopPropagation();
             evt.preventDefault();
-            QBA.theQuery.userFilterList.remove(model);
+            model.get("field").get("userFilterList").remove(model);
             $(this.parentElement).remove();
         });
         QBA.views.jQueryUI(this.el);
@@ -133,8 +130,8 @@ QBA.views.Filter = Backbone.View.extend({
         this.model.set({ filter: filter });
         this.widget = QBA.utils.getFilterWidget(filter.get("widget"));
 
-        this.$el.append($(this.widget.html(filter.get("parameters"), this.filterNumber)));
-        this.widget.init(filter.get("parameters"), this.filterNumber, this.el);
+        this.$el.append($(this.widget.html(filter.get("parameters"), this.model.get("number"))));
+        this.widget.init(filter.get("parameters"), this.model.get("number"), this.el);
         QBA.views.jQueryUI(this.$el);
     }
 });

@@ -62,7 +62,7 @@ QBA.events = {
                 // collection has 10 chars
                 var success = false,
                     indexes = this.name.substr(10).split('-'),
-                    category = QBA.theQuery.schema.at(parseInt(indexes[0], 10)),
+                    category = QBA.theQuery.at(parseInt(indexes[0], 10)),
                     collection;
 
                 if (category) {
@@ -93,7 +93,7 @@ QBA.events = {
                 // field has 5 chars
                 var success = false,
                     indexes = this.name.substr(5).split('-'),
-                    category = QBA.theQuery.schema.getCategoriesWithCheckedCollections()[parseInt(indexes[0], 10)],
+                    category = QBA.theQuery.getCategoriesWithCheckedCollections()[parseInt(indexes[0], 10)],
                     collection,
                     field;
 
@@ -122,11 +122,9 @@ QBA.events = {
     },
 
     step3: {
-        filtersCounter: 0,
-
         bind: function () {
             "use strict";
-            var categories = QBA.theQuery.schema.getCategoriesWithCheckedCollections(),
+            var categories = QBA.theQuery.getCategoriesWithCheckedCollections(),
                 category,
                 collections,
                 disabled = true,
@@ -144,7 +142,7 @@ QBA.events = {
             }
 
             $("#step3 #addFilterField").attr("disabled", disabled).change(function () {
-                var filterNumber = QBA.events.step3.filtersCounter,
+                var filterNumber = QBA.theQuery.getHigherUserFilterNumber(),
                     option = this.options[this.selectedIndex],
                     indexes,
                     collection,
@@ -156,7 +154,6 @@ QBA.events = {
                     return;
                 }
 
-                QBA.events.step3.filtersCounter += 1;
                 indexes = option.value.split('-');
                 indexes = [
                     parseInt(indexes[0], 10),
@@ -169,13 +166,13 @@ QBA.events = {
                 userFilter = new QBA.models.UserFilter({
                     collection: collection,
                     field: field,
-                    filter: field.get("filterList").at(0)
+                    filter: field.get("filterList").at(0),
+                    number: filterNumber
                 });
-                QBA.theQuery.userFilterList.add(userFilter);
+                field.get("userFilterList").add(userFilter);
 
                 view = new QBA.views.Filter({
-                    model: userFilter,
-                    filterNumber: filterNumber
+                    model: userFilter
                 });
                 $("#step3 #filters").append(view.render().el);
                 this.selectedIndex = 0;

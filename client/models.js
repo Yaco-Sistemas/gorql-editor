@@ -28,6 +28,23 @@ if (typeof QBA === 'undefined') {
 
 QBA.models = {};
 
+QBA.models.UserFilter = Backbone.Model.extend({
+    defaults: function () {
+        "use strict";
+        return {
+            collection: undefined,
+            field: undefined,
+            filter: undefined,
+            value: "",
+            number: -1
+        };
+    }
+});
+
+QBA.models.UserFilterList = Backbone.Collection.extend({
+    model: QBA.models.UserFilter
+});
+
 QBA.models.Filter = Backbone.Model.extend({
     defaults: function () {
         "use strict";
@@ -49,7 +66,8 @@ QBA.models.Field = Backbone.Model.extend({
         return {
             name: '',
             checked: false,
-            filterList: new QBA.models.FilterList()
+            filterList: new QBA.models.FilterList(),
+            userFilterList: new QBA.models.UserFilterList()
         };
     },
 
@@ -62,13 +80,26 @@ QBA.models.Field = Backbone.Model.extend({
         if (this.attributes.filterList.length > 0) {
             result.filters = this.attributes.filterList.toJSON();
         }
+        if (this.attributes.userFilterList.length > 0) {
+            result.filters = this.attributes.userFilterList.toJSON();
+        }
 
         return result;
     }
 });
 
 QBA.models.FieldList = Backbone.Collection.extend({
-    model: QBA.models.Field
+    model: QBA.models.Field,
+
+    getUserFilterList: function () {
+        "use strict";
+        var checkedFields = this.filter(function (field) {
+            return field.get("checked");
+        });
+        return _.flatten(_.map(checkedFields, function (field) {
+            return field.get("userFilterList").toArray();
+        }));
+    }
 });
 
 QBA.models.Collection = Backbone.Model.extend({
@@ -133,9 +164,19 @@ QBA.models.CollectionList = Backbone.Collection.extend({
 
     toJSON: function (step) {
         "use strict";
-        return _.map(this.models, function (collection) {
+        return this.map(function (collection) {
             return collection.toJSON(step);
         });
+    },
+
+    getUserFilterList: function () {
+        "use strict";
+        var checkedCollections = this.filter(function (collection) {
+            return collection.get("checked");
+        });
+        return _.flatten(_.map(checkedCollections, function (collection) {
+            return collection.get("fieldList").getUserFilterList();
+        }));
     }
 });
 
@@ -183,7 +224,7 @@ QBA.models.CategoryList = Backbone.Collection.extend({
 
     toJSON: function (step) {
         "use strict";
-        var categories = _.map(this.models, function (category) {
+        var categories = this.map(function (category) {
                 return category.toJSON(step);
             });
 
@@ -196,33 +237,31 @@ QBA.models.CategoryList = Backbone.Collection.extend({
 
     getCategoriesWithCheckedCollections: function () {
         "use strict";
-        return _.filter(this.models, function (category) {
+        return this.filter(function (category) {
             return category.getCheckedCollections().length > 0;
         });
-    }
-});
+    },
 
-QBA.models.UserFilter = Backbone.Model.extend({
-    defaults: function () {
+    getUserFilterList: function () {
         "use strict";
-        return {
-            collection: undefined,
-            field: undefined,
-            filter: undefined,
-            value: ""
-        };
+        return _.flatten(this.map(function (category) {
+            return category.get("collectionList").getUserFilterList();
+        }));
+    },
+
+    getHigherUserFilterNumber: function () {
+        "use strict";
+        var num = _.max(_.map(this.getUserFilterList(), function (userFilter) {
+            return userFilter.get("number");
+        }));
+        if (!isFinite(num)) {
+            num = -1;
+        }
+        return num + 1;
     }
 });
 
-QBA.models.UserFilterList = Backbone.Collection.extend({
-    model: QBA.models.UserFilter
-});
-
-QBA.theQuery = {
-    schema: new QBA.models.CategoryList(),
-
-    userFilterList: new QBA.models.UserFilterList()
-};
+QBA.theQuery = new QBA.models.CategoryList();
 
 QBA.models.loadSchema = function () {
     "use strict";
@@ -254,6 +293,6 @@ QBA.models.loadSchema = function () {
             }
             categoryObj.addCollection(collectionObj);
         }
-        QBA.theQuery.schema.add(categoryObj);
+        QBA.theQuery.add(categoryObj);
     }
 };
