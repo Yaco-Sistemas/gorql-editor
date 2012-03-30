@@ -68,10 +68,14 @@ QBA.views.Step = Backbone.View.extend({
     renderS3: function () {
         "use strict";
         _.each(QBA.theQuery.getJoinList(), function (join) {
-            var view = new QBA.views.Join({
-                model: join
-            });
-            $("#step3 #joins").append(view.render().el);
+            var target = join.get("target_field"),
+                view;
+            if (typeof target === "undefined" || (typeof target !== "undefined" && target.get("checked"))) {
+                view = new QBA.views.Join({
+                    model: join
+                });
+                $("#step3 #joins").append(view.render().el);
+            }
         });
     },
 
