@@ -19,6 +19,7 @@
     <script type="text/plain" id="step2Tpl">{{html templates[1]}}</script>
     <script type="text/plain" id="step3Tpl">{{html templates[2]}}</script>
     <script type="text/plain" id="step4Tpl">{{html templates[3]}}</script>
+    <script type="text/plain" id="step5Tpl">{{html templates[4]}}</script>
     {{/if}}
     <script type="text/plain" id="schema">{{html schemaJSON}}</script>
     <script type="text/javascript">
@@ -42,6 +43,7 @@
                 <li class="tab"><a href="#step2">Step 2</a></li>
                 <li class="tab"><a href="#step3">Step 3</a></li>
                 <li class="tab"><a href="#step4">Step 4</a></li>
+                <li class="tab"><a href="#step5">Step 5</a></li>
             </ol>
         </nav>
 
@@ -51,20 +53,26 @@
         </section>
 
         <section id="step2" class="step ${steps.s2}">
-            {{partial(schema) "s2join"}}
+            {{partial(schema) "s2choose"}}
             <input type="submit" class="no-js" name="s2_prev" value="Previous"/>
             <input type="submit" class="no-js" name="s2_next" value="Next"/>
         </section>
 
         <section id="step3" class="step ${steps.s3}">
-            {{partial(schema) "s3filter"}}
+            {{partial(schema) "s3join"}}
             <input type="submit" class="no-js" name="s3_prev" value="Previous"/>
             <input type="submit" class="no-js" name="s3_next" value="Next"/>
         </section>
 
         <section id="step4" class="step ${steps.s4}">
-            {{partial(schema) "s4paint"}}
+            {{partial(schema) "s4filter"}}
             <input type="submit" class="no-js" name="s4_prev" value="Previous"/>
+            <input type="submit" class="no-js" name="s4_next" value="Next"/>
+        </section>
+
+        <section id="step5" class="step ${steps.s5}">
+            {{partial(schema) "s5paint"}}
+            <input type="submit" class="no-js" name="s5_prev" value="Previous"/>
             <input type="submit" name="done" value="Done"/>
         </section>
     </form>

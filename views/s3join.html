@@ -1,22 +1,5 @@
 <fieldset class="join">
     <legend>Join selected collections</legend>
-    <h3>Columns</h3>
-    <div class="collections accordionable">
-        {{each(idx_cat, category) categories}}
-        {{each(idx_col, collection) category.collections}}
-        <h3><a href="#" class="collection_name">${collection.name}</a></h3>
-        <div><ul class="collection">
-            {{each(idx_fie, field) collection.fields}}
-            <li>
-                <input type="checkbox" name="field${idx_cat}-${idx_col}-${idx_fie}" {{if field.checked}}checked="true"{{/if}}/>
-                <label for="field${idx_cat}-${idx_col}-${idx_fie}">${field.name}</label>
-            </li>
-            {{/each}}
-        </ul></div>
-        {{/each}}
-        {{/each}}
-    </div>
-    <h3>Join columns</h3>
     <table id="join"><tbody>
         <tr>
             <td><input type="text" name="join00" class="wide-field"/></td>

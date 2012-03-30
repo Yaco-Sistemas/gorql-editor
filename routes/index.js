@@ -57,7 +57,8 @@ exports.index = function (request, response) {
                         s1: '',
                         s2: 'hidden',
                         s3: 'hidden',
-                        s4: 'hidden'
+                        s4: 'hidden',
+                        s5: 'hidden'
                     }
                 }
             });
@@ -67,9 +68,10 @@ exports.index = function (request, response) {
     async.parallel([
         async.apply(fs.readFile, path.dirname(app.filename) + '/' + app.exports.settings.schema),
         async.apply(fs.readFile, path.dirname(app.filename) + "/views/s1choose.html"),
-        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s2join.html"),
-        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s3filter.html"),
-        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s4paint.html")
+        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s2choose.html"),
+        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s3join.html"),
+        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s4filter.html"),
+        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s5paint.html")
     ], callback);
 };
 

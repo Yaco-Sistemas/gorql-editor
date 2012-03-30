@@ -55,21 +55,21 @@ QBA.views.Step = Backbone.View.extend({
             html = $.tmpl(this.step, QBA.theQuery.toJSON(stepIdx));
         this.$el.html(html);
 
-        if (this.step === "step3") {
-            this.renderS3();
+        if (this.step === "step4") {
+            this.renderS4();
         }
 
         QBA.views.jQueryUI();
         return this;
     },
 
-    renderS3: function () {
+    renderS4: function () {
         "use strict";
         _.each(QBA.theQuery.getUserFilterList(), function (userFilter) {
             var view = new QBA.views.Filter({
                 model: userFilter
             });
-            $("#step3 #filters").append(view.render().el);
+            $("#step4 #filters").append(view.render().el);
         });
     }
 });

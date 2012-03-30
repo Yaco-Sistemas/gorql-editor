@@ -124,6 +124,18 @@ QBA.events = {
     step3: {
         bind: function () {
             "use strict";
+            // TODO
+        },
+
+        release: function () {
+            "use strict";
+            // TODO
+        }
+    },
+
+    step4: {
+        bind: function () {
+            "use strict";
             var categories = QBA.theQuery.getCategoriesWithCheckedCollections(),
                 category,
                 collections,
@@ -141,7 +153,7 @@ QBA.events = {
                 }
             }
 
-            $("#step3 #addFilterField").attr("disabled", disabled).change(function () {
+            $("#step4 #addFilterField").attr("disabled", disabled).change(function () {
                 var filterNumber = QBA.theQuery.getHigherUserFilterNumber(),
                     option = this.options[this.selectedIndex],
                     indexes,
@@ -174,7 +186,7 @@ QBA.events = {
                 view = new QBA.views.Filter({
                     model: userFilter
                 });
-                $("#step3 #filters").append(view.render().el);
+                $("#step4 #filters").append(view.render().el);
                 this.selectedIndex = 0;
             });
         },
@@ -185,7 +197,7 @@ QBA.events = {
         }
     },
 
-    step4: {
+    step5: {
         bind: function () {
             "use strict";
             // TODO
