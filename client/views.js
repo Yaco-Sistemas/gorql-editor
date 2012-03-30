@@ -55,12 +55,24 @@ QBA.views.Step = Backbone.View.extend({
             html = $.tmpl(this.step, QBA.theQuery.toJSON(stepIdx));
         this.$el.html(html);
 
-        if (this.step === "step4") {
+        if (this.step === "step3") {
+            this.renderS3();
+        } else if (this.step === "step4") {
             this.renderS4();
         }
 
         QBA.views.jQueryUI();
         return this;
+    },
+
+    renderS3: function () {
+        "use strict";
+        _.each(QBA.theQuery.getJoinList(), function (join) {
+            var view = new QBA.views.Join({
+                model: join
+            });
+            $("#step3 #joins").append(view.render().el);
+        });
     },
 
     renderS4: function () {
@@ -161,6 +173,7 @@ QBA.views.Join = Backbone.View.extend({
     render: function () {
         "use strict";
         var compatibleFields = QBA.theQuery.getCompatibleCheckedFields(this.model.get("source_field")),
+            model = this.model,
             aux,
             auxFunc,
             html,
@@ -171,15 +184,18 @@ QBA.views.Join = Backbone.View.extend({
         html += "<select name='join_target_" + this.model.get("number") + "' class='join-target'>";
         html += "<option value='false'></option>";
         auxFunc = function (field) {
-            html += "<option value='" + this.category.cid + "-" + this.collection.cid + "-" + field.cid + "'>";
-            html += field.get("name") + "</option>";
+            html += "<option value='" + this.category.cid + "-" + this.collection.cid + "-" + field.cid + "'";
+            if (typeof model.get("target_field") !== "undefined") {
+                if (model.get("target_field").cid === field.cid) {
+                    html += " selected='selected'";
+                }
+            }
+            html += ">" + this.collection.get("name") + " - " + field.get("name") + "</option>";
         };
         for (i = 0; i < compatibleFields.length; i += 1) {
             aux = compatibleFields[i];
             if (aux.fields.length > 0) {
-                html += "<optgroup label='" + aux.collection.get("name") + "'>";
                 _.each(aux.fields, auxFunc, aux);
-                html += "</optgroup>";
             }
         }
         html += "</select>";

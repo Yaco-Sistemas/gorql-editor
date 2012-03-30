@@ -293,6 +293,17 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             });
         });
         return _.flatten(results);
+    },
+
+    getJoinList: function () {
+        "use strict";
+        return _.flatten(this.map(function (category) {
+            return _.flatten(category.getCheckedCollections().map(function (collection) {
+                return _.flatten(collection.getCheckedFields().map(function (field) {
+                    return field.get("joinList").toArray();
+                }));
+            }));
+        }));
     }
 });
 
