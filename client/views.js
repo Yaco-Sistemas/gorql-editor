@@ -81,8 +81,7 @@ QBA.views.Filter = Backbone.View.extend({
 
     initialize: function (options) {
         "use strict";
-        var View = QBA.utils.getFilterWidgetView(this.model.get("field").get("filterList").at(0).get("widget"));
-        this.chosenFilter = 0;
+        var View = QBA.utils.getFilterWidgetView(this.model.get("filter").get("widget"));
         this.widgetView = new View({
             model: this.model,
             el: this.el
@@ -96,14 +95,18 @@ QBA.views.Filter = Backbone.View.extend({
     render: function () {
         "use strict";
         var model = this.model,
-            filter = this.model.get("field").get("filterList").at(this.chosenFilter),
+            filter = this.model.get("filter"),
             html;
 
         html = "<input type='submit' class='remove' value='X' />";
         html += "<label for='filter_type_" + this.model.get("number") + "'>" + this.model.get("collection").get("name") + " - " + this.model.get("field").get("name") + "</label>";
         html += "<select name='filter_type_" + this.model.get("number") + "' class='filter-type'>";
-        this.model.get("field").get("filterList").each(function (filter, i) {
-            html += "<option value='" + i + "'>" + filter.get("name") + "</option>";
+        this.model.get("field").get("filterList").each(function (f, i) {
+            html += "<option value='" + i + "'";
+            if (filter.cid === f.cid) {
+                html += " selected='selected'";
+            }
+            html += ">" + f.get("name") + "</option>";
         });
         html += "</select>";
         $(this.el).html(html);
@@ -129,8 +132,7 @@ QBA.views.Filter = Backbone.View.extend({
             View;
 
         this.widgetView.remove();
-        this.chosenFilter = parseInt(value, 10);
-        filter = this.model.get("field").get("filterList").at(this.chosenFilter);
+        filter = this.model.get("field").get("filterList").at(parseInt(value, 10));
         this.model.set({ filter: filter });
         View = QBA.utils.getFilterWidgetView(filter.get("widget"));
         this.widgetView = new View({
