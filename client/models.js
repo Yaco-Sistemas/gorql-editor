@@ -60,6 +60,22 @@ QBA.models.FilterList = Backbone.Collection.extend({
     model: QBA.models.Filter
 });
 
+QBA.models.Join = Backbone.Model.extend({
+    defaults: function () {
+        "use strict";
+        return {
+            source_collection: undefined,
+            source_field: undefined,
+            target_collection: undefined,
+            target_field: undefined
+        };
+    }
+});
+
+QBA.models.JoinList = Backbone.Collection.extend({
+    model: QBA.models.Join
+});
+
 QBA.models.Field = Backbone.Model.extend({
     defaults: function () {
         "use strict";
@@ -67,7 +83,8 @@ QBA.models.Field = Backbone.Model.extend({
             name: '',
             checked: false,
             filterList: new QBA.models.FilterList(),
-            userFilterList: new QBA.models.UserFilterList()
+            userFilterList: new QBA.models.UserFilterList(),
+            joinList: new QBA.models.JoinList()
         };
     },
 
@@ -258,6 +275,24 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             num = -1;
         }
         return num + 1;
+    },
+
+    getCompatibleCheckedFields: function (field) {
+        "use strict";
+        var results = this.map(function (category) {
+            var collections = category.getCheckedCollections();
+            return collections.map(function (collection) {
+                var fields = collection.getCheckedFields().filter(function (cfield) {
+                    return (field.get("name") === cfield.get("name")) && (field.cid !== cfield.cid);
+                });
+                return {
+                    category: category,
+                    collection: collection,
+                    fields: fields
+                };
+            });
+        });
+        return _.flatten(results);
     }
 });
 

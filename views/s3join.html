@@ -1,21 +1,18 @@
 <fieldset class="join">
     <legend>Join selected collections</legend>
-    <table id="join"><tbody>
-        <tr>
-            <td><input type="text" name="join00" class="wide-field"/></td>
-            <td><input type="text" name="join01" class="wide-field"/></td>
-        </tr>
-        <tr>
-            <td><input type="text" name="join10" class="wide-field"/></td>
-            <td><input type="text" name="join11" class="wide-field"/></td>
-        </tr>
-        <tr>
-            <td><input type="text" name="join20" class="wide-field"/></td>
-            <td><input type="text" name="join21" class="wide-field"/></td>
-        </tr>
-        <tr>
-            <td><input type="text" name="join30" class="wide-field"/></td>
-            <td><input type="text" name="join30" class="wide-field"/></td>
-        </tr>
-    </tbody></table>
+    <div id="joins"></div>
+    <input type="submit" class="no-js" value="Join collection" />
+    <label for="add_join_field" class="js">Join collection: </label>
+    <select name="add_join_field" id="addJoinField">
+        <option value="false"></option>
+        {{each(idx_cat, category) categories}}
+        {{each(idx_col, collection) category.collections}}
+        <optgroup label="${collection.name}">
+            {{each(idx_fie, field) collection.fields}}
+            <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+            {{/each}}
+        </optgroup>
+        {{/each}}
+        {{/each}}
+    </select>
 </fieldset>

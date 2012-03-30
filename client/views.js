@@ -89,13 +89,13 @@ QBA.views.Filter = Backbone.View.extend({
     },
 
     events: {
+        "click input.remove": "remove",
         "change select.filter-type": "updateFilterWidget"
     },
 
     render: function () {
         "use strict";
-        var model = this.model,
-            filter = this.model.get("filter"),
+        var filter = this.model.get("filter"),
             html;
 
         html = "<input type='submit' class='remove' value='X' />";
@@ -113,15 +113,17 @@ QBA.views.Filter = Backbone.View.extend({
 
         this.widgetView.render();
 
-        $(this.el).find("input.remove").click(function (evt) {
-            evt.stopPropagation();
-            evt.preventDefault();
-            model.get("field").get("userFilterList").remove(model);
-            $(this.parentElement).remove();
-        });
         QBA.views.jQueryUI(this.el);
 
         return this;
+    },
+
+    remove: function (evt) {
+        "use strict";
+        evt.stopPropagation();
+        evt.preventDefault();
+        this.model.get("field").get("userFilterList").remove(this.model);
+        this.$el.remove();
     },
 
     updateFilterWidget: function () {
@@ -143,5 +145,50 @@ QBA.views.Filter = Backbone.View.extend({
         this.widgetView.render();
 
         QBA.views.jQueryUI(this.$el);
+    }
+});
+
+QBA.views.Join = Backbone.View.extend({
+    tagName: "div",
+
+    className: "join",
+
+    events: {
+        "click input.remove": "remove"
+    },
+
+    render: function () {
+        "use strict";
+        var compatibleFields = QBA.theQuery.getCompatibleCheckedFields(this.model.get("source_field")),
+            aux,
+            auxFunc,
+            html,
+            i;
+
+        html = "<input type='submit' class='remove' value='X' />";
+        html += "<label for='join_target_" + this.model.get("number") + "'>" + this.model.get("source_collection").get("name") + " - " + this.model.get("source_field").get("name") + "</label>";
+        html += "<select name='join_target_" + this.model.get("number") + "' class='join-target'>";
+        auxFunc = function (field) {
+            html += "<option value='" + this.category.cid + "-" + this.collection.cid + "-" + field.cid + "'>";
+            html += field.get("name") + "</option>";
+        };
+        for (i = 0; i < compatibleFields.length; i += 1) {
+            aux = compatibleFields[i];
+            html += "<optgroup label='" + aux.collection.get("name") + "'>";
+            _.each(aux.fields, auxFunc, aux);
+            html += "</optgroup>";
+        }
+        html += "</select>";
+        $(this.el).html(html);
+
+        return this;
+    },
+
+    remove: function (evt) {
+        "use strict";
+        evt.stopPropagation();
+        evt.preventDefault();
+        this.model.get("source_field").get("joinList").remove(this.model);
+        this.$el.remove();
     }
 });

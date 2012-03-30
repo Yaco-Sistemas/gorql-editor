@@ -124,7 +124,56 @@ QBA.events = {
     step3: {
         bind: function () {
             "use strict";
-            // TODO
+            var categories = QBA.theQuery.getCategoriesWithCheckedCollections(),
+                category,
+                collections,
+                disabled = true,
+                i,
+                j;
+
+            // Look for checked fields, if none the add field select will be
+            // disabled
+            for (i = 0; i < categories.length && disabled; i += 1) {
+                category = categories[i];
+                collections = category.getCheckedCollections();
+                for (j = 0; j < collections.length && disabled; j += 1) {
+                    disabled = collections[j].getCheckedFields().length === 0;
+                }
+            }
+
+            $("#step3 #addJoinField").attr("disabled", disabled).change(function () {
+                var option = this.options[this.selectedIndex],
+                    indexes,
+                    collection,
+                    field,
+                    join,
+                    view;
+
+                if (option.value === "false") {
+                    return;
+                }
+
+                indexes = option.value.split('-');
+                indexes = [
+                    parseInt(indexes[0], 10),
+                    parseInt(indexes[1], 10),
+                    parseInt(indexes[2], 10)
+                ];
+                collection = categories[indexes[0]].getCheckedCollections()[indexes[1]];
+                field = collection.getCheckedFields()[indexes[2]];
+
+                join = new QBA.models.Join({
+                    source_collection: collection,
+                    source_field: field
+                });
+                field.get("joinList").add(join);
+
+                view = new QBA.views.Join({
+                    model: join
+                });
+                $("#step3 #joins").append(view.render().el);
+                this.selectedIndex = 0;
+            });
         },
 
         release: function () {
