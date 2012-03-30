@@ -154,7 +154,8 @@ QBA.views.Join = Backbone.View.extend({
     className: "join",
 
     events: {
-        "click input.remove": "remove"
+        "click input.remove": "remove",
+        "change select.join-target": "updateJoin"
     },
 
     render: function () {
@@ -168,15 +169,18 @@ QBA.views.Join = Backbone.View.extend({
         html = "<input type='submit' class='remove' value='X' />";
         html += "<label for='join_target_" + this.model.get("number") + "'>" + this.model.get("source_collection").get("name") + " - " + this.model.get("source_field").get("name") + "</label>";
         html += "<select name='join_target_" + this.model.get("number") + "' class='join-target'>";
+        html += "<option value='false'></option>";
         auxFunc = function (field) {
             html += "<option value='" + this.category.cid + "-" + this.collection.cid + "-" + field.cid + "'>";
             html += field.get("name") + "</option>";
         };
         for (i = 0; i < compatibleFields.length; i += 1) {
             aux = compatibleFields[i];
-            html += "<optgroup label='" + aux.collection.get("name") + "'>";
-            _.each(aux.fields, auxFunc, aux);
-            html += "</optgroup>";
+            if (aux.fields.length > 0) {
+                html += "<optgroup label='" + aux.collection.get("name") + "'>";
+                _.each(aux.fields, auxFunc, aux);
+                html += "</optgroup>";
+            }
         }
         html += "</select>";
         $(this.el).html(html);
@@ -190,5 +194,36 @@ QBA.views.Join = Backbone.View.extend({
         evt.preventDefault();
         this.model.get("source_field").get("joinList").remove(this.model);
         this.$el.remove();
+    },
+
+    updateJoin: function () {
+        "use strict";
+        var node = this.$el.find("select.join-target")[0],
+            indexes = node.options[node.selectedIndex].value,
+            category,
+            collection,
+            field;
+
+        if (indexes !== "false") {
+            indexes = indexes.split('-');
+            category = QBA.theQuery.find(function (category) {
+                return category.cid === indexes[0];
+            });
+            collection = category.get("collectionList").find(function (collection) {
+                return collection.cid === indexes[1];
+            });
+            field = collection.get("fieldList").find(function (field) {
+                return field.cid === indexes[2];
+            });
+            this.model.set({
+                target_collection: collection,
+                target_field: field
+            });
+        } else {
+            this.model.set({
+                target_collection: undefined,
+                target_field: undefined
+            });
+        }
     }
 });
