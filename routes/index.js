@@ -50,6 +50,7 @@ exports.index = function (request, response) {
                 layout: false,
                 locals: {
                     debugJS: app.exports.settings.debugJS,
+                    viewer: app.exports.settings.viewer,
                     schema: { categories: schema },
                     schemaJSON: JSON.stringify(schema),
                     templates: templates,

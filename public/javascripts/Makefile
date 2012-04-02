@@ -22,7 +22,7 @@
 UJS=../../node_modules/uglify-js/bin/uglifyjs
 UJSFLAGS=-nc
 
-all: ../../node_modules/uglify-js/bin/uglifyjs ../../node_modules/backbone/node_modules/underscore/underscore-min.js ../../node_modules/backbone/backbone-min.js ../../client/models.js jqtpl-min.js ../../client/models.js ../../client/events.js ../../client/views.js ../../client/filters.js
+all: ../../node_modules/uglify-js/bin/uglifyjs ../../node_modules/backbone/node_modules/underscore/underscore-min.js ../../node_modules/backbone/backbone-min.js ../../client/models.js jqtpl-min.js ../../client/models.js ../../client/events.js ../../client/views.js ../../client/filters.js ../../client/preview.js
 	echo "// Copyright 2012 Yaco Sistemas S.L. - Developed by <ablanco@yaco.es> - EUPL 1.1 License - http://joinup.ec.europa.eu/software/page/eupl" > qba.min.js
 	cat ../../node_modules/backbone/node_modules/underscore/underscore-min.js >> qba.min.js
 	cat ../../node_modules/backbone/backbone-min.js >> qba.min.js
@@ -31,22 +31,25 @@ all: ../../node_modules/uglify-js/bin/uglifyjs ../../node_modules/backbone/node_
 	$(UJS) $(UJSFLAGS) ../../client/events.js >> qba.min.js
 	$(UJS) $(UJSFLAGS) ../../client/views.js >> qba.min.js
 	$(UJS) $(UJSFLAGS) ../../client/filters.js >> qba.min.js
+	$(UJS) $(UJSFLAGS) ../../client/preview.js >> qba.min.js
 
 clean: qba.min.js
 	rm -f qba.min.js
 
-debug: ../../node_modules/backbone/node_modules/underscore/underscore.js ../../node_modules/backbone/backbone.js ../../client/models.js ../../client/events.js ../../client/views.js ../../client/filters.js
+debug: ../../node_modules/backbone/node_modules/underscore/underscore.js ../../node_modules/backbone/backbone.js ../../client/models.js ../../client/events.js ../../client/views.js ../../client/filters.js ../../client/preview.js
 	cp ../../node_modules/backbone/node_modules/underscore/underscore.js .
 	cp ../../node_modules/backbone/backbone.js .
 	cp ../../client/models.js .
 	cp ../../client/events.js .
 	cp ../../client/views.js .
 	cp ../../client/filters.js .
+	cp ../../client/preview.js .
 
-cleandebug: underscore.js backbone.js models.js events.js views.js filters.js
+cleandebug: underscore.js backbone.js models.js events.js views.js filters.js preview.js
 	rm -rf underscore.js
 	rm -f backbone.js
 	rm -f models.js
 	rm -f events.js
 	rm -f views.js
 	rm -f filters.js
+	rm -f preview.js

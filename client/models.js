@@ -252,6 +252,11 @@ QBA.models.CategoryList = Backbone.Collection.extend({
         };
     },
 
+    toSPARQL: function () {
+        "use strict";
+        return 'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX type: <http://dbpedia.org/class/yago/> PREFIX prop: <http://dbpedia.org/property/> SELECT ?country_name ?population WHERE { ?country a type:LandlockedCountries ; rdfs:label ?country_name ; prop:populationEstimate ?population . FILTER (?population > 10000000 && langMatches(lang(?country_name), "ES")) . }';
+    },
+
     getCategoriesWithCheckedCollections: function () {
         "use strict";
         return this.filter(function (category) {

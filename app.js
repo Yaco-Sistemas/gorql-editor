@@ -47,6 +47,7 @@ app.configure(function () {
 
     app.set('debugJS', settings.global.debug);
     app.set('schema', settings.global.schema);
+    app.set('viewer', settings.global.viewer);
 });
 
 app.configure('development', function () {

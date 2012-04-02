@@ -27,6 +27,7 @@ exports.settings = {
         root: "",
         debug: true,
         port: 3010,
+        viewer: "http://data-viewer.ceic-ogov.yaco.es",
         schema: "endpoints/dbpedia.json"
     },
 

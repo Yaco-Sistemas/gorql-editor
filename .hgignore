@@ -8,5 +8,6 @@ public/javascripts/models.js
 public/javascripts/events.js
 public/javascripts/views.js
 public/javascripts/filters.js
+public/javascripts/preview.js
 
 public/javascripts/qba.min.js
