@@ -22,9 +22,9 @@
 UJS=../../node_modules/uglify-js/bin/uglifyjs
 UJSFLAGS=-nc
 
-all: ../../node_modules/uglify-js/bin/uglifyjs underscore.js ../../node_modules/backbone/backbone-min.js ../../client/models.js jqtpl-min.js ../../client/models.js ../../client/events.js ../../client/views.js ../../client/filters.js
+all: ../../node_modules/uglify-js/bin/uglifyjs ../../node_modules/backbone/node_modules/underscore/underscore-min.js ../../node_modules/backbone/backbone-min.js ../../client/models.js jqtpl-min.js ../../client/models.js ../../client/events.js ../../client/views.js ../../client/filters.js
 	echo "// Copyright 2012 Yaco Sistemas S.L. - Developed by <ablanco@yaco.es> - EUPL 1.1 License - http://joinup.ec.europa.eu/software/page/eupl" > qba.min.js
-	$(UJS) $(UJSFLAGS) underscore.js >> qba.min.js
+	cat ../../node_modules/backbone/node_modules/underscore/underscore-min.js >> qba.min.js
 	cat ../../node_modules/backbone/backbone-min.js >> qba.min.js
 	cat jqtpl-min.js >> qba.min.js
 	$(UJS) $(UJSFLAGS) ../../client/models.js >> qba.min.js
@@ -35,14 +35,16 @@ all: ../../node_modules/uglify-js/bin/uglifyjs underscore.js ../../node_modules/
 clean: qba.min.js
 	rm -f qba.min.js
 
-debug: ../../node_modules/backbone/backbone.js ../../client/models.js ../../client/events.js ../../client/views.js ../../client/filters.js
+debug: ../../node_modules/backbone/node_modules/underscore/underscore.js ../../node_modules/backbone/backbone.js ../../client/models.js ../../client/events.js ../../client/views.js ../../client/filters.js
+	cp ../../node_modules/backbone/node_modules/underscore/underscore.js .
 	cp ../../node_modules/backbone/backbone.js .
 	cp ../../client/models.js .
 	cp ../../client/events.js .
 	cp ../../client/views.js .
 	cp ../../client/filters.js .
 
-cleandebug: backbone.js models.js events.js views.js filters.js
+cleandebug: underscore.js backbone.js models.js events.js views.js filters.js
+	rm -rf underscore.js
 	rm -f backbone.js
 	rm -f models.js
 	rm -f events.js
