@@ -254,7 +254,80 @@ QBA.models.CategoryList = Backbone.Collection.extend({
 
     toSPARQL: function () {
         "use strict";
-        return 'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX type: <http://dbpedia.org/class/yago/> PREFIX prop: <http://dbpedia.org/property/> SELECT ?country_name ?population WHERE { ?country a type:LandlockedCountries ; rdfs:label ?country_name ; prop:populationEstimate ?population . FILTER (?population > 10000000 && langMatches(lang(?country_name), "ES")) . }';
+        var SPARQL = "",
+            checkedCollections,
+            checkedFields,
+            prefixes,
+            usedPrefixes = [],
+            fieldsByCollections,
+            i,
+            key,
+            aux;
+
+        // PREFIXES
+
+        checkedCollections = this.map(function (category) {
+            return category.getCheckedCollections();
+        });
+        prefixes = _.flatten(_.map(checkedCollections, function (collections) {
+            return _.map(collections, function (collection) {
+                return collection.get("prefixes");
+            });
+        }));
+
+        for (i = 0; i < prefixes.length; i += 1) {
+            aux = prefixes[i];
+            for (key in aux) {
+                if (aux.hasOwnProperty(key)) {
+                    if (_.indexOf(usedPrefixes, key) === -1) {
+                        usedPrefixes.push(key);
+                        SPARQL += "PREFIX " + key + ": " + aux[key] + " ";
+                    }
+                }
+            }
+        }
+
+        // SELECT
+
+        fieldsByCollections = _.flatten(_.map(checkedCollections, function (collections) {
+            return _.flatten(_.map(collections, function (collection) {
+                return {
+                    collection: collection,
+                    fields: collection.getCheckedFields()
+                };
+            }));
+        }));
+
+        SPARQL += "SELECT ";
+
+        i = 0;
+        _.each(fieldsByCollections, function (data) {
+            _.each(data.fields, function (field) {
+                SPARQL += "?" + field.get("name").split(":")[1] + i + "Vble ";
+                i += 1;
+            });
+        });
+
+        // WHERE
+
+        SPARQL += "WHERE { ";
+
+        i = 0;
+        _.each(fieldsByCollections, function (data) {
+            aux = "?" + data.collection.get("name").replace(/\s/g, "_");
+            SPARQL += aux + " <http://purl.org/dc/terms/subject> <" + data.collection.get("url") + "> . ";
+            _.each(data.fields, function (field) {
+                SPARQL += aux + " " + field.get("name") + " ";
+                SPARQL += "?" + field.get("name").split(":")[1] + i + "Vble . ";
+                i += 1;
+            });
+        });
+
+        // TODO
+
+        SPARQL += "}";
+
+        return SPARQL;
     },
 
     getCategoriesWithCheckedCollections: function () {
