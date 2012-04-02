@@ -78,6 +78,12 @@ QBA.events = {
                     alert('error');
                 }
             });
+
+            $("#preview input[name=preview]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                QBA.preview.updateTable();
+            });
         },
 
         release: function () {

@@ -38,7 +38,7 @@ QBA.preview.callDV = function () {
     if (typeof DV.data === "undefined") {
         setTimeout(QBA.preview.callDV, 300);
     } else {
-        DV.writeDataToTable($("#preview #preview_table")[0], 0);
+        DV.writeDataToTable($("#preview #viewport #preview_table")[0], 0);
     }
 };
 
@@ -52,7 +52,7 @@ QBA.preview.updateTable = function () {
     }
 
     if (typeof QBA.preview.$el === "undefined") {
-        QBA.preview.$el = $("#preview");
+        QBA.preview.$el = $("#preview #viewport");
     }
 
     html = "<script type='text/javascript' src='" + QBA.preview.viewer;
