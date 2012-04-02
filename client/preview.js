@@ -1,5 +1,5 @@
 /*jslint vars: false, browser: true */
-/*global QBA: true, $ */
+/*global QBA: true, $, DV */
 
 // Copyright 2012 Yaco Sistemas S.L.
 //
@@ -28,17 +28,32 @@ if (typeof QBA === 'undefined') {
 
 QBA.preview = {};
 
-QBA.preview.$el = $("#preview");
-
 QBA.preview.setViewer = function (domain) {
     "use strict";
     QBA.preview.viewer = domain;
+};
+
+QBA.preview.callDV = function () {
+    "use strict";
+    if (typeof DV.data === "undefined") {
+        setTimeout(QBA.preview.callDV, 300);
+    } else {
+        DV.writeDataToTable($("#preview #preview_table")[0], 0);
+    }
 };
 
 QBA.preview.updateTable = function () {
     "use strict";
     var SPARQL = QBA.theQuery.toSPARQL(),
         html;
+
+    if (typeof DV.data !== "undefined") {
+        delete DV.data;
+    }
+
+    if (typeof QBA.preview.$el === "undefined") {
+        QBA.preview.$el = $("#preview");
+    }
 
     html = "<script type='text/javascript' src='" + QBA.preview.viewer;
     html += "/viewer/?query=" + encodeURIComponent(SPARQL);
@@ -47,11 +62,5 @@ QBA.preview.updateTable = function () {
     html += "<table id='preview_table' class='dv_table'></table>";
 
     QBA.preview.$el.html(html);
-
-    html = "<script type='text/javascript'>";
-    html += "DomReady.ready(function () {";
-    html += "DV.writeDataToTable(Sizzle('#preview_table')[0], 0);";
-    html += "});</script>";
-
-    QBA.preview.$el.append(html);
+    setTimeout(QBA.preview.callDV, 300);
 };
