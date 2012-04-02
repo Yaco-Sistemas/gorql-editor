@@ -41,8 +41,12 @@ QBA.preview.updateTable = function () {
         html;
 
     html = "<script type='text/javascript' src='" + QBA.preview.viewer;
+    html += "/javascripts/dv-core.js'></script>";
+
+    html += "<script type='text/javascript' src='" + QBA.preview.viewer;
     html += "/viewer/?query=" + encodeURIComponent(SPARQL);
     html += "&amp;embedded=true&amp;idx=0'></script>";
+
     html += "<table id='preview_table' class='dv_table'></table>";
 
     QBA.preview.$el.html(html);

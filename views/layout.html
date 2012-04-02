@@ -15,12 +15,6 @@
     {{if debugJS}}{{partial "debug"}}{{else}}
     <script type="text/javascript" src="/javascripts/qba.min.js"></script>
     {{/if}}
-    <script type="text/javascript">
-        var Timeline_ajax_url="${viewer}/javascripts/timeline_ajax/simile-ajax-api.js",
-            Timeline_urlPrefix='${viewer}/javascripts/timeline_js/',
-            Timeline_parameters='bundle=true&defaultLocale="es"';
-    </script>
-    <script type="text/javascript" src="${viewer}/javascripts/dv.min.js"></script>
     {{if templates}}
     <script type="text/plain" id="step1Tpl">{{html templates[0]}}</script>
     <script type="text/plain" id="step2Tpl">{{html templates[1]}}</script>
