@@ -38,6 +38,15 @@ QBA.models.UserFilter = Backbone.Model.extend({
             value: undefined,
             number: -1
         };
+    },
+
+    isReady: function () {
+        "use strict";
+        return (typeof this.attributes.collection !== "undefined") &&
+            (typeof this.attributes.field !== "undefined") &&
+            (typeof this.attributes.filter !== "undefined") &&
+            (typeof this.attributes.value !== "undefined") &&
+            (this.attributes.number > -1);
     }
 });
 
@@ -51,7 +60,8 @@ QBA.models.Filter = Backbone.Model.extend({
         return {
             name: "",
             widget: "",
-            parameters: {}
+            parameters: {},
+            code: ""
         };
     }
 });
@@ -256,12 +266,12 @@ QBA.models.CategoryList = Backbone.Collection.extend({
         "use strict";
         var SPARQL = "",
             checkedCollections,
-            checkedFields,
             prefixes,
             usedPrefixes = [],
             fieldsByCollections,
             i,
             key,
+            firstFilter = true,
             aux;
 
         // PREFIXES
@@ -315,7 +325,7 @@ QBA.models.CategoryList = Backbone.Collection.extend({
         i = 0;
         _.each(fieldsByCollections, function (data) {
             aux = "?" + data.collection.get("name").replace(/\s/g, "_");
-            SPARQL += aux + " <http://purl.org/dc/terms/subject> <" + data.collection.get("url") + "> . ";
+            SPARQL += aux + " <http://purl.org/dc/terms/subject> " + data.collection.get("url") + " . ";
             _.each(data.fields, function (field) {
                 SPARQL += aux + " " + field.get("name") + " ";
                 SPARQL += "?" + field.get("name").split(":")[1] + i + "Vble . ";
@@ -323,7 +333,33 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             });
         });
 
+        // JOIN
+
         // TODO
+
+        // FILTERS
+
+        i = 0;
+        _.each(fieldsByCollections, function (data) {
+            _.each(data.fields, function (field) {
+                field.get("userFilterList").each(function (userFilter) {
+                    if (userFilter.isReady()) {
+                        if (firstFilter) {
+                            SPARQL += "FILTER (";
+                            firstFilter = false;
+                        } else {
+                            SPARQL += "&& ";
+                        }
+                        aux = QBA.utils.getFilterSPARQL(userFilter.get("filter"));
+                        SPARQL += aux("?" + field.get("name").split(":")[1] + i + "Vble", userFilter.get("value")) + " ";
+                    }
+                });
+                i += 1;
+            });
+        });
+        if (!firstFilter) {
+            SPARQL += ") . ";
+        }
 
         SPARQL += "}";
 

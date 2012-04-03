@@ -55,8 +55,6 @@ QBA.preview.updateTable = function () {
         QBA.preview.$el = $("#preview #viewport");
     }
 
-//     alert(SPARQL);
-
     html = "<script type='text/javascript' src='" + QBA.preview.viewer;
     html += "/viewer/?query=" + encodeURIComponent(SPARQL);
     html += "&amp;embedded=true&amp;idx=0'></script>";

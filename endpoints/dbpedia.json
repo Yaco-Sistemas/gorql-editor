@@ -2,7 +2,7 @@
     "name": "Rock musicians",
     "collections": [{
             "name": "American rock musicians",
-            "url": "http://dbpedia.org/resource/Category:American_rock_musicians",
+            "url": "<http://dbpedia.org/resource/Category:American_rock_musicians>",
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -14,11 +14,13 @@
                     "filters" : [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -27,7 +29,8 @@
                     "filters": [
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -36,7 +39,8 @@
                     "filters": [
                         {
                             "name": "Between",
-                            "widget": "date_range"
+                            "widget": "date_range",
+                            "code": ""
                         }
                     ]
                 },
@@ -51,7 +55,7 @@
             ]
         }, {
             "name": "Irish rock musicians",
-            "url": "http://dbpedia.org/resource/Category:Irish_rock_musicians",
+            "url": "<http://dbpedia.org/resource/Category:Irish_rock_musicians>",
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -63,11 +67,13 @@
                     "filters" : [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -76,7 +82,8 @@
                     "filters": [
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -85,7 +92,8 @@
                     "filters": [
                         {
                             "name": "Between",
-                            "widget": "date_range"
+                            "widget": "date_range",
+                            "code": ""
                         }
                     ]
                 },
@@ -100,7 +108,7 @@
             ]
         }, {
             "name": "British rock musicians",
-            "url": "http://dbpedia.org/resource/Category:British_rock_musicians",
+            "url": "<http://dbpedia.org/resource/Category:British_rock_musicians>",
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -112,11 +120,13 @@
                     "filters" : [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -125,7 +135,8 @@
                     "filters": [
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -134,7 +145,8 @@
                     "filters": [
                         {
                             "name": "Between",
-                            "widget": "date_range"
+                            "widget": "date_range",
+                            "code": ""
                         }
                     ]
                 },
@@ -153,7 +165,7 @@
     "name": "Rock albums",
     "collections": [{
             "name": "Hard rock albums",
-            "url": "http://dbpedia.org/resource/Category:Hard_rock_albums",
+            "url": "<http://dbpedia.org/resource/Category:Hard_rock_albums>",
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -165,11 +177,13 @@
                     "fields": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -178,7 +192,8 @@
                     "filters": [
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -191,7 +206,8 @@
                     "filters": [
                         {
                             "name": "Between",
-                            "widget": "date_range"
+                            "widget": "date_range",
+                            "code": ""
                         }
                     ]
                 },
@@ -200,11 +216,13 @@
                     "fields": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -213,11 +231,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -226,11 +246,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -239,11 +261,13 @@
                     "filters" : [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -256,14 +280,15 @@
                             "parameters": {
                                 "min": 0,
                                 "max": 400
-                            }
+                            },
+                            "code": ""
                         }
                     ]
                 }
             ]
         }, {
             "name": "Alternative rock albums",
-            "url": "http://dbpedia.org/resource/Category:Alternative_rock_albums",
+            "url": "<http://dbpedia.org/resource/Category:Alternative_rock_albums>",
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -275,11 +300,13 @@
                     "fields": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -288,7 +315,8 @@
                     "filters": [
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -301,7 +329,8 @@
                     "filters": [
                         {
                             "name": "Between",
-                            "widget": "date_range"
+                            "widget": "date_range",
+                            "code": ""
                         }
                     ]
                 },
@@ -310,11 +339,13 @@
                     "fields": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -323,11 +354,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -336,11 +369,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -349,11 +384,13 @@
                     "filters" : [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -366,14 +403,15 @@
                             "parameters": {
                                 "min": 0,
                                 "max": 400
-                            }
+                            },
+                            "code": ""
                         }
                     ]
                 }
             ]
         }, {
             "name": "Progressive rock albums",
-            "url": "http://dbpedia.org/resource/Category:Progressive_rock_albums",
+            "url": "<http://dbpedia.org/resource/Category:Progressive_rock_albums>",
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -385,11 +423,13 @@
                     "fields": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -398,7 +438,8 @@
                     "filters": [
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -411,7 +452,8 @@
                     "filters": [
                         {
                             "name": "Between",
-                            "widget": "date_range"
+                            "widget": "date_range",
+                            "code": ""
                         }
                     ]
                 },
@@ -420,11 +462,13 @@
                     "fields": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -433,11 +477,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -446,11 +492,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -459,11 +507,13 @@
                     "filters" : [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -476,7 +526,8 @@
                             "parameters": {
                                 "min": 0,
                                 "max": 400
-                            }
+                            },
+                            "code": ""
                         }
                     ]
                 }
@@ -487,7 +538,7 @@
     "name": "Rock music groups",
     "collections": [{
             "name": "Irish rock music groups",
-            "url": "http://dbpedia.org/resource/Category:Irish_rock_music_groups",
+            "url": "<http://dbpedia.org/resource/Category:Irish_rock_music_groups>",
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -499,11 +550,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -512,7 +565,8 @@
                     "filters": [
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -529,11 +583,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -542,11 +598,13 @@
                     "filters" : [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -563,7 +621,8 @@
                             "parameters": {
                                 "min": 1900,
                                 "max": 2100
-                            }
+                            },
+                            "code": ""
                         }
                     ]
                 },
@@ -574,7 +633,7 @@
             ]
         }, {
             "name": "American rock music groups",
-            "url": "http://dbpedia.org/resource/Category:American_rock_music_groups",
+            "url": "<http://dbpedia.org/resource/Category:American_rock_music_groups>",
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -586,11 +645,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -599,7 +660,8 @@
                     "filters": [
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -616,11 +678,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -629,11 +693,13 @@
                     "filters" : [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -650,7 +716,8 @@
                             "parameters": {
                                 "min": 1900,
                                 "max": 2100
-                            }
+                            },
+                            "code": ""
                         }
                     ]
                 },
@@ -661,7 +728,7 @@
             ]
         }, {
             "name": "Spanish rock music groups",
-            "url": "http://dbpedia.org/resource/Category:Spanish_rock_music_groups",
+            "url": "<http://dbpedia.org/resource/Category:Spanish_rock_music_groups>",
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -673,11 +740,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -686,7 +755,8 @@
                     "filters": [
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -703,11 +773,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -716,11 +788,13 @@
                     "filters" : [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -737,7 +811,8 @@
                             "parameters": {
                                 "min": 1900,
                                 "max": 2100
-                            }
+                            },
+                            "code": ""
                         }
                     ]
                 },
@@ -748,7 +823,7 @@
             ]
         }, {
             "name": "German rock music groups",
-            "url": "http://dbpedia.org/resource/Category:German_rock_music_groups",
+            "url": "<http://dbpedia.org/resource/Category:German_rock_music_groups>",
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -760,11 +835,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -773,7 +850,8 @@
                     "filters": [
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -790,11 +868,13 @@
                     "filters": [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -803,11 +883,13 @@
                     "filters" : [
                         {
                             "name": "Equal",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "equal"
                         },
                         {
                             "name": "Contains",
-                            "widget": "text"
+                            "widget": "text",
+                            "code": "contains"
                         }
                     ]
                 },
@@ -824,7 +906,8 @@
                             "parameters": {
                                 "min": 1900,
                                 "max": 2100
-                            }
+                            },
+                            "code": ""
                         }
                     ]
                 },

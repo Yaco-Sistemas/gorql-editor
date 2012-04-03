@@ -151,6 +151,30 @@ QBA.utils.getFilterWidgetView = function (key) {
     return widget;
 };
 
+QBA.utils.filterSPARQL = {
+    text_equal: function (vble, value) {
+        "use strict";
+        return "str(" + vble + ") = " + value;
+    },
+    text_contains: function (vble, value) {
+        "use strict";
+        return "regex(str(" + vble + "), \"^.*" + value + ".*$\", \"i\")";
+    },
+    date_range: function (vble, value) {
+        "use strict";
+        return value[0] + " < " + vble + " < " + value[1];
+    },
+    number_range: function (vble, value) {
+        "use strict";
+        return value[0] + " < " + vble + " < " + value[1];
+    }
+};
+
+QBA.utils.getFilterSPARQL = function (filter) {
+    "use strict";
+    return QBA.utils.filterSPARQL[filter.get("widget") + "_" + filter.get("code")];
+};
+
 // Browser
 if (typeof exports !== "undefined") {
     exports.getFilterWidgetView = QBA.utils.getFilterWidgetView;
