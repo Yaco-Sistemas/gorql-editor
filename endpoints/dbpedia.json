@@ -2,7 +2,10 @@
     "name": "Rock musicians",
     "collections": [{
             "name": "American rock musicians",
-            "url": "<http://dbpedia.org/resource/Category:American_rock_musicians>",
+            "identifier": "usarockmusician",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:American_rock_musicians>"
+            ],
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -55,7 +58,10 @@
             ]
         }, {
             "name": "Irish rock musicians",
-            "url": "<http://dbpedia.org/resource/Category:Irish_rock_musicians>",
+            "identifier": "irishrockmusician",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Irish_rock_musicians>"
+            ],
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -108,7 +114,10 @@
             ]
         }, {
             "name": "British rock musicians",
-            "url": "<http://dbpedia.org/resource/Category:British_rock_musicians>",
+            "identifier": "ukrockmusician",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:British_rock_musicians>"
+            ],
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -165,7 +174,10 @@
     "name": "Rock albums",
     "collections": [{
             "name": "Hard rock albums",
-            "url": "<http://dbpedia.org/resource/Category:Hard_rock_albums>",
+            "identifier": "hardrock",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Hard_rock_albums>"
+            ],
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -288,7 +300,10 @@
             ]
         }, {
             "name": "Alternative rock albums",
-            "url": "<http://dbpedia.org/resource/Category:Alternative_rock_albums>",
+            "identifier": "altrock",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Alternative_rock_albums>"
+            ],
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -411,7 +426,10 @@
             ]
         }, {
             "name": "Progressive rock albums",
-            "url": "<http://dbpedia.org/resource/Category:Progressive_rock_albums>",
+            "identifier": "progressiverock",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Progressive_rock_albums>"
+            ],
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -538,7 +556,10 @@
     "name": "Rock music groups",
     "collections": [{
             "name": "Irish rock music groups",
-            "url": "<http://dbpedia.org/resource/Category:Irish_rock_music_groups>",
+            "identifier": "irishrockband",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Irish_rock_music_groups>"
+            ],
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -633,7 +654,10 @@
             ]
         }, {
             "name": "American rock music groups",
-            "url": "<http://dbpedia.org/resource/Category:American_rock_music_groups>",
+            "identifier": "usarockband",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:American_rock_music_groups>"
+            ],
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -728,7 +752,10 @@
             ]
         }, {
             "name": "Spanish rock music groups",
-            "url": "<http://dbpedia.org/resource/Category:Spanish_rock_music_groups>",
+            "identifier": "spanishrockband",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Spanish_rock_music_groups>"
+            ],
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
@@ -823,7 +850,10 @@
             ]
         }, {
             "name": "German rock music groups",
-            "url": "<http://dbpedia.org/resource/Category:German_rock_music_groups>",
+            "identifier": "germanrockband",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:German_rock_music_groups>"
+            ],
             "prefixes": {
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",

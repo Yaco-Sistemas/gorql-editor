@@ -160,13 +160,13 @@ QBA.utils.filterSPARQL = {
         "use strict";
         return "regex(str(" + vble + "), \"^.*" + value + ".*$\", \"i\")";
     },
-    date_range: function (vble, value) {
+    date_range_: function (vble, value) {
         "use strict";
-        return value[0] + " < " + vble + " < " + value[1];
+        return value[0] + " < " + vble + " && " + vble + " < " + value[1];
     },
-    number_range: function (vble, value) {
+    number_range_: function (vble, value) {
         "use strict";
-        return value[0] + " < " + vble + " < " + value[1];
+        return value[0] + " < " + vble + " && " + vble + " < " + value[1];
     }
 };
 

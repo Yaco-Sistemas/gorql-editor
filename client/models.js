@@ -134,7 +134,8 @@ QBA.models.Collection = Backbone.Model.extend({
         "use strict";
         return {
             name: '',
-            url: '',
+            identifier: '',
+            definition: [],
             checked: false,
             prefixes: {},
             fieldList: new QBA.models.FieldList()
@@ -146,7 +147,6 @@ QBA.models.Collection = Backbone.Model.extend({
         var result = {};
         step = step || 1;
         result.name = this.attributes.name;
-        result.url = this.attributes.url;
         result.checked = this.attributes.checked;
         if (step > 2) {
             result.fields = _.map(this.getCheckedFields(), function (field) {
@@ -324,8 +324,12 @@ QBA.models.CategoryList = Backbone.Collection.extend({
 
         i = 0;
         _.each(fieldsByCollections, function (data) {
-            aux = "?" + data.collection.get("name").replace(/\s/g, "_");
-            SPARQL += aux + " <http://purl.org/dc/terms/subject> " + data.collection.get("url") + " . ";
+            aux = "?" + data.collection.get("identifier");
+            // Create collection variable
+            _.each(data.collection.get("definition"), function (def) {
+                SPARQL += aux + " " + def + " .";
+            });
+            // Create fields variables
             _.each(data.fields, function (field) {
                 SPARQL += aux + " " + field.get("name") + " ";
                 SPARQL += "?" + field.get("name").split(":")[1] + i + "Vble . ";
@@ -445,7 +449,8 @@ QBA.models.loadSchema = function () {
             collection = category.collections[j];
             collectionObj = new QBA.models.Collection({
                 name: collection.name,
-                url: collection.url,
+                identifier: collection.identifier,
+                definition: collection.definition,
                 prefixes: collection.prefixes
             });
             for (h = 0; h < collection.fields.length; h += 1) {
