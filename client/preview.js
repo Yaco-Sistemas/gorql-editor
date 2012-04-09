@@ -47,6 +47,8 @@ QBA.preview.updateTable = function () {
     var SPARQL = QBA.theQuery.toSPARQL(),
         html;
 
+    $("#debug #query").text(SPARQL);
+
     if (typeof DV.data !== "undefined") {
         delete DV.data;
     }

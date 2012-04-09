@@ -23,6 +23,10 @@ a.button {
     margin-top: 10px;
 }
 
+#preview #query {
+    white-space: pre-wrap;
+}
+
 body.no-js .js,
 body.js .no-js,
 .hidden {
