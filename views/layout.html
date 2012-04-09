@@ -55,32 +55,25 @@
             <input type="submit" class="no-js" name="s1_next" value="Next"/>
         </section>
 
-        <section id="step2" class="step ${steps.s2}">
+        <section id="step2" class="step ${steps.s2} js">
             {{partial(schema) "s2choose"}}
-            <input type="submit" class="no-js" name="s2_prev" value="Previous"/>
-            <input type="submit" class="no-js" name="s2_next" value="Next"/>
         </section>
 
-        <section id="step3" class="step ${steps.s3}">
+        <section id="step3" class="step ${steps.s3} js">
             {{partial(schema) "s3join"}}
-            <input type="submit" class="no-js" name="s3_prev" value="Previous"/>
-            <input type="submit" class="no-js" name="s3_next" value="Next"/>
         </section>
 
-        <section id="step4" class="step ${steps.s4}">
+        <section id="step4" class="step ${steps.s4} js">
             {{partial(schema) "s4filter"}}
-            <input type="submit" class="no-js" name="s4_prev" value="Previous"/>
-            <input type="submit" class="no-js" name="s4_next" value="Next"/>
         </section>
 
-        <section id="step5" class="step ${steps.s5}">
+        <section id="step5" class="step ${steps.s5} js">
             {{partial(schema) "s5paint"}}
-            <input type="submit" class="no-js" name="s5_prev" value="Previous"/>
             <input type="submit" name="done" value="Done"/>
         </section>
     </form>
     <section id="preview">
-        <input type="submit" name="preview" value="Generate preview"/>
+        <input type="submit" name="preview" value="Generate preview" />
         <div id="viewport"></div>
         <pre id="debug"><code class="language-sparql" id="query"></code></pre>
     </section>

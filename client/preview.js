@@ -1,5 +1,5 @@
-/*jslint vars: false, browser: true */
-/*global QBA: true, $, DV */
+/*jslint vars: false, browser: true, nomen: true */
+/*global QBA: true, $, DV, _ */
 
 // Copyright 2012 Yaco Sistemas S.L.
 //
@@ -33,19 +33,25 @@ QBA.preview.setViewer = function (domain) {
     QBA.preview.viewer = domain;
 };
 
-QBA.preview.callDV = function () {
+QBA.preview.callDV = function (chart, params) {
     "use strict";
+    var func;
     if (typeof DV.data === "undefined") {
-        setTimeout(QBA.preview.callDV, 300);
+        setTimeout(function () {
+            QBA.preview.callDV(chart, params);
+        }, 300);
     } else {
         DV.writeDataToTable($("#preview #viewport #preview_table")[0], 0);
+        if (chart !== false) {
+            func = DV[chart];
+            func("#preview #viewport #preview_chart", "#preview #viewport #preview_table", params);
+        }
     }
 };
 
-QBA.preview.updateTable = function () {
+QBA.preview.init = function (SPARQL) {
     "use strict";
-    var SPARQL = QBA.theQuery.toSPARQL(),
-        html;
+    var html;
 
     $("#debug #query").text(SPARQL);
 
@@ -61,8 +67,57 @@ QBA.preview.updateTable = function () {
     html += "/viewer/?query=" + encodeURIComponent(SPARQL);
     html += "&amp;embedded=true&amp;idx=0'></script>";
 
+    return html;
+};
+
+QBA.preview.updateTable = function () {
+    "use strict";
+    var SPARQL = QBA.theQuery.toSPARQL(),
+        html = QBA.preview.init(SPARQL);
+
     html += "<table id='preview_table' class='dv_table'></table>";
 
     QBA.preview.$el.html(html);
-    setTimeout(QBA.preview.callDV, 300);
+    setTimeout(function () {
+        QBA.preview.callDV(false);
+    }, 300);
+};
+
+QBA.preview.updateChart = function () {
+    "use strict";
+    var SPARQL = QBA.theQuery.toSPARQL(),
+        html = QBA.preview.init(SPARQL),
+        radios = $("input[name=chart_type]"),
+        radio;
+
+    html += "<table id='preview_table' class='dv_table' style='display: none;'></table>";
+    html += "<div id='preview_chart' class='dv_viewport'></div>";
+
+    radio = _.filter(radios, function (radio) { return radio.checked; })[0];
+
+    QBA.preview.$el.html(html);
+    setTimeout(function () {
+        QBA.preview.callDV(radio.value, QBA.preview.getChartParams(radio.value));
+    }, 300);
+};
+
+QBA.preview.getChartParams = function (chart) {
+    "use strict";
+    var params = $("#step5 #" + chart + "Params div.parameter input"),
+        options = _.map(params, function (p) { return {
+            key: $(p).attr("name").split('-')[1],
+            value: $(p).val()
+        }; }),
+        result = {};
+
+    _.each(options, function (opt) {
+        if (opt.value !== "") {
+            if (opt.value === "on") {
+                opt.value = true;
+            }
+            result[opt.key] = opt.value;
+        }
+    });
+
+    return result;
 };

@@ -88,6 +88,7 @@ QBA.events = {
 
         release: function () {
             "use strict";
+            $("#preview input[name=preview]").unbind("click");
             // TODO
         }
     },
@@ -119,10 +120,17 @@ QBA.events = {
                     alert('error');
                 }
             });
+
+            $("#preview input[name=preview]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                QBA.preview.updateTable();
+            });
         },
 
         release: function () {
             "use strict";
+            $("#preview input[name=preview]").unbind("click");
             // TODO
         }
     },
@@ -180,10 +188,17 @@ QBA.events = {
                 $("#step3 #joins").append(view.render().el);
                 this.selectedIndex = 0;
             });
+
+            $("#preview input[name=preview]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                QBA.preview.updateTable();
+            });
         },
 
         release: function () {
             "use strict";
+            $("#preview input[name=preview]").unbind("click");
             // TODO
         }
     },
@@ -244,10 +259,17 @@ QBA.events = {
                 $("#step4 #filters").append(view.render().el);
                 this.selectedIndex = 0;
             });
+
+            $("#preview input[name=preview]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                QBA.preview.updateTable();
+            });
         },
 
         release: function () {
             "use strict";
+            $("#preview input[name=preview]").unbind("click");
             // TODO
         }
     },
@@ -260,10 +282,17 @@ QBA.events = {
                 $("#step5 .paramsContainer").css("display", "none");
                 $("#step5 #" + chart + "Params").css("display", "block");
             });
+
+            $("#preview input[name=preview]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                QBA.preview.updateChart();
+            });
         },
 
         release: function () {
             "use strict";
+            $("#preview input[name=preview]").unbind("click");
             // TODO
         }
     }
