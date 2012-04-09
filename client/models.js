@@ -293,7 +293,7 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             aux = "?" + data.collection.get("identifier");
             // Create collection variable
             _.each(data.collection.get("definition"), function (def) {
-                SPARQL += aux + " " + def + " .";
+                SPARQL += aux + " " + def + " . ";
             });
             // Create fields variables
             _.each(data.fields, function (field) {
@@ -320,7 +320,7 @@ QBA.models.CategoryList = Backbone.Collection.extend({
                         } else {
                             SPARQL += "&& ";
                         }
-                        aux = QBA.utils.getFilterSPARQL(userFilter.get("filter"));
+                        aux = QBA.filters.getFilterSPARQL(field.get("type"), userFilter.get("filter"));
                         SPARQL += aux("?" + field.get("name").split(":")[1] + i + "Vble", userFilter.get("value")) + " ";
                     }
                 });

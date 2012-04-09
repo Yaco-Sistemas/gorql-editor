@@ -86,7 +86,7 @@ QBA.filters.filterWidgets = {
         render: function () {
             "use strict";
             var parameters = this.model.get("field").get("parameters"),
-                html = "<div class='filter-widget range'></div>",
+                html = "",
                 value = this.model.get("value"),
                 $el = this.$el,
                 model = this.model;
@@ -245,27 +245,45 @@ QBA.filters.getFilterWidgetView = function (type, selected) {
 };
 
 QBA.filters.filterSPARQL = {
-    text_equal: function (vble, value) {
+    equal: function (vble, value) {
         "use strict";
-        return "str(" + vble + ") = " + value;
+        return vble + " = \"" + value + "\"";
     },
-    text_contains: function (vble, value) {
+    contains: function (vble, value) {
         "use strict";
         return "regex(str(" + vble + "), \"^.*" + value + ".*$\", \"i\")";
     },
-    date_range_: function (vble, value) {
+    less: function (vble, value) {
         "use strict";
-        return value[0] + " < " + vble + " && " + vble + " < " + value[1];
+        return vble + " < " + value;
     },
-    number_range_: function (vble, value) {
+    greater: function (vble, value) {
+        "use strict";
+        return value + " < " + vble;
+    },
+    range: function (vble, value) {
         "use strict";
         return value[0] + " < " + vble + " && " + vble + " < " + value[1];
     }
 };
 
-QBA.filters.getFilterSPARQL = function (filter) {
+QBA.filters.getFilterSPARQL = function (type, selected) {
     "use strict";
-    return QBA.utils.filterSPARQL[filter.get("widget") + "_" + filter.get("code")];
+    var result;
+
+    if ((selected === 3) && (type === "number" || type === "date")) {
+        result = QBA.filters.filterSPARQL.range;
+    } else if ((selected === 2) && (type === "number" || type === "date")) {
+        result = QBA.filters.filterSPARQL.greater;
+    } else if ((selected === 1) && (type === "number" || type === "date")) {
+        result = QBA.filters.filterSPARQL.less;
+    } else if ((selected === 1) && (type === "string")) {
+        result = QBA.filters.filterSPARQL.contains;
+    } else {
+        result = QBA.filters.filterSPARQL.equal;
+    }
+
+    return result;
 };
 
 // Browser
