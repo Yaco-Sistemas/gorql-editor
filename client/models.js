@@ -54,22 +54,6 @@ QBA.models.UserFilterList = Backbone.Collection.extend({
     model: QBA.models.UserFilter
 });
 
-QBA.models.Filter = Backbone.Model.extend({
-    defaults: function () {
-        "use strict";
-        return {
-            name: "",
-            widget: "",
-            parameters: {},
-            code: ""
-        };
-    }
-});
-
-QBA.models.FilterList = Backbone.Collection.extend({
-    model: QBA.models.Filter
-});
-
 QBA.models.Join = Backbone.Model.extend({
     defaults: function () {
         "use strict";
@@ -92,7 +76,8 @@ QBA.models.Field = Backbone.Model.extend({
         return {
             name: '',
             checked: false,
-            filterList: new QBA.models.FilterList(),
+            type: '',
+            parameters: {},
             userFilterList: new QBA.models.UserFilterList(),
             joinList: new QBA.models.JoinList()
         };
@@ -104,12 +89,6 @@ QBA.models.Field = Backbone.Model.extend({
 
         result.name = this.attributes.name;
         result.checked = this.attributes.checked;
-        if (this.attributes.filterList.length > 0) {
-            result.filters = this.attributes.filterList.toJSON();
-        }
-        if (this.attributes.userFilterList.length > 0) {
-            result.filters = this.attributes.userFilterList.toJSON();
-        }
 
         return result;
     }
@@ -169,20 +148,7 @@ QBA.models.Collection = Backbone.Model.extend({
 
     addField: function (field) {
         "use strict";
-        var filterList = new QBA.models.FilterList(),
-            filters = field.filters || [],
-            i;
-
-        for (i = 0; i < filters.length; i += 1) {
-            filterList.add(new QBA.models.Filter(filters[i]));
-        }
-
-        this.attributes.fieldList.add(
-            new QBA.models.Field({
-                name: field.name,
-                filterList: filterList
-            })
-        );
+        this.attributes.fieldList.add(new QBA.models.Field(field));
     }
 });
 

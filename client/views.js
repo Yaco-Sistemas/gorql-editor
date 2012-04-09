@@ -97,7 +97,7 @@ QBA.views.Filter = Backbone.View.extend({
 
     initialize: function (options) {
         "use strict";
-        var View = QBA.utils.getFilterWidgetView(this.model.get("filter").get("widget"));
+        var View = QBA.filters.getFilterWidgetView(this.model.get("field").get("type"), this.model.get("filter"));
         this.widgetView = new View({
             model: this.model,
             el: this.el
@@ -117,12 +117,12 @@ QBA.views.Filter = Backbone.View.extend({
         html = "<input type='submit' class='remove' value='X' />";
         html += "<label for='filter_type_" + this.model.get("number") + "'>" + this.model.get("collection").get("name") + " - " + this.model.get("field").get("name") + "</label>";
         html += "<select name='filter_type_" + this.model.get("number") + "' class='filter-type'>";
-        this.model.get("field").get("filterList").each(function (f, i) {
+        _.each(QBA.filters.getFiltersFromType(this.model.get("field").get("type")), function (f, i) {
             html += "<option value='" + i + "'";
-            if (filter.cid === f.cid) {
+            if (filter === i) {
                 html += " selected='selected'";
             }
-            html += ">" + f.get("name") + "</option>";
+            html += ">" + f + "</option>";
         });
         html += "</select>";
         $(this.el).html(html);
@@ -150,9 +150,8 @@ QBA.views.Filter = Backbone.View.extend({
             View;
 
         this.widgetView.remove();
-        filter = this.model.get("field").get("filterList").at(parseInt(value, 10));
-        this.model.set({ filter: filter });
-        View = QBA.utils.getFilterWidgetView(filter.get("widget"));
+        this.model.set({ filter: parseInt(value, 10) });
+        View = QBA.filters.getFilterWidgetView(this.model.get("field").get("type"), parseInt(value, 10));
         this.widgetView = new View({
             model: this.model,
             el: this.el

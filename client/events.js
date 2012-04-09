@@ -233,7 +233,7 @@ QBA.events = {
                 userFilter = new QBA.models.UserFilter({
                     collection: collection,
                     field: field,
-                    filter: field.get("filterList").at(0),
+                    filter: 0,
                     number: filterNumber
                 });
                 field.get("userFilterList").add(userFilter);

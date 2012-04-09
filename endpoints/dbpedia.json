@@ -14,46 +14,27 @@
             "fields": [
                 {
                     "name": "rdfs:label",
-                    "filters" : [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type" : "string"
                 },
                 {
                     "name": "rdfs:comment",
-                    "filters": [
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type" : "string"
                 },
                 {
                     "name": "dbpprop:dateOfBirth",
-                    "filters": [
-                        {
-                            "name": "Between",
-                            "widget": "date_range",
-                            "code": ""
-                        }
-                    ]
+                    "type" : "date",
+                    "parameters": {
+                        "min": "1900-01-01",
+                        "max": "2050-01-01"
+                    }
                 },
                 {
                     "name": "foaf:homepage",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "foaf:page",
-                    "filters": []
+                    "type": "string"
                 }
             ]
         }, {
@@ -70,46 +51,27 @@
             "fields": [
                 {
                     "name": "rdfs:label",
-                    "filters" : [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "rdfs:comment",
-                    "filters": [
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:dateOfBirth",
-                    "filters": [
-                        {
-                            "name": "Between",
-                            "widget": "date_range",
-                            "code": ""
-                        }
-                    ]
+                    "type" : "date",
+                    "parameters": {
+                        "min": "1900-01-01",
+                        "max": "2050-01-01"
+                    }
                 },
                 {
                     "name": "foaf:homepage",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "foaf:page",
-                    "filters": []
+                    "type": "string"
                 }
             ]
         }, {
@@ -126,46 +88,27 @@
             "fields": [
                 {
                     "name": "rdfs:label",
-                    "filters" : [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "rdfs:comment",
-                    "filters": [
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:dateOfBirth",
-                    "filters": [
-                        {
-                            "name": "Between",
-                            "widget": "date_range",
-                            "code": ""
-                        }
-                    ]
+                    "type" : "date",
+                    "parameters": {
+                        "min": "1900-01-01",
+                        "max": "2050-01-01"
+                    }
                 },
                 {
                     "name": "foaf:homepage",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "foaf:page",
-                    "filters": []
+                    "type": "string"
                 }
             ]
         }
@@ -186,116 +129,48 @@
             "fields": [
                 {
                     "name": "rdfs:label",
-                    "fields": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "rdfs:comment",
-                    "filters": [
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "foaf:page",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:released",
-                    "filters": [
-                        {
-                            "name": "Between",
-                            "widget": "date_range",
-                            "code": ""
-                        }
-                    ]
+                    "type" : "date",
+                    "parameters": {
+                        "min": "1900-01-01",
+                        "max": "2050-01-01"
+                    }
                 },
                 {
                     "name": "dbpprop:artist",
-                    "fields": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:producer",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:genre",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:label",
-                    "filters" : [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:length",
-                    "filters": [
-                        {
-                            "name": "Between (minutes)",
-                            "widget": "number_range",
-                            "parameters": {
-                                "min": 0,
-                                "max": 400
-                            },
-                            "code": ""
-                        }
-                    ]
+                    "type": "number",
+                    "parameters": {
+                        "min": 0,
+                        "max": 5000,
+                        "step": 5
+                    }
                 }
             ]
         }, {
@@ -312,116 +187,48 @@
             "fields": [
                 {
                     "name": "rdfs:label",
-                    "fields": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "rdfs:comment",
-                    "filters": [
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "foaf:page",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:released",
-                    "filters": [
-                        {
-                            "name": "Between",
-                            "widget": "date_range",
-                            "code": ""
-                        }
-                    ]
+                    "type" : "date",
+                    "parameters": {
+                        "min": "1900-01-01",
+                        "max": "2050-01-01"
+                    }
                 },
                 {
                     "name": "dbpprop:artist",
-                    "fields": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:producer",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:genre",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:label",
-                    "filters" : [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:length",
-                    "filters": [
-                        {
-                            "name": "Between (minutes)",
-                            "widget": "number_range",
-                            "parameters": {
-                                "min": 0,
-                                "max": 400
-                            },
-                            "code": ""
-                        }
-                    ]
+                    "type": "number",
+                    "parameters": {
+                        "min": 0,
+                        "max": 5000,
+                        "step": 5
+                    }
                 }
             ]
         }, {
@@ -438,116 +245,48 @@
             "fields": [
                 {
                     "name": "rdfs:label",
-                    "fields": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "rdfs:comment",
-                    "filters": [
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "foaf:page",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:released",
-                    "filters": [
-                        {
-                            "name": "Between",
-                            "widget": "date_range",
-                            "code": ""
-                        }
-                    ]
+                    "type" : "date",
+                    "parameters": {
+                        "min": "1900-01-01",
+                        "max": "2050-01-01"
+                    }
                 },
                 {
                     "name": "dbpprop:artist",
-                    "fields": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:producer",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:genre",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:label",
-                    "filters" : [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:length",
-                    "filters": [
-                        {
-                            "name": "Between (minutes)",
-                            "widget": "number_range",
-                            "parameters": {
-                                "min": 0,
-                                "max": 400
-                            },
-                            "code": ""
-                        }
-                    ]
+                    "type": "number",
+                    "parameters": {
+                        "min": 0,
+                        "max": 5000,
+                        "step": 5
+                    }
                 }
             ]
         }
@@ -568,88 +307,43 @@
             "fields": [
                 {
                     "name": "rdfs:label",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "rdfs:comment",
-                    "filters": [
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "foaf:homepage",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "foaf:page",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:genre",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:label",
-                    "filters" : [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:origin",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:yearsActive",
-                    "filters": [
-                        {
-                            "name": "Between (years)",
-                            "widget": "number_range",
-                            "parameters": {
-                                "min": 1900,
-                                "max": 2100
-                            },
-                            "code": ""
-                        }
-                    ]
+                    "type" : "date",
+                    "parameters": {
+                        "min": "1900-01-01",
+                        "max": "2050-01-01"
+                    }
                 },
                 {
                     "name": "dbpprop:currentMembers",
-                    "filters": []
+                    "type": "string"
                 }
             ]
         }, {
@@ -666,88 +360,43 @@
             "fields": [
                 {
                     "name": "rdfs:label",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "rdfs:comment",
-                    "filters": [
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "foaf:homepage",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "foaf:page",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:genre",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:label",
-                    "filters" : [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:origin",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:yearsActive",
-                    "filters": [
-                        {
-                            "name": "Between (years)",
-                            "widget": "number_range",
-                            "parameters": {
-                                "min": 1900,
-                                "max": 2100
-                            },
-                            "code": ""
-                        }
-                    ]
+                    "type" : "date",
+                    "parameters": {
+                        "min": "1900-01-01",
+                        "max": "2050-01-01"
+                    }
                 },
                 {
                     "name": "dbpprop:currentMembers",
-                    "filters": []
+                    "type": "string"
                 }
             ]
         }, {
@@ -764,88 +413,43 @@
             "fields": [
                 {
                     "name": "rdfs:label",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "rdfs:comment",
-                    "filters": [
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "foaf:homepage",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "foaf:page",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:genre",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:label",
-                    "filters" : [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:origin",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:yearsActive",
-                    "filters": [
-                        {
-                            "name": "Between (years)",
-                            "widget": "number_range",
-                            "parameters": {
-                                "min": 1900,
-                                "max": 2100
-                            },
-                            "code": ""
-                        }
-                    ]
+                    "type" : "date",
+                    "parameters": {
+                        "min": "1900-01-01",
+                        "max": "2050-01-01"
+                    }
                 },
                 {
                     "name": "dbpprop:currentMembers",
-                    "filters": []
+                    "type": "string"
                 }
             ]
         }, {
@@ -862,88 +466,43 @@
             "fields": [
                 {
                     "name": "rdfs:label",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "rdfs:comment",
-                    "filters": [
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "foaf:homepage",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "foaf:page",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:genre",
-                    "filters": [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:label",
-                    "filters" : [
-                        {
-                            "name": "Equal",
-                            "widget": "text",
-                            "code": "equal"
-                        },
-                        {
-                            "name": "Contains",
-                            "widget": "text",
-                            "code": "contains"
-                        }
-                    ]
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:origin",
-                    "filters": []
+                    "type": "string"
                 },
                 {
                     "name": "dbpprop:yearsActive",
-                    "filters": [
-                        {
-                            "name": "Between (years)",
-                            "widget": "number_range",
-                            "parameters": {
-                                "min": 1900,
-                                "max": 2100
-                            },
-                            "code": ""
-                        }
-                    ]
+                    "type" : "date",
+                    "parameters": {
+                        "min": "1900-01-01",
+                        "max": "2050-01-01"
+                    }
                 },
                 {
                     "name": "dbpprop:currentMembers",
-                    "filters": []
+                    "type": "string"
                 }
             ]
         }

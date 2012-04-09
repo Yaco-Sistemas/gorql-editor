@@ -9,7 +9,7 @@
         {{each(idx_col, collection) category.collections}}
         <optgroup label="${collection.name}">
             {{each(idx_fie, field) collection.fields}}
-            <option value="${idx_cat}-${idx_col}-${idx_fie}" {{if !field.filters}}disabled="true"{{/if}}>${field.name}</option>
+            <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
             {{/each}}
         </optgroup>
         {{/each}}
