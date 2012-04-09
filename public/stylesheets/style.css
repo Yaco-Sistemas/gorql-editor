@@ -61,3 +61,7 @@ ul {
 .wide-field {
     max-width: 300px,
 }
+
+input.required {
+    border: 1px solid red;
+}
