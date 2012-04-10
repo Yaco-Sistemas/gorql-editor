@@ -88,12 +88,23 @@ QBA.preview.updateChart = function () {
     var SPARQL = QBA.theQuery.toSPARQL(),
         html = QBA.preview.init(SPARQL),
         radios = $("input[name=chart_type]"),
-        radio;
+        radio = _.filter(radios, function (radio) { return radio.checked; })[0];
+
+    html += "<link rel='stylesheet' href='" + QBA.preview.viewer + "/stylesheets/" + radio.value + ".css' />";
+    html += "<script type='text/javascript' src='" + QBA.preview.viewer + "/javascripts/dv-";
+
+    if (radio.value === "bar" || radio.value === "pie" || radio.value === "line") {
+        html += "d3.js'></script>";
+    } else if (radio.value === "timeline") {
+        html += "time.js'></script>";
+    } else if (radio.value === "map") {
+        html += "openlayers.js'></script>";
+    } else if (radio.value === "mapea") {
+        html += "mapea.js'></script>";
+    }
 
     html += "<table id='preview_table' class='dv_table' style='display: none;'></table>";
     html += "<div id='preview_chart' class='dv_viewport'></div>";
-
-    radio = _.filter(radios, function (radio) { return radio.checked; })[0];
 
     QBA.preview.$el.html(html);
     setTimeout(function () {
