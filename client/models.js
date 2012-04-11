@@ -236,6 +236,7 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             usedPrefixes = [],
             fieldsByCollections,
             i,
+            j,
             key,
             firstFilter = true,
             aux;
@@ -305,7 +306,20 @@ QBA.models.CategoryList = Backbone.Collection.extend({
 
         // JOIN
 
-        // TODO
+        i = 0;
+        _.each(fieldsByCollections, function (data) {
+            aux = "?" + data.collection.get("identifier");
+            _.each(data.fields, function (field) {
+                j = 0;
+                field.get("joinList").each(function (join) {
+                    SPARQL += aux + " " + field.get("name") + " ?join" + i + "-" + j + " . ";
+                    SPARQL += "?" + join.get("target_collection").get("identifier");
+                    SPARQL += " " + join.get("target_field").get("name") + " ?join" + i + "-" + j + " . ";
+                    j += 1;
+                });
+                i += 1;
+            });
+        });
 
         // FILTERS
 
