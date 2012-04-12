@@ -41,10 +41,14 @@ QBA.preview.callDV = function (chart, params) {
             QBA.preview.callDV(chart, params);
         }, 300);
     } else {
-        DV.writeDataToTable($("#preview #viewport #preview_table")[0], 0);
-        if (chart !== false) {
-            func = DV[chart];
-            func("#preview #viewport #preview_chart", "#preview #viewport #preview_table", params);
+        if (DV.data[0].results.length > 0) {
+            DV.writeDataToTable($("#preview #viewport #preview_table")[0], 0);
+            if (chart !== false) {
+                func = DV[chart];
+                func("#preview #viewport #preview_chart", "#preview #viewport #preview_table", params);
+            }
+        } else {
+            QBA.preview.$el.html("No results returned.");
         }
     }
 };
@@ -75,7 +79,7 @@ QBA.preview.updateTable = function () {
     var SPARQL = QBA.theQuery.toSPARQL(),
         html = QBA.preview.init(SPARQL);
 
-    html += "<table id='preview_table' class='dv_table'></table>";
+    html += "<table id='preview_table' class='dv_table'><tr><td>Working...</td></tr></table>";
 
     QBA.preview.$el.html(html);
     setTimeout(function () {
@@ -104,7 +108,7 @@ QBA.preview.updateChart = function () {
     }
 
     html += "<table id='preview_table' class='dv_table' style='display: none;'></table>";
-    html += "<div id='preview_chart' class='dv_viewport'></div>";
+    html += "<div id='preview_chart' class='dv_viewport'>Working...</div>";
 
     QBA.preview.$el.html(html);
     setTimeout(function () {
