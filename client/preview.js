@@ -33,6 +33,27 @@ QBA.preview.setViewer = function (domain) {
     QBA.preview.viewer = domain;
 };
 
+QBA.preview.fillFormWithDefaultValues = function (chart) {
+    "use strict";
+    if (typeof DV.defaults === "undefined") {
+        return;
+    }
+
+    var params = $("#step5 #" + chart + "Params div.parameter input"),
+        defaults = DV.defaults[chart];
+
+    if (typeof defaults === "undefined") {
+        return;
+    }
+
+    _.each(params, function (input) {
+        var name = $(input).attr("name").split('-')[1];
+        if (defaults.hasOwnProperty(name) && $(input).val() === "") {
+            $(input).val(defaults[name]);
+        }
+    });
+};
+
 QBA.preview.callDV = function (chart, params) {
     "use strict";
     var func;

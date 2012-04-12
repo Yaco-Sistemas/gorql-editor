@@ -281,6 +281,7 @@ QBA.events = {
                 var chart = this.value;
                 $("#step5 .paramsContainer").css("display", "none");
                 $("#step5 #" + chart + "Params").css("display", "block");
+                QBA.preview.fillFormWithDefaultValues(chart);
             });
 
             $("#preview input[name=preview]").click(function (evt) {
@@ -288,6 +289,8 @@ QBA.events = {
                 evt.preventDefault();
                 QBA.preview.updateChart();
             });
+
+            QBA.preview.fillFormWithDefaultValues($("#step5 input[type=radio]").val());
         },
 
         release: function () {
