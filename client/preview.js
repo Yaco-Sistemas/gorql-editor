@@ -66,7 +66,13 @@ QBA.preview.callDV = function (chart, params) {
             DV.writeDataToTable($("#preview #viewport #preview_table")[0], 0);
             if (chart !== false) {
                 func = DV[chart];
-                func("#preview #viewport #preview_chart", "#preview #viewport #preview_table", params);
+                $("#preview #viewport #preview_chart").html("");
+                try {
+                    func("#preview #viewport #preview_chart",
+                         "#preview #viewport #preview_table", params);
+                } catch (err) {
+                    $("#preview #viewport #preview_chart").html("There was an error.");
+                }
             }
         } else {
             QBA.preview.$el.html("No results returned.");
@@ -140,17 +146,21 @@ QBA.preview.updateChart = function () {
 QBA.preview.getChartParams = function (chart) {
     "use strict";
     var params = $("#step5 #" + chart + "Params div.parameter input"),
-        options = _.map(params, function (p) { return {
-            key: $(p).attr("name").split('-')[1],
-            value: $(p).val()
-        }; }),
+        options = _.map(params, function (p) {
+            p = $(p);
+            var value = p.val();
+            if (p.attr("type") === "checkbox") {
+                value = p.is(":checked");
+            }
+            return {
+                key: p.attr("name").split('-')[1],
+                value: value
+            };
+        }),
         result = {};
 
     _.each(options, function (opt) {
         if (opt.value !== "") {
-            if (opt.value === "on") {
-                opt.value = true;
-            }
             result[opt.key] = opt.value;
         }
     });
