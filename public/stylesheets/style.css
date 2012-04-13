@@ -54,6 +54,10 @@ ul {
     display: inline-block;
 }
 
+.float {
+    float: left;
+}
+
 .narrow-field {
     max-width: 100px;
 }
