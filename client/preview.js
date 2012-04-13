@@ -68,6 +68,11 @@ QBA.preview.callDV = function (chart, params) {
                 func = DV[chart];
                 $("#preview #viewport #preview_chart").html("");
                 try {
+                    if (chart === "map") {
+                        DV.initMap(QBA.preview.viewer);
+                    } else if (chart === "mapea") {
+                        DV.initMapea(QBA.preview.viewer);
+                    }
                     func("#preview #viewport #preview_chart",
                          "#preview #viewport #preview_table", params);
                 } catch (err) {
@@ -122,8 +127,13 @@ QBA.preview.updateChart = function () {
         radio = _.filter(radios, function (radio) { return radio.checked; })[0];
 
     html += "<link rel='stylesheet' href='" + QBA.preview.viewer + "/stylesheets/" + radio.value + ".css' />";
+    if (radio.value === "timeline") {
+        html += "<script type='text/javascript'>var Timeline_ajax_url='" +
+            QBA.preview.viewer + "/javascripts/timeline_ajax/simile-ajax-api.js'," +
+            "Timeline_urlPrefix='" + QBA.preview.viewer + "/javascripts/timeline_js/'," +
+            "Timeline_parameters='bundle=true&defaultLocale=\"es\"';</script>";
+    }
     html += "<script type='text/javascript' src='" + QBA.preview.viewer + "/javascripts/dv-";
-
     if (radio.value === "bar" || radio.value === "pie" || radio.value === "line") {
         html += "d3.js'></script>";
     } else if (radio.value === "timeline") {
@@ -133,7 +143,6 @@ QBA.preview.updateChart = function () {
     } else if (radio.value === "mapea") {
         html += "mapea.js'></script>";
     }
-
     html += "<table id='preview_table' class='dv_table' style='display: none;'></table>";
     html += "<div id='preview_chart' class='dv_viewport'>Working...</div>";
 
