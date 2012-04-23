@@ -156,7 +156,8 @@ QBA.events = {
             }
 
             $("#step3 #addJoinField").attr("disabled", disabled).change(function () {
-                var option = this.options[this.selectedIndex],
+                var joinNumber = QBA.theQuery.getHigherJoinNumber(),
+                    option = this.options[this.selectedIndex],
                     indexes,
                     collection,
                     field,
@@ -178,7 +179,8 @@ QBA.events = {
 
                 join = new QBA.models.Join({
                     source_collection: collection,
-                    source_field: field
+                    source_field: field,
+                    number: joinNumber
                 });
                 field.get("joinList").add(join);
 

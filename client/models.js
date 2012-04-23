@@ -61,7 +61,7 @@ QBA.models.Join = Backbone.Model.extend({
             source_collection: undefined,
             source_field: undefined,
             target_collection: undefined,
-            target_field: undefined
+            number: -1
         };
     }
 });
@@ -236,7 +236,6 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             usedPrefixes = [],
             fieldsByCollections,
             i,
-            j,
             key,
             firstFilter = true,
             aux;
@@ -310,12 +309,8 @@ QBA.models.CategoryList = Backbone.Collection.extend({
         _.each(fieldsByCollections, function (data) {
             aux = "?" + data.collection.get("identifier");
             _.each(data.fields, function (field) {
-                j = 0;
                 field.get("joinList").each(function (join) {
-                    SPARQL += aux + " " + field.get("name") + " ?join" + i + "n" + j + " . ";
-                    SPARQL += "?" + join.get("target_collection").get("identifier");
-                    SPARQL += " " + join.get("target_field").get("name") + " ?join" + i + "n" + j + " . ";
-                    j += 1;
+                    SPARQL += aux + " " + field.get("name") + " ?" + join.get("target_collection").get("identifier");
                 });
                 i += 1;
             });
@@ -357,6 +352,17 @@ QBA.models.CategoryList = Backbone.Collection.extend({
         });
     },
 
+    getHigherNumber: function (callback) {
+        "use strict";
+        var num = _.max(_.map(callback(), function (elem) {
+            return elem.get("number");
+        }));
+        if (!isFinite(num)) {
+            num = -1;
+        }
+        return num + 1;
+    },
+
     getUserFilterList: function () {
         "use strict";
         return _.flatten(this.map(function (category) {
@@ -366,31 +372,7 @@ QBA.models.CategoryList = Backbone.Collection.extend({
 
     getHigherUserFilterNumber: function () {
         "use strict";
-        var num = _.max(_.map(this.getUserFilterList(), function (userFilter) {
-            return userFilter.get("number");
-        }));
-        if (!isFinite(num)) {
-            num = -1;
-        }
-        return num + 1;
-    },
-
-    getCompatibleCheckedFields: function (field) {
-        "use strict";
-        var results = this.map(function (category) {
-            var collections = category.getCheckedCollections();
-            return collections.map(function (collection) {
-                var fields = collection.getCheckedFields().filter(function (cfield) {
-                    return (field.get("name") === cfield.get("name")) && (field.cid !== cfield.cid);
-                });
-                return {
-                    category: category,
-                    collection: collection,
-                    fields: fields
-                };
-            });
-        });
-        return _.flatten(results);
+        return this.getHigherNumber(this.getUserFilterList);
     },
 
     getJoinList: function () {
@@ -402,6 +384,11 @@ QBA.models.CategoryList = Backbone.Collection.extend({
                 }));
             }));
         }));
+    },
+
+    getHigherJoinNumber: function () {
+        "use strict";
+        return this.getHigherNumber(this.getJoinList);
     }
 });
 

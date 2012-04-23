@@ -175,32 +175,27 @@ QBA.views.Join = Backbone.View.extend({
 
     render: function () {
         "use strict";
-        var compatibleFields = QBA.theQuery.getCompatibleCheckedFields(this.model.get("source_field")),
+        var categs = QBA.theQuery.getCategoriesWithCheckedCollections(),
             model = this.model,
-            aux,
-            auxFunc,
-            html,
-            i;
+            html;
 
         html = "<input type='submit' class='remove' value='X' />";
-        html += "<label for='join_target_" + this.model.get("number") + "'>" + this.model.get("source_collection").get("name") + " - " + this.model.get("source_field").get("name") + "</label>";
-        html += "<select name='join_target_" + this.model.get("number") + "' class='join-target'>";
+        html += "<label for='join_target_" + model.get("number") + "'>" + model.get("source_collection").get("name") + " - " + model.get("source_field").get("name") + "</label>";
+        html += "<select name='join_target_" + model.get("number") + "' class='join-target'>";
         html += "<option value='false'></option>";
-        auxFunc = function (field) {
-            html += "<option value='" + this.category.cid + "-" + this.collection.cid + "-" + field.cid + "'";
-            if (typeof model.get("target_field") !== "undefined") {
-                if (model.get("target_field").cid === field.cid) {
-                    html += " selected='selected'";
+
+        _.each(categs, function (category) {
+            _.each(category.getCheckedCollections(), function (collection) {
+                html += "<option value='" + category.cid + "-" + collection.cid + "'";
+                if (typeof model.get("target_collection") !== "undefined") {
+                    if (model.get("target_collection").cid === collection.cid) {
+                        html += " selected='selected'";
+                    }
                 }
-            }
-            html += ">" + this.collection.get("name") + " - " + field.get("name") + "</option>";
-        };
-        for (i = 0; i < compatibleFields.length; i += 1) {
-            aux = compatibleFields[i];
-            if (aux.fields.length > 0) {
-                _.each(aux.fields, auxFunc, aux);
-            }
-        }
+                html += ">" + collection.get("name") + "</option>";
+            });
+        });
+
         html += "</select>";
         $(this.el).html(html);
 
@@ -231,17 +226,12 @@ QBA.views.Join = Backbone.View.extend({
             collection = category.get("collectionList").find(function (collection) {
                 return collection.cid === indexes[1];
             });
-            field = collection.get("fieldList").find(function (field) {
-                return field.cid === indexes[2];
-            });
             this.model.set({
-                target_collection: collection,
-                target_field: field
+                target_collection: collection
             });
         } else {
             this.model.set({
-                target_collection: undefined,
-                target_field: undefined
+                target_collection: undefined
             });
         }
     }
