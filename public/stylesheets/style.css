@@ -27,6 +27,10 @@ a.button {
     white-space: pre-wrap;
 }
 
+#preview #viewport span.error {
+    color: red;
+}
+
 body.no-js .js,
 body.js .no-js,
 .hidden {

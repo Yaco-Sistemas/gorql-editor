@@ -115,9 +115,8 @@ QBA.preview.updateTable = function () {
     html += "<table id='preview_table' class='dv_table'><tr><td>Working...</td></tr></table>";
 
     QBA.preview.$el.html(html);
-    setTimeout(function () {
-        QBA.preview.callDV(false);
-    }, 300);
+
+    QBA.preview.callDV(false);
 };
 
 QBA.preview.updateChart = function () {
@@ -148,9 +147,12 @@ QBA.preview.updateChart = function () {
     html += "<div id='preview_chart' class='dv_viewport'>Working...</div>";
 
     QBA.preview.$el.html(html);
-    setTimeout(function () {
+
+    try {
         QBA.preview.callDV(radio.value, QBA.preview.getChartParams(radio.value));
-    }, 300);
+    } catch (err) {
+        QBA.preview.$el.html("<span class='error'>" + err + "</span>");
+    }
 };
 
 QBA.preview.getChartParams = function (chart) {
@@ -161,6 +163,11 @@ QBA.preview.getChartParams = function (chart) {
             var value = p.val();
             if (p.attr("type") === "checkbox") {
                 value = p.is(":checked");
+            }
+            if (p.is(".required")) {
+                if (value === "") {
+                    throw "Required field is missing";
+                }
             }
             return {
                 key: p.attr("name").split('-')[1],
