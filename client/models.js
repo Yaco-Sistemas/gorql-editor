@@ -352,9 +352,9 @@ QBA.models.CategoryList = Backbone.Collection.extend({
         });
     },
 
-    getHigherNumber: function (callback) {
+    getHigherNumber: function (data) {
         "use strict";
-        var num = _.max(_.map(callback(), function (elem) {
+        var num = _.max(_.map(data, function (elem) {
             return elem.get("number");
         }));
         if (!isFinite(num)) {
@@ -372,7 +372,7 @@ QBA.models.CategoryList = Backbone.Collection.extend({
 
     getHigherUserFilterNumber: function () {
         "use strict";
-        return this.getHigherNumber(this.getUserFilterList);
+        return this.getHigherNumber(this.getUserFilterList());
     },
 
     getJoinList: function () {
@@ -388,7 +388,7 @@ QBA.models.CategoryList = Backbone.Collection.extend({
 
     getHigherJoinNumber: function () {
         "use strict";
-        return this.getHigherNumber(this.getJoinList);
+        return this.getHigherNumber(this.getJoinList());
     }
 });
 
