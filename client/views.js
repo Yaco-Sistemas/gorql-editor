@@ -186,13 +186,15 @@ QBA.views.Join = Backbone.View.extend({
 
         _.each(categs, function (category) {
             _.each(category.getCheckedCollections(), function (collection) {
-                html += "<option value='" + category.cid + "-" + collection.cid + "'";
-                if (typeof model.get("target_collection") !== "undefined") {
-                    if (model.get("target_collection").cid === collection.cid) {
-                        html += " selected='selected'";
+                if (model.get("source_collection").cid !== collection.cid) {
+                    html += "<option value='" + category.cid + "-" + collection.cid + "'";
+                    if (typeof model.get("target_collection") !== "undefined") {
+                        if (model.get("target_collection").cid === collection.cid) {
+                            html += " selected='selected'";
+                        }
                     }
+                    html += ">" + collection.get("name") + "</option>";
                 }
-                html += ">" + collection.get("name") + "</option>";
             });
         });
 
