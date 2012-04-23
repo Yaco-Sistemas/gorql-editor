@@ -231,10 +231,16 @@ QBA.models.CategoryList = Backbone.Collection.extend({
     toSPARQL: function () {
         "use strict";
         var SPARQL = "",
+            collectionsDef = "",
+            fieldsDef = "",
+            selectVbles = "",
+            joinPatterns = "",
+            usedPrefixes = [],
             checkedCollections,
             prefixes,
-            usedPrefixes = [],
             fieldsByCollections,
+            collectionId,
+            fieldId,
             i,
             key,
             firstFilter = true,
@@ -251,19 +257,14 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             });
         }));
 
-        for (i = 0; i < prefixes.length; i += 1) {
-            aux = prefixes[i];
-            for (key in aux) {
-                if (aux.hasOwnProperty(key)) {
-                    if (_.indexOf(usedPrefixes, key) === -1) {
-                        usedPrefixes.push(key);
-                        SPARQL += "PREFIX " + key + ": " + aux[key] + " ";
-                    }
+        _.each(prefixes, function (prefix) {
+            _.each(_.keys(prefix), function (key) {
+                if (_.indexOf(usedPrefixes, key) === -1) {
+                    usedPrefixes.push(key);
+                    SPARQL += "PREFIX " + key + ": " + prefix[key] + " ";
                 }
-            }
-        }
-
-        // SELECT
+            });
+        });
 
         fieldsByCollections = _.flatten(_.map(checkedCollections, function (collections) {
             return _.flatten(_.map(collections, function (collection) {
@@ -274,50 +275,45 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             }));
         }));
 
-        SPARQL += "SELECT ";
-
         i = 0;
         _.each(fieldsByCollections, function (data) {
+            collectionId = "?" + data.collection.get("identifier");
+
+            // WHERE
+            // Create collections variables
+            _.each(data.collection.get("definition"), function (def) {
+                collectionsDef += collectionId + " " + def + " . ";
+            });
+
+            // Per field
             _.each(data.fields, function (field) {
-                SPARQL += "?" + field.get("name").split(":")[1] + i + "Vble ";
+                fieldId = "?" + field.get("name").split(":")[1] + i + "Vble";
+
+                // SELECT
+                // Select variables
+                selectVbles += fieldId + " ";
+
+                // WHERE
+                // Create fields variables
+                fieldsDef += collectionId + " " + field.get("name") + " " + fieldId + " . ";
+
+                // JOIN
+                // Add join patterns
+                field.get("joinList").each(function (join) {
+                    joinPatterns += collectionId + " " + field.get("name") + " ?" + join.get("target_collection").get("identifier") + " . ";
+                });
+
                 i += 1;
             });
         });
+
+        // SELECT
+        SPARQL += "SELECT " + selectVbles;
 
         // WHERE
+        SPARQL += "WHERE { " + collectionsDef + fieldsDef + joinPatterns;
 
-        SPARQL += "WHERE { ";
-
-        i = 0;
-        _.each(fieldsByCollections, function (data) {
-            aux = "?" + data.collection.get("identifier");
-            // Create collection variable
-            _.each(data.collection.get("definition"), function (def) {
-                SPARQL += aux + " " + def + " . ";
-            });
-            // Create fields variables
-            _.each(data.fields, function (field) {
-                SPARQL += aux + " " + field.get("name") + " ";
-                SPARQL += "?" + field.get("name").split(":")[1] + i + "Vble . ";
-                i += 1;
-            });
-        });
-
-        // JOIN
-
-        i = 0;
-        _.each(fieldsByCollections, function (data) {
-            aux = "?" + data.collection.get("identifier");
-            _.each(data.fields, function (field) {
-                field.get("joinList").each(function (join) {
-                    SPARQL += aux + " " + field.get("name") + " ?" + join.get("target_collection").get("identifier") + " . ";
-                });
-                i += 1;
-            });
-        });
-
-        // FILTERS
-
+        // TODO FILTERS
         i = 0;
         _.each(fieldsByCollections, function (data) {
             _.each(data.fields, function (field) {
