@@ -399,3 +399,27 @@ QBA.models.loadSchema = function () {
         QBA.theQuery.add(categoryObj);
     }
 };
+
+QBA.models.ChartParameter = Backbone.Model.extend({
+    defaults: function () {
+        "use strict";
+        return {
+            name: "",
+            value: ""
+        };
+    }
+});
+
+QBA.models.ChartParameterList = Backbone.Collection.extend({
+    model: QBA.models.ChartParameterList
+});
+
+QBA.theChart = new Backbone.Model.extend({
+    defaults: function () {
+        "use strict";
+        return {
+            type: "",
+            params: new QBA.models.ChartParameterList()
+        };
+    }
+});
