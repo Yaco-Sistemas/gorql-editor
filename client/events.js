@@ -84,6 +84,12 @@ QBA.events = {
                 evt.preventDefault();
                 QBA.preview.updateTable();
             });
+
+            $("#step1 input[name=nextS1]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                $("#ls2").trigger("click");
+            });
         },
 
         release: function () {
@@ -125,6 +131,18 @@ QBA.events = {
                 evt.stopPropagation();
                 evt.preventDefault();
                 QBA.preview.updateTable();
+            });
+
+            $("#step2 input[name=prevS2]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                $("#ls1").trigger("click");
+            });
+
+            $("#step2 input[name=nextS2]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                $("#ls3").trigger("click");
             });
         },
 
@@ -195,6 +213,18 @@ QBA.events = {
                 evt.stopPropagation();
                 evt.preventDefault();
                 QBA.preview.updateTable();
+            });
+
+            $("#step3 input[name=prevS3]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                $("#ls2").trigger("click");
+            });
+
+            $("#step3 input[name=nextS3]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                $("#ls4").trigger("click");
             });
         },
 
@@ -273,6 +303,18 @@ QBA.events = {
                 evt.preventDefault();
                 QBA.utils.openViewerData();
             });
+
+            $("#step4 input[name=prevS4]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                $("#ls3").trigger("click");
+            });
+
+            $("#step4 input[name=nextS4]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                $("#ls5").trigger("click");
+            });
         },
 
         release: function () {
@@ -302,6 +344,12 @@ QBA.events = {
                 evt.stopPropagation();
                 evt.preventDefault();
                 QBA.utils.openViewerChartAndData();
+            });
+
+            $("#step5 input[name=prevS5]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                $("#ls4").trigger("click");
             });
 
             QBA.preview.fillFormWithDefaultValues($("#step5 input[type=radio]").val());
