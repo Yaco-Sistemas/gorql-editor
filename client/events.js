@@ -267,6 +267,12 @@ QBA.events = {
                 evt.preventDefault();
                 QBA.preview.updateTable();
             });
+
+            $("#step4 input[name=done]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                QBA.utils.openViewerData();
+            });
         },
 
         release: function () {
@@ -290,6 +296,12 @@ QBA.events = {
                 evt.stopPropagation();
                 evt.preventDefault();
                 QBA.preview.updateChart();
+            });
+
+            $("#step5 input[name=done-chart]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                QBA.utils.openViewerChartAndData();
             });
 
             QBA.preview.fillFormWithDefaultValues($("#step5 input[type=radio]").val());

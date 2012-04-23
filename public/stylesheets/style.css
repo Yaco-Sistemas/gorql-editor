@@ -62,6 +62,10 @@ ul {
     float: left;
 }
 
+.floatr {
+    float: right;
+}
+
 .narrow-field {
     max-width: 100px;
 }
