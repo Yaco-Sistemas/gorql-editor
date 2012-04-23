@@ -40,17 +40,28 @@ QBA.preview.fillFormWithDefaultValues = function (chart) {
         return;
     }
 
-    var params = $("#step5 #" + chart + "Params div.parameter input"),
-        defaults = DV.defaults[chart];
+    var defaults = DV.defaults[chart],
+        params;
 
     if (typeof defaults === "undefined") {
         return;
     }
 
+    params = $("#step5 #" + chart + "Params div.parameter input");
+
     _.each(params, function (input) {
         var name = $(input).attr("name").split('-')[1];
         if (defaults.hasOwnProperty(name) && $(input).val() === "") {
             $(input).val(defaults[name]);
+        }
+    });
+
+    params = $("#step5 #" + chart + "Params div.parameter select");
+
+    _.each(params, function (select) {
+        var name = $(select).attr("name").split('-')[1];
+        if (defaults.hasOwnProperty(name) && $(select).val() === "") {
+            $(select).val(defaults[name]);
         }
     });
 };
@@ -174,7 +185,19 @@ QBA.preview.getChartParams = function (chart) {
                 value: value
             };
         }),
+        aux,
         result = {};
+
+    params = $("#step5 #" + chart + "Params div.parameter select");
+    aux = _.map(params, function (p) {
+        p = $(p);
+        return {
+            key: p.attr("name").split('-')[1],
+            value: p.val()
+        };
+    });
+
+    options = options.concat(aux);
 
     _.each(options, function (opt) {
         if (opt.value !== "") {
