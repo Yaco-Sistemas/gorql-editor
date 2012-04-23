@@ -31,7 +31,7 @@
             $(document.body).addClass("js").removeClass("no-js");
             QBA.events.navigation();
             QBA.events.step1.bind();
-            QBA.preview.setViewer("${viewer}");
+            QBA.preview.init("${viewer}", ${previewLimit});
             QBA.models.loadSchema();
         });
     </script>

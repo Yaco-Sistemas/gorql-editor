@@ -310,7 +310,7 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             aux = "?" + data.collection.get("identifier");
             _.each(data.fields, function (field) {
                 field.get("joinList").each(function (join) {
-                    SPARQL += aux + " " + field.get("name") + " ?" + join.get("target_collection").get("identifier");
+                    SPARQL += aux + " " + field.get("name") + " ?" + join.get("target_collection").get("identifier") + " . ";
                 });
                 i += 1;
             });

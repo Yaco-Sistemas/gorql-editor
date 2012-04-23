@@ -28,9 +28,10 @@ if (typeof QBA === 'undefined') {
 
 QBA.preview = {};
 
-QBA.preview.setViewer = function (domain) {
+QBA.preview.init = function (domain, limit) {
     "use strict";
     QBA.preview.viewer = domain;
+    QBA.preview.limit = limit;
 };
 
 QBA.preview.fillFormWithDefaultValues = function (chart) {
@@ -85,7 +86,7 @@ QBA.preview.callDV = function (chart, params) {
     }
 };
 
-QBA.preview.init = function (SPARQL) {
+QBA.preview.initQuery = function (SPARQL) {
     "use strict";
     var html;
 
@@ -108,8 +109,8 @@ QBA.preview.init = function (SPARQL) {
 
 QBA.preview.updateTable = function () {
     "use strict";
-    var SPARQL = QBA.theQuery.toSPARQL(),
-        html = QBA.preview.init(SPARQL);
+    var SPARQL = QBA.theQuery.toSPARQL() + " LIMIT " + QBA.preview.limit,
+        html = QBA.preview.initQuery(SPARQL);
 
     html += "<table id='preview_table' class='dv_table'><tr><td>Working...</td></tr></table>";
 
@@ -122,7 +123,7 @@ QBA.preview.updateTable = function () {
 QBA.preview.updateChart = function () {
     "use strict";
     var SPARQL = QBA.theQuery.toSPARQL(),
-        html = QBA.preview.init(SPARQL),
+        html = QBA.preview.initQuery(SPARQL),
         radios = $("input[name=chart_type]"),
         radio = _.filter(radios, function (radio) { return radio.checked; })[0];
 

@@ -29,7 +29,8 @@
 var express = require('express'),
     index = require('./routes/index'),
     settings = require('./settings').settings,
-    app = module.exports = express.createServer();
+    app = module.exports = express.createServer(),
+    configureApp;
 
 // Configuration
 
@@ -50,6 +51,12 @@ app.configure(function () {
     app.set('viewer', settings.global.viewer);
 });
 
+configureApp = function (app, opts) {
+    "use strict";
+
+    app.set('previewLimit', opts.previewLimit);
+};
+
 app.configure('development', function () {
     "use strict";
 
@@ -57,12 +64,14 @@ app.configure('development', function () {
         dumpExceptions: true,
         showStack: true
     }));
+    configureApp(app, settings.development);
 });
 
 app.configure('production', function () {
     "use strict";
 
     app.use(express.errorHandler());
+    configureApp(app, settings.production);
 });
 
 // Routes

@@ -31,6 +31,10 @@ exports.settings = {
         schema: "endpoints/dbpedia.json"
     },
 
-    development: {},
-    production: {}
+    development: {
+        previewLimit: 50
+    },
+    production: {
+        previewLimit: 10
+    }
 };
