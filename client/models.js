@@ -235,7 +235,9 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             fieldsDef = "",
             selectVbles = "",
             joinPatterns = "",
+            filterPatterns = "",
             usedPrefixes = [],
+            firstFilter = true,
             checkedCollections,
             prefixes,
             fieldsByCollections,
@@ -243,20 +245,19 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             fieldId,
             i,
             key,
-            firstFilter = true,
-            aux;
-
-        // PREFIXES
+            generator;
 
         checkedCollections = this.map(function (category) {
             return category.getCheckedCollections();
         });
+
         prefixes = _.flatten(_.map(checkedCollections, function (collections) {
             return _.map(collections, function (collection) {
                 return collection.get("prefixes");
             });
         }));
 
+        // PREFIXES
         _.each(prefixes, function (prefix) {
             _.each(_.keys(prefix), function (key) {
                 if (_.indexOf(usedPrefixes, key) === -1) {
@@ -279,8 +280,7 @@ QBA.models.CategoryList = Backbone.Collection.extend({
         _.each(fieldsByCollections, function (data) {
             collectionId = "?" + data.collection.get("identifier");
 
-            // WHERE
-            // Create collections variables
+            // WHERE - Create collections variables
             _.each(data.collection.get("definition"), function (def) {
                 collectionsDef += collectionId + " " + def + " . ";
             });
@@ -290,54 +290,39 @@ QBA.models.CategoryList = Backbone.Collection.extend({
                 fieldId = "?" + field.get("name").split(":")[1] + i + "Vble";
 
                 // SELECT
-                // Select variables
                 selectVbles += fieldId + " ";
 
-                // WHERE
-                // Create fields variables
+                // WHERE - Create fields variables
                 fieldsDef += collectionId + " " + field.get("name") + " " + fieldId + " . ";
 
                 // JOIN
-                // Add join patterns
                 field.get("joinList").each(function (join) {
                     joinPatterns += collectionId + " " + field.get("name") + " ?" + join.get("target_collection").get("identifier") + " . ";
                 });
 
-                i += 1;
-            });
-        });
-
-        // SELECT
-        SPARQL += "SELECT " + selectVbles;
-
-        // WHERE
-        SPARQL += "WHERE { " + collectionsDef + fieldsDef + joinPatterns;
-
-        // TODO FILTERS
-        i = 0;
-        _.each(fieldsByCollections, function (data) {
-            _.each(data.fields, function (field) {
+                // FILTERS
                 field.get("userFilterList").each(function (userFilter) {
                     if (userFilter.isReady()) {
                         if (firstFilter) {
-                            SPARQL += "FILTER (";
+                            filterPatterns += "FILTER (";
                             firstFilter = false;
                         } else {
-                            SPARQL += "&& ";
+                            filterPatterns += "&& ";
                         }
-                        aux = QBA.filters.getFilterSPARQL(field.get("type"), userFilter.get("filter"));
-                        SPARQL += aux("?" + field.get("name").split(":")[1] + i + "Vble", userFilter.get("value")) + " ";
+                        generator = QBA.filters.getFilterSPARQL(field.get("type"), userFilter.get("filter"));
+                        filterPatterns += generator(fieldId, userFilter.get("value")) + " ";
                     }
                 });
+
                 i += 1;
             });
         });
         if (!firstFilter) {
-            SPARQL += ") . ";
+            filterPatterns += ") . ";
         }
 
-        SPARQL += "}";
-
+        SPARQL += "SELECT " + selectVbles;
+        SPARQL += "WHERE { " + collectionsDef + fieldsDef + joinPatterns + filterPatterns + "}";
         return SPARQL;
     },
 
