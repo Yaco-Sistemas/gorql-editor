@@ -124,7 +124,7 @@ QBA.preview.updateChart = function () {
     var SPARQL = QBA.theQuery.toSPARQL(),
         html = QBA.preview.initQuery(SPARQL),
         radios = $("input[name=chart_type]"),
-        radio = _.filter(radios, function (radio) { return radio.checked; })[0];
+        radio = _.find(radios, function (radio) { return radio.checked; });
 
     html += "<link rel='stylesheet' href='" + QBA.preview.viewer + "/stylesheets/" + radio.value + ".css' />";
     if (radio.value === "timeline") {

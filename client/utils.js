@@ -1,5 +1,5 @@
-/*jslint vars: false, browser: true */
-/*global QBA: true */
+/*jslint vars: false, browser: true, nomen: true */
+/*global QBA: true, _, $, alert */
 
 // Copyright 2012 Yaco Sistemas S.L.
 //
@@ -42,7 +42,20 @@ QBA.utils.openViewerData = function () {
 
 QBA.utils.openViewerChartAndData = function () {
     "use strict";
-    var url = QBA.utils.getUrl();
-    // TODO chart params
+    var url = QBA.utils.getUrl(),
+        radio = _.find($("input[name=chart_type]"), function (radio) { return radio.checked; }),
+        params;
+
+    try {
+        params = QBA.preview.getChartParams(radio.value);
+    } catch (err) {
+        alert(err);
+    }
+
+    url += "&chart=" + radio.value;
+    _.each(_.keys(params), function (key) {
+        url += "&" + key + "=" + params[key];
+    });
+
     window.open(url, "_blank");
 };
