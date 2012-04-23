@@ -237,15 +237,13 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             joinPatterns = "",
             filterPatterns = "",
             usedPrefixes = [],
-            firstFilter = true,
             checkedCollections,
             prefixes,
             fieldsByCollections,
             collectionId,
             fieldId,
-            i,
-            key,
-            generator;
+            generator,
+            i;
 
         checkedCollections = this.map(function (category) {
             return category.getCheckedCollections();
@@ -303,23 +301,15 @@ QBA.models.CategoryList = Backbone.Collection.extend({
                 // FILTERS
                 field.get("userFilterList").each(function (userFilter) {
                     if (userFilter.isReady()) {
-                        if (firstFilter) {
-                            filterPatterns += "FILTER (";
-                            firstFilter = false;
-                        } else {
-                            filterPatterns += "&& ";
-                        }
+                        filterPatterns += "FILTER (";
                         generator = QBA.filters.getFilterSPARQL(field.get("type"), userFilter.get("filter"));
-                        filterPatterns += generator(fieldId, userFilter.get("value")) + " ";
+                        filterPatterns += generator(fieldId, userFilter.get("value")) + ") . ";
                     }
                 });
 
                 i += 1;
             });
         });
-        if (!firstFilter) {
-            filterPatterns += ") . ";
-        }
 
         SPARQL += "SELECT " + selectVbles;
         SPARQL += "WHERE { " + collectionsDef + fieldsDef + joinPatterns + filterPatterns + "}";
