@@ -138,7 +138,7 @@ QBA.utils.getChartParams = function (chart, ignoreRequire) {
 
 QBA.utils.updateChartModel = function () {
     "use strict";
-    var type = $("#step5 input[type=radio]").val(),
+    var type = $("#step5 input[type=radio]:checked").val(),
         params = QBA.utils.getChartParams(type, true),
         paramList = new QBA.models.ChartParameterList();
 
@@ -151,19 +151,28 @@ QBA.utils.updateChartModel = function () {
 
     QBA.theChart.set({
         type: type,
-        params: paramList
+        paramList: paramList
     });
 };
 
 QBA.utils.loadChartModel = function () {
     "use strict";
-    var type = QBA.theChart.get("type");
+    var type = QBA.theChart.get("type"),
+        radio;
 
     if (type !== "") {
-        $("#step5 input[type=radio]").val(type);
+        radio = $("#step5 input[type=radio][value=" + type + "]");
+        radio.attr("checked", true);
+        radio.trigger("change");
         QBA.theChart.get("paramList").each(function (param) {
-            var name = type + "-" + param.get("name") + "-param";
-            $("#step5 #" + type + "Params div.parameter input[name=" + name + "]").val(param.get("value"));
+            var name = type + "-" + param.get("name") + "-param",
+                input = $("#step5 #" + type + "Params div.parameter input[name=" + name + "]");
+
+            if (input.attr("type") === "checkbox") {
+                input.attr("checked", param.get("value"));
+            } else {
+                input.val(param.get("value"));
+            }
             $("#step5 #" + type + "Params div.parameter select[name=" + name + "]").val(param.get("value"));
         });
     }

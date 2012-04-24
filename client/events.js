@@ -355,7 +355,8 @@ QBA.events = {
                 $("#ls4").trigger("click");
             });
 
-            QBA.utils.fillFormWithDefaultValues($("#step5 input[type=radio]").val());
+            QBA.utils.fillFormWithDefaultValues($("#step5 input[type=radio]:checked").val());
+            QBA.utils.loadChartModel();
         },
 
         release: function () {
