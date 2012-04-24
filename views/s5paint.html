@@ -30,7 +30,18 @@
                 </select>
             </div>
             <div class="parameter">
-                <label for="bar-series-param">series</label>: <input type="text" name="bar-series-param" class="wide-field required" />
+                <label for="bar-series-param">series</label>:
+                <select name="bar-series-param" multiple size=4 class="wide-field required">
+                    {{each(idx_cat, category) categories}}
+                    {{each(idx_col, collection) category.collections}}
+                    <optgroup label="${collection.name}">
+                        {{each(idx_fie, field) collection.fields}}
+                        <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+                        {{/each}}
+                    </optgroup>
+                    {{/each}}
+                    {{/each}}
+                </select>
             </div>
             <div class="parameter">
                 <label for="bar-sizeX-param">sizeX</label>: <input type="number" name="bar-sizeX-param" class="narrow-field" />
@@ -62,7 +73,18 @@
                 </select>
             </div>
             <div class="parameter">
-                <label for="line-series-param">series</label>: <input type="text" name="line-series-param" class="wide-field required" />
+                <label for="line-series-param">series</label>:
+                <select name="line-series-param" multiple size=4 class="wide-field required">
+                    {{each(idx_cat, category) categories}}
+                    {{each(idx_col, collection) category.collections}}
+                    <optgroup label="${collection.name}">
+                        {{each(idx_fie, field) collection.fields}}
+                        <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+                        {{/each}}
+                    </optgroup>
+                    {{/each}}
+                    {{/each}}
+                </select>
             </div>
             <div class="parameter">
                 <label for="line-sizeX-param">sizeX</label>: <input type="number" name="line-sizeX-param" class="narrow-field" />
@@ -94,7 +116,18 @@
                 </select>
             </div>
             <div class="parameter">
-                <label for="pie-series-param">series</label>: <input type="text" name="pie-series-param" class="wide-field required" />
+                <label for="pie-series-param">series</label>:
+                <select name="pie-series-param" multiple size=4 class="wide-field required">
+                    {{each(idx_cat, category) categories}}
+                    {{each(idx_col, collection) category.collections}}
+                    <optgroup label="${collection.name}">
+                        {{each(idx_fie, field) collection.fields}}
+                        <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+                        {{/each}}
+                    </optgroup>
+                    {{/each}}
+                    {{/each}}
+                </select>
             </div>
             <div class="parameter">
                 <label for="pie-sizeX-param">sizeX</label>: <input type="number" name="pie-sizeX-param" class="narrow-field" />

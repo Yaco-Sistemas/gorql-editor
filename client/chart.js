@@ -92,6 +92,36 @@ QBA.chart.fillFormWithDefaultValues = function (chart) {
     });
 };
 
+QBA.chart.getFieldVbleName = function (indexes) {
+    "use strict";
+    var idxAux = 0,
+        categories,
+        field,
+        idx;
+
+    indexes = [
+        parseInt(indexes[0], 10),
+        parseInt(indexes[1], 10),
+        parseInt(indexes[2], 10)
+    ];
+
+    categories = QBA.theQuery.getCategoriesWithCheckedCollections();
+    // Generate variable name for field
+    _.each(categories, function (category, idxCat) {
+        _.each(category.getCheckedCollections(), function (collection, idxCol) {
+            _.each(collection.getCheckedFields(), function (f, idxFie) {
+                if (idxCat === indexes[0] && idxCol === indexes[1] && idxFie === indexes[2]) {
+                    idx = idxAux;
+                    field = f;
+                }
+                idxAux += 1;
+            });
+        });
+    });
+
+    return field.get("name").split(":")[1] + idx + "Vble";
+};
+
 QBA.chart.getChartParams = function (chart, ignoreRequire) {
     "use strict";
     var params = $("#step5 #" + chart + "Params div.parameter input"),
@@ -103,7 +133,7 @@ QBA.chart.getChartParams = function (chart, ignoreRequire) {
         p = $(p);
         var value = p.val();
         if (p.attr("type") === "checkbox") {
-            value = p.is(":checked");
+            value = String(p.is(":checked"));
         }
         if (!ignoreRequire && p.is(".required")) {
             if (value === "") {
@@ -120,34 +150,32 @@ QBA.chart.getChartParams = function (chart, ignoreRequire) {
     aux = _.map(params, function (p) {
         p = $(p);
         var value = p.val(),
-            indexes = value.split('-'),
-            idxAux = 0,
-            idx,
-            categories,
-            field;
+            indexes;
 
-        if (indexes.length === 3) {
-            indexes = [
-                parseInt(indexes[0], 10),
-                parseInt(indexes[1], 10),
-                parseInt(indexes[2], 10)
-            ];
-            categories = QBA.theQuery.getCategoriesWithCheckedCollections();
+        if (value === null || typeof value === "undefined") {
+            value = "";
+        }
+        if (!ignoreRequire && p.is(".required")) {
+            if (value === "") {
+                throw "Required field is missing";
+            }
+        }
 
-            // Generate variable name for field
-            _.each(categories, function (category, idxCat) {
-                _.each(category.getCheckedCollections(), function (collection, idxCol) {
-                    _.each(collection.getCheckedFields(), function (f, idxFie) {
-                        if (idxCat === indexes[0] && idxCol === indexes[1] && idxFie === indexes[2]) {
-                            idx = idxAux;
-                            field = f;
-                        }
-                        idxAux += 1;
-                    });
-                });
+        if (value.pop && value.push) {
+            indexes = value;
+            value = "";
+            _.each(indexes, function (indexesStr, idx) {
+                var name = QBA.chart.getFieldVbleName(indexesStr.split('-'));
+                if (idx > 0) {
+                    value += ",";
+                }
+                value += name;
             });
-
-            value = "?" + field.get("name").split(":")[1] + idx + "Vble";
+        } else {
+            indexes = value.split('-');
+            if (indexes.length === 3) {
+                value = QBA.chart.getFieldVbleName(indexes);
+            }
         }
 
         return {
