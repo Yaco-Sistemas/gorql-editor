@@ -301,7 +301,7 @@ QBA.events = {
             $("#step4 input[name=done]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
-                QBA.utils.openViewerData();
+                QBA.chart.openViewerData();
             });
 
             $("#step4 input[name=prevS4]").click(function (evt) {
@@ -331,11 +331,11 @@ QBA.events = {
                 var chart = this.value;
                 $("#step5 .paramsContainer").css("display", "none");
                 $("#step5 #" + chart + "Params").css("display", "block");
-                QBA.utils.fillFormWithDefaultValues(chart);
+                QBA.chart.fillFormWithDefaultValues(chart);
             });
 
-            $("#step5 div.parameter input").change(QBA.utils.updateChartModel);
-            $("#step5 div.parameter select").change(QBA.utils.updateChartModel);
+            $("#step5 div.parameter input").change(QBA.chart.updateChartModel);
+            $("#step5 div.parameter select").change(QBA.chart.updateChartModel);
 
             $("#preview input[name=preview]").click(function (evt) {
                 evt.stopPropagation();
@@ -346,7 +346,7 @@ QBA.events = {
             $("#step5 input[name=done-chart]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
-                QBA.utils.openViewerChartAndData();
+                QBA.chart.openViewerChartAndData();
             });
 
             $("#step5 input[name=prevS5]").click(function (evt) {
@@ -355,8 +355,8 @@ QBA.events = {
                 $("#ls4").trigger("click");
             });
 
-            QBA.utils.fillFormWithDefaultValues($("#step5 input[type=radio]:checked").val());
-            QBA.utils.loadChartModel();
+            QBA.chart.fillFormWithDefaultValues($("#step5 input[type=radio]:checked").val());
+            QBA.chart.loadChartModel();
         },
 
         release: function () {

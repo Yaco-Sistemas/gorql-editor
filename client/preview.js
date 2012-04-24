@@ -128,7 +128,7 @@ QBA.preview.updateChart = function () {
     QBA.preview.$el.html(html);
 
     try {
-        QBA.preview.callDV(radio.value, QBA.utils.getChartParams(radio.value));
+        QBA.preview.callDV(radio.value, QBA.chart.getChartParams(radio.value));
     } catch (err) {
         QBA.preview.$el.html("<span class='error'>" + err + "</span>");
     }

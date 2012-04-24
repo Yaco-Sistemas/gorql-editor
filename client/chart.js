@@ -26,28 +26,28 @@ if (typeof QBA === 'undefined') {
     window.QBA = {};
 }
 
-QBA.utils = {};
+QBA.chart = {};
 
-QBA.utils.getUrl = function () {
+QBA.chart.getUrl = function () {
     "use strict";
     var query = QBA.theQuery.toSPARQL();
     return QBA.preview.viewer + "/viewer/?query=" + encodeURIComponent(query);
 };
 
-QBA.utils.openViewerData = function () {
+QBA.chart.openViewerData = function () {
     "use strict";
-    var url = QBA.utils.getUrl();
+    var url = QBA.chart.getUrl();
     window.open(url, "_blank");
 };
 
-QBA.utils.openViewerChartAndData = function () {
+QBA.chart.openViewerChartAndData = function () {
     "use strict";
-    var url = QBA.utils.getUrl(),
+    var url = QBA.chart.getUrl(),
         radio = _.find($("input[name=chart_type]"), function (radio) { return radio.checked; }),
         params;
 
     try {
-        params = QBA.utils.getChartParams(radio.value);
+        params = QBA.chart.getChartParams(radio.value);
     } catch (err) {
         alert(err);
     }
@@ -60,7 +60,7 @@ QBA.utils.openViewerChartAndData = function () {
     window.open(url, "_blank");
 };
 
-QBA.utils.fillFormWithDefaultValues = function (chart) {
+QBA.chart.fillFormWithDefaultValues = function (chart) {
     "use strict";
     if (typeof DV.defaults === "undefined") {
         return;
@@ -92,7 +92,7 @@ QBA.utils.fillFormWithDefaultValues = function (chart) {
     });
 };
 
-QBA.utils.getChartParams = function (chart, ignoreRequire) {
+QBA.chart.getChartParams = function (chart, ignoreRequire) {
     "use strict";
     var params = $("#step5 #" + chart + "Params div.parameter input"),
         result = {},
@@ -136,10 +136,10 @@ QBA.utils.getChartParams = function (chart, ignoreRequire) {
     return result;
 };
 
-QBA.utils.updateChartModel = function () {
+QBA.chart.updateChartModel = function () {
     "use strict";
     var type = $("#step5 input[type=radio]:checked").val(),
-        params = QBA.utils.getChartParams(type, true),
+        params = QBA.chart.getChartParams(type, true),
         paramList = new QBA.models.ChartParameterList();
 
     _.each(_.keys(params), function (key) {
@@ -155,7 +155,7 @@ QBA.utils.updateChartModel = function () {
     });
 };
 
-QBA.utils.loadChartModel = function () {
+QBA.chart.loadChartModel = function () {
     "use strict";
     var type = QBA.theChart.get("type"),
         radio;
