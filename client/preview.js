@@ -34,38 +34,6 @@ QBA.preview.init = function (domain, limit) {
     QBA.preview.limit = limit;
 };
 
-QBA.preview.fillFormWithDefaultValues = function (chart) {
-    "use strict";
-    if (typeof DV.defaults === "undefined") {
-        return;
-    }
-
-    var defaults = DV.defaults[chart],
-        params;
-
-    if (typeof defaults === "undefined") {
-        return;
-    }
-
-    params = $("#step5 #" + chart + "Params div.parameter input");
-
-    _.each(params, function (input) {
-        var name = $(input).attr("name").split('-')[1];
-        if (defaults.hasOwnProperty(name) && $(input).val() === "") {
-            $(input).val(defaults[name]);
-        }
-    });
-
-    params = $("#step5 #" + chart + "Params div.parameter select");
-
-    _.each(params, function (select) {
-        var name = $(select).attr("name").split('-')[1];
-        if (defaults.hasOwnProperty(name) && $(select).val() === "") {
-            $(select).val(defaults[name]);
-        }
-    });
-};
-
 QBA.preview.callDV = function (chart, params) {
     "use strict";
     var func;
@@ -160,50 +128,8 @@ QBA.preview.updateChart = function () {
     QBA.preview.$el.html(html);
 
     try {
-        QBA.preview.callDV(radio.value, QBA.preview.getChartParams(radio.value));
+        QBA.preview.callDV(radio.value, QBA.utils.getChartParams(radio.value));
     } catch (err) {
         QBA.preview.$el.html("<span class='error'>" + err + "</span>");
     }
-};
-
-QBA.preview.getChartParams = function (chart) {
-    "use strict";
-    var params = $("#step5 #" + chart + "Params div.parameter input"),
-        options = _.map(params, function (p) {
-            p = $(p);
-            var value = p.val();
-            if (p.attr("type") === "checkbox") {
-                value = p.is(":checked");
-            }
-            if (p.is(".required")) {
-                if (value === "") {
-                    throw "Required field is missing";
-                }
-            }
-            return {
-                key: p.attr("name").split('-')[1],
-                value: value
-            };
-        }),
-        aux,
-        result = {};
-
-    params = $("#step5 #" + chart + "Params div.parameter select");
-    aux = _.map(params, function (p) {
-        p = $(p);
-        return {
-            key: p.attr("name").split('-')[1],
-            value: p.val()
-        };
-    });
-
-    options = options.concat(aux);
-
-    _.each(options, function (opt) {
-        if (opt.value !== "") {
-            result[opt.key] = opt.value;
-        }
-    });
-
-    return result;
 };

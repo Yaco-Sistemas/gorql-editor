@@ -1,5 +1,5 @@
 /*jslint vars: false, browser: true, nomen: true */
-/*global QBA: true, _, $, alert */
+/*global QBA: true, _, $, alert, DV */
 
 // Copyright 2012 Yaco Sistemas S.L.
 //
@@ -47,7 +47,7 @@ QBA.utils.openViewerChartAndData = function () {
         params;
 
     try {
-        params = QBA.preview.getChartParams(radio.value);
+        params = QBA.utils.getChartParams(radio.value);
     } catch (err) {
         alert(err);
     }
@@ -58,4 +58,113 @@ QBA.utils.openViewerChartAndData = function () {
     });
 
     window.open(url, "_blank");
+};
+
+QBA.utils.fillFormWithDefaultValues = function (chart) {
+    "use strict";
+    if (typeof DV.defaults === "undefined") {
+        return;
+    }
+
+    var defaults = DV.defaults[chart],
+        params;
+
+    if (typeof defaults === "undefined") {
+        return;
+    }
+
+    params = $("#step5 #" + chart + "Params div.parameter input");
+
+    _.each(params, function (input) {
+        var name = $(input).attr("name").split('-')[1];
+        if (defaults.hasOwnProperty(name) && $(input).val() === "") {
+            $(input).val(defaults[name]);
+        }
+    });
+
+    params = $("#step5 #" + chart + "Params div.parameter select");
+
+    _.each(params, function (select) {
+        var name = $(select).attr("name").split('-')[1];
+        if (defaults.hasOwnProperty(name) && $(select).val() === "") {
+            $(select).val(defaults[name]);
+        }
+    });
+};
+
+QBA.utils.getChartParams = function (chart, ignoreRequire) {
+    "use strict";
+    var params = $("#step5 #" + chart + "Params div.parameter input"),
+        result = {},
+        options,
+        aux;
+
+    options = _.map(params, function (p) {
+        p = $(p);
+        var value = p.val();
+        if (p.attr("type") === "checkbox") {
+            value = p.is(":checked");
+        }
+        if (!ignoreRequire && p.is(".required")) {
+            if (value === "") {
+                throw "Required field is missing";
+            }
+        }
+        return {
+            key: p.attr("name").split('-')[1],
+            value: value
+        };
+    });
+
+    params = $("#step5 #" + chart + "Params div.parameter select");
+    aux = _.map(params, function (p) {
+        p = $(p);
+        return {
+            key: p.attr("name").split('-')[1],
+            value: p.val()
+        };
+    });
+
+    options = options.concat(aux);
+
+    _.each(options, function (opt) {
+        if (opt.value !== "") {
+            result[opt.key] = opt.value;
+        }
+    });
+
+    return result;
+};
+
+QBA.utils.updateChartModel = function () {
+    "use strict";
+    var type = $("#step5 input[type=radio]").val(),
+        params = QBA.utils.getChartParams(type, true),
+        paramList = new QBA.models.ChartParameterList();
+
+    _.each(_.keys(params), function (key) {
+        paramList.add(new QBA.models.ChartParameter({
+            name: key,
+            value: params[key]
+        }));
+    });
+
+    QBA.theChart.set({
+        type: type,
+        params: paramList
+    });
+};
+
+QBA.utils.loadChartModel = function () {
+    "use strict";
+    var type = QBA.theChart.get("type");
+
+    if (type !== "") {
+        $("#step5 input[type=radio]").val(type);
+        QBA.theChart.get("paramList").each(function (param) {
+            var name = type + "-" + param.get("name") + "-param";
+            $("#step5 #" + type + "Params div.parameter input[name=" + name + "]").val(param.get("value"));
+            $("#step5 #" + type + "Params div.parameter select[name=" + name + "]").val(param.get("value"));
+        });
+    }
 };

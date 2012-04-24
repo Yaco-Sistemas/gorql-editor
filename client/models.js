@@ -414,12 +414,14 @@ QBA.models.ChartParameterList = Backbone.Collection.extend({
     model: QBA.models.ChartParameterList
 });
 
-QBA.theChart = new Backbone.Model.extend({
+QBA.models.Chart = Backbone.Model.extend({
     defaults: function () {
         "use strict";
         return {
             type: "",
-            params: new QBA.models.ChartParameterList()
+            paramList: new QBA.models.ChartParameterList()
         };
     }
 });
+
+QBA.theChart = new QBA.models.Chart();
