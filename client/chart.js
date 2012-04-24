@@ -119,9 +119,40 @@ QBA.chart.getChartParams = function (chart, ignoreRequire) {
     params = $("#step5 #" + chart + "Params div.parameter select");
     aux = _.map(params, function (p) {
         p = $(p);
+        var value = p.val(),
+            indexes = value.split('-'),
+            idxAux = 0,
+            idx,
+            categories,
+            field;
+
+        if (indexes.length === 3) {
+            indexes = [
+                parseInt(indexes[0], 10),
+                parseInt(indexes[1], 10),
+                parseInt(indexes[2], 10)
+            ];
+            categories = QBA.theQuery.getCategoriesWithCheckedCollections();
+
+            // Generate variable name for field
+            _.each(categories, function (category, idxCat) {
+                _.each(category.getCheckedCollections(), function (collection, idxCol) {
+                    _.each(collection.getCheckedFields(), function (f, idxFie) {
+                        if (idxCat === indexes[0] && idxCol === indexes[1] && idxFie === indexes[2]) {
+                            idx = idxAux;
+                            field = f;
+                        }
+                        idxAux += 1;
+                    });
+                });
+            });
+
+            value = "?" + field.get("name").split(":")[1] + idx + "Vble";
+        }
+
         return {
             key: p.attr("name").split('-')[1],
-            value: p.val()
+            value: value
         };
     });
 
