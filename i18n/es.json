@@ -33,6 +33,24 @@
         "pie": "Sectores (Tarta)",
         "timeline": "Línea de Tiempo",
         "map": "Mapas - Open Street Maps",
-        "mapea": "Mapea"
+        "mapea": "Mapea",
+        "params": "Parámetros",
+        "labels": "Campo con las etiquetas",
+        "series": "Campos con las series de datos",
+        "sizeX": "Ancho en píxeles",
+        "sizeY": "Alto en píxeles",
+        "sizeLabel": "Espacio reservado para las etiquetas en píxeles",
+        "landscape": "Barras horizontales",
+        "area": "Colorear área bajo las líneas",
+        "sizeHighlight": "Desplazamiento del sector resaltado en píxeles",
+        "title": "Campo con el nombre de los eventos",
+        "start": "Campo con las fechas de comienzo de los eventos",
+        "end": "Campo con las fechas de fin de los eventos",
+        "description": "Campo con las descripciones",
+        "detailRes": "Resolución temporal de la banda detallada",
+        "overviewRes": "Resolución temporal de la banda resumen",
+        "lat": "Campo con las latitudes",
+        "long": "Campo con las longitudes",
+        "view": "Ver Gráfico y Datos"
     }
 }

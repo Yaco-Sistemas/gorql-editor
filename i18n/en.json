@@ -33,6 +33,24 @@
         "pie": "Sectors (Pie)",
         "timeline": "Timeline",
         "map": "Open Street Maps",
-        "mapea": "Mapea"
+        "mapea": "Mapea",
+        "params": "Parameters",
+        "labels": "Labels field",
+        "series": "Data series fields",
+        "sizeX": "Width in pixels",
+        "sizeY": "Height in pixels",
+        "sizeLabel": "Space reserved for labels in pixels",
+        "landscape": "Horizontal bars",
+        "area": "Color area under lines",
+        "sizeHighlight": "Sector highlight displacement in pixels",
+        "title": "Names of the events field",
+        "start": "Events start dates field",
+        "end": "Events end dates field",
+        "description": "Descriptions field",
+        "detailRes": "Temporal resolution of the details band",
+        "overviewRes": "Temporal resolution of the overview band",
+        "lat": "Latitudes field",
+        "long": "Longitudes field",
+        "view": "View Chart and Data"
     }
 }
