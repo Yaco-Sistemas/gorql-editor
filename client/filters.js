@@ -245,45 +245,60 @@ QBA.filters.getFilterWidgetView = function (type, selected) {
 };
 
 QBA.filters.filterSPARQL = {
-    equal: function (vble, value) {
+    equal: function (vble, value, casting) {
         "use strict";
-        return vble + " = \"" + value + "\"";
+        return casting + "(" + vble + ") = " + casting + "(\"" + value + "\")";
     },
-    contains: function (vble, value) {
+    contains: function (vble, value, casting) {
         "use strict";
-        return "regex(str(" + vble + "), \"^.*" + value + ".*$\", \"i\")";
+        return "regex(" + casting + "(" + vble + "), \"^.*" + value + ".*$\", \"i\")";
     },
-    less: function (vble, value) {
+    less: function (vble, value, casting) {
         "use strict";
-        return vble + " < " + value;
+        return casting + "(" + vble + ") < " + casting + "(" + value + ")";
     },
-    greater: function (vble, value) {
+    greater: function (vble, value, casting) {
         "use strict";
-        return value + " < " + vble;
+        return casting + "(" + vble + ") > " + casting + "(" + value + ")";
     },
-    range: function (vble, value) {
+    range: function (vble, value, casting) {
         "use strict";
-        return value[0] + " < " + vble + " && " + vble + " < " + value[1];
+        return casting + "(" + value[0] + ") < " + casting + "(" + vble + ") && " + casting + "(" + vble + ") < " + casting + "(" + value[1] + ")";
+    },
+    daterange: function (vble, value, casting) {
+        "use strict";
+        return casting + "(\"" + value[0] + "\") < " + vble + " && " + vble + " < " + casting + "(\"" + value[1] + "\")";
     }
+};
+
+QBA.filters.castingsSPARQL = {
+    string: "str",
+    number: "xsd:float",
+    date: "xsd:date",
+    coord: "xsd:float"
 };
 
 QBA.filters.getFilterSPARQL = function (type, selected) {
     "use strict";
-    var result;
+    var generator;
 
-    if ((selected === 3) && (type === "number" || type === "date")) {
-        result = QBA.filters.filterSPARQL.range;
+    if ((selected === 3) && (type === "number")) {
+        generator = QBA.filters.filterSPARQL.range;
+    } else if ((selected === 3) && (type === "date")) {
+        generator = QBA.filters.filterSPARQL.daterange;
     } else if ((selected === 2) && (type === "number" || type === "date")) {
-        result = QBA.filters.filterSPARQL.greater;
+        generator = QBA.filters.filterSPARQL.greater;
     } else if ((selected === 1) && (type === "number" || type === "date")) {
-        result = QBA.filters.filterSPARQL.less;
+        generator = QBA.filters.filterSPARQL.less;
     } else if ((selected === 1) && (type === "string")) {
-        result = QBA.filters.filterSPARQL.contains;
+        generator = QBA.filters.filterSPARQL.contains;
     } else {
-        result = QBA.filters.filterSPARQL.equal;
+        generator = QBA.filters.filterSPARQL.equal;
     }
 
-    return result;
+    return function (vble, value) {
+        return generator(vble, value, QBA.filters.castingsSPARQL[type]);
+    };
 };
 
 // Browser
