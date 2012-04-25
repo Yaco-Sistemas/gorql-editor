@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Query Builder Assistant</title>
+    <title>${lingua.title}</title>
 <!--     <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'> -->
     <link href='/stylesheets/jquery-ui-1.8.18.custom.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="${viewer}/stylesheets/base.css" />
@@ -38,15 +38,15 @@
 </head>
 <body class="no-js">
 <div id="page">
-    <h1>Query Builder Assistant</h1>
+    <h1>${lingua.title}</h1>
     <form action="/form" method="get" class="tabable">
         <nav class="js">
             <ol>
-                <li class="tab"><a id="ls1" href="#step1">Step 1</a></li>
-                <li class="tab"><a id="ls2" href="#step2">Step 2</a></li>
-                <li class="tab"><a id="ls3" href="#step3">Step 3</a></li>
-                <li class="tab"><a id="ls4" href="#step4">Step 4</a></li>
-                <li class="tab"><a id="ls5" href="#step5">Step 5</a></li>
+                <li class="tab"><a id="ls1" href="#step1">${lingua.tabs.s1}</a></li>
+                <li class="tab"><a id="ls2" href="#step2">${lingua.tabs.s2}</a></li>
+                <li class="tab"><a id="ls3" href="#step3">${lingua.tabs.s3}</a></li>
+                <li class="tab"><a id="ls4" href="#step4">${lingua.tabs.s4}</a></li>
+                <li class="tab"><a id="ls5" href="#step5">${lingua.tabs.s5}</a></li>
             </ol>
         </nav>
 
@@ -71,7 +71,7 @@
         </section>
     </form>
     <section id="preview">
-        <input type="submit" name="preview" value="Generate preview" />
+        <input type="submit" name="preview" value="${lingua.genPreview}" />
         <div id="viewport"></div>
         <pre id="debug"><code class="language-sparql" id="query"></code></pre>
     </section>

@@ -1,5 +1,5 @@
 <fieldset class="collection">
-    <legend>Available collections</legend>
+    <legend>${lingua.step2.title}</legend>
     <div class="collections accordionable">
         {{each(idx_cat, category) categories}}
         {{each(idx_col, collection) category.collections}}
@@ -16,7 +16,7 @@
         {{/each}}
     </div>
     <div>
-        <input class="float" type="submit" name="prevS2" value="Previous" />
-        <input class="float" type="submit" name="nextS2" value="Next" />
+        <input class="float" type="submit" name="prevS2" value="${lingua.previous}" />
+        <input class="float" type="submit" name="nextS2" value="${lingua.next}" />
     </div>
 </fieldset>

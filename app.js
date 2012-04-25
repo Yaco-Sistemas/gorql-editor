@@ -27,6 +27,7 @@
  */
 
 var express = require('express'),
+    lingua = require('lingua'),
     index = require('./routes/index'),
     settings = require('./settings').settings,
     app = module.exports = express.createServer(),
@@ -40,15 +41,22 @@ app.configure(function () {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'html');
     app.register('.html', require('jqtpl').express);
+
+    app.use(lingua(app, {
+        defaultLocale: 'en',
+        path: __dirname + '/i18n'
+    }));
+
     app.use(express.bodyParser());
     app.use(express.methodOverride());
-    app.use(app.router);
     // static is not in dot notation because of JSLint
     app.use(express['static'](__dirname + '/public'));
 
     app.set('debugJS', settings.global.debug);
     app.set('schema', settings.global.schema);
     app.set('viewer', settings.global.viewer);
+
+    app.use(app.router);
 });
 
 configureApp = function (app, opts) {

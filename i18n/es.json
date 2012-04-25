@@ -1,0 +1,38 @@
+{
+    "title": "Asistente de Construcción de Consultas",
+    "tabs": {
+        "s1": "Escoja colecciones",
+        "s2": "Escoja campos",
+        "s3": "Una",
+        "s4": "Filtre",
+        "s5": "Visualice"
+    },
+    "genPreview": "Generar previsualización",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "step1": {
+        "title": "Categorías disponibles"
+    },
+    "step2" : {
+        "title": "Colecciones disponibles"
+    },
+    "step3" : {
+        "title": "Una las colecciones disponibles",
+        "addJoin": "Unir colección"
+    },
+    "step4" : {
+        "title": "Filtre los contenidos de las colecciones",
+        "addFilter": "Crear filtro para",
+        "view": "Ver Datos"
+    },
+    "step5" : {
+        "title": "Visualice los resultados",
+        "type": "Tipo de Gráfico",
+        "bar": "Barras",
+        "line": "Líneas",
+        "pie": "Sectores (Tarta)",
+        "timeline": "Línea de Tiempo",
+        "map": "Mapas - Open Street Maps",
+        "mapea": "Mapea"
+    }
+}

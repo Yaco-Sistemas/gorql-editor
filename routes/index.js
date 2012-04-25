@@ -25,7 +25,8 @@
 var app = require.main,
     async = require('async'),
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    linguaRegexp = /\$\{lingua\.([\w\.]+)\}/g;
 
 /*
  * GET home page.
@@ -36,7 +37,13 @@ exports.index = function (request, response) {
 
     var callback = function (error, data) {
         var schema,
-            templates;
+            templates,
+            tpl,
+            matches,
+            keys,
+            replacement,
+            i,
+            j;
 
         if (error) {
             // TODO
@@ -45,6 +52,23 @@ exports.index = function (request, response) {
         } else {
             schema = JSON.parse(data.splice(0, 1)[0]);
             templates = data;
+
+            for (i = 0; i < templates.length; i += 1) {
+                tpl = String(templates[i]);
+                matches = true;
+                while (matches !== null) {
+                    matches = linguaRegexp.exec(tpl);
+                    if (matches !== null) {
+                        keys = matches[1].split('.');
+                        replacement = response.lingua.content;
+                        for (j = 0; j < keys.length; j += 1) {
+                            replacement = replacement[keys[j]];
+                        }
+                        tpl = tpl.replace(matches[0], replacement);
+                    }
+                }
+                templates[i] = tpl;
+            }
 
             response.render('layout', {
                 layout: false,

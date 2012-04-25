@@ -1,5 +1,5 @@
 <fieldset class="choose">
-    <legend>Available categories</legend>
+    <legend>${lingua.step1.title}</legend>
     <div class="categories accordionable">
         {{each(idx_cat, category) categories}}
         <h3><a href="#" class="category_name">${category.name}</a></h3>
@@ -14,6 +14,6 @@
         {{/each}}
     </div>
     <div>
-        <input class="float" type="submit" name="nextS1" value="Next" />
+        <input class="float" type="submit" name="nextS1" value="${lingua.next}" />
     </div>
 </fieldset>

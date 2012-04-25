@@ -34,7 +34,6 @@ make all
 
 # clean files not needed
 rm -rf %{installdir}/.hg
-rm -rf %{installdir}/client
 rm -f %{installdir}/%{name}.spec
 rm -f %{installdir}/make_dev_rpm.sh
 
@@ -58,8 +57,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc %{docdir}/COPYING
 %doc %{docdir}/README
 %{installdir}/node_modules
+%{installdir}/client
 %{installdir}/public
 %{installdir}/routes
+%{installdir}/i18n
+%{installdir}/endpoints
 %{installdir}/views
 %{installdir}/app.js
 %{installdir}/package.json

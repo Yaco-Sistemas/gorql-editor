@@ -1,8 +1,8 @@
 <fieldset class="join">
-    <legend>Join selected collections</legend>
+    <legend>${lingua.step3.title}</legend>
     <div id="joins"></div>
     <input type="submit" class="no-js" value="Join collection" />
-    <label for="add_join_field" class="js">Join collection: </label>
+    <label for="add_join_field" class="js">${lingua.step3.addJoin}: </label>
     <select name="add_join_field" id="addJoinField">
         <option value="false"></option>
         {{each(idx_cat, category) categories}}
@@ -16,7 +16,7 @@
         {{/each}}
     </select>
     <div>
-        <input class="float" type="submit" name="prevS3" value="Previous" />
-        <input class="float" type="submit" name="nextS3" value="Next" />
+        <input class="float" type="submit" name="prevS3" value="${lingua.previous}" />
+        <input class="float" type="submit" name="nextS3" value="${lingua.next}" />
     </div>
 </fieldset>

@@ -1,0 +1,38 @@
+{
+    "title": "Query Builder Assistant",
+    "tabs": {
+        "s1": "Choose collections",
+        "s2": "Choose fields",
+        "s3": "Join",
+        "s4": "Filters",
+        "s5": "Chart"
+    },
+    "genPreview": "Generate preview",
+    "next": "Next",
+    "previous": "Previous",
+    "step1": {
+        "title": "Available categories"
+    },
+    "step2" : {
+        "title": "Available collections"
+    },
+    "step3" : {
+        "title": "Join selected collections",
+        "addJoin": "Join collection"
+    },
+    "step4" : {
+        "title": "Filter the collections contents",
+        "addFilter": "Add filter for",
+        "view": "View Data"
+    },
+    "step5" : {
+        "title": "Visualize the results",
+        "type": "Chart type",
+        "bar": "Bars",
+        "line": "Lines",
+        "pie": "Sectors (Pie)",
+        "timeline": "Timeline",
+        "map": "Open Street Maps",
+        "mapea": "Mapea"
+    }
+}
