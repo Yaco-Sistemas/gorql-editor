@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PACKAGE="query-assistant"
+PACKAGE="gorql-editor"
 CURRENT_DIR=`pwd`
 BUILD_ROOT=/root/rpmbuild
 
@@ -22,15 +22,10 @@ TAG="${VERSION}hg${REV}"
 
 echo "New version: ${TAG}"
 
-sed -i "s/Version: [0-9].[0-9].[0-9]hg[0-9]\+/Version: ${TAG}/g" specs/${PACKAGE}.spec
+sed -i "s/Version: [0-9].[0-9].[0-9]develhg[0-9]\+/Version: ${TAG}/g" specs/${PACKAGE}.spec
 
-mv /tmp/${PACKAGE} /tmp/${PACKAGE}-${TAG}
-cd /tmp/
-tar cf ${PACKAGE}-${TAG}.tar ${PACKAGE}-${TAG}
-mv ${PACKAGE}-${TAG}.tar ${CURRENT_DIR}/
-cd ${CURRENT_DIR}
-mv /tmp/${PACKAGE}-${TAG} /tmp/${PACKAGE}
-gzip ${PACKAGE}-${TAG}.tar
+cd /tmp/${PACKAGE}
+hg archive -t tgz ${CURRENT_DIR}/${PACKAGE}-${TAG}.tar.gz
 
 if [ -f ${BUILD_ROOT}/SOURCES/${PACKAGE}-${TAG}.tar.gz ]
 then

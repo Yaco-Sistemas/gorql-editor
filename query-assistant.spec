@@ -1,12 +1,12 @@
-%define name query-assistant
+%define name gorql-editor
 %define sourcedir $(echo $PWD)
 %define installdir /opt/%{name}
 %define docdir /usr/share/doc/%{name}-%{version}
 
 Name: %{name}
-Version: 0.0.1hg1
+Version: 1.0.0develhg1
 Release: 1
-Summary: Query Builder Assistant helps writing SPARQL queries
+Summary: GORQL Editor helps writing SPARQL queries
 Packager: Alejandro Blanco <ablanco@yaco.es>
 Group: Applications/Internet
 License: EUPL 1.1 License
@@ -14,8 +14,8 @@ License: EUPL 1.1 License
 URL: http://www.yaco.es
 Source0: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
-Requires: nodejs
-BuildRequires: nodejs npm
+Requires: nodejs make
+BuildRequires: nodejs npm make
 
 %description
 %{summary}
