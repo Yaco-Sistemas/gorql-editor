@@ -406,7 +406,9 @@ QBA.models.ChartParameter = Backbone.Model.extend({
         "use strict";
         return {
             name: "",
-            value: ""
+            select: false,
+            value: "",
+            valueOption: undefined
         };
     }
 });

@@ -122,7 +122,7 @@ QBA.chart.getFieldVbleName = function (indexes) {
     return field.get("code").split(":")[1] + idx + "Vble";
 };
 
-QBA.chart.getChartParams = function (chart, ignoreRequire) {
+QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
     "use strict";
     var params = $("#step5 #" + chart + "Params div.parameter input"),
         result = {},
@@ -150,6 +150,7 @@ QBA.chart.getChartParams = function (chart, ignoreRequire) {
     aux = _.map(params, function (p) {
         p = $(p);
         var value = p.val(),
+            valueOption = "",
             indexes;
 
         if (value === null || typeof value === "undefined") {
@@ -168,10 +169,13 @@ QBA.chart.getChartParams = function (chart, ignoreRequire) {
                 var name = QBA.chart.getFieldVbleName(indexesStr.split('-'));
                 if (idx > 0) {
                     value += ",";
+                    valueOption += ",";
                 }
                 value += name;
+                valueOption += indexesStr;
             });
         } else {
+            valueOption = value;
             indexes = value.split('-');
             if (indexes.length === 3) {
                 value = QBA.chart.getFieldVbleName(indexes);
@@ -180,7 +184,9 @@ QBA.chart.getChartParams = function (chart, ignoreRequire) {
 
         return {
             key: p.attr("name").split('-')[1],
-            value: value
+            value: value,
+            select: true,
+            valueOption: valueOption
         };
     });
 
@@ -188,7 +194,11 @@ QBA.chart.getChartParams = function (chart, ignoreRequire) {
 
     _.each(options, function (opt) {
         if (opt.value !== "") {
-            result[opt.key] = opt.value;
+            if (extraInfo) {
+                result[opt.key] = opt;
+            } else {
+                result[opt.key] = opt.value;
+            }
         }
     });
 
@@ -198,14 +208,20 @@ QBA.chart.getChartParams = function (chart, ignoreRequire) {
 QBA.chart.updateChartModel = function () {
     "use strict";
     var type = $("#step5 input[type=radio]:checked").val(),
-        params = QBA.chart.getChartParams(type, true),
-        paramList = new QBA.models.ChartParameterList();
+        params = QBA.chart.getChartParams(type, true, true),
+        paramList = new QBA.models.ChartParameterList(),
+        p;
 
     _.each(_.keys(params), function (key) {
-        paramList.add(new QBA.models.ChartParameter({
+        p = {
             name: key,
-            value: params[key]
-        }));
+            value: params[key].value
+        };
+        if (params[key].select) {
+            p.select = true;
+            p.valueOption = params[key].valueOption;
+        }
+        paramList.add(new QBA.models.ChartParameter(p));
     });
 
     QBA.theChart.set({
@@ -225,14 +241,18 @@ QBA.chart.loadChartModel = function () {
         radio.trigger("change");
         QBA.theChart.get("paramList").each(function (param) {
             var name = type + "-" + param.get("name") + "-param",
-                input = $("#step5 #" + type + "Params div.parameter input[name=" + name + "]");
+                input;
 
-            if (input.attr("type") === "checkbox") {
-                input.attr("checked", param.get("value"));
+            if (param.select) {
+                $("#step5 #" + type + "Params div.parameter select[name=" + name + "]").val(param.get("valueOption"));
             } else {
-                input.val(param.get("value"));
+                input = $("#step5 #" + type + "Params div.parameter input[name=" + name + "]");
+                if (input.attr("type") === "checkbox") {
+                    input.attr("checked", param.get("value"));
+                } else {
+                    input.val(param.get("value"));
+                }
             }
-            $("#step5 #" + type + "Params div.parameter select[name=" + name + "]").val(param.get("value"));
         });
     }
 };
