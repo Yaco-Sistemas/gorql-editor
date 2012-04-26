@@ -119,7 +119,7 @@ QBA.chart.getFieldVbleName = function (indexes) {
         });
     });
 
-    return field.get("name").split(":")[1] + idx + "Vble";
+    return field.get("code").split(":")[1] + idx + "Vble";
 };
 
 QBA.chart.getChartParams = function (chart, ignoreRequire) {
