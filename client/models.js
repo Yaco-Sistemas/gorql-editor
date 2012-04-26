@@ -75,6 +75,7 @@ QBA.models.Field = Backbone.Model.extend({
         "use strict";
         return {
             name: '',
+            code: '',
             checked: false,
             type: '',
             parameters: {},
@@ -285,17 +286,17 @@ QBA.models.CategoryList = Backbone.Collection.extend({
 
             // Per field
             _.each(data.fields, function (field) {
-                fieldId = "?" + field.get("name").split(":")[1] + i + "Vble";
+                fieldId = "?" + field.get("code").split(":")[1] + i + "Vble";
 
                 // SELECT
                 selectVbles += fieldId + " ";
 
                 // WHERE - Create fields variables
-                fieldsDef += collectionId + " " + field.get("name") + " " + fieldId + " . ";
+                fieldsDef += collectionId + " " + field.get("code") + " " + fieldId + " . ";
 
                 // JOIN
                 field.get("joinList").each(function (join) {
-                    joinPatterns += collectionId + " " + field.get("name") + " ?" + join.get("target_collection").get("identifier") + " . ";
+                    joinPatterns += collectionId + " " + field.get("code") + " ?" + join.get("target_collection").get("identifier") + " . ";
                 });
 
                 // FILTERS

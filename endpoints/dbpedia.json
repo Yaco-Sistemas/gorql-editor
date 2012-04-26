@@ -15,15 +15,18 @@
             },
             "fields": [
                 {
-                    "name": "rdfs:label",
+                    "code": "rdfs:label",
+                    "name": "Nombre",
                     "type" : "string"
                 },
                 {
-                    "name": "rdfs:comment",
+                    "code": "rdfs:comment",
+                    "name": "Descripción",
                     "type" : "string"
                 },
                 {
-                    "name": "dbpedia-owl:areaTotal",
+                    "code": "dbpedia-owl:areaTotal",
+                    "name": "Área",
                     "type": "number",
                     "parameters": {
                         "min": 0,
@@ -32,7 +35,8 @@
                     }
                 },
                 {
-                    "name": "dbpedia-owl:populationTotal",
+                    "code": "dbpedia-owl:populationTotal",
+                    "name": "Población",
                     "type": "number",
                     "parameters": {
                         "min": 0,
@@ -41,11 +45,13 @@
                     }
                 },
                 {
-                    "name": "geo:lat",
+                    "code": "geo:lat",
+                    "name": "Latitud",
                     "type": "coord"
                 },
                 {
-                    "name": "geo:long",
+                    "code": "geo:long",
+                    "name": "Longitud",
                     "type": "coord"
                 }
             ]
@@ -64,15 +70,18 @@
             },
             "fields": [
                 {
-                    "name": "rdfs:label",
+                    "code": "rdfs:label",
+                    "name": "Nombre",
                     "type" : "string"
                 },
                 {
-                    "name": "rdfs:comment",
+                    "code": "rdfs:comment",
+                    "name": "Descripción",
                     "type" : "string"
                 },
                 {
-                    "name": "dbpedia-owl:areaTotal",
+                    "code": "dbpedia-owl:areaTotal",
+                    "name": "Área",
                     "type": "number",
                     "parameters": {
                         "min": 0,
@@ -81,7 +90,8 @@
                     }
                 },
                 {
-                    "name": "dbpedia-owl:populationTotal",
+                    "code": "dbpedia-owl:populationTotal",
+                    "name": "Población",
                     "type": "number",
                     "parameters": {
                         "min": 0,
@@ -90,11 +100,13 @@
                     }
                 },
                 {
-                    "name": "geo:lat",
+                    "code": "geo:lat",
+                    "name": "Latitud",
                     "type": "coord"
                 },
                 {
-                    "name": "geo:long",
+                    "code": "geo:long",
+                    "name": "Longitud",
                     "type": "coord"
                 }
             ]
@@ -113,15 +125,18 @@
             },
             "fields": [
                 {
-                    "name": "rdfs:label",
+                    "code": "rdfs:label",
+                    "name": "Nombre",
                     "type" : "string"
                 },
                 {
-                    "name": "rdfs:comment",
+                    "code": "rdfs:comment",
+                    "name": "Descripción",
                     "type" : "string"
                 },
                 {
-                    "name": "dbpedia-owl:areaTotal",
+                    "code": "dbpedia-owl:areaTotal",
+                    "name": "Área",
                     "type": "number",
                     "parameters": {
                         "min": 0,
@@ -130,7 +145,8 @@
                     }
                 },
                 {
-                    "name": "dbpedia-owl:populationTotal",
+                    "code": "dbpedia-owl:populationTotal",
+                    "name": "Población",
                     "type": "number",
                     "parameters": {
                         "min": 0,
@@ -139,11 +155,13 @@
                     }
                 },
                 {
-                    "name": "geo:lat",
+                    "code": "geo:lat",
+                    "name": "Latitud",
                     "type": "coord"
                 },
                 {
-                    "name": "geo:long",
+                    "code": "geo:long",
+                    "name": "Longitud",
                     "type": "coord"
                 }
             ]
@@ -162,15 +180,18 @@
             },
             "fields": [
                 {
-                    "name": "rdfs:label",
+                    "code": "rdfs:label",
+                    "name": "Nombre",
                     "type" : "string"
                 },
                 {
-                    "name": "rdfs:comment",
+                    "code": "rdfs:comment",
+                    "name": "Descripción",
                     "type" : "string"
                 },
                 {
-                    "name": "dbpedia-owl:areaTotal",
+                    "code": "dbpedia-owl:areaTotal",
+                    "name": "Área",
                     "type": "number",
                     "parameters": {
                         "min": 0,
@@ -179,7 +200,8 @@
                     }
                 },
                 {
-                    "name": "dbpedia-owl:populationTotal",
+                    "code": "dbpedia-owl:populationTotal",
+                    "name": "Población",
                     "type": "number",
                     "parameters": {
                         "min": 0,
@@ -188,11 +210,13 @@
                     }
                 },
                 {
-                    "name": "geo:lat",
+                    "code": "geo:lat",
+                    "name": "Latitud",
                     "type": "coord"
                 },
                 {
-                    "name": "geo:long",
+                    "code": "geo:long",
+                    "name": "Longitud",
                     "type": "coord"
                 }
             ]
@@ -212,15 +236,18 @@
             },
             "fields": [
                 {
-                    "name": "rdfs:label",
+                    "code": "rdfs:label",
+                    "name": "Nombre",
                     "type" : "string"
                 },
                 {
-                    "name": "rdfs:comment",
+                    "code": "rdfs:comment",
+                    "name": "Descripción",
                     "type" : "string"
                 },
                 {
-                    "name": "dbpprop:birthDate",
+                    "code": "dbpprop:birthDate",
+                    "name": "Fecha de nacimiento",
                     "type": "date",
                     "parameters": {
                         "min": "1000-01-01",
@@ -228,7 +255,8 @@
                     }
                 },
                 {
-                    "name": "dbpprop:deathDate",
+                    "code": "dbpprop:deathDate",
+                    "name": "Fecha de defunción",
                     "type": "date",
                     "parameters": {
                         "min": "1000-01-01",
@@ -236,19 +264,23 @@
                     }
                 },
                 {
-                    "name": "dbpprop:birthPlace",
+                    "code": "dbpprop:birthPlace",
+                    "name": "Lugar de nacimiento",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:deathPlace",
+                    "code": "dbpprop:deathPlace",
+                    "name": "Lugar de defunción",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:notableworks",
+                    "code": "dbpprop:notableworks",
+                    "name": "Obras notables",
                     "type": "string"
                 },
                 {
-                    "name": "dbpprop:movement",
+                    "code": "dbpprop:movement",
+                    "name": "Corriente",
                     "type": "string"
                 }
             ]
@@ -264,15 +296,18 @@
             },
             "fields": [
                 {
-                    "name": "rdfs:label",
+                    "code": "rdfs:label",
+                    "name": "Nombre",
                     "type" : "string"
                 },
                 {
-                    "name": "rdfs:comment",
+                    "code": "rdfs:comment",
+                    "name": "Descripción",
                     "type" : "string"
                 },
                 {
-                    "name": "dbpprop:birthDate",
+                    "code": "dbpprop:birthDate",
+                    "name": "Fecha de nacimiento",
                     "type": "date",
                     "parameters": {
                         "min": "1000-01-01",
@@ -280,7 +315,8 @@
                     }
                 },
                 {
-                    "name": "dbpprop:deathDate",
+                    "code": "dbpprop:deathDate",
+                    "name": "Fecha de defunción",
                     "type": "date",
                     "parameters": {
                         "min": "1000-01-01",
@@ -288,19 +324,23 @@
                     }
                 },
                 {
-                    "name": "dbpprop:birthPlace",
+                    "code": "dbpprop:birthPlace",
+                    "name": "Lugar de nacimiento",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:deathPlace",
+                    "code": "dbpprop:deathPlace",
+                    "name": "Lugar de defunción",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:notableworks",
+                    "code": "dbpprop:notableworks",
+                    "name": "Obras notables",
                     "type": "string"
                 },
                 {
-                    "name": "dbpprop:movement",
+                    "code": "dbpprop:movement",
+                    "name": "Corriente",
                     "type": "string"
                 }
             ]
@@ -316,15 +356,18 @@
             },
             "fields": [
                 {
-                    "name": "rdfs:label",
+                    "code": "rdfs:label",
+                    "name": "Nombre",
                     "type" : "string"
                 },
                 {
-                    "name": "rdfs:comment",
+                    "code": "rdfs:comment",
+                    "name": "Descripción",
                     "type" : "string"
                 },
                 {
-                    "name": "dbpprop:birthDate",
+                    "code": "dbpprop:birthDate",
+                    "name": "Fecha de nacimiento",
                     "type": "date",
                     "parameters": {
                         "min": "1000-01-01",
@@ -332,7 +375,8 @@
                     }
                 },
                 {
-                    "name": "dbpprop:deathDate",
+                    "code": "dbpprop:deathDate",
+                    "name": "Fecha de defunción",
                     "type": "date",
                     "parameters": {
                         "min": "1000-01-01",
@@ -340,19 +384,23 @@
                     }
                 },
                 {
-                    "name": "dbpprop:birthPlace",
+                    "code": "dbpprop:birthPlace",
+                    "name": "Lugar de nacimiento",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:deathPlace",
+                    "code": "dbpprop:deathPlace",
+                    "name": "Lugar de defunción",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:notableworks",
+                    "code": "dbpprop:notableworks",
+                    "name": "Obras notables",
                     "type": "string"
                 },
                 {
-                    "name": "dbpprop:movement",
+                    "code": "dbpprop:movement",
+                    "name": "Corriente",
                     "type": "string"
                 }
             ]
@@ -368,15 +416,18 @@
             },
             "fields": [
                 {
-                    "name": "rdfs:label",
+                    "code": "rdfs:label",
+                    "name": "Nombre",
                     "type" : "string"
                 },
                 {
-                    "name": "rdfs:comment",
+                    "code": "rdfs:comment",
+                    "name": "Descripción",
                     "type" : "string"
                 },
                 {
-                    "name": "dbpprop:birthDate",
+                    "code": "dbpprop:birthDate",
+                    "name": "Fecha de nacimiento",
                     "type": "date",
                     "parameters": {
                         "min": "1000-01-01",
@@ -384,7 +435,8 @@
                     }
                 },
                 {
-                    "name": "dbpprop:deathDate",
+                    "code": "dbpprop:deathDate",
+                    "name": "Fecha de defunción",
                     "type": "date",
                     "parameters": {
                         "min": "1000-01-01",
@@ -392,19 +444,23 @@
                     }
                 },
                 {
-                    "name": "dbpprop:birthPlace",
+                    "code": "dbpprop:birthPlace",
+                    "name": "Lugar de nacimiento",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:deathPlace",
+                    "code": "dbpprop:deathPlace",
+                    "name": "Lugar de defunción",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:notableworks",
+                    "code": "dbpprop:notableworks",
+                    "name": "Obras notables",
                     "type": "string"
                 },
                 {
-                    "name": "dbpprop:movement",
+                    "code": "dbpprop:movement",
+                    "name": "Corriente",
                     "type": "string"
                 }
             ]
@@ -424,15 +480,18 @@
             },
             "fields": [
                 {
-                    "name": "rdfs:label",
+                    "code": "rdfs:label",
+                    "name": "Título",
                     "type" : "string"
                 },
                 {
-                    "name": "dbpprop:author",
+                    "code": "dbpprop:author",
+                    "name": "Autor",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:releaseDate",
+                    "code": "dbpprop:releaseDate",
+                    "name": "Fecha de publicación",
                     "type": "date",
                     "parameters": {
                         "min": "1000-01-01",
@@ -440,15 +499,18 @@
                     }
                 },
                 {
-                    "name": "dbpprop:language",
+                    "code": "dbpprop:language",
+                    "name": "Idioma original",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:publisher",
+                    "code": "dbpprop:publisher",
+                    "name": "Editor",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:genre",
+                    "code": "dbpprop:genre",
+                    "name": "Género",
                     "type": "uri"
                 }
             ]
@@ -464,15 +526,18 @@
             },
             "fields": [
                 {
-                    "name": "rdfs:label",
+                    "code": "rdfs:label",
+                    "name": "Título",
                     "type" : "string"
                 },
                 {
-                    "name": "dbpprop:author",
+                    "code": "dbpprop:author",
+                    "name": "Autor",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:releaseDate",
+                    "code": "dbpprop:releaseDate",
+                    "name": "Fecha de publicación",
                     "type": "date",
                     "parameters": {
                         "min": "1000-01-01",
@@ -480,15 +545,18 @@
                     }
                 },
                 {
-                    "name": "dbpprop:language",
+                    "code": "dbpprop:language",
+                    "name": "Idioma original",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:publisher",
+                    "code": "dbpprop:publisher",
+                    "name": "Editor",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:genre",
+                    "code": "dbpprop:genre",
+                    "name": "Género",
                     "type": "uri"
                 }
             ]
@@ -504,15 +572,18 @@
             },
             "fields": [
                 {
-                    "name": "rdfs:label",
+                    "code": "rdfs:label",
+                    "name": "Título",
                     "type" : "string"
                 },
                 {
-                    "name": "dbpprop:author",
+                    "code": "dbpprop:author",
+                    "name": "Autor",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:releaseDate",
+                    "code": "dbpprop:releaseDate",
+                    "name": "Fecha de publicación",
                     "type": "date",
                     "parameters": {
                         "min": "1000-01-01",
@@ -520,15 +591,18 @@
                     }
                 },
                 {
-                    "name": "dbpprop:language",
+                    "code": "dbpprop:language",
+                    "name": "Idioma original",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:publisher",
+                    "code": "dbpprop:publisher",
+                    "name": "Editor",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:genre",
+                    "code": "dbpprop:genre",
+                    "name": "Género",
                     "type": "uri"
                 }
             ]
@@ -544,15 +618,18 @@
             },
             "fields": [
                 {
-                    "name": "rdfs:label",
+                    "code": "rdfs:label",
+                    "name": "Título",
                     "type" : "string"
                 },
                 {
-                    "name": "dbpprop:author",
+                    "code": "dbpprop:author",
+                    "name": "Autor",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:releaseDate",
+                    "code": "dbpprop:releaseDate",
+                    "name": "Fecha de publicación",
                     "type": "date",
                     "parameters": {
                         "min": "1000-01-01",
@@ -560,15 +637,18 @@
                     }
                 },
                 {
-                    "name": "dbpprop:language",
+                    "code": "dbpprop:language",
+                    "name": "Idioma original",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:publisher",
+                    "code": "dbpprop:publisher",
+                    "name": "Editor",
                     "type": "uri"
                 },
                 {
-                    "name": "dbpprop:genre",
+                    "code": "dbpprop:genre",
+                    "name": "Género",
                     "type": "uri"
                 }
             ]
