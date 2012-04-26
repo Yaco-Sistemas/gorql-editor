@@ -200,16 +200,6 @@
                     "type" : "string"
                 },
                 {
-                    "code": "dbpedia-owl:areaTotal",
-                    "name": "Área",
-                    "type": "number",
-                    "parameters": {
-                        "min": 0,
-                        "max": 5000000000,
-                        "step": 10000000
-                    }
-                },
-                {
                     "code": "dbpedia-owl:populationTotal",
                     "name": "Población",
                     "type": "number",

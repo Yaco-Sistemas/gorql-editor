@@ -243,7 +243,7 @@ QBA.chart.loadChartModel = function () {
             var name = type + "-" + param.get("name") + "-param",
                 input;
 
-            if (param.select) {
+            if (param.get("select")) {
                 $("#step5 #" + type + "Params div.parameter select[name=" + name + "]").val(param.get("valueOption"));
             } else {
                 input = $("#step5 #" + type + "Params div.parameter input[name=" + name + "]");
