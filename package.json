@@ -1,6 +1,6 @@
 {
-    "name": "query-assistant",
-    "version": "0.0.1",
+    "name": "gorql-editor",
+    "version": "1.0.0devel",
     "private": true,
     "dependencies": {
         "forever": "0.8.5",
