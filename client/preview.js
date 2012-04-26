@@ -105,6 +105,10 @@ QBA.preview.updateChart = function () {
         radios = $("input[name=chart_type]"),
         radio = _.find(radios, function (radio) { return radio.checked; });
 
+    if (radio.value === "map") {
+        html += "<link rel='stylesheet' href='" + QBA.preview.viewer + "/javascripts/theme/default/style.css' />";
+    }
+
     html += "<link rel='stylesheet' href='" + QBA.preview.viewer + "/stylesheets/" + radio.value + ".css' />";
     if (radio.value === "timeline") {
         html += "<script type='text/javascript'>var Timeline_ajax_url='" +
