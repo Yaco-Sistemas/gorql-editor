@@ -90,6 +90,7 @@ QBA.models.Field = Backbone.Model.extend({
 
         result.name = this.attributes.name;
         result.checked = this.attributes.checked;
+        result.type = this.attributes.type;
 
         return result;
     }

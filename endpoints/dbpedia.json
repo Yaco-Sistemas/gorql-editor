@@ -47,12 +47,22 @@
                 {
                     "code": "geo:lat",
                     "name": "Latitud",
-                    "type": "coord"
+                    "type": "coord",
+                    "parameters": {
+                        "min": "-180",
+                        "max": "180",
+                        "step": "1"
+                    }
                 },
                 {
                     "code": "geo:long",
                     "name": "Longitud",
-                    "type": "coord"
+                    "type": "coord",
+                    "parameters": {
+                        "min": "-180",
+                        "max": "180",
+                        "step": "1"
+                    }
                 }
             ]
         }, {

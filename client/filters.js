@@ -32,9 +32,10 @@ if (typeof QBA.filters === 'undefined') {
 
 QBA.filters.filtersByType = {
     string: ["Equal", "Contains"],
+    uri: ["Equal", "Contains"],
     number: ["Equal", "Less than", "Greater than", "Between"],
     date: ["Equal", "Less than", "Greater than", "Between"],
-    coord: []
+    coord: ["Equal", "Less than", "Greater than", "Between"]
 };
 
 QBA.filters.getFiltersFromType = function (type) {
@@ -87,7 +88,7 @@ QBA.filters.filterWidgets = {
             "use strict";
             var parameters = this.model.get("field").get("parameters"),
                 html = "",
-                value = this.model.get("value"),
+                value = parseFloat(this.model.get("value")),
                 $el = this.$el,
                 model = this.model;
 
@@ -123,7 +124,9 @@ QBA.filters.filterWidgets = {
                 model = this.model;
 
             if (!_.isArray(value)) {
-                value = [parameters.min, parameters.max];
+                value = [parseFloat(parameters.min), parseFloat(parameters.max)];
+            } else {
+                value = [parseFloat(value[0]), parseFloat(value[1])];
             }
 
             html += "<span class='filter-widget hint'>(From " + parameters.min + " to " + parameters.max + ")</span>";
@@ -133,9 +136,9 @@ QBA.filters.filterWidgets = {
 
             this.$el.find("div.filter-widget.range").slider({
                 range: true,
-                min: parameters.min,
-                max: parameters.max,
-                step: parameters.step,
+                min: parseFloat(parameters.min),
+                max: parseFloat(parameters.max),
+                step: parseFloat(parameters.step),
                 values: value,
                 slide: function (event, ui) {
                     $el.find("input.filter-widget.range.from").val(ui.values[0]);
@@ -227,6 +230,10 @@ QBA.filters.filterWidgets = {
 
 QBA.filters.getFilterWidgetView = function (type, selected) {
     "use strict";
+    if (type === "coord") {
+        type = "number";
+    }
+
     var key = type,
         result;
 
@@ -294,19 +301,19 @@ QBA.filters.getFilterSPARQL = function (type, selected) {
     "use strict";
     var generator;
 
-    if ((selected === 3) && (type === "number")) {
+    if ((selected === 3) && (type === "number" || type === "coord")) {
         generator = QBA.filters.filterSPARQL.range;
     } else if ((selected === 3) && (type === "date")) {
         generator = QBA.filters.filterSPARQL.daterange;
-    } else if ((selected === 2) && (type === "number")) {
+    } else if ((selected === 2) && (type === "number" || type === "coord")) {
         generator = QBA.filters.filterSPARQL.greater;
     } else if ((selected === 2) && (type === "date")) {
         generator = QBA.filters.filterSPARQL.dategreater;
-    } else if ((selected === 1) && (type === "number")) {
+    } else if ((selected === 1) && (type === "number" || type === "coord")) {
         generator = QBA.filters.filterSPARQL.less;
     } else if ((selected === 1) && (type === "date")) {
         generator = QBA.filters.filterSPARQL.dateless;
-    } else if ((selected === 1) && (type === "string")) {
+    } else if ((selected === 1) && (type === "string" || type === "uri")) {
         generator = QBA.filters.filterSPARQL.contains;
     } else if (type !== "date") {
         generator = QBA.filters.filterSPARQL.equal;
