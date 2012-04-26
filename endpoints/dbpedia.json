@@ -1,15 +1,17 @@
 [{
-    "name": "Ciudades portuarias",
+    "name": "Ciudades",
     "collections": [{
             "name": "Ciudades portuarias españolas",
-            "identifier": "spainports",
+            "identifier": "spanishports",
             "definition": [
                 "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Port_cities_and_towns_in_Spain>"
             ],
             "prefixes": {
+                "owl": "<http://www.w3.org/2002/07/owl#>",
                 "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
                 "dbpprop": "<http://dbpedia.org/property/>",
-                "foaf": "<http://xmlns.com/foaf/0.1/>"
+                "foaf": "<http://www.w3.org/2003/01/geo/wgs84_pos#>",
+                "dbpedia": "<http://dbpedia.org/>"
             },
             "fields": [
                 {
@@ -45,6 +47,529 @@
                 {
                     "name": "geo:long",
                     "type": "coord"
+                }
+            ]
+        }, {
+            "name": "Ciudades costeras italianas",
+            "identifier": "italiancoastal",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Coastal_cities_and_towns_in_Italy>"
+            ],
+            "prefixes": {
+                "owl": "<http://www.w3.org/2002/07/owl#>",
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://www.w3.org/2003/01/geo/wgs84_pos#>",
+                "dbpedia": "<http://dbpedia.org/>"
+            },
+            "fields": [
+                {
+                    "name": "rdfs:label",
+                    "type" : "string"
+                },
+                {
+                    "name": "rdfs:comment",
+                    "type" : "string"
+                },
+                {
+                    "name": "dbpedia-owl:areaTotal",
+                    "type": "number",
+                    "parameters": {
+                        "min": 0,
+                        "max": 5000000000,
+                        "step": 10000000
+                    }
+                },
+                {
+                    "name": "dbpedia-owl:populationTotal",
+                    "type": "number",
+                    "parameters": {
+                        "min": 0,
+                        "max": 1000000,
+                        "step": 10000
+                    }
+                },
+                {
+                    "name": "geo:lat",
+                    "type": "coord"
+                },
+                {
+                    "name": "geo:long",
+                    "type": "coord"
+                }
+            ]
+        }, {
+            "name": "Capitales europeas",
+            "identifier": "europecapitals",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Capitals_in_Europe>"
+            ],
+            "prefixes": {
+                "owl": "<http://www.w3.org/2002/07/owl#>",
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://www.w3.org/2003/01/geo/wgs84_pos#>",
+                "dbpedia": "<http://dbpedia.org/>"
+            },
+            "fields": [
+                {
+                    "name": "rdfs:label",
+                    "type" : "string"
+                },
+                {
+                    "name": "rdfs:comment",
+                    "type" : "string"
+                },
+                {
+                    "name": "dbpedia-owl:areaTotal",
+                    "type": "number",
+                    "parameters": {
+                        "min": 0,
+                        "max": 5000000000,
+                        "step": 10000000
+                    }
+                },
+                {
+                    "name": "dbpedia-owl:populationTotal",
+                    "type": "number",
+                    "parameters": {
+                        "min": 0,
+                        "max": 1000000,
+                        "step": 10000
+                    }
+                },
+                {
+                    "name": "geo:lat",
+                    "type": "coord"
+                },
+                {
+                    "name": "geo:long",
+                    "type": "coord"
+                }
+            ]
+        }, {
+            "name": "Ciudades portuarias francesas",
+            "identifier": "frenchports",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Port_cities_and_towns_in_France>"
+            ],
+            "prefixes": {
+                "owl": "<http://www.w3.org/2002/07/owl#>",
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>",
+                "foaf": "<http://www.w3.org/2003/01/geo/wgs84_pos#>",
+                "dbpedia": "<http://dbpedia.org/>"
+            },
+            "fields": [
+                {
+                    "name": "rdfs:label",
+                    "type" : "string"
+                },
+                {
+                    "name": "rdfs:comment",
+                    "type" : "string"
+                },
+                {
+                    "name": "dbpedia-owl:areaTotal",
+                    "type": "number",
+                    "parameters": {
+                        "min": 0,
+                        "max": 5000000000,
+                        "step": 10000000
+                    }
+                },
+                {
+                    "name": "dbpedia-owl:populationTotal",
+                    "type": "number",
+                    "parameters": {
+                        "min": 0,
+                        "max": 1000000,
+                        "step": 10000
+                    }
+                },
+                {
+                    "name": "geo:lat",
+                    "type": "coord"
+                },
+                {
+                    "name": "geo:long",
+                    "type": "coord"
+                }
+            ]
+        }
+    ]
+}, {
+    "name": "Escritores",
+    "collections": [{
+            "name": "Poetas españoles",
+            "identifier": "spanishpoets",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Spanish_poets>"
+            ],
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>"
+            },
+            "fields": [
+                {
+                    "name": "rdfs:label",
+                    "type" : "string"
+                },
+                {
+                    "name": "rdfs:comment",
+                    "type" : "string"
+                },
+                {
+                    "name": "dbpprop:birthDate",
+                    "type": "date",
+                    "parameters": {
+                        "min": "1000-01-01",
+                        "max": "2050-01-01"
+                    }
+                },
+                {
+                    "name": "dbpprop:deathDate",
+                    "type": "date",
+                    "parameters": {
+                        "min": "1000-01-01",
+                        "max": "2050-01-01"
+                    }
+                },
+                {
+                    "name": "dbpprop:birthPlace",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:deathPlace",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:notableworks",
+                    "type": "string"
+                },
+                {
+                    "name": "dbpprop:movement",
+                    "type": "string"
+                }
+            ]
+        }, {
+            "name": "Escritores cristianos",
+            "identifier": "christianwriters",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Christian_writers>"
+            ],
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>"
+            },
+            "fields": [
+                {
+                    "name": "rdfs:label",
+                    "type" : "string"
+                },
+                {
+                    "name": "rdfs:comment",
+                    "type" : "string"
+                },
+                {
+                    "name": "dbpprop:birthDate",
+                    "type": "date",
+                    "parameters": {
+                        "min": "1000-01-01",
+                        "max": "2050-01-01"
+                    }
+                },
+                {
+                    "name": "dbpprop:deathDate",
+                    "type": "date",
+                    "parameters": {
+                        "min": "1000-01-01",
+                        "max": "2050-01-01"
+                    }
+                },
+                {
+                    "name": "dbpprop:birthPlace",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:deathPlace",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:notableworks",
+                    "type": "string"
+                },
+                {
+                    "name": "dbpprop:movement",
+                    "type": "string"
+                }
+            ]
+        }, {
+            "name": "Novelistas españoles",
+            "identifier": "spanishnovelists",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Spanish_novelists>"
+            ],
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>"
+            },
+            "fields": [
+                {
+                    "name": "rdfs:label",
+                    "type" : "string"
+                },
+                {
+                    "name": "rdfs:comment",
+                    "type" : "string"
+                },
+                {
+                    "name": "dbpprop:birthDate",
+                    "type": "date",
+                    "parameters": {
+                        "min": "1000-01-01",
+                        "max": "2050-01-01"
+                    }
+                },
+                {
+                    "name": "dbpprop:deathDate",
+                    "type": "date",
+                    "parameters": {
+                        "min": "1000-01-01",
+                        "max": "2050-01-01"
+                    }
+                },
+                {
+                    "name": "dbpprop:birthPlace",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:deathPlace",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:notableworks",
+                    "type": "string"
+                },
+                {
+                    "name": "dbpprop:movement",
+                    "type": "string"
+                }
+            ]
+        }, {
+            "name": "Novelistas franceses",
+            "identifier": "frenchnovelists",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:French_novelists>"
+            ],
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>"
+            },
+            "fields": [
+                {
+                    "name": "rdfs:label",
+                    "type" : "string"
+                },
+                {
+                    "name": "rdfs:comment",
+                    "type" : "string"
+                },
+                {
+                    "name": "dbpprop:birthDate",
+                    "type": "date",
+                    "parameters": {
+                        "min": "1000-01-01",
+                        "max": "2050-01-01"
+                    }
+                },
+                {
+                    "name": "dbpprop:deathDate",
+                    "type": "date",
+                    "parameters": {
+                        "min": "1000-01-01",
+                        "max": "2050-01-01"
+                    }
+                },
+                {
+                    "name": "dbpprop:birthPlace",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:deathPlace",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:notableworks",
+                    "type": "string"
+                },
+                {
+                    "name": "dbpprop:movement",
+                    "type": "string"
+                }
+            ]
+        }
+    ]
+}, {
+    "name": "Libros",
+    "collections": [{
+            "name": "Novelas filosóficas",
+            "identifier": "philonovels",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Philosophical_novels>"
+            ],
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>"
+            },
+            "fields": [
+                {
+                    "name": "rdfs:label",
+                    "type" : "string"
+                },
+                {
+                    "name": "dbpprop:author",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:releaseDate",
+                    "type": "date",
+                    "parameters": {
+                        "min": "1000-01-01",
+                        "max": "2050-01-01"
+                    }
+                },
+                {
+                    "name": "dbpprop:language",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:publisher",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:genre",
+                    "type": "uri"
+                }
+            ]
+        }, {
+            "name": "Novelas italianas",
+            "identifier": "italiannovels",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Italian_novels>"
+            ],
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>"
+            },
+            "fields": [
+                {
+                    "name": "rdfs:label",
+                    "type" : "string"
+                },
+                {
+                    "name": "dbpprop:author",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:releaseDate",
+                    "type": "date",
+                    "parameters": {
+                        "min": "1000-01-01",
+                        "max": "2050-01-01"
+                    }
+                },
+                {
+                    "name": "dbpprop:language",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:publisher",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:genre",
+                    "type": "uri"
+                }
+            ]
+        }, {
+            "name": "Novelas españolas",
+            "identifier": "spanishnovels",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Spanish_novels>"
+            ],
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>"
+            },
+            "fields": [
+                {
+                    "name": "rdfs:label",
+                    "type" : "string"
+                },
+                {
+                    "name": "dbpprop:author",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:releaseDate",
+                    "type": "date",
+                    "parameters": {
+                        "min": "1000-01-01",
+                        "max": "2050-01-01"
+                    }
+                },
+                {
+                    "name": "dbpprop:language",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:publisher",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:genre",
+                    "type": "uri"
+                }
+            ]
+        }, {
+            "name": "Poesía cristiana",
+            "identifier": "christianpoetry",
+            "definition": [
+                "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Christian_poetry>"
+            ],
+            "prefixes": {
+                "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+                "dbpprop": "<http://dbpedia.org/property/>"
+            },
+            "fields": [
+                {
+                    "name": "rdfs:label",
+                    "type" : "string"
+                },
+                {
+                    "name": "dbpprop:author",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:releaseDate",
+                    "type": "date",
+                    "parameters": {
+                        "min": "1000-01-01",
+                        "max": "2050-01-01"
+                    }
+                },
+                {
+                    "name": "dbpprop:language",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:publisher",
+                    "type": "uri"
+                },
+                {
+                    "name": "dbpprop:genre",
+                    "type": "uri"
                 }
             ]
         }
