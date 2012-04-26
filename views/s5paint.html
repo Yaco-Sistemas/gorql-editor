@@ -274,7 +274,19 @@
                 </select>
             </div>
             <div class="parameter">
-                <label for="map-description-param">${lingua.step5.description}</label>: <input type="text" name="map-description-param" class="wide-field" />
+                <label for="map-description-param">${lingua.step5.description}</label>:
+                <select name="map-description-param" class="wide-field">
+                    <option value=""></option>
+                    {{each(idx_cat, category) categories}}
+                    {{each(idx_col, collection) category.collections}}
+                    <optgroup label="${collection.name}">
+                        {{each(idx_fie, field) collection.fields}}
+                        <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+                        {{/each}}
+                    </optgroup>
+                    {{/each}}
+                    {{/each}}
+                </select>
             </div>
             <div class="parameter">
                 <label for="map-sizeX-param">${lingua.step5.sizeX}</label>: <input type="number" name="map-sizeX-param" class="narrow-field" />
@@ -315,7 +327,19 @@
                 </select>
             </div>
             <div class="parameter">
-                <label for="mapea-description-param">${lingua.step5.description}</label>: <input type="text" name="mapea-description-param" class="wide-field" />
+                <label for="mapea-description-param">${lingua.step5.description}</label>:
+                <select name="mapea-description-param" class="wide-field">
+                    <option value=""></option>
+                    {{each(idx_cat, category) categories}}
+                    {{each(idx_col, collection) category.collections}}
+                    <optgroup label="${collection.name}">
+                        {{each(idx_fie, field) collection.fields}}
+                        <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+                        {{/each}}
+                    </optgroup>
+                    {{/each}}
+                    {{/each}}
+                </select>
             </div>
             <div class="parameter">
                 <label for="mapea-sizeX-param">${lingua.step5.sizeX}</label>: <input type="number" name="mapea-sizeX-param" class="narrow-field" />
