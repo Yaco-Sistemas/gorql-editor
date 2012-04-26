@@ -249,6 +249,10 @@ QBA.filters.filterSPARQL = {
         "use strict";
         return casting + "(" + vble + ") = " + casting + "(\"" + value + "\")";
     },
+    dateequal: function (vble, value, casting) {
+        "use strict";
+        return vble + " = " + casting + "(\"" + value + "\")";
+    },
     contains: function (vble, value, casting) {
         "use strict";
         return "regex(" + casting + "(" + vble + "), \"^.*" + value + ".*$\", \"i\")";
@@ -257,9 +261,17 @@ QBA.filters.filterSPARQL = {
         "use strict";
         return casting + "(" + vble + ") < " + casting + "(" + value + ")";
     },
+    dateless: function (vble, value, casting) {
+        "use strict";
+        return vble + " < " + casting + "(\"" + value + "\")";
+    },
     greater: function (vble, value, casting) {
         "use strict";
         return casting + "(" + vble + ") > " + casting + "(" + value + ")";
+    },
+    dategreater: function (vble, value, casting) {
+        "use strict";
+        return vble + " > " + casting + "(\"" + value + "\")";
     },
     range: function (vble, value, casting) {
         "use strict";
@@ -272,7 +284,7 @@ QBA.filters.filterSPARQL = {
 };
 
 QBA.filters.castingsSPARQL = {
-    string: "str",
+    string: "xsd:string",
     number: "xsd:float",
     date: "xsd:date",
     coord: "xsd:float"
@@ -286,14 +298,20 @@ QBA.filters.getFilterSPARQL = function (type, selected) {
         generator = QBA.filters.filterSPARQL.range;
     } else if ((selected === 3) && (type === "date")) {
         generator = QBA.filters.filterSPARQL.daterange;
-    } else if ((selected === 2) && (type === "number" || type === "date")) {
+    } else if ((selected === 2) && (type === "number")) {
         generator = QBA.filters.filterSPARQL.greater;
-    } else if ((selected === 1) && (type === "number" || type === "date")) {
+    } else if ((selected === 2) && (type === "date")) {
+        generator = QBA.filters.filterSPARQL.dategreater;
+    } else if ((selected === 1) && (type === "number")) {
         generator = QBA.filters.filterSPARQL.less;
+    } else if ((selected === 1) && (type === "date")) {
+        generator = QBA.filters.filterSPARQL.dateless;
     } else if ((selected === 1) && (type === "string")) {
         generator = QBA.filters.filterSPARQL.contains;
-    } else {
+    } else if (type !== "date") {
         generator = QBA.filters.filterSPARQL.equal;
+    } else {
+        generator = QBA.filters.filterSPARQL.dateequal;
     }
 
     return function (vble, value) {

@@ -33,11 +33,11 @@ QBA.views.jQueryUI = function (elem) {
     if (typeof elem === 'undefined') {
         $(".tabable").tabs();
         $(".accordionable").accordion();
-        $(".datepicker").datepicker();
+        $(".datepicker").datepicker({ "dateFormat": "yy-mm-dd" });
     } else {
         $(elem).find(".tabable").tabs();
         $(elem).find(".accordionable").accordion();
-        $(elem).find(".datepicker").datepicker();
+        $(elem).find(".datepicker").datepicker({ "dateFormat": "yy-mm-dd" });
     }
 };
 
