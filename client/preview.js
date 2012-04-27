@@ -56,11 +56,11 @@ QBA.preview.callDV = function (chart, params) {
                     func("#preview #viewport #preview_chart",
                          "#preview #viewport #preview_table", params);
                 } catch (err) {
-                    $("#preview #viewport #preview_chart").html("There was an error.");
+                    $("#preview #viewport #preview_chart").html(QBA.lingua.preview.error);
                 }
             }
         } else {
-            QBA.preview.$el.html("No results returned.");
+            QBA.preview.$el.html(QBA.lingua.preview.noresults);
         }
     }
 };
@@ -91,7 +91,7 @@ QBA.preview.updateTable = function () {
     var SPARQL = QBA.theQuery.toSPARQL() + " LIMIT " + QBA.preview.limit,
         html = QBA.preview.initQuery(SPARQL);
 
-    html += "<table id='preview_table' class='dv_table'><tr><td>Working...</td></tr></table>";
+    html += "<table id='preview_table' class='dv_table'><tr><td>" + QBA.lingua.preview.working + "</td></tr></table>";
 
     QBA.preview.$el.html(html);
 
@@ -127,7 +127,7 @@ QBA.preview.updateChart = function () {
         html += "mapea.js'></script>";
     }
     html += "<table id='preview_table' class='dv_table' style='display: none;'></table>";
-    html += "<div id='preview_chart' class='dv_viewport'>Working...</div>";
+    html += "<div id='preview_chart' class='dv_viewport'>" + QBA.lingua.preview.working + "</div>";
 
     QBA.preview.$el.html(html);
 
