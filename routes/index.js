@@ -78,6 +78,7 @@ exports.index = function (request, response) {
                     previewLimit: app.exports.settings.previewLimit,
                     schema: { categories: schema },
                     schemaJSON: JSON.stringify(schema),
+                    linguaJSON: JSON.stringify(response.lingua.content.client),
                     templates: templates,
                     steps: {
                         s1: '',

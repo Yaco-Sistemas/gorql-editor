@@ -30,17 +30,12 @@ if (typeof QBA.filters === 'undefined') {
     QBA.filters = {};
 }
 
-QBA.filters.filtersByType = {
-    string: ["Equal", "Contains"],
-    uri: ["Equal", "Contains"],
-    number: ["Equal", "Less than", "Greater than", "Between"],
-    date: ["Equal", "Less than", "Greater than", "Between"],
-    coord: ["Equal", "Less than", "Greater than", "Between"]
-};
-
 QBA.filters.getFiltersFromType = function (type) {
     "use strict";
     var result;
+    if (typeof QBA.filters.filtersByType === "undefined") {
+        QBA.filters.filtersByType = QBA.lingua.filters;
+    }
     if (QBA.filters.filtersByType.hasOwnProperty(type)) {
         result = QBA.filters.filtersByType[type];
     } else {

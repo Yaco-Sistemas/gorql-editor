@@ -52,5 +52,19 @@
         "lat": "Campo con las latitudes",
         "long": "Campo con las longitudes",
         "view": "Ver Gráfico y Datos"
+    },
+    "client": {
+        "preview": {
+            "working": "Cargando...",
+            "error": "Se produjo un error.",
+            "noresults": "No se encontraron resultados."
+        },
+        "filters": {
+            "string": ["Igual", "Contiene"],
+            "uri": ["Igual", "Contiene"],
+            "number": ["Igual", "Menor que", "Mayor que", "Entre"],
+            "date": ["Igual", "Menor que", "Mayor que", "Entre"],
+            "coord": ["Igual", "Menor que", "Mayor que", "Entre"]
+        }
     }
 }

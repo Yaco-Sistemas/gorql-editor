@@ -297,7 +297,9 @@ QBA.models.CategoryList = Backbone.Collection.extend({
 
                 // JOIN
                 field.get("joinList").each(function (join) {
-                    joinPatterns += collectionId + " " + field.get("code") + " ?" + join.get("target_collection").get("identifier") + " . ";
+                    if (typeof join.get("target_collection") !== "undefined") {
+                        joinPatterns += collectionId + " " + field.get("code") + " ?" + join.get("target_collection").get("identifier") + " . ";
+                    }
                 });
 
                 // FILTERS

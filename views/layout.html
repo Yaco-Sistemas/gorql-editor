@@ -26,6 +26,7 @@
     <script type="text/plain" id="schema">{{html schemaJSON}}</script>
     <script type="text/javascript">
         $(document).ready(function () {
+            QBA.lingua = {{html linguaJSON}};
             QBA.views.jQueryUI();
             $(".step").removeClass("hidden");
             $(document.body).addClass("js").removeClass("no-js");

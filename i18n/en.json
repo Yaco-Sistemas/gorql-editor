@@ -52,5 +52,19 @@
         "lat": "Latitudes field",
         "long": "Longitudes field",
         "view": "View Chart and Data"
+    },
+    "client": {
+        "preview": {
+            "working": "Working...",
+            "error": "There was an error.",
+            "noresults": "No results returned."
+        },
+        "filters": {
+            "string": ["Equal", "Contains"],
+            "uri": ["Equal", "Contains"],
+            "number": ["Equal", "Less than", "Greater than", "Between"],
+            "date": ["Equal", "Less than", "Greater than", "Between"],
+            "coord": ["Equal", "Less than", "Greater than", "Between"]
+        }
     }
 }
