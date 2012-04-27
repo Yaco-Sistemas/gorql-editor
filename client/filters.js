@@ -87,7 +87,7 @@ QBA.filters.filterWidgets = {
                 $el = this.$el,
                 model = this.model;
 
-            if (!_.isNumber(value)) {
+            if (!_.isNumber(value) || _.isNaN(value)) {
                 value = parameters.min;
             }
 

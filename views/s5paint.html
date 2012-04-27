@@ -172,7 +172,9 @@
                     {{each(idx_col, collection) category.collections}}
                     <optgroup label="${collection.name}">
                         {{each(idx_fie, field) collection.fields}}
+                        {{if field.type == "date"}}
                         <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+                        {{/if}}
                         {{/each}}
                     </optgroup>
                     {{/each}}
@@ -187,7 +189,9 @@
                     {{each(idx_col, collection) category.collections}}
                     <optgroup label="${collection.name}">
                         {{each(idx_fie, field) collection.fields}}
+                        {{if field.type == "date"}}
                         <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+                        {{/if}}
                         {{/each}}
                     </optgroup>
                     {{/each}}
