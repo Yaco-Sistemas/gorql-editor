@@ -25,9 +25,9 @@
 exports.settings = {
     global: {
         root: "",
-        debug: true,
+        debug: false,
         port: 3010,
-        viewer: "http://data-viewer.ceic-ogov.yaco.es",
+        viewer: "http://gorql-viewer.ceic-ogov.yaco.es",
         schema: "endpoints/dbpedia.json"
     },
 
