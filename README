@@ -1,1 +1,4 @@
-Query Builder Assistant helps writing SPARQL queries
+GORQL Editor permite generar consultas SPARQL.
+
+Puede consultar el manual de despliegue, el manual de usuario y el manual de
+desarrollador en la documentación ubicada en el directorio docs.
