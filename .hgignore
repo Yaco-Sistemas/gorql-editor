@@ -1,6 +1,7 @@
 syntax: glob
 
 node_modules
+docs/build
 
 public/javascripts/underscore.js
 public/javascripts/backbone.js
