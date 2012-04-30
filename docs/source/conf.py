@@ -228,7 +228,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'GORQLEditor', u'GORQL Editor Documentation',
-   u'Yaco Sistemas S.L.', 'GORQLEditor', 'One line description of project.',
+   u'Yaco Sistemas S.L.', 'GORQLEditor', 'Editor de consultas SPARQL.',
    'Miscellaneous'),
 ]
 
