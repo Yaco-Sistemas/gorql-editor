@@ -6,7 +6,7 @@
         <div><ul class="category">
             {{each(idx_col, collection) category.collections}}
             <li>
-                <input type="checkbox" name="collection${idx_cat}-${idx_col}" {{if collection.checked}}checked="true"{{/if}}/>
+                <input type="checkbox" id="collection${idx_cat}-${idx_col}" name="collection${idx_cat}-${idx_col}" {{if collection.checked}}checked="true"{{/if}}/>
                 <label for="collection${idx_cat}-${idx_col}">${collection.name}</label>
             </li>
             {{/each}}

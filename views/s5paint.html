@@ -3,12 +3,12 @@
     <div class="half-width float">
         <h3>${lingua.step5.type}</h3>
         <ul>
-            <li><input type="radio" name="chart_type" value="bar" checked="true" />${lingua.step5.bar}</li>
-            <li><input type="radio" name="chart_type" value="line" />${lingua.step5.line}</li>
-            <li><input type="radio" name="chart_type" value="pie" />${lingua.step5.pie}</li>
-            <li><input type="radio" name="chart_type" value="timeline" />${lingua.step5.timeline}</li>
-            <li><input type="radio" name="chart_type" value="map" />${lingua.step5.map}</li>
-            <li><input type="radio" name="chart_type" value="mapea" />${lingua.step5.mapea}</li>
+            <li><input type="radio" id="bar_chart" name="chart_type" value="bar" checked="true" /><label for="bar_chart">${lingua.step5.bar}</label></li>
+            <li><input type="radio" id="line_chart" name="chart_type" value="line" /><label for="line_chart">${lingua.step5.line}</label></li>
+            <li><input type="radio" id="pie_chart" name="chart_type" value="pie" /><label for="pie_chart">${lingua.step5.pie}</label></li>
+            <li><input type="radio" id="timeline_chart" name="chart_type" value="timeline" /><label for="timeline_chart">${lingua.step5.timeline}</label></li>
+            <li><input type="radio" id="map_chart" name="chart_type" value="map" /><label for="map_chart">${lingua.step5.map}</label></li>
+            <li><input type="radio" id="mapea_chart" name="chart_type" value="mapea" /><label for="mapea_chart">${lingua.step5.mapea}</label></li>
         </ul>
     </div>
     <div class="half-width float">
@@ -55,7 +55,7 @@
                 <label for="bar-sizeLabel-param">${lingua.step5.sizeLabel}</label>: <input type="number" name="bar-sizeLabel-param" class="narrow-field" />
             </div>
             <div class="parameter">
-                <label for="bar-landscape-param">${lingua.step5.landscape}</label>: <input type="checkbox" name="bar-landscape-param" />
+                <label for="bar-landscape-param">${lingua.step5.landscape}</label>: <input type="checkbox" id="bar-landscape-param" name="bar-landscape-param" />
             </div>
         </div>
         <div id="lineParams" class="paramsContainer" style="display: none;">
@@ -100,7 +100,7 @@
                 <label for="line-sizeLabel-param">${lingua.step5.sizeLabel}</label>: <input type="number" name="line-sizeLabel-param" class="narrow-field" />
             </div>
             <div class="parameter">
-                <label for="line-area-param">${lingua.step5.area}</label>: <input type="checkbox" name="line-area-param"/>
+                <label for="line-area-param">${lingua.step5.area}</label>: <input type="checkbox" id="line-area-param" name="line-area-param"/>
             </div>
         </div>
         <div id="pieParams" class="paramsContainer" style="display: none;">
