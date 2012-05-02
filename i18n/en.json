@@ -60,7 +60,7 @@
             "noresults": "No results returned."
         },
         "filters": {
-            "string": ["Equal", "Contains"],
+            "string": ["Equal", "Contains", "Language"],
             "uri": ["Equal", "Contains"],
             "number": ["Equal", "Less than", "Greater than", "Between"],
             "date": ["Equal", "Less than", "Greater than", "Between"],

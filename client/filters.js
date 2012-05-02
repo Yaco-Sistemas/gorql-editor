@@ -30,6 +30,11 @@ if (typeof QBA.filters === 'undefined') {
     QBA.filters = {};
 }
 
+QBA.filters.init = function (languages) {
+    "use strict";
+    QBA.filters.languages = languages;
+};
+
 QBA.filters.getFiltersFromType = function (type) {
     "use strict";
     var result;
@@ -220,6 +225,45 @@ QBA.filters.filterWidgets = {
             ];
             this.model.set({ value: value });
         }
+    }),
+
+    language: Backbone.View.extend({
+        events: {
+            "change select.filter-widget": "process"
+        },
+
+        render: function () {
+            "use strict";
+            var value = this.model.get("value"),
+                html;
+
+            html = "<select class='filter-widget' name='filter_widget_" + this.model.get("number") + "'>";
+            html += "<option value=''></option>";
+            _.each(QBA.filters.languages, function (lang) {
+                html += "<option value='" + lang.code + "'";
+                if (lang.code === value) {
+                    html += " selected='selected'";
+                }
+                html += ">" + lang.name + "</option>";
+            });
+            html += "</select>";
+            this.$el.append(html);
+            return this;
+        },
+
+        remove: function () {
+            "use strict";
+            this.$el.find(".filter-widget").remove();
+        },
+
+        process: function () {
+            "use strict";
+            var value = this.$el.find("select.filter-widget").val();
+            if (value === "") {
+                value = undefined;
+            }
+            this.model.set({ value: value });
+        }
     })
 };
 
@@ -234,6 +278,10 @@ QBA.filters.getFilterWidgetView = function (type, selected) {
 
     if ((selected === 3) && (type === "number" || type === "date")) {
         key += "_range";
+    }
+
+    if ((selected === 2) && (type === "string")) {
+        key = "language";
     }
 
     if (QBA.filters.filterWidgets.hasOwnProperty(key)) {
@@ -282,6 +330,10 @@ QBA.filters.filterSPARQL = {
     daterange: function (vble, value, casting) {
         "use strict";
         return casting + "(\"" + value[0] + "\") < " + vble + " && " + vble + " < " + casting + "(\"" + value[1] + "\")";
+    },
+    language: function (vble, value, casting) {
+        "use strict";
+        return "langMatches(lang(" + vble + ")), \"" + value.toUpperCase() + "\"";
     }
 };
 
@@ -310,6 +362,8 @@ QBA.filters.getFilterSPARQL = function (type, selected) {
         generator = QBA.filters.filterSPARQL.dateless;
     } else if ((selected === 1) && (type === "string" || type === "uri")) {
         generator = QBA.filters.filterSPARQL.contains;
+    } else if ((selected === 2) && (type === "string")) {
+        generator = QBA.filters.filterSPARQL.language;
     } else if (type !== "date") {
         generator = QBA.filters.filterSPARQL.equal;
     } else {

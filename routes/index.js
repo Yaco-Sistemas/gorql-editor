@@ -79,6 +79,7 @@ exports.index = function (request, response) {
                     schema: { categories: schema },
                     schemaJSON: JSON.stringify(schema),
                     linguaJSON: JSON.stringify(response.lingua.content.client),
+                    languagesFilter: JSON.stringify(app.exports.settings.languagesFilter),
                     templates: templates,
                     steps: {
                         s1: '',

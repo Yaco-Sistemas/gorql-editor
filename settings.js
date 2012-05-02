@@ -28,12 +28,20 @@ exports.settings = {
         debug: false,
         port: 3010,
         viewer: "http://gorql-viewer.ceic-ogov.yaco.es",
-        schema: "endpoints/dbpedia.json"
+        schema: "endpoints/dbpedia.json",
+        languagesFilter: [{
+            code: "en",
+            name: "English"
+        }, {
+            code: "es",
+            name: "Español"
+        }]
     },
 
     development: {
         previewLimit: 50
     },
+
     production: {
         previewLimit: 10
     }

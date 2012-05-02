@@ -60,7 +60,7 @@
             "noresults": "No se encontraron resultados."
         },
         "filters": {
-            "string": ["Igual", "Contiene"],
+            "string": ["Igual", "Contiene", "Idioma"],
             "uri": ["Igual", "Contiene"],
             "number": ["Igual", "Menor que", "Mayor que", "Entre"],
             "date": ["Igual", "Menor que", "Mayor que", "Entre"],
