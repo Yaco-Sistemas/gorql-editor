@@ -333,7 +333,7 @@ QBA.filters.filterSPARQL = {
     },
     language: function (vble, value, casting) {
         "use strict";
-        return "langMatches(lang(" + vble + ")), \"" + value.toUpperCase() + "\"";
+        return "langMatches(lang(" + vble + "), \"" + value.toUpperCase() + "\")";
     }
 };
 
