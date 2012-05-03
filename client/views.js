@@ -55,7 +55,9 @@ QBA.views.Step = Backbone.View.extend({
             html = $.tmpl(this.step, QBA.theQuery.toJSON(stepIdx));
         this.$el.html(html);
 
-        if (this.step === "step3") {
+        if (this.step === "step2") {
+            this.renderS2();
+        } else if (this.step === "step3") {
             this.renderS3();
         } else if (this.step === "step4") {
             this.renderS4();
@@ -63,6 +65,12 @@ QBA.views.Step = Backbone.View.extend({
 
         QBA.views.jQueryUI();
         return this;
+    },
+
+    renderS2: function () {
+        "use strict";
+        // Force render of embedded step3 to render it with the actual data
+        $("#ls3").trigger("click");
     },
 
     renderS3: function () {

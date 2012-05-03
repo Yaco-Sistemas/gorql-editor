@@ -45,9 +45,7 @@
         <nav class="js">
             <ol>
                 <li class="tab"><a id="ls1" href="#step1">${lingua.tabs.s1}</a></li>
-                <li class="tab"><a id="ls2" href="#step2">${lingua.tabs.s2}</a></li>
-                <li class="tab"><a id="ls3" href="#step3">${lingua.tabs.s3}</a></li>
-                <li class="tab"><a id="ls4" href="#step4">${lingua.tabs.s4}</a></li>
+                <li class="tab"><a id="ls2" href="#step2-wrapper">${lingua.tabs.s2}</a></li>
                 <li class="tab"><a id="ls5" href="#step5">${lingua.tabs.s5}</a></li>
             </ol>
         </nav>
@@ -56,16 +54,27 @@
             {{partial(schema) "s1choose"}}
         </section>
 
-        <section id="step2" class="step ${steps.s2} js">
-            {{partial(schema) "s2choose"}}
-        </section>
+        <section id="step2-wrapper" class="step ${steps.s2} js">
+            <div id="step2">
+                {{partial(schema) "s2choose"}}
+            </div>
 
-        <section id="step3" class="step ${steps.s3} js">
-            {{partial(schema) "s3join"}}
-        </section>
+            <div class="tabable">
+                <nav class="js">
+                    <ol>
+                        <li class="tab"><a id="ls3" href="#step3">${lingua.tabs.s3}</a></li>
+                        <li class="tab"><a id="ls4" href="#step4">${lingua.tabs.s4}</a></li>
+                    </ol>
+                </nav>
 
-        <section id="step4" class="step ${steps.s4} js">
-            {{partial(schema) "s4filter"}}
+                <section id="step3" class="step ${steps.s3} js">
+                    {{partial(schema) "s3join"}}
+                </section>
+
+                <section id="step4" class="step ${steps.s4} js">
+                    {{partial(schema) "s4filter"}}
+                </section>
+            </div>
         </section>
 
         <section id="step5" class="step ${steps.s5} js">

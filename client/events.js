@@ -35,6 +35,8 @@ QBA.events = {
             var step = this.href.split('#')[1],
                 view;
 
+            step = step.split('-')[0]; // For step2 wrapper
+
             // Release old events of the target tab
             QBA.events[step].release();
 
@@ -125,6 +127,13 @@ QBA.events = {
                     // TODO error
                     alert('error');
                 }
+
+                // Refresh step 3 or step 4
+                if ($("#step3").attr("class").indexOf("ui-tabs-hide") === -1) {
+                    $("#ls3").trigger("click");
+                } else {
+                    $("#ls4").trigger("click");
+                }
             });
 
             $("#preview input[name=preview]").click(function (evt) {
@@ -142,7 +151,13 @@ QBA.events = {
             $("#step2 input[name=nextS2]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
-                $("#ls3").trigger("click");
+                $("#ls5").trigger("click");
+            });
+
+            $("#step2 input[name=done]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                QBA.chart.openViewerData();
             });
         },
 
@@ -208,29 +223,10 @@ QBA.events = {
                 $("#step3 #joins").append(view.render().el);
                 this.selectedIndex = 0;
             });
-
-            $("#preview input[name=preview]").click(function (evt) {
-                evt.stopPropagation();
-                evt.preventDefault();
-                QBA.preview.updateTable();
-            });
-
-            $("#step3 input[name=prevS3]").click(function (evt) {
-                evt.stopPropagation();
-                evt.preventDefault();
-                $("#ls2").trigger("click");
-            });
-
-            $("#step3 input[name=nextS3]").click(function (evt) {
-                evt.stopPropagation();
-                evt.preventDefault();
-                $("#ls4").trigger("click");
-            });
         },
 
         release: function () {
             "use strict";
-            $("#preview input[name=preview]").unbind("click");
             // TODO
         }
     },
@@ -291,35 +287,10 @@ QBA.events = {
                 $("#step4 #filters").append(view.render().el);
                 this.selectedIndex = 0;
             });
-
-            $("#preview input[name=preview]").click(function (evt) {
-                evt.stopPropagation();
-                evt.preventDefault();
-                QBA.preview.updateTable();
-            });
-
-            $("#step4 input[name=done]").click(function (evt) {
-                evt.stopPropagation();
-                evt.preventDefault();
-                QBA.chart.openViewerData();
-            });
-
-            $("#step4 input[name=prevS4]").click(function (evt) {
-                evt.stopPropagation();
-                evt.preventDefault();
-                $("#ls3").trigger("click");
-            });
-
-            $("#step4 input[name=nextS4]").click(function (evt) {
-                evt.stopPropagation();
-                evt.preventDefault();
-                $("#ls5").trigger("click");
-            });
         },
 
         release: function () {
             "use strict";
-            $("#preview input[name=preview]").unbind("click");
             // TODO
         }
     },
@@ -352,7 +323,7 @@ QBA.events = {
             $("#step5 input[name=prevS5]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
-                $("#ls4").trigger("click");
+                $("#ls2").trigger("click");
             });
 
             QBA.chart.fillFormWithDefaultValues($("#step5 input[type=radio]:checked").val());
