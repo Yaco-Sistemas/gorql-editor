@@ -81,12 +81,6 @@ QBA.events = {
                 }
             });
 
-            $("#preview input[name=preview]").click(function (evt) {
-                evt.stopPropagation();
-                evt.preventDefault();
-                QBA.preview.updateTable();
-            });
-
             $("#step1 input[name=nextS1]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
@@ -96,7 +90,6 @@ QBA.events = {
 
         release: function () {
             "use strict";
-            $("#preview input[name=preview]").unbind("click");
             // TODO
         }
     },
@@ -136,7 +129,7 @@ QBA.events = {
                 }
             });
 
-            $("#preview input[name=preview]").click(function (evt) {
+            $("#step2 input[name=preview]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 QBA.preview.updateTable();
@@ -163,7 +156,6 @@ QBA.events = {
 
         release: function () {
             "use strict";
-            $("#preview input[name=preview]").unbind("click");
             // TODO
         }
     },
@@ -308,7 +300,7 @@ QBA.events = {
             $("#step5 div.parameter input").change(QBA.chart.updateChartModel);
             $("#step5 div.parameter select").change(QBA.chart.updateChartModel);
 
-            $("#preview input[name=preview]").click(function (evt) {
+            $("#step5 input[name=preview]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 QBA.preview.updateChart();
@@ -332,7 +324,6 @@ QBA.events = {
 
         release: function () {
             "use strict";
-            $("#preview input[name=preview]").unbind("click");
             // TODO
         }
     }
