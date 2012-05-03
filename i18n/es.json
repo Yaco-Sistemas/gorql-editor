@@ -3,7 +3,7 @@
     "tabs": {
         "s1": "Escoja colecciones",
         "s2": "Escoja campos",
-        "s3": "Una",
+        "s3": "Conecte",
         "s4": "Filtre",
         "s5": "Visualice"
     },
@@ -17,8 +17,8 @@
         "title": "Colecciones disponibles"
     },
     "step3" : {
-        "title": "Una las colecciones disponibles",
-        "addJoin": "Unir colección"
+        "title": "Conecte las colecciones disponibles",
+        "addJoin": "Conectar colección"
     },
     "step4" : {
         "title": "Filtre los contenidos de las colecciones",
