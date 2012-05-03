@@ -11,10 +11,10 @@
     "next": "Siguiente",
     "previous": "Anterior",
     "step1": {
-        "title": "Categorías disponibles"
+        "title": "Colecciones disponibles"
     },
     "step2" : {
-        "title": "Colecciones disponibles"
+        "title": "Campos disponibles"
     },
     "step3" : {
         "title": "Conecte las colecciones disponibles",

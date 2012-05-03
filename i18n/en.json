@@ -11,10 +11,10 @@
     "next": "Next",
     "previous": "Previous",
     "step1": {
-        "title": "Available categories"
+        "title": "Available collections"
     },
     "step2" : {
-        "title": "Available collections"
+        "title": "Available fields"
     },
     "step3" : {
         "title": "Join selected collections",
