@@ -15,7 +15,7 @@
     },
     "step2" : {
         "title": "Campos disponibles",
-        "showChart": "Añade un gráfico"
+        "showChart": "Añada un gráfico"
     },
     "step3" : {
         "title": "Conecte las colecciones disponibles",
