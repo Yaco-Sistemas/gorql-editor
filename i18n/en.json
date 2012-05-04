@@ -14,7 +14,8 @@
         "title": "Available collections"
     },
     "step2" : {
-        "title": "Available fields"
+        "title": "Available fields",
+        "showChart": "Add a chart"
     },
     "step3" : {
         "title": "Join selected collections",

@@ -14,7 +14,8 @@
         "title": "Colecciones disponibles"
     },
     "step2" : {
-        "title": "Campos disponibles"
+        "title": "Campos disponibles",
+        "showChart": "Añade un gráfico"
     },
     "step3" : {
         "title": "Conecte las colecciones disponibles",
