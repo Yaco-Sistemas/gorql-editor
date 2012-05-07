@@ -46,6 +46,10 @@ body.js div.filter {
     margin-bottom: 20px;
 }
 
+body.js .ui-accordion-content.ui-accordion-content-active {
+    border-top: 1px solid #00A8E5;
+}
+
 #joins, #filters {
     margin-top: 20px;
 }
