@@ -18,7 +18,8 @@
         "title": "Estos son los campos disponibles",
         "showChart": "Añada un gráfico",
         "hint": "Recuerde que puede escoger más de un campo por colección, y en varias colecciones a la vez.",
-        "uri": "Este campo se puede utilizar para crear una conexión con otra colección"
+        "uri": "Este campo se puede utilizar para crear una conexión con otra colección",
+        "advanced": "Mostrar opciones avanzadas"
     },
     "step3" : {
         "title": "Conecte las colecciones disponibles",

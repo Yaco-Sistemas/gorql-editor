@@ -50,6 +50,10 @@ body.js .ui-accordion-content.ui-accordion-content-active {
     border-top: 1px solid #00A8E5;
 }
 
+body.js #steps3and4 {
+    margin-top: 20px;
+}
+
 #joins, #filters {
     margin-top: 20px;
 }

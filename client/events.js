@@ -121,12 +121,9 @@ QBA.events = {
                     alert('error');
                 }
 
-                // Refresh step 3 or step 4
-                if ($("#step3").attr("class").indexOf("ui-tabs-hide") === -1) {
-                    $("#ls3").trigger("click");
-                } else {
-                    $("#ls4").trigger("click");
-                }
+                // Refresh step 3 and step 4
+                $("#ls3").trigger("click");
+                $("#ls4").trigger("click");
             });
 
             $("#step2 input[name=preview]").click(function (evt) {
@@ -151,6 +148,16 @@ QBA.events = {
                 evt.stopPropagation();
                 evt.preventDefault();
                 QBA.chart.openViewerData();
+            });
+
+            $("#step2 input[name=advanced]").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                $("#steps3and4").removeClass("hidden");
+                $("#step2 input[name=advanced]").addClass("hidden");
+                // Refresh step 3 and step 4
+                $("#ls3").trigger("click");
+                $("#ls4").trigger("click");
             });
         },
 
