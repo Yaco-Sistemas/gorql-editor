@@ -17,7 +17,8 @@
     "step2" : {
         "title": "These are the available fields",
         "showChart": "Add a chart",
-        "hint": "Remember that you can choose more than one field per collection, and fields from several collections at the same time."
+        "hint": "Remember that you can choose more than one field per collection, and fields from several collections at the same time.",
+        "uri": "This field can be used to link the collection with another one"
     },
     "step3" : {
         "title": "Link selected collections",

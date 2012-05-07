@@ -11,7 +11,7 @@
                 <input type="checkbox" id="field${idx_cat}-${idx_col}-${idx_fie}" name="field${idx_cat}-${idx_col}-${idx_fie}" {{if field.checked}}checked="true"{{/if}}/>
                 <label for="field${idx_cat}-${idx_col}-${idx_fie}">${field.name}</label>
                 {{if field.type == "uri"}}
-                <span class="ui-icon ui-icon-link inline"></span>
+                <span class="ui-icon ui-icon-link inline" title="${lingua.step2.uri}"></span>
                 {{/if}}
             </li>
             {{/each}}
