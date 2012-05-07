@@ -18,7 +18,8 @@
         "hint": "Remember that you can choose more than one field per collection, and fields from several collections at the same time.",
         "uri": "This field can be used to link the collection with another one",
         "advanced": "Show advanced options",
-        "hideadvanced": "Hide advanced options"
+        "hideadvanced": "Hide advanced options",
+        "empty": "At least one collection must be chosen in the previous step."
     },
     "step3" : {
         "title": "Link selected collections",

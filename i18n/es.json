@@ -18,7 +18,8 @@
         "hint": "Recuerde que puede escoger más de un campo por colección, y en varias colecciones a la vez.",
         "uri": "Este campo se puede utilizar para crear una conexión con otra colección",
         "advanced": "Mostrar opciones avanzadas",
-        "hideadvanced": "Ocultar opciones avanzadas"
+        "hideadvanced": "Ocultar opciones avanzadas",
+        "empty": "Es imprescindible escoger alguna colección en el paso anterior."
     },
     "step3" : {
         "title": "Conecte las colecciones disponibles",

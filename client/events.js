@@ -81,7 +81,7 @@ QBA.events = {
                 }
             });
 
-            $("#step1 input[name=nextS1]").click(function (evt) {
+            $("#step1 #nextS1").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 $("#ls2").trigger("click");
@@ -132,13 +132,13 @@ QBA.events = {
                 QBA.preview.updateTable();
             });
 
-            $("#step2-wrapper input[name=prevS2]").click(function (evt) {
+            $("#step2-wrapper #prevS2").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 $("#ls1").trigger("click");
             });
 
-            $("#step2-wrapper input[name=nextS2]").click(function (evt) {
+            $("#step2-wrapper #nextS2").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 $("#ls5").trigger("click");
@@ -332,7 +332,7 @@ QBA.events = {
                 QBA.chart.openViewerChartAndData();
             });
 
-            $("#step5 input[name=prevS5]").click(function (evt) {
+            $("#step5 #prevS5").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 $("#ls2").trigger("click");

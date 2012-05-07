@@ -19,8 +19,14 @@
         {{/each}}
         {{/each}}
     </div>
-    <div class="buttons">
-        <button id="advanced" class="js float">${lingua.step2.advanced}</button>
-        <button id="hideadvanced" class="js float hidden no-margin-left">${lingua.step2.hideadvanced}</button>
+    <p class="empty hidden ui-state-error ui-corner-all"><span class="ui-icon ui-icon-alert inline"></span>${lingua.step2.empty}</p>
+    <div class="buttons js">
+        <button id="advanced" class="float">${lingua.step2.advanced}</button>
+        <button id="hideadvanced" class="float hidden no-margin-left">${lingua.step2.hideadvanced}</button>
+    </div>
+    <div class="no-js buttons">
+        <input class="float" type="submit" name="prevS2" value="&lt;&lt; ${lingua.previous}" />
+        <input class="float" type="submit" name="preview" value="${lingua.genPreview}" />
+        <input class="floatr" type="submit" name="nextS2" value="${lingua.next} &gt;&gt;" />
     </div>
 </fieldset>

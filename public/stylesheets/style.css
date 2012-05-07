@@ -5,7 +5,6 @@ body {
 }
 
 h1 {
-    text-transform: capitalize;
     font-family: 'Droid Serif', serif;
 }
 
@@ -122,6 +121,7 @@ fieldset legend {
     padding: 6px 10px 6px 10px;
     cursor: pointer;
     margin-left: 10px;
+    line-height: 1.4;
 }
 
 .ui-widget input[type=submit]:first-child,
@@ -142,6 +142,11 @@ fieldset legend {
     padding: 0px 0px 0px 20px;
 }
 
+.ui-button-text-icon-secondary .ui-button-text,
+.ui-button-text-icons .ui-button-text {
+    padding: 0px 20px 0px 0px;
+}
+
 .hint {
     margin-top: 0px;
     color: #005CBF;
@@ -149,8 +154,15 @@ fieldset legend {
     font-size: 0.8em;
 }
 
-.hint span.ui-icon {
-    vertical-align: bottom;
+.empty {
+    padding: 10px;
+    margin: 80px 30px 80px 30px;
+}
+
+.hint span.ui-icon,
+.empty span.ui-icon {
+    vertical-align: middle;
+    margin-right: 5px;
 }
 
 .join > .ui-icon-circle-close,

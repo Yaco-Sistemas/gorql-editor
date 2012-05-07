@@ -36,12 +36,16 @@ QBA.views.jQueryUI = function (elem) {
         $(".datepicker").datepicker({ "dateFormat": "yy-mm-dd" });
         $("#advanced").button({ icons: { primary: "ui-icon-plusthick" }});
         $("#hideadvanced").button({ icons: { primary: "ui-icon-minusthick" }});
+        $("#prevS2, #prevS5").button({ icons: { primary: "ui-icon-arrowthick-1-w" }});
+        $("#nextS1, #nextS2").button({ icons: { secondary: "ui-icon-arrowthick-1-e" }});
     } else {
         $(elem).find(".tabable").tabs();
         $(elem).find(".accordionable").accordion();
         $(elem).find(".datepicker").datepicker({ "dateFormat": "yy-mm-dd" });
         $(elem).find("#advanced").button({ icons: { primary: "ui-icon-plusthick" }});
         $(elem).find("#hideadvanced").button({ icons: { primary: "ui-icon-minusthick" }});
+        $(elem).find("#prevS2, #prevS5").button({ icons: { primary: "ui-icon-arrowthick-1-w" }});
+        $(elem).find("#nextS1, #nextS2").button({ icons: { secondary: "ui-icon-arrowthick-1-e" }});
     }
 };
 
@@ -74,6 +78,11 @@ QBA.views.Step = Backbone.View.extend({
     renderS2: function () {
         "use strict";
         $("#steps3and4").addClass("hidden");
+        if ($("#step2 div.collections").children().length === 0) {
+            $("#step2 .empty").removeClass("hidden");
+            $("#step2 .hint").addClass("hidden");
+            $("#step2 #advanced").addClass("hidden");
+        }
     },
 
     renderS3: function () {
