@@ -3,9 +3,7 @@
     "tabs": {
         "s1": "Escoja colecciones",
         "s2": "Escoja campos",
-        "s3": "Conecte",
-        "s4": "Filtre",
-        "s5": "Visualice"
+        "s5": "Añada un gráfico"
     },
     "genPreview": "Genere una previsualización",
     "next": "Siguiente",
@@ -19,7 +17,8 @@
         "showChart": "Añada un gráfico",
         "hint": "Recuerde que puede escoger más de un campo por colección, y en varias colecciones a la vez.",
         "uri": "Este campo se puede utilizar para crear una conexión con otra colección",
-        "advanced": "Mostrar opciones avanzadas"
+        "advanced": "Mostrar opciones avanzadas",
+        "hideadvanced": "Ocultar opciones avanzadas"
     },
     "step3" : {
         "title": "Conecte las colecciones disponibles",
@@ -59,7 +58,7 @@
         "overviewRes": "Resolución temporal de la banda resumen",
         "lat": "Campo con las latitudes",
         "long": "Campo con las longitudes",
-        "view": "Ver Gráfico y Datos"
+        "view": "Vea los datos y el gráfico"
     },
     "client": {
         "preview": {

@@ -126,43 +126,56 @@ QBA.events = {
                 $("#ls4").trigger("click");
             });
 
-            $("#step2 input[name=preview]").click(function (evt) {
+            $("#step2-wrapper input[name=preview]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 QBA.preview.updateTable();
             });
 
-            $("#step2 input[name=prevS2]").click(function (evt) {
+            $("#step2-wrapper input[name=prevS2]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 $("#ls1").trigger("click");
             });
 
-            $("#step2 input[name=nextS2]").click(function (evt) {
+            $("#step2-wrapper input[name=nextS2]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 $("#ls5").trigger("click");
             });
 
-            $("#step2 input[name=done]").click(function (evt) {
+            $("#step2-wrapper input[name=done]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 QBA.chart.openViewerData();
             });
 
-            $("#step2 input[name=advanced]").click(function (evt) {
+            $("#step2 #advanced").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 $("#steps3and4").removeClass("hidden");
-                $("#step2 input[name=advanced]").addClass("hidden");
+                $(this).addClass("hidden");
+                $("#step2 #hideadvanced").removeClass("hidden");
                 // Refresh step 3 and step 4
                 $("#ls3").trigger("click");
                 $("#ls4").trigger("click");
+            });
+
+            $("#step2 #hideadvanced").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+                $("#steps3and4").addClass("hidden");
+                $("#step2 #advanced").removeClass("hidden");
+                $(this).addClass("hidden");
             });
         },
 
         release: function () {
             "use strict";
+            $("#step2-wrapper input[name=preview]").unbind("click");
+            $("#step2-wrapper input[name=prevS2]").unbind("click");
+            $("#step2-wrapper input[name=nextS2]").unbind("click");
+            $("#step2-wrapper input[name=done]").unbind("click");
             // TODO
         }
     },

@@ -50,6 +50,14 @@ body.js .ui-accordion-content.ui-accordion-content-active {
     border-top: 1px solid #00A8E5;
 }
 
+body.js #step2-wrapper {
+    padding-bottom: 60px;
+}
+
+body.js #step2-wrapper .buttons.lateral-padding {
+    padding: 0px 12px 0px 12px;
+}
+
 body.js #steps3and4 {
     margin-top: 20px;
 }
@@ -110,6 +118,12 @@ fieldset legend {
     font-weight: bold;
     font-size: 0.85em;
     padding: 6px 10px 6px 10px;
+    cursor: pointer;
+}
+
+.ui-button-text-icon-primary .ui-button-text,
+.ui-button-text-icons .ui-button-text {
+    padding: 0px 0px 0px 20px;
 }
 
 .hint {

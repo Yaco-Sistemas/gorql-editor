@@ -34,10 +34,14 @@ QBA.views.jQueryUI = function (elem) {
         $(".tabable").tabs();
         $(".accordionable").accordion();
         $(".datepicker").datepicker({ "dateFormat": "yy-mm-dd" });
+        $("#advanced").button({ icons: { primary: "ui-icon-plusthick" }});
+        $("#hideadvanced").button({ icons: { primary: "ui-icon-minusthick" }});
     } else {
         $(elem).find(".tabable").tabs();
         $(elem).find(".accordionable").accordion();
         $(elem).find(".datepicker").datepicker({ "dateFormat": "yy-mm-dd" });
+        $(elem).find("#advanced").button({ icons: { primary: "ui-icon-plusthick" }});
+        $(elem).find("#hideadvanced").button({ icons: { primary: "ui-icon-minusthick" }});
     }
 };
 
@@ -69,8 +73,7 @@ QBA.views.Step = Backbone.View.extend({
 
     renderS2: function () {
         "use strict";
-        // Force render of embedded step3 to render it with the actual data
-        $("#ls3").trigger("click");
+        $("#steps3and4").addClass("hidden");
     },
 
     renderS3: function () {
