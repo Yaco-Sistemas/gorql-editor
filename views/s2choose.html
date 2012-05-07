@@ -1,5 +1,6 @@
 <fieldset class="collection">
     <legend>${lingua.step2.title}</legend>
+    <p class="hint"><span class="ui-icon ui-icon-info inline"></span>${lingua.step2.hint}</p>
     <div class="collections accordionable">
         {{each(idx_cat, category) categories}}
         {{each(idx_col, collection) category.collections}}
@@ -19,7 +20,7 @@
         {{/each}}
     </div>
 
-    <div>
+    <div class="buttons">
         <input class="float" type="submit" name="prevS2" value="&lt;&lt; ${lingua.previous}" />
         <input class="float" type="submit" name="preview" value="${lingua.genPreview}" />
         <input class="float" type="submit" name="nextS2" value="${lingua.step2.showChart}" />

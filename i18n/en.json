@@ -11,23 +11,28 @@
     "next": "Next",
     "previous": "Previous",
     "step1": {
-        "title": "Available collections"
+        "title": "These are the available collections",
+        "hint": "Remember that you can choose more than one collection per category, and collections from several categories at the same time."
     },
     "step2" : {
-        "title": "Available fields",
-        "showChart": "Add a chart"
+        "title": "These are the available fields",
+        "showChart": "Add a chart",
+        "hint": "Remember that you can choose more than one field per collection, and fields from several collections at the same time."
     },
     "step3" : {
-        "title": "Join selected collections",
-        "addJoin": "Join collection"
+        "title": "Link selected collections",
+        "addJoin": "Link collection from",
+        "hint": "To obtain more interesting results you can link selected collections."
     },
     "step4" : {
         "title": "Filter the collections contents",
         "addFilter": "Add filter for",
-        "view": "View Data"
+        "view": "View Data",
+        "hint": "To remove uninteresting results you can create filters for the selected fields."
     },
     "step5" : {
         "title": "Visualize the results",
+        "hint": "Remember that each chart type has its own parameters.",
         "type": "Chart type",
         "bar": "Bars",
         "line": "Lines",

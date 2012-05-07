@@ -10,14 +10,6 @@ body {
     padding: 5px;
 }
 
-a.button {
-    border: 1px solid black;
-    padding: 3px;
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
-}
-
 #preview {
     margin-top: 10px;
 }
@@ -49,6 +41,14 @@ ul {
     list-style-type: none;
 }
 
+fieldset {
+    border: none;
+}
+
+.buttons {
+    margin-top: 10px;
+}
+
 .half-width {
     width: 49%;
 }
@@ -76,3 +76,24 @@ ul {
 .required {
     border: 1px solid red;
 }
+
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+    color: #005CBF;
+}
+
+.hint {
+    margin-top: 0px;
+    color: #005CBF;
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+.hint span.ui-icon {
+    vertical-align: bottom;
+}
+
+
+
