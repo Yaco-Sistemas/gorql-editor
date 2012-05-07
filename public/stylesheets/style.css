@@ -112,13 +112,22 @@ fieldset legend {
     border: 1px solid red;
 }
 
-.ui-widget input,
+.ui-widget input[type=submit],
 .ui-widget button {
     color: #005CBF;
+    border: 1px solid #D1D1D1;
+    background: #E0E0E0 url(images/ui-bg_highlight-soft_50_e0e0e0_1x100.png) 50% 50% repeat-x;
     font-weight: bold;
     font-size: 0.85em;
     padding: 6px 10px 6px 10px;
     cursor: pointer;
+}
+
+.ui-widget input[type=submit]:hover,
+.ui-widget button:hover {
+    border: 1px solid #037fda;
+    background: #037fda url(images/ui-bg_highlight-soft_25_037fda_1x100.png) 50% 50% repeat-x;
+    color: #ffffff;
 }
 
 .ui-button-text-icon-primary .ui-button-text,
