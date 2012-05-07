@@ -118,9 +118,16 @@ fieldset legend {
     border: 1px solid #D1D1D1;
     background: #E0E0E0 url(images/ui-bg_highlight-soft_50_e0e0e0_1x100.png) 50% 50% repeat-x;
     font-weight: bold;
-    font-size: 0.85em;
+    font-size: 0.85em !important;
     padding: 6px 10px 6px 10px;
     cursor: pointer;
+    margin-left: 10px;
+}
+
+.ui-widget input[type=submit]:first-child,
+.ui-widget button:first-child,
+.no-margin-left {
+    margin-left: 0px !important;
 }
 
 .ui-widget input[type=submit]:hover,
