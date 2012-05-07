@@ -1,6 +1,12 @@
 body {
     padding: 0px;
     margin: 0px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    text-transform: capitalize;
+    font-family: 'Droid Serif', serif;
 }
 
 #page {
@@ -33,8 +39,15 @@ body.js ul.collection {
     margin: 0px;
 }
 
+body.js div.join,
 body.js div.filter {
-    border: solid 1px #DDD;
+    background-color: #f0f0f0;
+    padding: 10px 40px 10px 40px;
+    margin-bottom: 20px;
+}
+
+#joins, #filters {
+    margin-top: 20px;
 }
 
 ul {
@@ -43,6 +56,12 @@ ul {
 
 fieldset {
     border: none;
+}
+
+fieldset legend {
+    font-family: 'Droid Serif', serif;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 .buttons {
@@ -78,10 +97,11 @@ fieldset {
 }
 
 .ui-widget input,
-.ui-widget select,
-.ui-widget textarea,
 .ui-widget button {
     color: #005CBF;
+    font-weight: bold;
+    font-size: 0.85em;
+    padding: 6px 10px 6px 10px;
 }
 
 .hint {
@@ -95,5 +115,8 @@ fieldset {
     vertical-align: bottom;
 }
 
-
-
+.join > .ui-icon-circle-close,
+.filter > .ui-icon-circle-close {
+    margin-top: 6px;
+    cursor: pointer;
+}

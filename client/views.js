@@ -113,7 +113,7 @@ QBA.views.Filter = Backbone.View.extend({
     },
 
     events: {
-        "click input.remove": "remove",
+        "click span.ui-icon-circle-close": "remove",
         "change select.filter-type": "updateFilterWidget"
     },
 
@@ -122,8 +122,7 @@ QBA.views.Filter = Backbone.View.extend({
         var filter = this.model.get("filter"),
             html;
 
-        html = "<input type='submit' class='remove' value='X' />";
-        html += "<label for='filter_type_" + this.model.get("number") + "'>" + this.model.get("collection").get("name") + " - " + this.model.get("field").get("name") + "</label>";
+        html = "<label for='filter_type_" + this.model.get("number") + "'>" + this.model.get("collection").get("name") + " - " + this.model.get("field").get("name") + "</label>";
         html += "<select name='filter_type_" + this.model.get("number") + "' class='filter-type'>";
         _.each(QBA.filters.getFiltersFromType(this.model.get("field").get("type")), function (f, i) {
             html += "<option value='" + i + "'";
@@ -133,6 +132,7 @@ QBA.views.Filter = Backbone.View.extend({
             html += ">" + f + "</option>";
         });
         html += "</select>";
+        html += "<span class='ui-icon ui-icon-circle-close inline floatr'>";
         $(this.el).html(html);
 
         this.widgetView.render();
@@ -177,7 +177,7 @@ QBA.views.Join = Backbone.View.extend({
     className: "join",
 
     events: {
-        "click input.remove": "remove",
+        "click span.ui-icon-circle-close": "remove",
         "change select.join-target": "updateJoin"
     },
 
@@ -187,8 +187,7 @@ QBA.views.Join = Backbone.View.extend({
             model = this.model,
             html;
 
-        html = "<input type='submit' class='remove' value='X' />";
-        html += "<label for='join_target_" + model.get("number") + "'>" + model.get("source_collection").get("name") + " - " + model.get("source_field").get("name") + "</label>";
+        html = "<label for='join_target_" + model.get("number") + "'>" + model.get("source_collection").get("name") + " - " + model.get("source_field").get("name") + "</label>";
         html += "<select name='join_target_" + model.get("number") + "' class='join-target'>";
         html += "<option value='false'></option>";
 
@@ -207,6 +206,7 @@ QBA.views.Join = Backbone.View.extend({
         });
 
         html += "</select>";
+        html += "<span class='ui-icon ui-icon-circle-close inline floatr'>";
         $(this.el).html(html);
 
         return this;
