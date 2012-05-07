@@ -51,7 +51,7 @@
         "landscape": "Barras horizontales",
         "area": "Colorear área bajo las líneas",
         "sizeHighlight": "Desplazamiento del sector resaltado en píxeles",
-        "title": "Campo con el nombre de los eventos",
+        "evtTitle": "Campo con el nombre de los eventos",
         "start": "Campo con las fechas de comienzo de los eventos",
         "end": "Campo con las fechas de fin de los eventos",
         "description": "Campo con las descripciones",
