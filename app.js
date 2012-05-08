@@ -56,6 +56,8 @@ app.configure(function () {
     app.set('schema', settings.global.schema);
     app.set('viewer', settings.global.viewer);
     app.set('languagesFilter', settings.global.languagesFilter);
+    app.set('siteLogo', settings.global.logo);
+    app.set('siteTitle', settings.global.title);
 
     app.use(app.router);
 });

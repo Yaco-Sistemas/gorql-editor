@@ -76,6 +76,8 @@ exports.index = function (request, response) {
                     debugJS: app.exports.settings.debugJS,
                     viewer: app.exports.settings.viewer,
                     previewLimit: app.exports.settings.previewLimit,
+                    siteLogo: app.exports.settings.siteLogo,
+                    siteTitle: app.exports.settings.siteTitle,
                     schema: { categories: schema },
                     schemaJSON: JSON.stringify(schema),
                     linguaJSON: JSON.stringify(response.lingua.content.client),

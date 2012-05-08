@@ -25,7 +25,7 @@
 exports.settings = {
     global: {
         root: "",
-        debug: true,
+        debug: false,
         port: 3010,
         viewer: "http://gorql-viewer.ceic-ogov.yaco.es",
         schema: "endpoints/dbpedia.json",
@@ -35,7 +35,9 @@ exports.settings = {
         }, {
             code: "es",
             name: "Español"
-        }]
+        }],
+        logo: "images/logo-big.png",
+        title: "Asistente de Construcción de Consultas"
     },
 
     development: {
