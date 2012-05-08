@@ -14,8 +14,8 @@ License: EUPL 1.1 License
 URL: http://www.yaco.es
 Source0: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
-Requires: nodejs make
-BuildRequires: nodejs npm make
+Requires: nodejs = 0.6.17, make
+BuildRequires: nodejs = 0.6.17, npm, make
 
 %description
 %{summary}
