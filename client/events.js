@@ -319,6 +319,12 @@ QBA.events = {
                 $(this).parent().addClass("active");
             });
 
+            $("#step5 #chartType li").click(function (evt) {
+                var radio = $(this).find("input");
+                radio.attr("checked", true);
+                radio.trigger("change");
+            });
+
             $("#step5 div.parameter input").change(QBA.chart.updateChartModel);
             $("#step5 div.parameter select").change(QBA.chart.updateChartModel);
 

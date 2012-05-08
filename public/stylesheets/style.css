@@ -177,24 +177,29 @@ fieldset legend {
 }
 
 #chartType ul {
-    height: 258px;
+    height: 260px;
     margin: 0px;
     padding-left: 0px;
     background-color: #E0E0E0;
-    border-left: 2px solid #037FDA;
-    border-top: 2px solid #037FDA;
-    border-bottom: 2px solid #037FDA;
+    border-left: 2px solid #E0E0E0;
+    border-top: 2px solid #E0E0E0;
+    border-bottom: 2px solid #E0E0E0;
 }
 
 #chartType ul li {
-    padding: 12px 0px 12px 10px;
+    padding-left: 10px;
     cursor: pointer;
     color: #005CBF;
     font-weight: bold;
+    height: 16.667%;
+    position: relative;
 }
 
 #chartType ul li label {
     cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -0.6em;
 }
 
 #chartType ul li.active {
@@ -202,18 +207,14 @@ fieldset legend {
     color: #00A8E5;
 }
 
-#chartType input {
-    display: none;
-}
-
 .paramsContainer {
-    height: 248px;
+    height: 250px;
     width: 550px;
     margin: 0px;
     padding: 10px 10px 0px 10px;
-    border-right: 2px solid #037FDA;
-    border-top: 2px solid #037FDA;
-    border-bottom: 2px solid #037FDA;
+    border-right: 2px solid #E0E0E0;
+    border-top: 2px solid #E0E0E0;
+    border-bottom: 2px solid #E0E0E0;
 }
 
 #step5 .buttons {
