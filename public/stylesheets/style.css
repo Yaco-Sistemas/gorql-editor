@@ -172,12 +172,11 @@ fieldset legend {
 }
 
 #chartType {
-    width: 250px;
-    margin-left: 34px;
+    width: 260px;
 }
 
 #chartType ul {
-    height: 260px;
+    height: 330px;
     margin: 0px;
     padding-left: 0px;
     background-color: #E0E0E0;
@@ -187,7 +186,7 @@ fieldset legend {
 }
 
 #chartType ul li {
-    padding-left: 10px;
+    padding-left: 20px;
     cursor: pointer;
     color: #005CBF;
     font-weight: bold;
@@ -208,13 +207,18 @@ fieldset legend {
 }
 
 .paramsContainer {
-    height: 250px;
-    width: 550px;
+    height: 320px;
+    width: 590px;
     margin: 0px;
-    padding: 10px 10px 0px 10px;
+    padding: 10px 10px 0px 20px;
     border-right: 2px solid #E0E0E0;
     border-top: 2px solid #E0E0E0;
     border-bottom: 2px solid #E0E0E0;
+    overflow: auto;
+}
+
+.paramsContainer label {
+    display: block;
 }
 
 #step5 .buttons {
