@@ -83,10 +83,6 @@ fieldset legend {
     margin-top: 10px;
 }
 
-.half-width {
-    width: 49%;
-}
-
 .inline {
     display: inline-block;
 }
@@ -109,6 +105,10 @@ fieldset legend {
 
 .required {
     border: 1px solid red;
+}
+
+.clear {
+    clear: both;
 }
 
 .ui-widget input[type=submit],
@@ -169,4 +169,53 @@ fieldset legend {
 .filter > .ui-icon-circle-close {
     margin-top: 6px;
     cursor: pointer;
+}
+
+#chartType {
+    width: 250px;
+    margin-left: 34px;
+}
+
+#chartType ul {
+    height: 258px;
+    margin: 0px;
+    padding-left: 0px;
+    background-color: #E0E0E0;
+    border-left: 2px solid #037FDA;
+    border-top: 2px solid #037FDA;
+    border-bottom: 2px solid #037FDA;
+}
+
+#chartType ul li {
+    padding: 12px 0px 12px 10px;
+    cursor: pointer;
+    color: #005CBF;
+    font-weight: bold;
+}
+
+#chartType ul li label {
+    cursor: pointer;
+}
+
+#chartType ul li.active {
+    background-color: white;
+    color: #00A8E5;
+}
+
+#chartType input {
+    display: none;
+}
+
+.paramsContainer {
+    height: 248px;
+    width: 550px;
+    margin: 0px;
+    padding: 10px 10px 0px 10px;
+    border-right: 2px solid #037FDA;
+    border-top: 2px solid #037FDA;
+    border-bottom: 2px solid #037FDA;
+}
+
+#step5 .buttons {
+    padding-top: 20px;
 }

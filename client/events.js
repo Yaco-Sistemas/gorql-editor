@@ -315,6 +315,8 @@ QBA.events = {
                 $("#step5 .paramsContainer").css("display", "none");
                 $("#step5 #" + chart + "Params").css("display", "block");
                 QBA.chart.fillFormWithDefaultValues(chart);
+                $(this).parent().parent().find("li.active").removeClass("active");
+                $(this).parent().addClass("active");
             });
 
             $("#step5 div.parameter input").change(QBA.chart.updateChartModel);

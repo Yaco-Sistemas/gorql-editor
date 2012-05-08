@@ -1,10 +1,10 @@
 <fieldset class="chart">
     <legend>${lingua.step5.title}</legend>
     <p class="hint"><span class="ui-icon ui-icon-info inline"></span>${lingua.step5.hint}</p>
-    <div class="half-width float">
+    <div id="chartType" class="float">
         <h3>${lingua.step5.type}</h3>
         <ul>
-            <li><input type="radio" id="bar_chart" name="chart_type" value="bar" checked="true" /><label for="bar_chart">${lingua.step5.bar}</label></li>
+            <li class="active"><input type="radio" id="bar_chart" name="chart_type" value="bar" checked="true" /><label for="bar_chart">${lingua.step5.bar}</label></li>
             <li><input type="radio" id="line_chart" name="chart_type" value="line" /><label for="line_chart">${lingua.step5.line}</label></li>
             <li><input type="radio" id="pie_chart" name="chart_type" value="pie" /><label for="pie_chart">${lingua.step5.pie}</label></li>
             <li><input type="radio" id="timeline_chart" name="chart_type" value="timeline" /><label for="timeline_chart">${lingua.step5.timeline}</label></li>
@@ -12,7 +12,7 @@
             <li><input type="radio" id="mapea_chart" name="chart_type" value="mapea" /><label for="mapea_chart">${lingua.step5.mapea}</label></li>
         </ul>
     </div>
-    <div class="half-width float">
+    <div id="chartParams" class="float">
         <h3>${lingua.step5.params}</h3>
         <div id="barParams" class="paramsContainer">
             <div class="parameter">
@@ -368,7 +368,7 @@
             </div>
         </div>
     </div>
-    <div class="buttons">
+    <div class="buttons clear">
         <input class="float no-js" type="submit" name="prevS5" value="&lt;&lt; ${lingua.previous}" />
         <button id="prevS5" class="float js">${lingua.previous}</button>
         <input class="float" type="submit" name="preview" value="${lingua.genPreview}" />
