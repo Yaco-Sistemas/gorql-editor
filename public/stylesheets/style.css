@@ -43,6 +43,16 @@ body.js div.filter {
     background-color: #f0f0f0;
     padding: 10px 40px 10px 40px;
     margin-bottom: 20px;
+    position: relative;
+}
+
+body.js div.join > .ui-icon-circle-close,
+body.js div.filter > .ui-icon-circle-close {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    right: 40px;
 }
 
 body.js .ui-accordion-content.ui-accordion-content-active {
@@ -104,7 +114,7 @@ fieldset legend {
 }
 
 .required {
-    border: 1px solid red;
+    border: 1px solid #cc0000;
 }
 
 .clear {
@@ -165,12 +175,6 @@ fieldset legend {
     margin-right: 5px;
 }
 
-.join > .ui-icon-circle-close,
-.filter > .ui-icon-circle-close {
-    margin-top: 6px;
-    cursor: pointer;
-}
-
 #chartType {
     width: 260px;
 }
@@ -207,10 +211,10 @@ fieldset legend {
 }
 
 .paramsContainer {
-    height: 320px;
+    height: 310px;
     width: 590px;
     margin: 0px;
-    padding: 10px 10px 0px 20px;
+    padding: 10px 10px 10px 20px;
     border-right: 2px solid #E0E0E0;
     border-top: 2px solid #E0E0E0;
     border-bottom: 2px solid #E0E0E0;
