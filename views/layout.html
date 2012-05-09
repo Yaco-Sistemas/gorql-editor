@@ -88,15 +88,18 @@
         <section id="step5" class="step ${steps.s5} js">
             {{partial(schema) "s5paint"}}
         </section>
-
-        <button id="openPreview" class="hidden">${lingua.genPreview}</button>
     </form>
     <section id="preview" style="display: none;">
         <button id="refreshPreview" class="floatr">${lingua.updatePreview}</button>
         <div id="viewport"></div>
         <pre id="debug"><code class="language-sparql" id="query"></code></pre>
-        <button id="closePreview">${lingua.closePreview}</button>
+        <div class="preview-tab">
+            <div><div></div><button id="closePreview">${lingua.closePreview}</button><div class="right"></div></div>
+        </div>
     </section>
+    <div class="preview-tab">
+        <div><div class="hidden openPreview"></div><button id="openPreview" class="hidden openPreview">${lingua.genPreview}</button><div class="hidden right openPreview"></div></div>
+    </div>
     <div id="footer">
         <img class="floatr" src="images/logo-small.png" alt="GORQL Editor" title="GORQL Editor" />
     </div>

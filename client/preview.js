@@ -149,10 +149,11 @@ QBA.preview.slideEffect = function (show) {
         QBA.preview.$containerEl = $("#preview");
     }
     if (show) {
-        $("#openPreview").addClass("hidden");
+        $(".openPreview").addClass("hidden");
         QBA.preview.$containerEl.show("slide", { direction: "up" }, 500);
     } else {
-        $("#openPreview").removeClass("hidden");
-        QBA.preview.$containerEl.hide("slide", { direction: "up" }, 500);
+        QBA.preview.$containerEl.hide("slide", { direction: "up" }, 500, function () {
+            $(".openPreview").removeClass("hidden");
+        });
     }
 };

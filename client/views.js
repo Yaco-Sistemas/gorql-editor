@@ -83,7 +83,7 @@ QBA.views.Step = Backbone.View.extend({
     renderS1: function () {
         "use strict";
         $("#preview").hide();
-        $("#openPreview").addClass("hidden");
+        $(".openPreview").addClass("hidden");
     },
 
     renderS2: function () {
@@ -94,9 +94,9 @@ QBA.views.Step = Backbone.View.extend({
             $("#step2 .empty").removeClass("hidden");
             $("#step2 .hint").addClass("hidden");
             $("#step2 #advanced").addClass("hidden");
-            $("#openPreview").addClass("hidden");
+            $(".openPreview").addClass("hidden");
         } else {
-            $("#openPreview").removeClass("hidden");
+            $(".openPreview").removeClass("hidden");
         }
     },
 
@@ -138,9 +138,9 @@ QBA.views.Step = Backbone.View.extend({
             $("#step5 .hint").addClass("hidden");
             $("#step5 #chartType").addClass("hidden");
             $("#step5 #chartParams").addClass("hidden");
-            $("#openPreview").addClass("hidden");
+            $(".openPreview").addClass("hidden");
         } else {
-            $("#openPreview").removeClass("hidden");
+            $(".openPreview").removeClass("hidden");
         }
     }
 });
