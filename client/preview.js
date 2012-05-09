@@ -79,6 +79,8 @@ QBA.preview.initQuery = function (SPARQL) {
         QBA.preview.$el = $("#preview #viewport");
     }
 
+    QBA.preview.slideEffect(true);
+
     html = "<script type='text/javascript' src='" + QBA.preview.viewer;
     html += "/viewer/?query=" + encodeURIComponent(SPARQL);
     html += "&amp;embedded=true&amp;idx=0'></script>";
@@ -135,5 +137,17 @@ QBA.preview.updateChart = function () {
         QBA.preview.callDV(radio.value, QBA.chart.getChartParams(radio.value));
     } catch (err) {
         QBA.preview.$el.html("<span class='error'>" + err + "</span>");
+    }
+};
+
+QBA.preview.slideEffect = function (show) {
+    "use strict";
+    if (typeof QBA.preview.$containerEl === "undefined") {
+        QBA.preview.$containerEl = $("#preview");
+    }
+    if (show) {
+        QBA.preview.$containerEl.show("slide", { direction: "up" }, 500);
+    } else {
+        QBA.preview.$containerEl.hide("slide", { direction: "up" }, 500);
     }
 };

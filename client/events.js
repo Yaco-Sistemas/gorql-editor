@@ -55,6 +55,10 @@ QBA.events = {
             // Bind events to the new content of the target tab
             QBA.events[step].bind();
         });
+
+        $("#closePreview").click(function () {
+            QBA.preview.slideEffect(false);
+        });
     },
 
     step1: {
