@@ -69,8 +69,6 @@ QBA.preview.initQuery = function (SPARQL, preventEffect) {
     "use strict";
     var html;
 
-    $("#debug #query").text(SPARQL);
-
     if (typeof DV.data !== "undefined") {
         delete DV.data;
     }

@@ -53,6 +53,8 @@ h1 {
     clear: both;
     overflow-x: auto;
     overflow-y: hidden;
+    padding-top: 20px;
+    margin-bottom: 20px;
 }
 
 #preview #viewport span.error {
@@ -61,6 +63,7 @@ h1 {
 
 #refreshPreview {
     padding: 6px 10px 6px 10px;
+    font-size: 0.85em;
 }
 
 .preview-tab {
@@ -95,6 +98,7 @@ h1 {
     height: 25px;
     margin: 0;
     border: 0;
+    font-size: 0.85em;
     border-bottom: 1px solid #D1D1D1;
     background: #E0E0E0 url(images/ui-bg_highlight-soft_50_e0e0e0_1x100.png) 50% 50% repeat-x;
     vertical-align: top;
