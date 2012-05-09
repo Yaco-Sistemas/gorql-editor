@@ -38,14 +38,15 @@ QBA.views.jQueryUI = function (elem) {
         $("#hideadvanced").button({ icons: { primary: "ui-icon-minusthick" }});
         $("#prevS2, #prevS5").button({ icons: { primary: "ui-icon-arrowthick-1-w" }});
         $("#nextS1, #nextS2").button({ icons: { secondary: "ui-icon-arrowthick-1-e" }});
+        $("#openPreview").button({ icons: { primary: "ui-icon-circle-triangle-s" }});
+        $("#closePreview").button({ icons: { primary: "ui-icon-circle-triangle-n" }});
+        $("#refreshPreview").button({ icons: { primary: "ui-icon-arrowrefresh-1-e" }});
     } else {
         $(elem).find(".tabable").tabs();
         $(elem).find(".accordionable").accordion();
         $(elem).find(".datepicker").datepicker({ "dateFormat": "yy-mm-dd" });
-        $(elem).find("#advanced").button({ icons: { primary: "ui-icon-plusthick" }});
-        $(elem).find("#hideadvanced").button({ icons: { primary: "ui-icon-minusthick" }});
-        $(elem).find("#prevS2, #prevS5").button({ icons: { primary: "ui-icon-arrowthick-1-w" }});
-        $(elem).find("#nextS1, #nextS2").button({ icons: { secondary: "ui-icon-arrowthick-1-e" }});
+        $(elem).find("#closePreview").button({ icons: { primary: "ui-icon-circle-triangle-n" }});
+        $(elem).find("#refreshPreview").button({ icons: { primary: "ui-icon-arrowrefresh-1-e" }});
     }
 };
 
@@ -80,10 +81,14 @@ QBA.views.Step = Backbone.View.extend({
     renderS2: function () {
         "use strict";
         $("#steps3and4").addClass("hidden");
+        $("#preview").hide();
         if ($("#step2 div.collections").children().length === 0) {
             $("#step2 .empty").removeClass("hidden");
             $("#step2 .hint").addClass("hidden");
             $("#step2 #advanced").addClass("hidden");
+            $("#openPreview").addClass("hidden");
+        } else {
+            $("#openPreview").removeClass("hidden");
         }
     },
 
@@ -119,11 +124,15 @@ QBA.views.Step = Backbone.View.extend({
                 hasContent = hasContent || (collection.getCheckedFields().length !== 0);
             });
         });
+        $("#preview").hide();
         if (!hasContent) {
             $("#step5 .empty").removeClass("hidden");
             $("#step5 .hint").addClass("hidden");
             $("#step5 #chartType").addClass("hidden");
             $("#step5 #chartParams").addClass("hidden");
+            $("#openPreview").addClass("hidden");
+        } else {
+            $("#openPreview").removeClass("hidden");
         }
     }
 });

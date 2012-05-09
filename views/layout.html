@@ -79,7 +79,7 @@
 
             <div class="buttons lateral-padding">
                 <button id="prevS2" class="float">${lingua.previous}</button>
-                <input class="float" type="submit" name="preview" value="${lingua.genPreview}" />
+                <input class="float no-js" type="submit" name="preview" value="${lingua.genPreview}" />
                 <button id="nextS2" class="floatr">${lingua.step2.showChart}</button>
                 <input class="floatr" type="submit" name="done" value="${lingua.step4.view}" />
             </div>
@@ -88,11 +88,14 @@
         <section id="step5" class="step ${steps.s5} js">
             {{partial(schema) "s5paint"}}
         </section>
+
+        <button id="openPreview" class="hidden">${lingua.genPreview}</button>
     </form>
     <section id="preview" style="display: none;">
+        <button id="refreshPreview" class="floatr">Update</button>
         <div id="viewport"></div>
         <pre id="debug"><code class="language-sparql" id="query"></code></pre>
-        <button id="closePreview" class="">Close</button>
+        <button id="closePreview">Close</button>
     </section>
     <div id="footer">
         <img class="floatr" src="images/logo-small.png" alt="GORQL Editor" title="GORQL Editor" />

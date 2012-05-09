@@ -65,7 +65,7 @@ QBA.preview.callDV = function (chart, params) {
     }
 };
 
-QBA.preview.initQuery = function (SPARQL) {
+QBA.preview.initQuery = function (SPARQL, preventEffect) {
     "use strict";
     var html;
 
@@ -79,7 +79,10 @@ QBA.preview.initQuery = function (SPARQL) {
         QBA.preview.$el = $("#preview #viewport");
     }
 
-    QBA.preview.slideEffect(true);
+    QBA.views.jQueryUI("#preview");
+    if (!preventEffect) {
+        QBA.preview.slideEffect(true);
+    }
 
     html = "<script type='text/javascript' src='" + QBA.preview.viewer;
     html += "/viewer/?query=" + encodeURIComponent(SPARQL);
@@ -88,10 +91,10 @@ QBA.preview.initQuery = function (SPARQL) {
     return html;
 };
 
-QBA.preview.updateTable = function () {
+QBA.preview.updateTable = function (preventEffect) {
     "use strict";
     var SPARQL = QBA.theQuery.toSPARQL() + " LIMIT " + QBA.preview.limit,
-        html = QBA.preview.initQuery(SPARQL);
+        html = QBA.preview.initQuery(SPARQL, preventEffect);
 
     html += "<table id='preview_table' class='dv_table'><tr><td>" + QBA.lingua.preview.working + "</td></tr></table>";
 
@@ -100,10 +103,10 @@ QBA.preview.updateTable = function () {
     QBA.preview.callDV(false);
 };
 
-QBA.preview.updateChart = function () {
+QBA.preview.updateChart = function (preventEffect) {
     "use strict";
     var SPARQL = QBA.theQuery.toSPARQL(),
-        html = QBA.preview.initQuery(SPARQL),
+        html = QBA.preview.initQuery(SPARQL, preventEffect),
         radios = $("input[name=chart_type]"),
         radio = _.find(radios, function (radio) { return radio.checked; });
 
@@ -146,8 +149,10 @@ QBA.preview.slideEffect = function (show) {
         QBA.preview.$containerEl = $("#preview");
     }
     if (show) {
+        $("#openPreview").addClass("hidden");
         QBA.preview.$containerEl.show("slide", { direction: "up" }, 500);
     } else {
+        $("#openPreview").removeClass("hidden");
         QBA.preview.$containerEl.hide("slide", { direction: "up" }, 500);
     }
 };

@@ -40,15 +40,31 @@ h1 {
 }
 
 #preview {
-    margin-top: 10px;
+    padding-top: 10px;
+    border: 1px solid #D1D1D1;
+    border-top: 0px;
 }
 
 #preview #query {
     white-space: pre-wrap;
 }
 
+#preview #viewport {
+    clear: both;
+    overflow-x: auto;
+}
+
 #preview #viewport span.error {
     color: red;
+}
+
+#closePreview,
+#refreshPreview {
+    padding: 6px 10px 6px 10px;
+}
+
+#refreshPreview {
+    margin-right: 10px;
 }
 
 body.no-js .js,
@@ -169,6 +185,13 @@ fieldset legend {
     border: 1px solid #037fda;
     background: #037fda url(images/ui-bg_highlight-soft_25_037fda_1x100.png) 50% 50% repeat-x;
     color: #ffffff;
+}
+
+.ui-widget input[type=submit]:active,
+.ui-widget button:active {
+    border: 1px solid #d1d1d1;
+    background: #ffffff url(images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x;
+    color: #00a8e5;
 }
 
 .ui-button-text-icon-primary .ui-button-text,

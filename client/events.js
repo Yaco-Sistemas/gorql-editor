@@ -130,10 +130,14 @@ QBA.events = {
                 $("#ls4").trigger("click");
             });
 
-            $("#step2-wrapper input[name=preview]").click(function (evt) {
+            $("#openPreview").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 QBA.preview.updateTable();
+            });
+
+            $("#refreshPreview").click(function (evt) {
+                QBA.preview.updateTable(true);
             });
 
             $("#step2-wrapper #prevS2").click(function (evt) {
@@ -176,7 +180,8 @@ QBA.events = {
 
         release: function () {
             "use strict";
-            $("#step2-wrapper input[name=preview]").unbind("click");
+            $("#openPreview").unbind("click");
+            $("#refreshPreview").unbind("click");
             $("#step2-wrapper input[name=prevS2]").unbind("click");
             $("#step2-wrapper input[name=nextS2]").unbind("click");
             $("#step2-wrapper input[name=done]").unbind("click");
@@ -332,10 +337,14 @@ QBA.events = {
             $("#step5 div.parameter input").change(QBA.chart.updateChartModel);
             $("#step5 div.parameter select").change(QBA.chart.updateChartModel);
 
-            $("#step5 input[name=preview]").click(function (evt) {
+            $("#openPreview").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
                 QBA.preview.updateChart();
+            });
+
+            $("#refreshPreview").click(function (evt) {
+                QBA.preview.updateChart(true);
             });
 
             $("#step5 input[name=done-chart]").click(function (evt) {
@@ -356,6 +365,8 @@ QBA.events = {
 
         release: function () {
             "use strict";
+            $("#openPreview").unbind("click");
+            $("#refreshPreview").unbind("click");
             // TODO
         }
     }
