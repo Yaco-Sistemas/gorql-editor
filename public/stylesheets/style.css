@@ -159,7 +159,9 @@ fieldset legend {
     clear: both;
 }
 
-label {
+
+#step1 label,
+#step2 label {
     cursor: pointer;
 }
 
