@@ -22,13 +22,13 @@ Compilar NodeJS
 ~~~~~~~~~~~~~~~
 
 Primero se descarga el último tar disponible
-(http://nodejs.org/dist/v0.6.15/node-v0.6.15.tar.gz) y luego se ejecutan los
+(http://nodejs.org/dist/v0.6.17/node-v0.6.17.tar.gz) y luego se ejecutan los
 siguientes comandos:
 
 .. code-block:: bash
 
-    tar xvf node-v0.6.15.tar.gz
-    cd node-v0.6.15
+    tar xvf node-v0.6.17.tar.gz
+    cd node-v0.6.17
     ./configure
     make
     sudo make install
@@ -135,11 +135,11 @@ operativo:
     yum install gcc gcc-c++ make openssl-devel libstdc++-devel
 
 Hay que descargar también el código fuente de NodeJS_ de la web, la versión
-0.6.15 se encuentra disponible aquí_.
+0.6.17 se encuentra disponible aquí_.
 
 .. _NodeJS: http://nodejs.org/
 
-.. _aquí: http://nodejs.org/dist/v0.6.15/node-v0.6.15.tar.gz
+.. _aquí: http://nodejs.org/dist/v0.6.17/node-v0.6.17.tar.gz
 
 Generación
 ~~~~~~~~~~
@@ -161,7 +161,7 @@ ejecutar los siguientes comandos:
     rpmbuild -ba nodejs.spec
 
 Cuando termine el proceso se habrá generado el paquete RPM, que estará
-disponible en */usr/src/redhat/RPMS/x86_64/nodejs-0.6.15-1.el6.x86_64.rpm*
+disponible en */usr/src/redhat/RPMS/x86_64/nodejs-0.6.17-1.x86_64.rpm*
 
 GORQL Editor
 ------------
@@ -174,7 +174,7 @@ paquete de NodeJS generado en el apartado anterior:
 
 .. code-block:: bash
 
-    rpm -Uvh nodejs-0.6.15-1.el6.x86_64.rpmbuild
+    rpm -Uvh nodejs-0.6.17-1.x86_64.rpm
 
 También requiere de la utilidad *make*, que se puede instalar mediante el
 sistema de paquetería del sistema operativo:

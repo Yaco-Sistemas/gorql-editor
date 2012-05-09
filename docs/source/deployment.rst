@@ -20,13 +20,13 @@ instalar a partir de un RPM:
 *x86_64*
  Descarga-NodeJS_
 
-.. _Descarga-NodeJS: http://files.yaco.es/~ceic-ogov/gorql-editor/dependencies/nodejs-0.6.15-1.el6.x86_64.rpm
+.. _Descarga-NodeJS: http://files.yaco.es/~ceic-ogov/dependencies/rh5/nodejs-0.6.17-1.x86_64.rpm
 
 Una vez descargado el paquete se instala ejecutando:
 
 ::
 
- # rpm -Uvh nodejs-0.6.15-1.el6.x86_64.rpm
+ # rpm -Uvh nodejs-0.6.17-1.x86_64.rpm
 
 Este paquete provee NodeJS_ y NPM_ (el sistema de paquetería de NodeJS)
 necesarios para el funcionamiento de GORQL Editor.
@@ -49,13 +49,13 @@ paquete RPM:
 *x86_64*
  Descarga-GORQL-Editor_
 
-.. _Descarga-GORQL-Editor: http://files.yaco.es/~ceic-ogov/gorql-editor/releases/1.0/gorql-editor-1.0.0-1.x86_64.rpm
+.. _Descarga-GORQL-Editor: http://files.yaco.es/~ceic-ogov/gorql-editor/devel/rh5/gorql-editor-1.0.0develhg186-2.x86_64.rpm
 
 Una vez descargado el paquete se instala ejecutando:
 
 ::
 
- # rpm -Uvh gorql-editor-1.0.0-1.x86_64.rpm
+ # rpm -Uvh gorql-editor-1.0.0develhg186-2.x86_64.rpm
 
 Este paquete incluye GORQL Editor y todas las librerías que utiliza, y crea un
 script de servicio para el arranque y parada del servidor.
@@ -130,6 +130,12 @@ Global
    *http://gorql-viewer.ceic-ogov.yaco.es*.
  - **schema**: Fichero JSON con la definición de las colecciones del endpoint a
    utilizar. Por defecto, *endpoints/dbpedia.json*.
+ - **languagesFilter**: Lista de idiomas para ofrecer al usuario en el filtro
+   de idioma. Por defecto se incluye inglés y español.
+ - **logo**: Ruta a la imagen para la cabecera del editor. Por defecto,
+   *images/logo-big.png*.
+ - **title**: Título del editor que aparecerá en la cabecera. Por defecto,
+   *Asistente de Construcción de Consultas*.
 
 Development y Production
 ''''''''''''''''''''''''

@@ -24,8 +24,11 @@ Se muestra un listado de campos, agrupados según las colecciones escogidas en
 el paso anterior. El usuario puede escoger qué campos solicitar al *endpoint*
 en la consulta.
 
+Además se le ofrecen una serie de opciones avanzadas que permiten refinar la
+consulta.
+
 Conectar colecciones
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 Se muestra un listado de los campos escogidos en el paso anterior que son de
 tipo *uri*, es decir, que apuntan a otros recursos. Al escoger uno de estos
@@ -35,7 +38,7 @@ De esta forma los resultados correspondientes a la segunda colección serán
 aquellos apuntados por los registros de la primera.
 
 Filtrar resultados
-------------------
+~~~~~~~~~~~~~~~~~~
 
 Se muestra un listado de los campos escogidos en el segundo paso. Cuando el
 usuario escoge un campo se le muestra un listado de filtros aplicables al campo
@@ -44,8 +47,10 @@ según el tipo al que pertenezca.
 El usuario puede escoger entonces el filtro a aplicar, y el valor o valores
 límite.
 
-Generar gráfico
----------------
+Añadir gráfico
+--------------
+
+Este paso es opcional, pero altamente recomendable.
 
 Se ofrecen los diferentes tipos de gráficos soportados por el componente GORQL
 Viewer, y también campos para escoger los parámetros de configuración del
@@ -59,23 +64,25 @@ sean compatibles con el gráfico escogido.
 Previsualización
 ================
 
-El botón para *Generar previsualización* está siempre presente. Pero su
-significado cambia según el paso en el que se encuentre el usuario.
+La solapa para *Genere una previsualización* está presente en el segundo y
+tercer paso, pero tiene un significado diferente en cada uno de ellos.
 
-En todos los pasos menos en el de definición del gráfico, la previsualización
-generada es la tabla de datos con los resultados obtenidos por la consulta.
+En el segundo paso, la previsualización generada es la tabla de datos con los
+resultados obtenidos por la consulta. En el otro caso, durante el tercer paso,
+la previsualización generada será el gráfico escogido.
 
-Si se pulsase mientras está activo el paso/pestaña de definición del gráfico,
-entonces la previsualización generada será el gráfico definido.
+Es posible actualizar la previsualización con los cambios en la consulta que se
+hayan hecho. Para ello hay que pulsar en el botón *Actualice la
+previsualización*, que aparece al mostrarse las previsualizaciones.
 
 Ver datos y gráfico en GORQL Viewer
 ===================================
 
-En el paso de filtrado y de definición del gráfico se muestran sendos botones
-para abrir el informe construido en GORQL Viewer. Estos botones abrirán en
-una nueva ventana/pestaña el componente GORQL Viewer con el informe.
+En el paso de escoger campso y en el de definición del gráfico se muestran
+sendos botones para abrir el informe construido en GORQL Viewer. Estos botones
+abrirán en una nueva ventana/pestaña el componente GORQL Viewer con el informe.
 
-Si se pulsa el botón del paso de filtrado, el informe que se abrirá no tendrá
+Si se pulsa el botón del segundo paso, el informe que se abrirá no tendrá
 ningún gráfico.
 
 Si en cambio se pulsa el del paso del gráfico, el informe contendrá la tabla de
