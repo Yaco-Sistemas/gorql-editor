@@ -40,7 +40,7 @@ h1 {
 }
 
 #preview {
-    padding-top: 10px;
+    padding: 10px 1.95em 0 1.95em;
     border: 1px solid #D1D1D1;
     border-top: 0px;
 }
@@ -52,6 +52,7 @@ h1 {
 #preview #viewport {
     clear: both;
     overflow-x: auto;
+    overflow-y: hidden;
 }
 
 #preview #viewport span.error {
@@ -61,10 +62,6 @@ h1 {
 #closePreview,
 #refreshPreview {
     padding: 6px 10px 6px 10px;
-}
-
-#refreshPreview {
-    margin-right: 10px;
 }
 
 body.no-js .js,
@@ -121,6 +118,7 @@ ul {
 
 fieldset {
     border: none;
+    margin: 0px;
 }
 
 fieldset legend {
@@ -159,6 +157,15 @@ fieldset legend {
 
 .clear {
     clear: both;
+}
+
+label {
+    cursor: pointer;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    cursor: pointer;
 }
 
 .ui-widget input[type=submit],
