@@ -4,8 +4,8 @@
 %define docdir /usr/share/doc/%{name}-%{version}
 
 Name: %{name}
-Version: 1.0.0develhg140
-Release: 1
+Version: 1.0.0develhg186
+Release: 2
 Summary: GORQL Editor helps writing SPARQL queries
 Packager: Alejandro Blanco <ablanco@yaco.es>
 Group: Applications/Internet
@@ -34,14 +34,14 @@ make all
 
 # clean files not needed
 rm -rf %{installdir}/.hg
-rm -f %{installdir}/%{name}.spec
+rm -rf %{installdir}/docs
+rm -rf %{installdir}/specs
 rm -f %{installdir}/make_dev_rpm.sh
 
 %install
 # move the rest to the build root
 mkdir -p `dirname $RPM_BUILD_ROOT%{installdir}`
 mkdir -p $RPM_BUILD_ROOT%{docdir}
-mv %{installdir}/INSTALL.rst $RPM_BUILD_ROOT%{docdir}/
 mv %{installdir}/COPYING $RPM_BUILD_ROOT%{docdir}/
 mv %{installdir}/README $RPM_BUILD_ROOT%{docdir}/
 mv %{installdir} `dirname $RPM_BUILD_ROOT%{installdir}`/
@@ -53,7 +53,6 @@ mkdir -p $RPM_BUILD_ROOT/etc/%{name}
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%doc %{docdir}/INSTALL.rst
 %doc %{docdir}/COPYING
 %doc %{docdir}/README
 %{installdir}/node_modules
@@ -100,5 +99,7 @@ fi
 
 %changelog
 
+* Wed May 09 2012 Alejandro Blanco <ablanco@yaco.es>
+- Remove docs and specs from the package
 * Fri Mar 09 2012 Alejandro Blanco <ablanco@yaco.es>
 - Initial version
