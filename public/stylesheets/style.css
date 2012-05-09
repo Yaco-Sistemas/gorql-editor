@@ -125,6 +125,21 @@ h1 {
     padding: 2px 5px 0px 30px
 }
 
+#openPreview:hover,
+#closePreview:hover,
+#openPreview span.ui-button-text:hover,
+#closePreview span.ui-button-text:hover {
+    color: #005CBF !important;
+}
+
+#openPreview.ui-state-hover span.ui-icon,
+#closePreview.ui-state-hover span.ui-icon,
+#openPreview span.ui-icon:hover,
+#closePreview span.ui-icon:hover {
+    background-position: -64px -192px;
+    background-image: url(images/ui-icons_00a8e5_256x240.png);
+}
+
 body.no-js .js,
 body.js .no-js,
 .hidden {
