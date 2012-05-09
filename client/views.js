@@ -69,6 +69,8 @@ QBA.views.Step = Backbone.View.extend({
             this.renderS3();
         } else if (this.step === "step4") {
             this.renderS4();
+        } else if (this.step === "step5") {
+            this.renderS5();
         }
 
         QBA.views.jQueryUI();
@@ -107,6 +109,22 @@ QBA.views.Step = Backbone.View.extend({
             });
             $("#step4 #filters").append(view.render().el);
         });
+    },
+
+    renderS5: function () {
+        "use strict";
+        var hasContent = false;
+        QBA.theQuery.each(function (category) {
+            _.each(category.getCheckedCollections(), function (collection) {
+                hasContent = hasContent || (collection.getCheckedFields().length !== 0);
+            });
+        });
+        if (!hasContent) {
+            $("#step5 .empty").removeClass("hidden");
+            $("#step5 .hint").addClass("hidden");
+            $("#step5 #chartType").addClass("hidden");
+            $("#step5 #chartParams").addClass("hidden");
+        }
     }
 });
 

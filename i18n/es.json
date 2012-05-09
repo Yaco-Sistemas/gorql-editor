@@ -58,7 +58,8 @@
         "overviewRes": "Resolución temporal de la banda resumen",
         "lat": "Campo con las latitudes",
         "long": "Campo con las longitudes",
-        "view": "Vea los datos y el gráfico"
+        "view": "Vea los datos y el gráfico",
+        "empty": "Es imprescindible escoger alguna colección y algún campo en los pasos anteriores."
     },
     "client": {
         "preview": {

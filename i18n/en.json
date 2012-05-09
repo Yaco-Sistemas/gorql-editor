@@ -58,7 +58,8 @@
         "overviewRes": "Temporal resolution of the overview band",
         "lat": "Latitudes field",
         "long": "Longitudes field",
-        "view": "View Chart and Data"
+        "view": "View Chart and Data",
+        "empty": "At least one collection and one field must be chosen in the previous steps."
     },
     "client": {
         "preview": {
