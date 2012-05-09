@@ -5,6 +5,8 @@
         "s5": "Add a chart"
     },
     "genPreview": "Generate preview",
+    "updatePreview": "Update preview",
+    "closePreview": "Hide preview",
     "next": "Next",
     "previous": "Previous",
     "step1": {

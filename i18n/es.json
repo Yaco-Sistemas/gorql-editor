@@ -5,6 +5,8 @@
         "s5": "Añada un gráfico"
     },
     "genPreview": "Genere una previsualización",
+    "updatePreview": "Actualice la previsualización",
+    "closePreview": "Oculte la previsualización",
     "next": "Siguiente",
     "previous": "Anterior",
     "step1": {
