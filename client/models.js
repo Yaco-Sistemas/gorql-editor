@@ -251,6 +251,30 @@ QBA.models.CategoryList = Backbone.Collection.extend({
             return category.getCheckedCollections();
         });
 
+        // DEFAULT LANGUAGES FILTERS
+        _.each(checkedCollections, function (collections) {
+            _.each(collections, function (collection) {
+                _.each(collection.getCheckedFields(), function (field, idx) {
+                    var test = function (filter) {
+                            return filter.get("filter") === 2;
+                        },
+                        uf;
+                    if (field.get("type") === "string") {
+                        if (!field.get("userFilterList").any(test)) {
+                            uf = new QBA.models.UserFilter({
+                                collection: collection,
+                                field: field,
+                                filter: 2,
+                                value: "es",
+                                number: idx * 10
+                            });
+                            field.get("userFilterList").add(uf);
+                        }
+                    }
+                });
+            });
+        });
+
         prefixes = _.flatten(_.map(checkedCollections, function (collections) {
             return _.map(collections, function (collection) {
                 return collection.get("prefixes");
