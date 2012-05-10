@@ -32,7 +32,15 @@ if (typeof QBA.filters === 'undefined') {
 
 QBA.filters.init = function (languages) {
     "use strict";
-    QBA.filters.languages = languages;
+    if (_.isArray(languages)) {
+        // User chooses when to filter by language
+        QBA.filters.languages = languages;
+    } else {
+        // Default language filter, applies to every string field
+        // User can't filter by language
+        QBA.filters.languages = [];
+        QBA.filters.defaultLanguage = languages;
+    }
 };
 
 QBA.filters.getFiltersFromType = function (type) {
@@ -43,6 +51,9 @@ QBA.filters.getFiltersFromType = function (type) {
     }
     if (QBA.filters.filtersByType.hasOwnProperty(type)) {
         result = QBA.filters.filtersByType[type];
+        if (type === "string" && typeof QBA.filters.defaultLanguage !== "undefined") {
+            result.pop(); // Remove language filter
+        }
     } else {
         // Default
         result = ["Equal"];

@@ -29,13 +29,16 @@ exports.settings = {
         port: 3010,
         viewer: "http://gorql-viewer.ceic-ogov.yaco.es",
         schema: "endpoints/dbpedia.json",
-        languagesFilter: [{
-            code: "en",
-            name: "English"
-        }, {
-            code: "es",
-            name: "Español"
-        }],
+        language: {
+            defaultFilter: "es",
+            userFilters: [{
+                code: "en",
+                name: "English"
+            }, {
+                code: "es",
+                name: "Español"
+            }]
+        },
         logo: "images/logo-big.png",
         title: "Asistente de Construcción de Consultas"
     },

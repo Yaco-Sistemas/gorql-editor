@@ -42,6 +42,7 @@ exports.index = function (request, response) {
             matches,
             keys,
             replacement,
+            languagesFilters,
             i,
             j;
 
@@ -70,6 +71,17 @@ exports.index = function (request, response) {
                 templates[i] = tpl;
             }
 
+            if (app.exports.settings.languagesFilters.hasOwnProperty("userFilters")) {
+                languagesFilters = JSON.stringify(app.exports.settings.languagesFilters.userFilters);
+            } else {
+                languagesFilters = "[]";
+            }
+            if (app.exports.settings.languagesFilters.hasOwnProperty("defaultFilter")) {
+                if (app.exports.settings.languagesFilters.defaultFilter !== "") {
+                    languagesFilters = JSON.stringify(app.exports.settings.languagesFilters.defaultFilter);
+                }
+            }
+
             response.render('layout', {
                 layout: false,
                 locals: {
@@ -81,7 +93,7 @@ exports.index = function (request, response) {
                     schema: { categories: schema },
                     schemaJSON: JSON.stringify(schema),
                     linguaJSON: JSON.stringify(response.lingua.content.client),
-                    languagesFilter: JSON.stringify(app.exports.settings.languagesFilter),
+                    languagesFilters: languagesFilters,
                     templates: templates,
                     steps: {
                         s1: '',
@@ -93,15 +105,17 @@ exports.index = function (request, response) {
                 }
             });
         }
-    };
+    }, dir;
+
+    dir = path.dirname(app.filename);
 
     async.parallel([
-        async.apply(fs.readFile, path.dirname(app.filename) + '/' + app.exports.settings.schema),
-        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s1choose.html"),
-        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s2choose.html"),
-        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s3join.html"),
-        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s4filter.html"),
-        async.apply(fs.readFile, path.dirname(app.filename) + "/views/s5paint.html")
+        async.apply(fs.readFile, dir + '/' + app.exports.settings.schema),
+        async.apply(fs.readFile, dir + "/views/s1choose.html"),
+        async.apply(fs.readFile, dir + "/views/s2choose.html"),
+        async.apply(fs.readFile, dir + "/views/s3join.html"),
+        async.apply(fs.readFile, dir + "/views/s4filter.html"),
+        async.apply(fs.readFile, dir + "/views/s5paint.html")
     ], callback);
 };
 

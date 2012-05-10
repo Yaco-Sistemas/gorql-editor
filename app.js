@@ -55,7 +55,7 @@ app.configure(function () {
     app.set('debugJS', settings.global.debug);
     app.set('schema', settings.global.schema);
     app.set('viewer', settings.global.viewer);
-    app.set('languagesFilter', settings.global.languagesFilter);
+    app.set('languagesFilters', settings.global.language);
     app.set('siteLogo', settings.global.logo);
     app.set('siteTitle', settings.global.title);
 
