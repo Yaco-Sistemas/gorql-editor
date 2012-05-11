@@ -28,6 +28,14 @@ if (typeof QBA === 'undefined') {
 
 QBA.views = {};
 
+QBA.views.init = function () {
+    "use strict";
+    QBA.views.jQueryUI();
+    $(".accordionable h3").each(function () {
+        QBA.views.initAccordionPanel(this);
+    });
+};
+
 QBA.views.jQueryUI = function (elem) {
     "use strict";
     if (typeof elem === 'undefined') {
@@ -50,6 +58,26 @@ QBA.views.jQueryUI = function (elem) {
     }
 };
 
+QBA.views.initAccordionPanel = function (headerNode) {
+    "use strict";
+    var node = $(headerNode);
+    if (node.next().find("input[type=checkbox]:checked").length > 0) {
+        if (!(node.hasClass("ui-state-active"))) {
+            node.addClass("ui-state-active");
+            node.find("span.ui-icon").removeClass("ui-icon-triangle-1-e").addClass("ui-icon-triangle-1-s");
+            node.attr("aria-expanded", true).attr("aria-selected", true);
+            node.next().toggle();
+        }
+    } else {
+        if (node.hasClass("ui-state-active")) {
+            node.removeClass("ui-state-active").removeClass("ui-state-hover").removeClass("ui-state-focus");
+            node.find("span.ui-icon").removeClass("ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
+            node.attr("aria-expanded", false).attr("aria-selected", false);
+            node.next().toggle();
+        }
+    }
+};
+
 QBA.views.Step = Backbone.View.extend({
     tagName: "section",
 
@@ -63,6 +91,7 @@ QBA.views.Step = Backbone.View.extend({
         var stepIdx = parseInt(this.step.substr(4), 10),
             html = $.tmpl(this.step, QBA.theQuery.toJSON(stepIdx));
         this.$el.html(html);
+        QBA.views.jQueryUI();
 
         if (this.step === "step1") {
             this.renderS1();
@@ -76,7 +105,6 @@ QBA.views.Step = Backbone.View.extend({
             this.renderS5();
         }
 
-        QBA.views.jQueryUI();
         return this;
     },
 
@@ -84,6 +112,9 @@ QBA.views.Step = Backbone.View.extend({
         "use strict";
         $("#preview").hide();
         $(".openPreview").addClass("hidden");
+        $(".accordionable h3").each(function () {
+            QBA.views.initAccordionPanel(this);
+        });
     },
 
     renderS2: function () {
@@ -97,6 +128,9 @@ QBA.views.Step = Backbone.View.extend({
             $(".openPreview").addClass("hidden");
         } else {
             $(".openPreview").removeClass("hidden");
+            $(".accordionable h3").each(function () {
+                QBA.views.initAccordionPanel(this);
+            });
         }
     },
 

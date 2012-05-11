@@ -27,14 +27,13 @@
     <script type="text/javascript">
         $(document).ready(function () {
             QBA.lingua = {{html linguaJSON}};
-            QBA.views.jQueryUI();
-            $(".step").removeClass("hidden");
-            $(document.body).addClass("js").removeClass("no-js");
-            QBA.events.navigation();
-            QBA.events.step1.bind();
+            QBA.views.init();
+            QBA.events.init();
             QBA.preview.init("${viewer}", ${previewLimit});
             QBA.filters.init({{html languagesFilters}});
             QBA.models.loadSchema();
+            $(".step").removeClass("hidden");
+            $(document.body).addClass("js").removeClass("no-js");
         });
     </script>
 </head>

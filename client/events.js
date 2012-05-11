@@ -376,6 +376,12 @@ QBA.events = {
     }
 };
 
+QBA.events.init = function () {
+    "use strict";
+    QBA.events.navigation();
+    QBA.events.step1.bind();
+};
+
 QBA.events.accordion = {
     bind: function () {
         "use strict";
