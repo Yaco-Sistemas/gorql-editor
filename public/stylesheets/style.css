@@ -172,7 +172,7 @@ body.js div.filter > .ui-icon-circle-close {
     right: 40px;
 }
 
-body.js .ui-accordion-content.ui-accordion-content-active {
+body.js .ui-accordion-content {
     border-top: 1px solid #00A8E5;
 }
 

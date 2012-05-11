@@ -64,6 +64,8 @@ QBA.events = {
     step1: {
         bind: function () {
             "use strict";
+            QBA.events.accordion.bind();
+
             $("#step1 input[type=checkbox]").change(function () {
                 // collection has 10 chars
                 var success = false,
@@ -101,6 +103,8 @@ QBA.events = {
     step2: {
         bind: function () {
             "use strict";
+            QBA.events.accordion.bind();
+
             $("#step2 input[type=checkbox]").change(function () {
                 // field has 5 chars
                 var success = false,
@@ -369,5 +373,26 @@ QBA.events = {
             $("#refreshPreview").unbind("click");
             // TODO
         }
+    }
+};
+
+QBA.events.accordion = {
+    bind: function () {
+        "use strict";
+        $(".accordionable h3").unbind("click");
+        $(".accordionable h3").click(function () {
+            var node = $(this);
+            if (node.hasClass("ui-state-active")) {
+                node.removeClass("ui-state-active").addClass("ui-state-hover").removeClass("ui-state-focus");
+                node.find("span.ui-icon").removeClass("ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
+                node.attr("aria-expanded", false).attr("aria-selected", false);
+            } else {
+                node.addClass("ui-state-active");
+                node.find("span.ui-icon").removeClass("ui-icon-triangle-1-e").addClass("ui-icon-triangle-1-s");
+                node.attr("aria-expanded", true).attr("aria-selected", true);
+            }
+            node.next().toggle();
+            return false;
+        });
     }
 };
