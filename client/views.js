@@ -46,14 +46,14 @@ QBA.views.jQueryUI = function (elem) {
         $("#hideadvanced").button({ icons: { primary: "ui-icon-minusthick" }});
         $("#prevS2, #prevS5").button({ icons: { primary: "ui-icon-arrowthick-1-w" }});
         $("#nextS1, #nextS2").button({ icons: { secondary: "ui-icon-arrowthick-1-e" }});
-        $("#openPreview").button({ icons: { primary: "ui-icon-circle-triangle-s" }});
-        $("#closePreview").button({ icons: { primary: "ui-icon-circle-triangle-n" }});
+        $("#openPreview").button({ icons: { primary: "ui-icon-triangle-1-s" }});
+        $("#closePreview").button({ icons: { primary: "ui-icon-triangle-1-n" }});
         $("#refreshPreview").button({ icons: { primary: "ui-icon-arrowrefresh-1-e" }});
     } else {
         $(elem).find(".tabable").tabs();
         $(elem).find(".accordionable").accordion();
         $(elem).find(".datepicker").datepicker({ "dateFormat": "yy-mm-dd" });
-        $(elem).find("#closePreview").button({ icons: { primary: "ui-icon-circle-triangle-n" }});
+        $(elem).find("#closePreview").button({ icons: { primary: "ui-icon-triangle-1-n" }});
         $(elem).find("#refreshPreview").button({ icons: { primary: "ui-icon-arrowrefresh-1-e" }});
     }
 };

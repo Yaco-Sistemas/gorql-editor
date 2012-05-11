@@ -140,7 +140,6 @@ h1 {
 #closePreview.ui-state-hover span.ui-icon,
 #openPreview span.ui-icon:hover,
 #closePreview span.ui-icon:hover {
-    background-position: -64px -192px;
     background-image: url(images/ui-icons_00a8e5_256x240.png);
 }
 
