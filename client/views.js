@@ -117,14 +117,10 @@ QBA.views.Step = Backbone.View.extend({
     renderS4: function () {
         "use strict";
         _.each(QBA.theQuery.getUserFilterList(), function (userFilter) {
-            var view;
-            if (!(typeof QBA.filters.defaultLanguage !== "undefined" && userFilter.get("field").get("type") === "string" && userFilter.get("filter") === 2)) {
-                // filter = 2 means language filter
-                view = new QBA.views.Filter({
-                    model: userFilter
-                });
-                $("#step4 #filters").append(view.render().el);
-            }
+            var view = new QBA.views.Filter({
+                model: userFilter
+            });
+            $("#step4 #filters").append(view.render().el);
         });
     },
 
