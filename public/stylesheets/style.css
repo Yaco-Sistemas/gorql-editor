@@ -311,6 +311,10 @@ input[type=radio] {
     margin-right: 5px;
 }
 
+.black-border {
+    border: 1px solid black !important;
+}
+
 #chartType {
     width: 260px;
 }
