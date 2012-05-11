@@ -51,12 +51,9 @@ QBA.filters.getFiltersFromType = function (type) {
     }
     if (QBA.filters.filtersByType.hasOwnProperty(type)) {
         result = QBA.filters.filtersByType[type];
-        if (type === "string" && typeof QBA.filters.defaultLanguage !== "undefined") {
-            result.pop(); // Remove language filter
-        }
     } else {
         // Default
-        result = ["Equal"];
+        result = [QBA.filters.filtersByType.string[0]]; // Equal
     }
     return result;
 };

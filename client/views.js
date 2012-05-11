@@ -117,10 +117,14 @@ QBA.views.Step = Backbone.View.extend({
     renderS4: function () {
         "use strict";
         _.each(QBA.theQuery.getUserFilterList(), function (userFilter) {
-            var view = new QBA.views.Filter({
-                model: userFilter
-            });
-            $("#step4 #filters").append(view.render().el);
+            var view;
+            if (!(typeof QBA.filters.defaultLanguage !== "undefined" && userFilter.get("field").get("type") === "string" && userFilter.get("filter") === 2)) {
+                // filter = 2 means language filter
+                view = new QBA.views.Filter({
+                    model: userFilter
+                });
+                $("#step4 #filters").append(view.render().el);
+            }
         });
     },
 
@@ -167,16 +171,20 @@ QBA.views.Filter = Backbone.View.extend({
     render: function () {
         "use strict";
         var filter = this.model.get("filter"),
+            type = this.model.get("field").get("type"),
+            cond = (type === "string") && (typeof QBA.filters.defaultLanguage !== "undefined"),
             html;
 
         html = "<label for='filter_type_" + this.model.get("number") + "'>" + this.model.get("collection").get("name") + " - " + this.model.get("field").get("name") + "</label>";
         html += "<select name='filter_type_" + this.model.get("number") + "' class='filter-type'>";
-        _.each(QBA.filters.getFiltersFromType(this.model.get("field").get("type")), function (f, i) {
-            html += "<option value='" + i + "'";
-            if (filter === i) {
-                html += " selected='selected'";
+        _.each(QBA.filters.getFiltersFromType(type), function (f, i) {
+            if (!(cond && i === 2)) { // i = 2 means language filter
+                html += "<option value='" + i + "'";
+                if (filter === i) {
+                    html += " selected='selected'";
+                }
+                html += ">" + f + "</option>";
             }
-            html += ">" + f + "</option>";
         });
         html += "</select>";
         html += "<span class='ui-icon ui-icon-circle-close inline floatr'>";

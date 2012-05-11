@@ -267,7 +267,7 @@ QBA.models.CategoryList = Backbone.Collection.extend({
                                     field: field,
                                     filter: 2,
                                     value: "es",
-                                    number: idx * 10
+                                    number: QBA.theQuery.getHigherUserFilterNumber()
                                 });
                                 field.get("userFilterList").add(uf);
                             }
