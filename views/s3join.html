@@ -1,22 +1,25 @@
 <fieldset class="join">
     <legend>${lingua.step3.title}</legend>
     <p class="hint"><span class="ui-icon ui-icon-info inline"></span>${lingua.step3.hint}</p>
-    <input type="submit" class="no-js" value="Join collection" />
-    <label for="add_join_field" class="js">${lingua.step3.addJoin}: </label>
-    <select name="add_join_field" id="addJoinField">
-        <option value="false"></option>
-        {{each(idx_cat, category) categories}}
-        {{each(idx_col, collection) category.collections}}
-        <optgroup label="${collection.name}">
-            {{each(idx_fie, field) collection.fields}}
-            {{if field.type == "uri"}}
-            <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
-            {{/if}}
+    <div class="relative">
+        <label for="add_join_field" class="js">${lingua.step3.addJoin}: </label>
+        <select name="add_join_field" id="addJoinField">
+            <option value="false"></option>
+            {{each(idx_cat, category) categories}}
+            {{each(idx_col, collection) category.collections}}
+            <optgroup label="${collection.name}">
+                {{each(idx_fie, field) collection.fields}}
+                {{if field.type == "uri"}}
+                <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+                {{/if}}
+                {{/each}}
+            </optgroup>
             {{/each}}
-        </optgroup>
-        {{/each}}
-        {{/each}}
-    </select>
+            {{/each}}
+        </select>
+        <span id="addJoinButton" class="ui-icon ui-icon-circle-plus inline pointer js icon-vmiddle"></span>
+        <input type="submit" class="no-js" name="join-collection" value="Join collection" />
+    </div>
     <div id="joins"></div>
     <div class="no-js buttons">
         <input class="float" type="submit" name="prevS3" value="&lt;&lt; ${lingua.previous}" />

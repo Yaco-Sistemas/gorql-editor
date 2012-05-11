@@ -238,6 +238,19 @@ fieldset legend {
     clear: both;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
+.relative {
+    position: relative;
+}
+
+.icon-vmiddle {
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+}
 
 #step1 label,
 #step2 label {

@@ -213,9 +213,11 @@ QBA.events = {
                 }
             }
 
-            $("#step3 #addJoinField").attr("disabled", disabled).change(function () {
+            $("#step3 #addJoinField").attr("disabled", disabled);
+            $("#step3 #addJoinButton").click(function () {
                 var joinNumber = QBA.theQuery.getHigherJoinNumber(),
-                    option = this.options[this.selectedIndex],
+                    node = $("#step3 #addJoinField")[0],
+                    option = node.options[node.selectedIndex],
                     indexes,
                     collection,
                     field,
@@ -246,7 +248,6 @@ QBA.events = {
                     model: join
                 });
                 $("#step3 #joins").append(view.render().el);
-                this.selectedIndex = 0;
             });
         },
 
@@ -276,9 +277,11 @@ QBA.events = {
                 }
             }
 
-            $("#step4 #addFilterField").attr("disabled", disabled).change(function () {
+            $("#step4 #addFilterField").attr("disabled", disabled);
+            $("#step4 #addFilterButton").click(function () {
                 var filterNumber = QBA.theQuery.getHigherUserFilterNumber(),
-                    option = this.options[this.selectedIndex],
+                    node = $("#step4 #addFilterField")[0],
+                    option = node.options[node.selectedIndex],
                     indexes,
                     collection,
                     field,
@@ -310,7 +313,6 @@ QBA.events = {
                     model: userFilter
                 });
                 $("#step4 #filters").append(view.render().el);
-                this.selectedIndex = 0;
             });
         },
 

@@ -1,20 +1,23 @@
 <fieldset class="filter">
     <legend>${lingua.step4.title}</legend>
     <p class="hint"><span class="ui-icon ui-icon-info inline"></span>${lingua.step4.hint}</p>
-    <input type="submit" class="no-js" value="Add filter" />
-    <label for="add_filter_field" class="js">${lingua.step4.addFilter}: </label>
-    <select name="add_filter_field" id="addFilterField">
-        <option value="false"></option>
-        {{each(idx_cat, category) categories}}
-        {{each(idx_col, collection) category.collections}}
-        <optgroup label="${collection.name}">
-            {{each(idx_fie, field) collection.fields}}
-            <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+    <div class="relative">
+        <label for="add_filter_field" class="js">${lingua.step4.addFilter}: </label>
+        <select name="add_filter_field" id="addFilterField">
+            <option value="false"></option>
+            {{each(idx_cat, category) categories}}
+            {{each(idx_col, collection) category.collections}}
+            <optgroup label="${collection.name}">
+                {{each(idx_fie, field) collection.fields}}
+                <option value="${idx_cat}-${idx_col}-${idx_fie}">${field.name}</option>
+                {{/each}}
+            </optgroup>
             {{/each}}
-        </optgroup>
-        {{/each}}
-        {{/each}}
-    </select>
+            {{/each}}
+        </select>
+        <span id="addFilterButton" class="ui-icon ui-icon-circle-plus inline pointer icon-vmiddle"></span>
+        <input type="submit" class="no-js" name="add-filter" value="Add filter" />
+    </div>
     <div id="filters"></div>
     <div class="no-js buttons">
         <input class="float" type="submit" name="prevS4" value="&lt;&lt; ${lingua.previous}" />
