@@ -122,6 +122,12 @@ QBA.chart.getFieldVbleName = function (indexes) {
     return field.get("code").split(":")[1] + idx + "Vble";
 };
 
+QBA.chart.sizes = {
+    small: [400, 300],
+    medium: [700, 550],
+    large: [1200, 800]
+};
+
 QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
     "use strict";
     var params = $("#step5 #" + chart + "Params div.parameter input"),
@@ -129,22 +135,40 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
         options,
         aux;
 
-    options = _.map(params, function (p) {
+    options = _.flatten(_.map(params, function (p) {
         p = $(p);
-        var value = p.val();
+        var value = p.val(),
+            key = p.attr("name").split('-')[1];
+
         if (p.attr("type") === "checkbox") {
             value = String(p.is(":checked"));
+        } else if (p.attr("type") === "radio") {
+            value = "";
+            if (p.is(":checked")) {
+                if (key === "size") {
+                    aux = p.attr("id").split('-')[2];
+                    aux = QBA.chart.sizes[aux];
+                    return [{
+                        key: "sizeX",
+                        value: aux[0]
+                    }, {
+                        key: "sizeY",
+                        value: aux[1]
+                    }];
+                }
+            }
         }
         if (!ignoreRequire && p.is(".required")) {
             if (value === "") {
                 throw "Required field is missing";
             }
         }
+
         return {
-            key: p.attr("name").split('-')[1],
+            key: key,
             value: value
         };
-    });
+    }));
 
     params = $("#step5 #" + chart + "Params div.parameter select");
     aux = _.map(params, function (p) {

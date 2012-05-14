@@ -337,7 +337,7 @@ QBA.events = {
     step5: {
         bind: function () {
             "use strict";
-            $("#step5 input[type=radio]").change(function (evt) {
+            $("#step5 #chartType input[type=radio]").change(function (evt) {
                 var chart = this.value;
                 $("#step5 .paramsContainer").css("display", "none");
                 $("#step5 #" + chart + "Params").css("display", "block");

@@ -50,6 +50,7 @@ QBA.views.jQueryUI = function (elem) {
         $("#closePreview").button({ icons: { primary: "ui-icon-triangle-1-n" }});
         $("#refreshPreview").button({ icons: { primary: "ui-icon-arrowrefresh-1-e" }});
         $(".remove").button({ icons: { primary: "ui-icon-closethick" }, text: false });
+        $("#bar-size-param").buttonset();
     } else {
         $(elem).find(".tabable").tabs();
         $(elem).find(".accordionable").accordion();

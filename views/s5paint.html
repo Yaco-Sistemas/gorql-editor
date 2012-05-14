@@ -48,10 +48,12 @@
                 </select>
             </div>
             <div class="parameter">
-                <label for="bar-sizeX-param">${lingua.step5.sizeX}:</label> <input type="number" name="bar-sizeX-param" class="narrow-field" />
-            </div>
-            <div class="parameter">
-                <label for="bar-sizeY-param">${lingua.step5.sizeY}:</label> <input type="number" name="bar-sizeY-param" class="narrow-field" />
+                <label>${lingua.step5.size}:</label>
+                <div id="bar-size-param">
+                    <input type="radio" name="bar-size-param" id="bar-size-small" /><label for="bar-size-small">${lingua.step5.small}</label>
+                    <input type="radio" name="bar-size-param" id="bar-size-medium" /><label for="bar-size-medium">${lingua.step5.medium}</label>
+                    <input type="radio" name="bar-size-param" id="bar-size-large" /><label for="bar-size-large">${lingua.step5.large}</label>
+                </div>
             </div>
             <div class="parameter">
                 <label for="bar-sizeLabel-param">${lingua.step5.sizeLabel}:</label> <input type="number" name="bar-sizeLabel-param" class="narrow-field" />

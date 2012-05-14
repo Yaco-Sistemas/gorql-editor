@@ -301,6 +301,11 @@ span.required {
     cursor: pointer;
 }
 
+#step2 label.highlight {
+    color: #00A8E5;
+    font-weight: bold;
+}
+
 #advancedButtons {
     padding-top: 8px !important;
     padding-bottom: 50px !important;
@@ -407,6 +412,11 @@ div.filter-widget.range {
 .paramsContainer label {
     display: block;
     margin-top: 8px;
+}
+
+.paramsContainer label.ui-widget {
+    display: inline-block;
+    margin-top: 0;
 }
 
 #step5 .buttons {
