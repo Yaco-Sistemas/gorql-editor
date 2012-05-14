@@ -61,8 +61,10 @@ QBA.views.jQueryUI = function (elem) {
 
 QBA.views.initAccordionPanel = function (headerNode) {
     "use strict";
-    var node = $(headerNode);
-    if (node.next().find("input[type=checkbox]:checked").length > 0) {
+    var node = $(headerNode),
+        cond = node.parent().find("h3").length === 1;
+
+    if (cond || node.next().find("input[type=checkbox]:checked").length > 0) {
         if (!(node.hasClass("ui-state-active"))) {
             node.addClass("ui-state-active");
             node.find("span.ui-icon").removeClass("ui-icon-triangle-1-e").addClass("ui-icon-triangle-1-s");
