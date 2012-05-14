@@ -157,7 +157,7 @@ body.js ul.collection {
 body.js div.join,
 body.js div.filter {
     background-color: #f0f0f0;
-    padding: 10px 80px 10px 40px;
+    padding: 10px 80px 10px 20px;
     margin-bottom: 20px;
     position: relative;
 }
@@ -187,10 +187,6 @@ body.js #step3 {
     margin-top: 20px;
 }
 
-body.js #step4-wrapper {
-    padding-top: 20px;
-}
-
 #joins, #filters {
     margin-top: 20px;
 }
@@ -208,6 +204,10 @@ fieldset legend {
     font-family: 'Droid Serif', serif;
     font-weight: bold;
     font-size: 1.1em;
+}
+
+hr {
+    border: 1px solid #D1D1D1;
 }
 
 .buttons {
@@ -264,7 +264,7 @@ span.required {
 
 .join .remove,
 .filter .remove {
-    right: 40px;
+    right: 20px;
     margin-right: 0;
 }
 
@@ -299,6 +299,11 @@ span.required {
 #step1 label,
 #step2 label {
     cursor: pointer;
+}
+
+#advancedButtons {
+    padding-top: 8px !important;
+    padding-bottom: 50px !important;
 }
 
 input[type=checkbox],
