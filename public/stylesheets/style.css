@@ -234,8 +234,13 @@ fieldset legend {
     max-width: 300px,
 }
 
-.required {
+input.required,
+select.required {
     border: 1px solid #cc0000;
+}
+
+span.required {
+    color: #cc0000;
 }
 
 .clear {

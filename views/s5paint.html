@@ -17,7 +17,7 @@
         <h3>${lingua.step5.params}</h3>
         <div id="barParams" class="paramsContainer">
             <div class="parameter">
-                <label for="bar-labels-param">${lingua.step5.labels}:</label>
+                <label for="bar-labels-param"><span class="required">*</span> ${lingua.step5.labels}:</label>
                 <select name="bar-labels-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -32,7 +32,7 @@
                 </select>
             </div>
             <div class="parameter">
-                <label for="bar-series-param">${lingua.step5.series}:</label>
+                <label for="bar-series-param"><span class="required">*</span> ${lingua.step5.series}:</label>
                 <select name="bar-series-param" multiple size=4 class="wide-field required">
                     {{each(idx_cat, category) categories}}
                     {{each(idx_col, collection) category.collections}}
@@ -62,7 +62,7 @@
         </div>
         <div id="lineParams" class="paramsContainer" style="display: none;">
             <div class="parameter">
-                <label for="line-labels-param">${lingua.step5.labels}:</label>
+                <label for="line-labels-param"><span class="required">*</span> ${lingua.step5.labels}:</label>
                 <select name="line-labels-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -77,7 +77,7 @@
                 </select>
             </div>
             <div class="parameter">
-                <label for="line-series-param">${lingua.step5.series}:</label>
+                <label for="line-series-param"><span class="required">*</span> ${lingua.step5.series}:</label>
                 <select name="line-series-param" multiple size=4 class="wide-field required">
                     {{each(idx_cat, category) categories}}
                     {{each(idx_col, collection) category.collections}}
@@ -107,7 +107,7 @@
         </div>
         <div id="pieParams" class="paramsContainer" style="display: none;">
             <div class="parameter">
-                <label for="pie-labels-param">${lingua.step5.labels}:</label>
+                <label for="pie-labels-param"><span class="required">*</span> ${lingua.step5.labels}:</label>
                 <select name="pie-labels-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -122,7 +122,7 @@
                 </select>
             </div>
             <div class="parameter">
-                <label for="pie-series-param">${lingua.step5.series}:</label>
+                <label for="pie-series-param"><span class="required">*</span> ${lingua.step5.series}:</label>
                 <select name="pie-series-param" multiple size=4 class="wide-field required">
                     {{each(idx_cat, category) categories}}
                     {{each(idx_col, collection) category.collections}}
@@ -152,7 +152,7 @@
         </div>
         <div id="timelineParams" class="paramsContainer" style="display: none;">
             <div class="parameter">
-                <label for="timeline-title-param">${lingua.step5.evtTitle}:</label>
+                <label for="timeline-title-param"><span class="required">*</span> ${lingua.step5.evtTitle}:</label>
                 <select name="timeline-title-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -167,7 +167,7 @@
                 </select>
             </div>
             <div class="parameter">
-                <label for="timeline-start-param">${lingua.step5.start}:</label>
+                <label for="timeline-start-param"><span class="required">*</span> ${lingua.step5.start}:</label>
                 <select name="timeline-start-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -256,7 +256,7 @@
         </div>
         <div id="mapParams" class="paramsContainer" style="display: none;">
             <div class="parameter">
-                <label for="map-lat-param">${lingua.step5.lat}:</label>
+                <label for="map-lat-param"><span class="required">*</span> ${lingua.step5.lat}:</label>
                 <select name="map-lat-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -273,7 +273,7 @@
                 </select>
             </div>
             <div class="parameter">
-                <label for="map-long-param">${lingua.step5.long}:</label>
+                <label for="map-long-param"><span class="required">*</span> ${lingua.step5.long}:</label>
                 <select name="map-long-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -313,7 +313,7 @@
         </div>
         <div id="mapeaParams" class="paramsContainer" style="display: none;">
             <div class="parameter">
-                <label for="mapea-lat-param">${lingua.step5.lat}:</label>
+                <label for="mapea-lat-param"><span class="required">*</span> ${lingua.step5.lat}:</label>
                 <select name="mapea-lat-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -330,7 +330,7 @@
                 </select>
             </div>
             <div class="parameter">
-                <label for="mapea-long-param">${lingua.step5.long}:</label>
+                <label for="mapea-long-param"><span class="required">*</span> ${lingua.step5.long}:</label>
                 <select name="mapea-long-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
