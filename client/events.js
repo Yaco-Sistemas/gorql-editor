@@ -175,8 +175,7 @@ QBA.events = {
                 $("#step4-wrapper").removeClass("hidden");
                 $(this).addClass("hidden");
                 $("#step2-wrapper #hideadvanced").removeClass("hidden");
-                // Refresh step 3 and step 4
-                $("#ls3").trigger("click");
+                // Refresh step 4
                 $("#ls4").trigger("click");
             });
 
