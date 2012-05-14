@@ -183,8 +183,12 @@ body.js #step2-wrapper .buttons.lateral-padding {
     padding: 0px 12px 0px 12px;
 }
 
-body.js #steps3and4 {
+body.js #step3 {
     margin-top: 20px;
+}
+
+body.js #step4-wrapper {
+    padding-top: 20px;
 }
 
 #joins, #filters {
@@ -244,6 +248,19 @@ fieldset legend {
 
 .relative {
     position: relative;
+}
+
+.remove {
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+}
+
+.join .remove,
+.filter .remove {
+    right: 40px;
+    margin-right: 0;
 }
 
 .icon-vmiddle {

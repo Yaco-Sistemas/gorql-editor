@@ -61,22 +61,29 @@
                 {{partial(schema) "s2choose"}}
             </div>
 
-            <div id="steps3and4" class="hidden">
+            <section id="step3" class="step ${steps.s3} js">
+                {{partial(schema) "s3join"}}
+            </section>
+
+            <hr />
+
+            <div class="buttons lateral-padding clear">
+                <button id="advanced" class="float">${lingua.step2.advanced}</button>
+                <button id="hideadvanced" class="float hidden no-margin-left">${lingua.step2.hideadvanced}</button>
+            </div>
+
+            <div id="step4-wrapper" class="hidden clear">
                 <ol class="hidden">
                     <li class="tab"><a id="ls3" href="#step3"></a></li>
                     <li class="tab"><a id="ls4" href="#step4"></a></li>
                 </ol>
-
-                <section id="step3" class="step ${steps.s3} js">
-                    {{partial(schema) "s3join"}}
-                </section>
 
                 <section id="step4" class="step ${steps.s4} js">
                     {{partial(schema) "s4filter"}}
                 </section>
             </div>
 
-            <div class="buttons lateral-padding">
+            <div class="buttons lateral-padding clear">
                 <button id="prevS2" class="float">${lingua.previous}</button>
                 <button id="nextS2" class="floatr">${lingua.step2.showChart}</button>
                 <input class="floatr black-border ui-corner-all" type="submit" name="done" value="${lingua.step4.view}" />

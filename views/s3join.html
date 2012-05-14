@@ -1,7 +1,7 @@
 <fieldset class="join">
     <legend>${lingua.step3.title}</legend>
     <p class="hint"><span class="ui-icon ui-icon-info inline"></span>${lingua.step3.hint}</p>
-    <div class="relative">
+    <div>
         <label for="add_join_field" class="js">${lingua.step3.addJoin}: </label>
         <select name="add_join_field" id="addJoinField">
             <option value="false"></option>
@@ -17,7 +17,7 @@
             {{/each}}
             {{/each}}
         </select>
-        <span id="addJoinButton" class="ui-icon ui-icon-circle-plus inline pointer js icon-vmiddle"></span>
+        <button id="addJoinButton" class="js">${lingua.add}</button>
         <input type="submit" class="no-js" name="join-collection" value="Join collection" />
     </div>
     <div id="joins"></div>

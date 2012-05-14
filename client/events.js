@@ -162,22 +162,22 @@ QBA.events = {
                 QBA.chart.openViewerData();
             });
 
-            $("#step2 #advanced").click(function (evt) {
+            $("#step2-wrapper #advanced").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
-                $("#steps3and4").removeClass("hidden");
+                $("#step4-wrapper").removeClass("hidden");
                 $(this).addClass("hidden");
-                $("#step2 #hideadvanced").removeClass("hidden");
+                $("#step2-wrapper #hideadvanced").removeClass("hidden");
                 // Refresh step 3 and step 4
                 $("#ls3").trigger("click");
                 $("#ls4").trigger("click");
             });
 
-            $("#step2 #hideadvanced").click(function (evt) {
+            $("#step2-wrapper #hideadvanced").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
-                $("#steps3and4").addClass("hidden");
-                $("#step2 #advanced").removeClass("hidden");
+                $("#step4-wrapper").addClass("hidden");
+                $("#step2-wrapper #advanced").removeClass("hidden");
                 $(this).addClass("hidden");
             });
         },
@@ -214,7 +214,10 @@ QBA.events = {
             }
 
             $("#step3 #addJoinField").attr("disabled", disabled);
-            $("#step3 #addJoinButton").click(function () {
+            $("#step3 #addJoinButton").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+
                 var joinNumber = QBA.theQuery.getHigherJoinNumber(),
                     node = $("#step3 #addJoinField")[0],
                     option = node.options[node.selectedIndex],

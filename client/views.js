@@ -49,12 +49,14 @@ QBA.views.jQueryUI = function (elem) {
         $("#openPreview").button({ icons: { primary: "ui-icon-triangle-1-s" }});
         $("#closePreview").button({ icons: { primary: "ui-icon-triangle-1-n" }});
         $("#refreshPreview").button({ icons: { primary: "ui-icon-arrowrefresh-1-e" }});
+        $("#addJoinButton").button({ icons: { primary: "ui-icon-plusthick" }});
+        $(".remove").button({ icons: { primary: "ui-icon-closethick" }, text: false });
     } else {
         $(elem).find(".tabable").tabs();
         $(elem).find(".accordionable").accordion();
         $(elem).find(".datepicker").datepicker({ "dateFormat": "yy-mm-dd" });
-        $(elem).find("#closePreview").button({ icons: { primary: "ui-icon-triangle-1-n" }});
         $(elem).find("#refreshPreview").button({ icons: { primary: "ui-icon-arrowrefresh-1-e" }});
+        $(elem).find(".remove").button({ icons: { primary: "ui-icon-closethick" }, text: false });
     }
 };
 
@@ -119,15 +121,22 @@ QBA.views.Step = Backbone.View.extend({
 
     renderS2: function () {
         "use strict";
-        $("#steps3and4").addClass("hidden");
+        $("#step4-wrapper").addClass("hidden");
         $("#preview").hide();
         if ($("#step2 div.collections").children().length === 0) {
             $("#step2 .empty").removeClass("hidden");
             $("#step2 .hint").addClass("hidden");
-            $("#step2 #advanced").addClass("hidden");
+            $("#step2-wrapper #advanced").addClass("hidden");
+            $("#step2-wrapper hr").addClass("hidden");
+            $("#step3").addClass("hidden");
             $(".openPreview").addClass("hidden");
         } else {
             $(".openPreview").removeClass("hidden");
+            $("#step2-wrapper #advanced").removeClass("hidden");
+            $("#step2-wrapper hr").removeClass("hidden");
+            $("#step3").removeClass("hidden");
+            // Refresh step 3
+            $("#ls3").trigger("click");
             $(".accordionable h3").each(function () {
                 QBA.views.initAccordionPanel(this);
             });
@@ -262,7 +271,7 @@ QBA.views.Join = Backbone.View.extend({
     className: "join",
 
     events: {
-        "click span.ui-icon-circle-close": "remove",
+        "click button.remove": "remove",
         "change select.join-target": "updateJoin"
     },
 
@@ -291,8 +300,10 @@ QBA.views.Join = Backbone.View.extend({
         });
 
         html += "</select>";
-        html += "<span class='ui-icon ui-icon-circle-close inline floatr'>";
+        html += "<button class='remove'></button>";
+//         html += "<span class='ui-icon ui-icon-circle-close inline floatr'>";
         $(this.el).html(html);
+        QBA.views.jQueryUI(this.el);
 
         return this;
     },
