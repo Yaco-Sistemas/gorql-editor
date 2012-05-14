@@ -129,8 +129,15 @@ QBA.events = {
                     alert('error');
                 }
 
-                // Refresh step 3 and step 4
-                $("#ls3").trigger("click");
+                if ($("#step2 input[type=checkbox]:checked+label+span.ui-icon-link").length > 0) {
+                    $("#step3").removeClass("hidden");
+                    // Refresh step 3
+                    $("#ls3").trigger("click");
+                } else {
+                    $("#step3").addClass("hidden");
+                }
+
+                // Refresh step 4
                 $("#ls4").trigger("click");
             });
 

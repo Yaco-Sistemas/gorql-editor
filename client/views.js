@@ -134,9 +134,13 @@ QBA.views.Step = Backbone.View.extend({
             $(".openPreview").removeClass("hidden");
             $("#step2-wrapper #advanced").removeClass("hidden");
             $("#step2-wrapper hr").removeClass("hidden");
-            $("#step3").removeClass("hidden");
-            // Refresh step 3
-            $("#ls3").trigger("click");
+            if ($("#step2 input[type=checkbox]:checked+label+span.ui-icon-link").length > 0) {
+                $("#step3").removeClass("hidden");
+                // Refresh step 3
+                $("#ls3").trigger("click");
+            } else {
+                $("#step3").addClass("hidden");
+            }
             $(".accordionable h3").each(function () {
                 QBA.views.initAccordionPanel(this);
             });
