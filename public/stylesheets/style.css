@@ -274,6 +274,28 @@ span.required {
     margin-top: -8px;
 }
 
+.hint {
+    margin-top: 0px;
+    color: #005CBF;
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+.empty {
+    padding: 10px;
+    margin: 80px 30px 80px 30px;
+}
+
+.hint span.ui-icon,
+.empty span.ui-icon {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.black-border {
+    border: 1px solid black !important;
+}
+
 #step1 label,
 #step2 label {
     cursor: pointer;
@@ -327,26 +349,8 @@ input[type=radio] {
     padding: 0px 20px 0px 0px;
 }
 
-.hint {
-    margin-top: 0px;
-    color: #005CBF;
-    font-style: italic;
-    font-size: 0.8em;
-}
-
-.empty {
-    padding: 10px;
-    margin: 80px 30px 80px 30px;
-}
-
-.hint span.ui-icon,
-.empty span.ui-icon {
-    vertical-align: middle;
-    margin-right: 5px;
-}
-
-.black-border {
-    border: 1px solid black !important;
+div.filter-widget.range {
+    margin: 10px 60px 10px 0;
 }
 
 #chartType {

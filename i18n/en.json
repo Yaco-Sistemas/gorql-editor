@@ -78,6 +78,10 @@
             "coord": ["is equal", "is less than", "is greater than", "is between"]
         },
         "filterTpl": "Filter \"%%%collection%%%\" so \"%%%field%%%\"",
-        "joinTpl": "Connect \"%%%collection%%%\", through \"%%%field%%%\", with the collection:"
+        "joinTpl": "Connect \"%%%collection%%%\", through \"%%%field%%%\", with the collection:",
+        "filterWidgets": {
+            "from": "From",
+            "to": "to"
+        }
     }
 }

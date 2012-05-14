@@ -137,7 +137,7 @@ QBA.filters.filterWidgets = {
                 value = [parseFloat(value[0]), parseFloat(value[1])];
             }
 
-            html += "<span class='filter-widget hint'>(From " + parameters.min + " to " + parameters.max + ")</span>";
+            html += "<span class='filter-widget hint'>(" + QBA.lingua.filterWidgets.from + " " + parameters.min + " " + QBA.lingua.filterWidgets.to + " " + parameters.max + ")</span>";
             html += "<input type='number' class='filter-widget range from' name='filter_widget_" + this.model.get("number") + "_from' min='" + parameters.min + "' max='" + parameters.max + "' step='" + parameters.step + "' disabled='true' value='" + value[0] + "' /> to ";
             html += "<input type='number' class='filter-widget range to' name='filter_widget_" + this.model.get("number") + "_to' min='" + parameters.min + "' max='" + parameters.max + "' step='" + parameters.step + "' disabled='true' value='" + value[1] + "' />";
             this.$el.append(html);
@@ -213,7 +213,7 @@ QBA.filters.filterWidgets = {
 
             html = "<input type='date' class='filter-widget from datepicker' name='filter_widget_" + this.model.get("number");
             html += "_from' value='" + value[0] + "'/>";
-            html += "<span class='filter-widget'> to </span>";
+            html += "<span class='filter-widget'> " + QBA.lingua.filterWidgets.to + " </span>";
             html += "<input type='date' class='filter-widget to datepicker' name='filter_widget_" + this.model.get("number");
             html += "_to' value='" + value[1] + "'/>";
             this.$el.append(html);
