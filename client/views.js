@@ -42,14 +42,13 @@ QBA.views.jQueryUI = function (elem) {
         $(".tabable").tabs();
         $(".accordionable").accordion();
         $(".datepicker").datepicker({ "dateFormat": "yy-mm-dd" });
-        $("#advanced").button({ icons: { primary: "ui-icon-plusthick" }});
+        $("#advanced, #addJoinButton, #addFilterButton").button({ icons: { primary: "ui-icon-plusthick" }});
         $("#hideadvanced").button({ icons: { primary: "ui-icon-minusthick" }});
         $("#prevS2, #prevS5").button({ icons: { primary: "ui-icon-arrowthick-1-w" }});
         $("#nextS1, #nextS2").button({ icons: { secondary: "ui-icon-arrowthick-1-e" }});
         $("#openPreview").button({ icons: { primary: "ui-icon-triangle-1-s" }});
         $("#closePreview").button({ icons: { primary: "ui-icon-triangle-1-n" }});
         $("#refreshPreview").button({ icons: { primary: "ui-icon-arrowrefresh-1-e" }});
-        $("#addJoinButton").button({ icons: { primary: "ui-icon-plusthick" }});
         $(".remove").button({ icons: { primary: "ui-icon-closethick" }, text: false });
     } else {
         $(elem).find(".tabable").tabs();
@@ -122,6 +121,7 @@ QBA.views.Step = Backbone.View.extend({
     renderS2: function () {
         "use strict";
         $("#step4-wrapper").addClass("hidden");
+        $("#step2-wrapper #hideadvanced").addClass("hidden");
         $("#preview").hide();
         if ($("#step2 div.collections").children().length === 0) {
             $("#step2 .empty").removeClass("hidden");
@@ -207,7 +207,7 @@ QBA.views.Filter = Backbone.View.extend({
     },
 
     events: {
-        "click span.ui-icon-circle-close": "remove",
+        "click button.remove": "remove",
         "change select.filter-type": "updateFilterWidget"
     },
 
@@ -218,7 +218,7 @@ QBA.views.Filter = Backbone.View.extend({
             cond = (type === "string") && (typeof QBA.filters.defaultLanguage !== "undefined"),
             html;
 
-        html = "<label for='filter_type_" + this.model.get("number") + "'>" + this.model.get("collection").get("name") + " - " + this.model.get("field").get("name") + "</label>";
+        html = QBA.lingua.filterTpl.replace(/%%%collection%%%/g, this.model.get("collection").get("name").toLowerCase()).replace(/%%%field%%%/g, this.model.get("field").get("name").toLowerCase());
         html += "<select name='filter_type_" + this.model.get("number") + "' class='filter-type'>";
         _.each(QBA.filters.getFiltersFromType(type), function (f, i) {
             if (!(cond && i === 2)) { // i = 2 means language filter
@@ -230,7 +230,7 @@ QBA.views.Filter = Backbone.View.extend({
             }
         });
         html += "</select>";
-        html += "<span class='ui-icon ui-icon-circle-close inline floatr'>";
+        html += "<button class='remove'></button>";
         $(this.el).html(html);
 
         this.widgetView.render();
@@ -285,7 +285,7 @@ QBA.views.Join = Backbone.View.extend({
             model = this.model,
             html;
 
-        html = "<label for='join_target_" + model.get("number") + "'>" + model.get("source_collection").get("name") + " - " + model.get("source_field").get("name") + "</label>";
+        html = QBA.lingua.joinTpl.replace(/%%%collection%%%/g, model.get("source_collection").get("name").toLowerCase()).replace(/%%%field%%%/g, model.get("source_field").get("name").toLowerCase());
         html += "<select name='join_target_" + model.get("number") + "' class='join-target'>";
         html += "<option value='false'></option>";
 
@@ -305,7 +305,6 @@ QBA.views.Join = Backbone.View.extend({
 
         html += "</select>";
         html += "<button class='remove'></button>";
-//         html += "<span class='ui-icon ui-icon-circle-close inline floatr'>";
         $(this.el).html(html);
         QBA.views.jQueryUI(this.el);
 

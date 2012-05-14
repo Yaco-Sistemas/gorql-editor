@@ -71,11 +71,13 @@
             "noresults": "No se encontraron resultados."
         },
         "filters": {
-            "string": ["Igual", "Contiene", "Idioma"],
-            "uri": ["Igual", "Contiene"],
-            "number": ["Igual", "Menor que", "Mayor que", "Entre"],
-            "date": ["Igual", "Menor que", "Mayor que", "Entre"],
-            "coord": ["Igual", "Menor que", "Mayor que", "Entre"]
-        }
+            "string": ["sea igual a", "contenga", "esté en el idioma"],
+            "uri": ["sea igual a", "contenga"],
+            "number": ["sea igual a", "sea menor que", "sea mayor que", "esté entre"],
+            "date": ["sea igual a", "sea menor que", "sea mayor que", "esté entre"],
+            "coord": ["sea igual a", "sea menor que", "sea mayor que", "esté entre"]
+        },
+        "filterTpl": "Filtrar \"%%%collection%%%\" para que \"%%%field%%%\"",
+        "joinTpl": "Conectar \"%%%collection%%%\", a través de \"%%%field%%%\", con la colección:"
     }
 }

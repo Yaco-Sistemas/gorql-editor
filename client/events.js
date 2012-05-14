@@ -288,7 +288,10 @@ QBA.events = {
             }
 
             $("#step4 #addFilterField").attr("disabled", disabled);
-            $("#step4 #addFilterButton").click(function () {
+            $("#step4 #addFilterButton").click(function (evt) {
+                evt.stopPropagation();
+                evt.preventDefault();
+
                 var filterNumber = QBA.theQuery.getHigherUserFilterNumber(),
                     node = $("#step4 #addFilterField")[0],
                     option = node.options[node.selectedIndex],

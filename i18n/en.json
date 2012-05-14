@@ -71,11 +71,13 @@
             "noresults": "No results returned."
         },
         "filters": {
-            "string": ["Equal", "Contains", "Language"],
-            "uri": ["Equal", "Contains"],
-            "number": ["Equal", "Less than", "Greater than", "Between"],
-            "date": ["Equal", "Less than", "Greater than", "Between"],
-            "coord": ["Equal", "Less than", "Greater than", "Between"]
-        }
+            "string": ["is equal", "contains", "is in this language:"],
+            "uri": ["is equal", "contains"],
+            "number": ["is equal", "is less than", "is greater than", "is between"],
+            "date": ["is equal", "is less than", "is greater than", "is between"],
+            "coord": ["is equal", "is less than", "is greater than", "is between"]
+        },
+        "filterTpl": "Filter \"%%%collection%%%\" so \"%%%field%%%\"",
+        "joinTpl": "Connect \"%%%collection%%%\", through \"%%%field%%%\", with the collection:"
     }
 }
