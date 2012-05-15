@@ -135,28 +135,13 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
         options,
         aux;
 
-    options = _.flatten(_.map(params, function (p) {
+    options = _.map(params, function (p) {
         p = $(p);
         var value = p.val(),
             key = p.attr("name").split('-')[1];
 
         if (p.attr("type") === "checkbox") {
             value = String(p.is(":checked"));
-        } else if (p.attr("type") === "radio") {
-            value = "";
-            if (p.is(":checked")) {
-                if (key === "size") {
-                    aux = p.attr("id").split('-')[2];
-                    aux = QBA.chart.sizes[aux];
-                    return [{
-                        key: "sizeX",
-                        value: aux[0]
-                    }, {
-                        key: "sizeY",
-                        value: aux[1]
-                    }];
-                }
-            }
         }
         if (!ignoreRequire && p.is(".required")) {
             if (value === "") {
@@ -168,7 +153,25 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
             key: key,
             value: value
         };
+    });
+
+    params = $("#step5 #" + chart + "Params div.parameter button.ui-state-active");
+    aux = _.flatten(_.map(params, function (p) {
+        var keys = p.id.split('-'),
+            values;
+
+        if (keys[1] === "size") {
+            values = QBA.chart.sizes[keys[2]];
+            return [{
+                key: "sizeX",
+                value: values[0]
+            }, {
+                key: "sizeY",
+                value: values[1]
+            }];
+        }
     }));
+    options = options.concat(aux);
 
     params = $("#step5 #" + chart + "Params div.parameter select");
     aux = _.map(params, function (p) {
@@ -213,7 +216,6 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
             valueOption: valueOption
         };
     });
-
     options = options.concat(aux);
 
     _.each(options, function (opt) {

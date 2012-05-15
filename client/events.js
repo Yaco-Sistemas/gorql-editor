@@ -428,7 +428,12 @@ QBA.events.radioButton = {
         "use strict";
         container.children().each(function (idx, button) {
             button = $(button);
-            button.button({ icons: { primary: icons[idx] }, text: false });
+            button.button({
+                icons: {
+                    primary: icons[idx % icons.length]
+                },
+                text: false
+            });
             button.click(QBA.events.radioButton.click);
             button.unbind("mouseleave");
             button.mouseleave(QBA.events.radioButton.mouseleave);
