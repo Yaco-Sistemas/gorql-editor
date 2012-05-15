@@ -124,8 +124,11 @@ QBA.chart.getFieldVbleName = function (indexes) {
 
 QBA.chart.sizes = {
     small: [400, 300],
-    medium: [700, 550],
-    large: [1200, 800]
+    medium: [600, 500],
+    large: [1000, 750],
+    hlsmall: 5,
+    hlmedium: 30,
+    hllarge: 70
 };
 
 QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
@@ -158,18 +161,26 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
     params = $("#step5 #" + chart + "Params div.parameter button.ui-state-active");
     aux = _.flatten(_.map(params, function (p) {
         var keys = p.id.split('-'),
-            values;
+            values,
+            result;
 
         if (keys[1] === "size") {
             values = QBA.chart.sizes[keys[2]];
-            return [{
+            result = [{
                 key: "sizeX",
                 value: values[0]
             }, {
                 key: "sizeY",
                 value: values[1]
             }];
+        } else if (keys[1] === "sizeHighlight") {
+            result = {
+                key: "sizeHighlight",
+                value: QBA.chart.sizes[keys[2]]
+            };
         }
+
+        return result;
     }));
     options = options.concat(aux);
 

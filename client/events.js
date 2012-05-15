@@ -426,7 +426,7 @@ QBA.events.accordion = {
 QBA.events.radioButton = {
     create: function (container, icons) {
         "use strict";
-        container.children().each(function (idx, button) {
+        container.find("button").each(function (idx, button) {
             button = $(button);
             button.button({
                 icons: {
@@ -435,6 +435,9 @@ QBA.events.radioButton = {
                 text: false
             });
             button.click(QBA.events.radioButton.click);
+            // Since they are not radios or checkboxes, jQuery ui won't
+            // recognise them as togglable, so we need to remove the mouseleave
+            // event listener in order to keep the ui-state-active css class
             button.unbind("mouseleave");
             button.mouseleave(QBA.events.radioButton.mouseleave);
         });
