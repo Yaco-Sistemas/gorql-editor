@@ -475,8 +475,16 @@ option {
 ----------------------------------*/
 
 .gorql-icon {
-    width: 30px;
-    height: 30px;
+    width: 46px !important;
+    height: 46px !important;
+    margin-right: -1px !important;
+}
+
+.gorql-icon span {
+    width: 32px !important;
+    height: 32px !important;
+    margin-top: -16px !important;
+    margin-left: -16px !important;
 }
 
 /* states and images */
@@ -484,21 +492,21 @@ option {
 .ui-state-active.gorql-icon .ui-icon,
 .ui-state-default.gorql-icon .ui-icon,
 .ui-widget-content.gorql-icon .ui-icon {
-    background-image: url(../images/gorql-icons_00a8e5_128x16.png) !important;
+    background-image: url(../images/gorql-icons_00a8e5_256x32.png) !important;
 }
 .ui-state-hover.gorql-icon .ui-icon,
 .ui-state-focus.gorql-icon .ui-icon,
 .ui-state-highlight.gorql-icon .ui-icon,
 .ui-widget-header.gorql-icon .ui-icon {
-    background-image: url(../images/gorql-icons_ffffff_128x16.png) !important;
+    background-image: url(../images/gorql-icons_ffffff_256x32.png) !important;
 }
 
 /* positioning */
 .ui-icon-small { background-position: 0 0; }
-.ui-icon-medium { background-position: -16px 0; }
-.ui-icon-large { background-position: -32px 0; }
-.ui-icon-portrait { background-position: -48px 0; }
-.ui-icon-landscape { background-position: -64px 0; }
-.ui-icon-pie-small { background-position: -80px 0; }
-.ui-icon-pie-medium { background-position: -96px 0; }
-.ui-icon-pie-large { background-position: -112px 0; }
+.ui-icon-medium { background-position: -32px 0; }
+.ui-icon-large { background-position: -64px 0; }
+.ui-icon-portrait { background-position: -96px 0; }
+.ui-icon-landscape { background-position: -128px 0; }
+.ui-icon-pie-small { background-position: -160px 0; }
+.ui-icon-pie-medium { background-position: -192px 0; }
+.ui-icon-pie-large { background-position: -224px 0; }
