@@ -296,6 +296,10 @@ span.required {
     border: 1px solid black !important;
 }
 
+.margin-right-40 {
+    margin-right: 40px;
+}
+
 #step1 label,
 #step2 label {
     cursor: pointer;

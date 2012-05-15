@@ -178,6 +178,11 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
                 key: "sizeHighlight",
                 value: QBA.chart.sizes[keys[2]]
             };
+        } else if (keys[1] === "landscape") {
+            result = {
+                key: "landscape",
+                value: String(keys[2] === "landscape")
+            };
         }
 
         return result;

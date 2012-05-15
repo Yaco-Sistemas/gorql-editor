@@ -52,6 +52,7 @@ QBA.views.jQueryUI = function (elem) {
         $(".remove").button({ icons: { primary: "ui-icon-closethick" }, text: false });
         QBA.events.radioButton.create($("#bar-size-param, #mapea-size-param, #map-size-param, #timeline-size-param, #pie-size-param, #line-size-param"), ["ui-icon-small", "ui-icon-medium", "ui-icon-large"]);
         QBA.events.radioButton.create($("#pie-sizeHighlight-param"), ["ui-icon-pie-small", "ui-icon-pie-medium", "ui-icon-pie-large"]);
+        QBA.events.radioButton.create($("#bar-landscape-param"), ["ui-icon-portrait", "ui-icon-landscape"]);
     } else {
         $(elem).find(".tabable").tabs();
         $(elem).find(".accordionable").accordion();
