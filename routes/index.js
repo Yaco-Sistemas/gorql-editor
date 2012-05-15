@@ -65,7 +65,9 @@ exports.index = function (request, response) {
                         for (j = 0; j < keys.length; j += 1) {
                             replacement = replacement[keys[j]];
                         }
-                        tpl = tpl.replace(matches[0], replacement);
+                        while (tpl.indexOf(matches[0]) !== -1) {
+                            tpl = tpl.replace(matches[0], replacement);
+                        }
                     }
                 }
                 templates[i] = tpl;

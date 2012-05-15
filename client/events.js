@@ -396,6 +396,12 @@ QBA.events.init = function () {
     QBA.events.step1.bind();
 };
 
+QBA.events.prevent = function (evt) {
+    "use strict";
+    evt.stopPropagation();
+    evt.preventDefault();
+};
+
 QBA.events.accordion = {
     bind: function () {
         "use strict";
@@ -414,5 +420,36 @@ QBA.events.accordion = {
             node.next().toggle();
             return false;
         });
+    }
+};
+
+QBA.events.radioButton = {
+    create: function (container, icons) {
+        "use strict";
+        container.children().each(function (idx, button) {
+            button = $(button);
+            button.button({ icons: { primary: icons[idx] }, text: false });
+            button.click(QBA.events.radioButton.click);
+            button.unbind("mouseleave");
+            button.mouseleave(QBA.events.radioButton.mouseleave);
+        });
+        container.buttonset();
+    },
+
+    click: function (evt) {
+        "use strict";
+        QBA.events.prevent(evt);
+        var node = $(this);
+        node.parent().children().each(function (idx, button) {
+            $(button).removeClass("ui-state-active");
+        });
+        node.removeClass("ui-state-hover");
+        node.addClass("ui-state-active");
+    },
+
+    mouseleave: function (evt) {
+        "use strict";
+        QBA.events.prevent(evt);
+        $(this).removeClass("ui-state-hover");
     }
 };

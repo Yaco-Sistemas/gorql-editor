@@ -470,3 +470,35 @@ optgroup,
 option {
     padding: 1px 3px 1px 3px;
 }
+
+/* Icons
+----------------------------------*/
+
+.gorql-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* states and images */
+.gorql-icon .ui-icon,
+.ui-state-active.gorql-icon .ui-icon,
+.ui-state-default.gorql-icon .ui-icon,
+.ui-widget-content.gorql-icon .ui-icon {
+    background-image: url(../images/gorql-icons_00a8e5_128x16.png) !important;
+}
+.ui-state-hover.gorql-icon .ui-icon,
+.ui-state-focus.gorql-icon .ui-icon,
+.ui-state-highlight.gorql-icon .ui-icon,
+.ui-widget-header.gorql-icon .ui-icon {
+    background-image: url(../images/gorql-icons_ffffff_128x16.png) !important;
+}
+
+/* positioning */
+.ui-icon-small { background-position: 0 0; }
+.ui-icon-medium { background-position: -16px 0; }
+.ui-icon-large { background-position: -32px 0; }
+.ui-icon-portrait { background-position: -48px 0; }
+.ui-icon-landscape { background-position: -64px 0; }
+.ui-icon-pie-small { background-position: -80px 0; }
+.ui-icon-pie-medium { background-position: -96px 0; }
+.ui-icon-pie-large { background-position: -112px 0; }
