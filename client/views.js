@@ -288,6 +288,8 @@ QBA.views.Join = Backbone.View.extend({
         "use strict";
         var categs = QBA.theQuery.getCategoriesWithCheckedCollections(),
             model = this.model,
+            isNew = true,
+            numOpts = 0,
             html;
 
         html = QBA.lingua.joinTpl.replace(/%%%collection%%%/g, model.get("source_collection").get("name").toLowerCase()).replace(/%%%field%%%/g, model.get("source_field").get("name").toLowerCase());
@@ -301,17 +303,25 @@ QBA.views.Join = Backbone.View.extend({
                     if (typeof model.get("target_collection") !== "undefined") {
                         if (model.get("target_collection").cid === collection.cid) {
                             html += " selected='selected'";
+                            isNew = false;
                         }
                     }
                     html += ">" + collection.get("name") + "</option>";
+                    numOpts += 1;
                 }
             });
         });
 
         html += "</select>";
         html += "<button class='remove'></button>";
-        $(this.el).html(html);
+        this.$el.html(html);
         QBA.views.jQueryUI(this.el);
+
+        if (isNew && numOpts === 1) {
+            // Auto select the only available option
+            $(this.$el.find("option")[1]).attr("selected", "selected");
+            this.updateJoin();
+        }
 
         return this;
     },
