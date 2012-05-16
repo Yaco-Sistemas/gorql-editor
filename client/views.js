@@ -178,7 +178,8 @@ QBA.views.Step = Backbone.View.extend({
 
     renderS5: function () {
         "use strict";
-        var hasContent = false;
+        var hasContent = false,
+            chart;
         QBA.theQuery.each(function (category) {
             _.each(category.getCheckedCollections(), function (collection) {
                 hasContent = hasContent || (collection.getCheckedFields().length !== 0);
@@ -193,6 +194,11 @@ QBA.views.Step = Backbone.View.extend({
             $(".openPreview").addClass("hidden");
         } else {
             $(".openPreview").removeClass("hidden");
+
+            chart = $("#step5 #chartType input[type=radio]:checked").val();
+            QBA.chart.fillFormWithDefaultValues(chart);
+            QBA.chart.autoSelectOptions(chart);
+            QBA.chart.loadChartModel();
         }
     }
 });

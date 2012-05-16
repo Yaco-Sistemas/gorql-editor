@@ -344,6 +344,7 @@ QBA.events = {
                 QBA.chart.fillFormWithDefaultValues(chart);
                 $(this).parent().parent().find("li.active").removeClass("active");
                 $(this).parent().addClass("active");
+                QBA.chart.autoSelectOptions(chart);
             });
 
             $("#step5 #chartType li").click(function (evt) {
@@ -376,9 +377,6 @@ QBA.events = {
                 evt.preventDefault();
                 $("#ls2").trigger("click");
             });
-
-            QBA.chart.fillFormWithDefaultValues($("#step5 input[type=radio]:checked").val());
-            QBA.chart.loadChartModel();
         },
 
         release: function () {

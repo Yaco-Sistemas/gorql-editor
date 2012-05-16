@@ -298,3 +298,15 @@ QBA.chart.loadChartModel = function () {
         });
     }
 };
+
+QBA.chart.autoSelectOptions = function (chart) {
+    "use strict";
+    var params = $("#step5 #" + chart + "Params div.parameter select");
+
+    _.each(params, function (select) {
+        var options = $(select).find("option").filter(function (idx, opt) { return opt.value !== ""; });
+        if (options.length === 1) {
+            options.attr("selected", "selected");
+        }
+    });
+};
