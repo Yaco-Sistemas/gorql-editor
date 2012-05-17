@@ -155,3 +155,23 @@ QBA.preview.slideEffect = function (show) {
         });
     }
 };
+
+QBA.preview.shakeEffectLocked = false;
+
+QBA.preview.shakeEffect = function () {
+    "use strict";
+    var node;
+    if (QBA.preview.shakeEffectLocked) {
+        return;
+    }
+    QBA.preview.shakeEffectLocked = true;
+    if ($(".openPreview").is(".hidden") && $("#step1").is(".ui-tabs-hide")) {
+        // Opened preview
+        node = $("#refreshPreview");
+    } else {
+        node = $(".openPreview").parent().parent();
+    }
+    node.effect("shake", {}, 200, function () {
+        QBA.preview.shakeEffectLocked = false;
+    });
+};

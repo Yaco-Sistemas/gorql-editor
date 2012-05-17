@@ -139,6 +139,9 @@ QBA.events = {
 
                 // Refresh step 4
                 $("#ls4").trigger("click");
+
+                // (Shake, Shake, Shake) Shake Your Booty :)
+                QBA.preview.shakeEffect();
             });
 
             $("#openPreview").click(function (evt) {

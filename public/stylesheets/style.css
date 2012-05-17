@@ -131,15 +131,15 @@ h1 {
 
 #openPreview:hover,
 #closePreview:hover,
-#openPreview span.ui-button-text:hover,
-#closePreview span.ui-button-text:hover {
+#openPreview:focus,
+#closePreview:focus {
     color: #005CBF !important;
 }
 
-#openPreview.ui-state-hover span.ui-icon,
-#closePreview.ui-state-hover span.ui-icon,
-#openPreview span.ui-icon:hover,
-#closePreview span.ui-icon:hover {
+#openPreview:hover span.ui-icon,
+#closePreview:hover span.ui-icon,
+#openPreview:focus span.ui-icon,
+#closePreview:focus span.ui-icon {
     background-image: url(images/ui-icons_00a8e5_256x240.png);
 }
 
@@ -208,6 +208,7 @@ fieldset legend {
 
 hr {
     border: 1px solid #D1D1D1;
+    margin: 0.5em 0.75em;
 }
 
 .buttons {
@@ -340,7 +341,9 @@ input[type=radio] {
 }
 
 .ui-widget input[type=submit]:hover,
-.ui-widget button:hover {
+.ui-widget input[type=submit]:focus,
+.ui-widget button:hover,
+.ui-widget button:focus {
     border: 1px solid #037fda;
     background: #037fda url(images/ui-bg_highlight-soft_25_037fda_1x100.png) 50% 50% repeat-x;
     color: #ffffff;
