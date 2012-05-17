@@ -84,6 +84,8 @@ QBA.filters.filterWidgets = {
             "use strict";
             var value = this.$el.find("input.filter-widget").val();
             this.model.set({ value: value });
+            // (Shake, Shake, Shake) Shake Your Booty :)
+            QBA.preview.shakeEffect();
         }
     }),
 
@@ -119,6 +121,8 @@ QBA.filters.filterWidgets = {
             "use strict";
             var value = this.$el.find("input.filter-widget").val();
             this.model.set({ value: value });
+            // (Shake, Shake, Shake) Shake Your Booty :)
+            QBA.preview.shakeEffect();
         }
     }),
 
@@ -152,6 +156,8 @@ QBA.filters.filterWidgets = {
                     $el.find("input.filter-widget.range.from").val(ui.values[0]);
                     $el.find("input.filter-widget.range.to").val(ui.values[1]);
                     model.set({ value: ui.values });
+                    // (Shake, Shake, Shake) Shake Your Booty :)
+                    QBA.preview.shakeEffect();
                 }
             });
 
@@ -193,6 +199,8 @@ QBA.filters.filterWidgets = {
             "use strict";
             var value = this.$el.find("input.filter-widget").val();
             this.model.set({ value: value });
+            // (Shake, Shake, Shake) Shake Your Booty :)
+            QBA.preview.shakeEffect();
         }
     }),
 
@@ -232,6 +240,8 @@ QBA.filters.filterWidgets = {
                 this.$el.find("input.filter-widget.to").val()
             ];
             this.model.set({ value: value });
+            // (Shake, Shake, Shake) Shake Your Booty :)
+            QBA.preview.shakeEffect();
         }
     }),
 
@@ -271,6 +281,8 @@ QBA.filters.filterWidgets = {
                 value = undefined;
             }
             this.model.set({ value: value });
+            // (Shake, Shake, Shake) Shake Your Booty :)
+            QBA.preview.shakeEffect();
         }
     })
 };

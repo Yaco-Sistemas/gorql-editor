@@ -257,6 +257,8 @@ QBA.views.Filter = Backbone.View.extend({
         evt.preventDefault();
         this.model.get("field").get("userFilterList").remove(this.model);
         this.$el.remove();
+        // (Shake, Shake, Shake) Shake Your Booty :)
+        QBA.preview.shakeEffect();
     },
 
     updateFilterWidget: function () {
@@ -338,6 +340,8 @@ QBA.views.Join = Backbone.View.extend({
         evt.preventDefault();
         this.model.get("source_field").get("joinList").remove(this.model);
         this.$el.remove();
+        // (Shake, Shake, Shake) Shake Your Booty :)
+        QBA.preview.shakeEffect();
     },
 
     updateJoin: function () {
@@ -364,5 +368,8 @@ QBA.views.Join = Backbone.View.extend({
                 target_collection: undefined
             });
         }
+
+        // (Shake, Shake, Shake) Shake Your Booty :)
+        QBA.preview.shakeEffect();
     }
 });
