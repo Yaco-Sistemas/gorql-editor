@@ -524,3 +524,5 @@ option {
 .ui-icon-pie-small { background-position: -160px 0; }
 .ui-icon-pie-medium { background-position: -192px 0; }
 .ui-icon-pie-large { background-position: -224px 0; }
+.ui-icon-noarea { background-position: -256px 0; }
+.ui-icon-area { background-position: -288px 0; }

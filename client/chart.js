@@ -183,6 +183,11 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
                 key: "landscape",
                 value: String(keys[2] === "landscape")
             };
+        } else if (keys[1] === "area") {
+            result = {
+                key: "area",
+                value: String(keys[2] === "area")
+            };
         }
 
         return result;
