@@ -393,6 +393,12 @@ div.filter-widget.range {
     position: relative;
 }
 
+#chartType ul li:hover,
+#chartType ul li.active:hover {
+    background: #037fda url(images/ui-bg_highlight-soft_25_037fda_1x100.png) 50% 50% repeat-x;
+    color: #ffffff;
+}
+
 #chartType ul li label {
     cursor: pointer;
     position: absolute;
@@ -401,6 +407,7 @@ div.filter-widget.range {
 }
 
 #chartType ul li.active {
+    background: none;
     background-color: white;
     color: #00A8E5;
 }

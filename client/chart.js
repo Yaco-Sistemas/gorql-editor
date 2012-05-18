@@ -317,7 +317,9 @@ QBA.chart.loadChartModel = function (suggested) {
                 }
             });
         }
+        return type;
     }
+    return suggested;
 };
 
 QBA.chart.autoSelectOptions = function (chart) {
