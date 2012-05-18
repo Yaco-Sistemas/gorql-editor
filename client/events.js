@@ -348,6 +348,8 @@ QBA.events = {
                 $(this).parent().parent().find("li.active").removeClass("active");
                 $(this).parent().addClass("active");
                 QBA.chart.autoSelectOptions(chart);
+                // (Shake, Shake, Shake) Shake Your Booty :)
+                QBA.preview.shakeEffect();
             });
 
             $("#step5 #chartType li").click(function (evt) {
@@ -356,8 +358,17 @@ QBA.events = {
                 radio.trigger("change");
             });
 
-            $("#step5 div.parameter input").change(QBA.chart.updateChartModel);
-            $("#step5 div.parameter select").change(QBA.chart.updateChartModel);
+            $("#step5 div.parameter input, #step5 div.parameter select").change(function () {
+                QBA.chart.updateChartModel();
+                // (Shake, Shake, Shake) Shake Your Booty :)
+                QBA.preview.shakeEffect();
+            });
+
+            $("#step5 div.parameter button").click(function () {
+                QBA.chart.updateChartModel();
+                // (Shake, Shake, Shake) Shake Your Booty :)
+                QBA.preview.shakeEffect();
+            });
 
             $("#openPreview").click(function (evt) {
                 evt.stopPropagation();
