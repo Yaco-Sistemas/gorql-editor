@@ -195,10 +195,10 @@ QBA.views.Step = Backbone.View.extend({
         } else {
             $(".openPreview").removeClass("hidden");
 
-            chart = $("#step5 #chartType input[type=radio]:checked").val();
+            chart = QBA.chart.selectBestChart();
+            chart = QBA.chart.loadChartModel(chart);
             QBA.chart.fillFormWithDefaultValues(chart);
             QBA.chart.autoSelectOptions(chart);
-            QBA.chart.loadChartModel();
         }
     }
 });

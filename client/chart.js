@@ -249,7 +249,7 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
 
 QBA.chart.updateChartModel = function () {
     "use strict";
-    var type = $("#step5 input[type=radio]:checked").val(),
+    var type = $("#step5 #chartType input[type=radio]:checked").val(),
         params = QBA.chart.getChartParams(type, true, true),
         paramList = new QBA.models.ChartParameterList(),
         p;
@@ -272,30 +272,51 @@ QBA.chart.updateChartModel = function () {
     });
 };
 
-QBA.chart.loadChartModel = function () {
+QBA.chart.families = {
+    d3: ["bar", "line", "pie"],
+    simile: ["timeline"],
+    map: ["map", "mapea"]
+};
+
+QBA.chart.compatibleCharts = function (one, two) {
     "use strict";
-    var type = QBA.theChart.get("type"),
-        radio;
+    var result = false;
+    if (_.include(QBA.chart.families.d3, one) && _.include(QBA.chart.families.d3, two)) {
+        result = true;
+    } else if (_.include(QBA.chart.families.simile, one) && _.include(QBA.chart.families.simile, two)) {
+        result = true;
+    } else if (_.include(QBA.chart.families.map, one) && _.include(QBA.chart.families.map, two)) {
+        result = true;
+    }
+    return result;
+};
 
+QBA.chart.loadChartModel = function (suggested) {
+    "use strict";
+    var type = QBA.theChart.get("type");
     if (type !== "") {
-        radio = $("#step5 input[type=radio][value=" + type + "]");
-        radio.attr("checked", true);
-        radio.trigger("change");
-        QBA.theChart.get("paramList").each(function (param) {
-            var name = type + "-" + param.get("name") + "-param",
-                input;
+        if (QBA.chart.compatibleCharts(type, suggested)) {
+            $("#step5 #chartType li.active").removeClass("active");
+            $("#step5 #chartType input[type=radio]:checked").attr("checked", false);
+            $("#step5 #chartType #" + type + "_chart").attr("checked", "checked").parent().addClass("active");
+            $("#step5 .paramsContainer").css("display", "none");
+            $("#step5 #" + type + "Params").css("display", "block");
+            QBA.theChart.get("paramList").each(function (param) {
+                var name = type + "-" + param.get("name") + "-param",
+                    input;
 
-            if (param.get("select")) {
-                $("#step5 #" + type + "Params div.parameter select[name=" + name + "]").val(param.get("valueOption"));
-            } else {
-                input = $("#step5 #" + type + "Params div.parameter input[name=" + name + "]");
-                if (input.attr("type") === "checkbox") {
-                    input.attr("checked", param.get("value"));
+                if (param.get("select")) {
+                    $("#step5 #" + type + "Params div.parameter select[name=" + name + "]").val(param.get("valueOption"));
                 } else {
-                    input.val(param.get("value"));
+                    input = $("#step5 #" + type + "Params div.parameter input[name=" + name + "]");
+                    if (input.attr("type") === "checkbox") {
+                        input.attr("checked", param.get("value"));
+                    } else {
+                        input.val(param.get("value"));
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 };
 
@@ -309,4 +330,38 @@ QBA.chart.autoSelectOptions = function (chart) {
             options.attr("selected", "selected");
         }
     });
+};
+
+QBA.chart.selectBestChart = function () {
+    "use strict";
+    var map = false,
+        timeline = false,
+        chart = "bar",
+        fields = _.flatten(_.map(QBA.theQuery.getCategoriesWithCheckedCollections(), function (category) {
+            return _.map(category.getCheckedCollections(), function (collection) {
+                return collection.getCheckedFields();
+            });
+        }));
+
+    _.each(fields, function (field) {
+        var type = field.get("type");
+        if (type === "coord") {
+            map = true;
+        } else if (type === "date") {
+            timeline = true;
+        }
+    });
+
+    $("#step5 #chartType li.active").removeClass("active");
+    $("#step5 #chartType input[type=radio]:checked").attr("checked", false);
+    if (map) {
+        chart = "map";
+    } else if (timeline) {
+        chart = "timeline";
+    }
+    $("#step5 #chartType #" + chart + "_chart").attr("checked", "checked").parent().addClass("active");
+    $("#step5 .paramsContainer").css("display", "none");
+    $("#step5 #" + chart + "Params").css("display", "block");
+
+    return chart;
 };

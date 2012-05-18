@@ -105,8 +105,7 @@ QBA.preview.updateChart = function (preventEffect) {
     "use strict";
     var SPARQL = QBA.theQuery.toSPARQL(),
         html = QBA.preview.initQuery(SPARQL, preventEffect),
-        radios = $("input[name=chart_type]"),
-        radio = _.find(radios, function (radio) { return radio.checked; });
+        radio = $("input[name=chart_type]:checked")[0];
 
     if (radio.value === "map") {
         html += "<link rel='stylesheet' href='" + QBA.preview.viewer + "/javascripts/theme/default/style.css' />";
