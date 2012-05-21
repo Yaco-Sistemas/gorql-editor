@@ -39,6 +39,14 @@ h1 {
     padding: 5px;
 }
 
+#page > form {
+    /* Width is 960px so using the golden ratio to calculate the min-height
+     * the result is 593px. But we need to be aware of the 3px padding and 1px
+     * border top and bottom, that's 8 extra px. 593 - 8 = 585px */
+    min-height: 585px;
+    padding-bottom: 46px;
+}
+
 #preview {
     padding: 10px 1.95em 0 1.95em;
     border: 1px solid #D1D1D1;
@@ -176,10 +184,10 @@ body.js .ui-accordion-content {
 }
 
 body.js #step2-wrapper {
-    padding-bottom: 60px;
+    padding-bottom: 0;
 }
 
-body.js #step2-wrapper .buttons.lateral-padding {
+body.js #step2-wrapper .lateral-padding {
     padding: 0px 12px 0px 12px;
 }
 
@@ -213,6 +221,11 @@ hr {
 
 .buttons {
     margin-top: 10px;
+    position: absolute;
+    left: -1px;
+    bottom: 17px;
+    width: 888px;
+    padding: 0 36px;
 }
 
 .inline {
@@ -375,7 +388,7 @@ div.filter-widget.range {
 }
 
 #chartType ul {
-    height: 330px;
+    height: 390px;
     margin: 0px;
     padding-left: 0px;
     background-color: #E0E0E0;
@@ -412,7 +425,7 @@ div.filter-widget.range {
 }
 
 .paramsContainer {
-    height: 318px;
+    height: 378px;
     width: 590px;
     margin: 0px;
     padding: 2px 10px 10px 20px;
