@@ -243,6 +243,18 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
     });
     options = options.concat(aux);
 
+    aux = [];
+    if (chart === "timeline") {
+        aux = [{
+            key: "detailRes",
+            value: QBA.chart.timelineSliderValues[$("#timeline-detailRes-param").slider("value")]
+        }, {
+            key: "overviewRes",
+            value: QBA.chart.timelineSliderValues[$("#timeline-overviewRes-param").slider("value")]
+        }];
+    }
+    options = options.concat(aux);
+
     _.each(options, function (opt) {
         if (opt.value !== "") {
             if (extraInfo) {
@@ -374,4 +386,38 @@ QBA.chart.selectBestChart = function () {
     $("#step5 #" + chart + "Params").css("display", "block");
 
     return chart;
+};
+
+QBA.chart.timelineSliderValues = [
+    "millisecond", "second", "minute", "hour", "day", "week", "month",
+    "year", "decade", "century", "millennium"
+];
+
+QBA.chart.timelineSliderDefaults = {
+    "timeline-detailRes-param": {value: 7, min: 0},
+    "timeline-overviewRes-param": {value: 8, min: 8}
+};
+
+QBA.chart.timelineSliders = function () {
+    "use strict";
+    $("#timelineParams div.slider").each(function (idx, node) {
+        var id = node.id;
+        $(node).slider({
+            value: QBA.chart.timelineSliderDefaults[id].value,
+            min: QBA.chart.timelineSliderDefaults[id].min,
+            max: 10,
+            step: 1,
+            slide: function (event, ui) {
+                $("#" + id + "-span").text(QBA.chart.timelineSliderValues[ui.value]);
+                if (id === "timeline-detailRes-param") {
+                    var newMin = ui.value < 10 ? ui.value + 1 : 10,
+                        $el = $("#timeline-overviewRes-param");
+                    $el.slider("option", "min", newMin);
+                    $("#timeline-overviewRes-param-span").text(QBA.chart.timelineSliderValues[$el.slider("value")]);
+                    $el.slider("value", $el.slider("value"));
+                }
+            }
+        });
+        $("#" + id + "-span").text(QBA.chart.timelineSliderValues[QBA.chart.timelineSliderDefaults[id].value]);
+    });
 };

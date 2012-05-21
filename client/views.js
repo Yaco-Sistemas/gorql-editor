@@ -195,6 +195,7 @@ QBA.views.Step = Backbone.View.extend({
             $(".openPreview").addClass("hidden");
         } else {
             $(".openPreview").removeClass("hidden");
+            QBA.chart.timelineSliders();
 
             chart = QBA.chart.selectBestChart();
             chart = QBA.chart.loadChartModel(chart);
