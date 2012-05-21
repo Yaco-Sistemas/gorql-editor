@@ -114,8 +114,8 @@ QBA.preview.updateChart = function (preventEffect) {
     html += "<link rel='stylesheet' href='" + QBA.preview.viewer + "/stylesheets/" + radio.value + ".css' />";
     if (radio.value === "timeline") {
         html += "<script type='text/javascript'>var Timeline_ajax_url='" +
-            QBA.preview.viewer + "/javascripts/timeline_ajax/simile-ajax-api.js'," +
-            "Timeline_urlPrefix='" + QBA.preview.viewer + "/javascripts/timeline_js/'," +
+            QBA.preview.viewer + "/javascripts/timeline_ajax/simile-ajax-api.js';" +
+            "Timeline_urlPrefix='" + QBA.preview.viewer + "/javascripts/timeline_js/';" +
             "Timeline_parameters='bundle=true&defaultLocale=\"es\"';</script>";
     }
     html += "<script type='text/javascript' src='" + QBA.preview.viewer + "/javascripts/dv-";
