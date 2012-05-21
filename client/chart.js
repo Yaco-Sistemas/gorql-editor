@@ -314,7 +314,8 @@ QBA.chart.compatibleCharts = function (one, two) {
 
 QBA.chart.loadChartModel = function (suggested) {
     "use strict";
-    var type = QBA.theChart.get("type");
+    var type = QBA.theChart.get("type"),
+        overviewResIdx = -1;
     if (type !== "") {
         if (QBA.chart.compatibleCharts(type, suggested)) {
             $("#step5 #chartType li.active").removeClass("active");
@@ -324,6 +325,8 @@ QBA.chart.loadChartModel = function (suggested) {
             $("#step5 #" + type + "Params").css("display", "block");
             QBA.theChart.get("paramList").each(function (param) {
                 var name = type + "-" + param.get("name") + "-param",
+                    idx,
+                    min,
                     button;
 
                 if (param.get("type") === "select") {
@@ -334,6 +337,24 @@ QBA.chart.loadChartModel = function (suggested) {
                     button.addClass("ui-state-active");
                 } else {
                     $("#step5 #" + type + "Params div.parameter input[name=" + name + "]").val(param.get("value"));
+                }
+
+                if (name === "timeline-detailRes-param" || name === "timeline-overviewRes-param") {
+                    idx = _.indexOf(QBA.chart.timelineSliderValues, param.get("value"));
+                    if (name === "timeline-detailRes-param") {
+                        min = idx < 10 ? idx + 1 : 10;
+                        $("#timeline-overviewRes-param").slider("option", "min", min);
+                        if (overviewResIdx > 0) {
+                            // If overviewRes was loaded before detailRes then
+                            // the min value for overviewRes wasn't set
+                            // properly, so now the value must be set again
+                            $("#timeline-overviewRes-param").slider("value", idx);
+                        }
+                    } else {
+                        overviewResIdx = idx;
+                    }
+                    $("#" + name).slider("value", idx);
+                    $("#" + name + "-span").text(QBA.chart.timelineSliderValues[idx]);
                 }
             });
         }
@@ -411,11 +432,15 @@ QBA.chart.timelineSliders = function () {
                 $("#" + id + "-span").text(QBA.chart.timelineSliderValues[ui.value]);
                 if (id === "timeline-detailRes-param") {
                     var newMin = ui.value < 10 ? ui.value + 1 : 10,
-                        $el = $("#timeline-overviewRes-param");
+                        $el = $("#timeline-overviewRes-param"),
+                        value;
                     $el.slider("option", "min", newMin);
-                    $("#timeline-overviewRes-param-span").text(QBA.chart.timelineSliderValues[$el.slider("value")]);
-                    $el.slider("value", $el.slider("value"));
+                    value = $el.slider("value");
+                    $("#timeline-overviewRes-param-span").text(QBA.chart.timelineSliderValues[value]);
+                    $el.slider("value", value);
                 }
+                $("#" + id).slider("value", ui.value);
+                QBA.chart.updateChartModel();
             }
         });
         $("#" + id + "-span").text(QBA.chart.timelineSliderValues[QBA.chart.timelineSliderDefaults[id].value]);
