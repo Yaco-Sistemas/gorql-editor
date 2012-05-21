@@ -354,7 +354,7 @@ QBA.chart.loadChartModel = function (suggested) {
                         overviewResIdx = idx;
                     }
                     $("#" + name).slider("value", idx);
-                    $("#" + name + "-span").text(QBA.chart.timelineSliderValues[idx]);
+                    $("#" + name + "-span").text(QBA.lingua.timelineSliderValues[idx]);
                 }
             });
         }
@@ -429,20 +429,20 @@ QBA.chart.timelineSliders = function () {
             max: 10,
             step: 1,
             slide: function (event, ui) {
-                $("#" + id + "-span").text(QBA.chart.timelineSliderValues[ui.value]);
+                $("#" + id + "-span").text(QBA.lingua.timelineSliderValues[ui.value]);
                 if (id === "timeline-detailRes-param") {
                     var newMin = ui.value < 10 ? ui.value + 1 : 10,
                         $el = $("#timeline-overviewRes-param"),
                         value;
                     $el.slider("option", "min", newMin);
                     value = $el.slider("value");
-                    $("#timeline-overviewRes-param-span").text(QBA.chart.timelineSliderValues[value]);
+                    $("#timeline-overviewRes-param-span").text(QBA.lingua.timelineSliderValues[value]);
                     $el.slider("value", value);
                 }
                 $("#" + id).slider("value", ui.value);
                 QBA.chart.updateChartModel();
             }
         });
-        $("#" + id + "-span").text(QBA.chart.timelineSliderValues[QBA.chart.timelineSliderDefaults[id].value]);
+        $("#" + id + "-span").text(QBA.lingua.timelineSliderValues[QBA.chart.timelineSliderDefaults[id].value]);
     });
 };

@@ -66,8 +66,8 @@
         "start": "Campo con las fechas de comienzo de los eventos",
         "end": "Campo con las fechas de fin de los eventos",
         "description": "Campo con las descripciones",
-        "detailRes": "Resolución temporal de la banda detallada",
-        "overviewRes": "Resolución temporal de la banda resumen",
+        "detailRes": "Unidad de tiempo para los detalles",
+        "overviewRes": "Unidad de tiempo para el resumen",
         "lat": "Campo con las latitudes",
         "long": "Campo con las longitudes",
         "view": "Vea los datos y el gráfico",
@@ -91,6 +91,9 @@
         "filterWidgets": {
             "from": "Desde",
             "to": "hasta"
-        }
+        },
+        "timelineSliderValues": ["Milisegundos", "Segundos", "Minutos",
+            "Horas", "Días", "Semanas", "Meses", "Años", "Décadas", "Siglos",
+            "Milenios"]
     }
 }

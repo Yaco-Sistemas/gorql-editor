@@ -66,8 +66,8 @@
         "start": "Events start dates field",
         "end": "Events end dates field",
         "description": "Descriptions field",
-        "detailRes": "Temporal resolution of the details band",
-        "overviewRes": "Temporal resolution of the overview band",
+        "detailRes": "Time unit for the details band",
+        "overviewRes": "Time unit for the overview band",
         "lat": "Latitudes field",
         "long": "Longitudes field",
         "view": "View Chart and Data",
@@ -91,6 +91,8 @@
         "filterWidgets": {
             "from": "From",
             "to": "to"
-        }
+        },
+        "timelineSliderValues": ["Millisecond", "Second", "Minute", "Hour",
+            "Day", "Week", "Month", "Year", "Decade", "Century", "Millennium"]
     }
 }
