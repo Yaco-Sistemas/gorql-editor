@@ -4,9 +4,9 @@
         "s2": "Escoja campos",
         "s5": "Añada un gráfico"
     },
-    "genPreview": "Genere una previsualización",
-    "updatePreview": "Actualice la previsualización",
-    "closePreview": "Oculte la previsualización",
+    "genPreview": "Vista previa",
+    "updatePreview": "Actualice la vista previa",
+    "closePreview": "Oculte la vista previa",
     "next": "Siguiente",
     "previous": "Anterior",
     "add": "Añadir",
