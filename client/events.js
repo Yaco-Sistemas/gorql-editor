@@ -454,6 +454,7 @@ QBA.events.radioButton = {
             // event listener in order to keep the ui-state-active css class
             button.unbind("mouseleave");
             button.mouseleave(QBA.events.radioButton.mouseleave);
+            button.unbind("keyup");
         });
         container.buttonset();
     },
