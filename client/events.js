@@ -446,7 +446,9 @@ QBA.events.radioButton = {
                 },
                 text: false
             });
-            button.click(QBA.events.radioButton.click);
+            button.click(QBA.events.prevent);
+            button.unbind("mouseup");
+            button.mousedown(QBA.events.radioButton.click);
             // Since they are not radios or checkboxes, jQuery ui won't
             // recognise them as togglable, so we need to remove the mouseleave
             // event listener in order to keep the ui-state-active css class

@@ -393,8 +393,7 @@ div.filter-widget.range {
     position: relative;
 }
 
-#chartType ul li:hover,
-#chartType ul li.active:hover {
+#chartType ul li:hover {
     background: #037fda url(images/ui-bg_highlight-soft_25_037fda_1x100.png) 50% 50% repeat-x;
     color: #ffffff;
 }
@@ -504,10 +503,18 @@ option {
 /* states and images */
 .gorql-icon .ui-icon,
 .ui-state-active.gorql-icon .ui-icon,
+.ui-state-active.ui-state-hover.gorql-icon .ui-icon,
 .ui-state-default.gorql-icon .ui-icon,
 .ui-widget-content.gorql-icon .ui-icon {
     background-image: url(../images/gorql-icons_00a8e5_256x32.png) !important;
 }
+
+.ui-state-active.ui-state-hover.gorql-icon {
+    background: none;
+    background-color: white;
+    border: 1px solid #D1D1D1;
+}
+
 .ui-state-hover.gorql-icon .ui-icon,
 .ui-state-focus.gorql-icon .ui-icon,
 .ui-state-highlight.gorql-icon .ui-icon,
