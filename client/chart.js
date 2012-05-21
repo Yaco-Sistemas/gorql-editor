@@ -168,26 +168,30 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
             values = QBA.chart.sizes[keys[2]];
             result = [{
                 key: "sizeX",
-                value: values[0]
+                value: values[0],
+                type: "radio",
+                chosen: keys[1] + "-" + keys[2]
             }, {
                 key: "sizeY",
-                value: values[1]
+                value: values[1],
+                type: "radio",
+                chosen: keys[1] + "-" + keys[2]
             }];
-        } else if (keys[1] === "sizeHighlight") {
+        } else {
             result = {
-                key: "sizeHighlight",
-                value: QBA.chart.sizes[keys[2]]
+                type: "radio",
+                chosen: keys[1] + "-" + keys[2]
             };
-        } else if (keys[1] === "landscape") {
-            result = {
-                key: "landscape",
-                value: String(keys[2] === "landscape")
-            };
-        } else if (keys[1] === "area") {
-            result = {
-                key: "area",
-                value: String(keys[2] === "area")
-            };
+            if (keys[1] === "sizeHighlight") {
+                result.key = "sizeHighlight";
+                result.value = QBA.chart.sizes[keys[2]];
+            } else if (keys[1] === "landscape") {
+                result.key = "landscape";
+                result.value = String(keys[2] === "landscape");
+            } else if (keys[1] === "area") {
+                result.key = "area";
+                result.value = String(keys[2] === "area");
+            }
         }
 
         return result;
@@ -233,8 +237,8 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
         return {
             key: p.attr("name").split('-')[1],
             value: value,
-            select: true,
-            valueOption: valueOption
+            type: "select",
+            chosen: valueOption
         };
     });
     options = options.concat(aux);
@@ -264,9 +268,9 @@ QBA.chart.updateChartModel = function () {
             name: key,
             value: params[key].value
         };
-        if (params[key].select) {
-            p.select = true;
-            p.valueOption = params[key].valueOption;
+        if (params[key].type) {
+            p.type = params[key].type;
+            p.chosen = params[key].chosen;
         }
         paramList.add(new QBA.models.ChartParameter(p));
     });
@@ -308,17 +312,16 @@ QBA.chart.loadChartModel = function (suggested) {
             $("#step5 #" + type + "Params").css("display", "block");
             QBA.theChart.get("paramList").each(function (param) {
                 var name = type + "-" + param.get("name") + "-param",
-                    input;
+                    button;
 
-                if (param.get("select")) {
-                    $("#step5 #" + type + "Params div.parameter select[name=" + name + "]").val(param.get("valueOption"));
+                if (param.get("type") === "select") {
+                    $("#step5 #" + type + "Params div.parameter select[name=" + name + "]").val(param.get("chosen"));
+                } else if (param.get("type") === "radio") {
+                    button = $("#step5 #" + type + "Params div.parameter button#" + type + "-" + param.get("chosen"));
+                    button.parent().find("button").removeClass("ui-state-active");
+                    button.addClass("ui-state-active");
                 } else {
-                    input = $("#step5 #" + type + "Params div.parameter input[name=" + name + "]");
-                    if (input.attr("type") === "checkbox") {
-                        input.attr("checked", param.get("value"));
-                    } else {
-                        input.val(param.get("value"));
-                    }
+                    $("#step5 #" + type + "Params div.parameter input[name=" + name + "]").val(param.get("value"));
                 }
             });
         }
