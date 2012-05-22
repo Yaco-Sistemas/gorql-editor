@@ -59,6 +59,23 @@ QBA.events = {
         $("#closePreview").click(function () {
             QBA.preview.slideEffect(false);
         });
+
+        $("#openPreview, #closePreview").mouseenter(function (evt) {
+            $(this).parent().find("div").addClass("ui-state-hover");
+        });
+
+        $("#openPreview, #closePreview").mouseleave(function (evt) {
+            $(this).parent().find("div").removeClass("ui-state-hover");
+            $(this).parent().find("div").removeClass("ui-state-active");
+        });
+
+        $("#openPreview, #closePreview").mousedown(function (evt) {
+            $(this).parent().find("div").addClass("ui-state-active");
+        });
+
+        $("#openPreview, #closePreview").mouseup(function (evt) {
+            $(this).parent().find("div").removeClass("ui-state-active");
+        });
     },
 
     step1: {

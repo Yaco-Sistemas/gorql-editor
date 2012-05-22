@@ -83,6 +83,10 @@ h1 {
     left: 50%;
 }
 
+.preview-tab div.mtop1 {
+    margin-top: 1px;
+}
+
 .preview-tab div div {
     width: 30px;
     height: 26px;
@@ -99,6 +103,22 @@ h1 {
     background: transparent url(../images/tab-right.png) 50% 50% repeat-x;
 }
 
+.preview-tab div div.ui-state-hover {
+    background: transparent url(../images/tab-left-hover.png) 50% 50% repeat-x;
+}
+
+.preview-tab div div.right.ui-state-hover {
+    background: transparent url(../images/tab-right-hover.png) 50% 50% repeat-x;
+}
+
+.preview-tab div div.ui-state-active {
+    background: transparent url(../images/tab-left-active.png) 50% 50% repeat-x;
+}
+
+.preview-tab div div.right.ui-state-active {
+    background: transparent url(../images/tab-right-active.png) 50% 50% repeat-x;
+}
+
 #openPreview,
 #closePreview {
     position: relative;
@@ -107,9 +127,10 @@ h1 {
     margin: 0;
     border: 0;
     font-size: 0.85em;
+    border: 0;
     border-bottom: 1px solid #D1D1D1;
-    background: #E0E0E0 url(images/ui-bg_highlight-soft_50_e0e0e0_1x100.png) 50% 50% repeat-x;
     vertical-align: top;
+    padding-right: 10px;
 
     -moz-border-radius-topleft: 0px;
     -webkit-border-top-left-radius: 0px;
@@ -137,18 +158,14 @@ h1 {
     padding: 2px 5px 0px 30px
 }
 
-#openPreview:hover,
-#closePreview:hover,
-#openPreview:focus,
-#closePreview:focus {
-    color: #005CBF !important;
+#openPreview.ui-state-hover,
+#closePreview.ui-state-hover {
+    border-bottom: 1px solid #037FDA;
 }
 
-#openPreview:hover span.ui-icon,
-#closePreview:hover span.ui-icon,
-#openPreview:focus span.ui-icon,
-#closePreview:focus span.ui-icon {
-    background-image: url(images/ui-icons_00a8e5_256x240.png);
+#openPreview.ui-state-active,
+#closePreview.ui-state-active {
+    border-bottom: 1px solid #D1D1D1;
 }
 
 body.no-js .js,
