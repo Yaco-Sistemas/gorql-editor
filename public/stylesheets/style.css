@@ -41,9 +41,9 @@ h1 {
 
 #page > form {
     /* Width is 960px so using the golden ratio to calculate the min-height
-     * the result is 593px. But we need to be aware of the 3px padding and 1px
-     * border top and bottom, that's 8 extra px. 593 - 8 = 585px */
-    min-height: 585px;
+     * the result is 593px. But we need to be aware of the 49px padding and 2px
+     * border top and bottom, that's 8 extra px. 593 - 51 = 542px */
+    min-height: 542px;
     padding-bottom: 46px;
 }
 
