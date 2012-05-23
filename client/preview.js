@@ -58,7 +58,7 @@ QBA.preview.callDV = function (chart, params) {
                     func("#preview #viewport #preview_chart",
                          "#preview #viewport #preview_table", params);
                     QBA.preview.$loader.addClass("hidden");
-                    QBA.preview.$el.removeClassClass("hidden");
+                    QBA.preview.$el.removeClass("hidden");
                 } catch (err) {
                     QBA.preview.$loader.addClass("hidden");
                     QBA.preview.$error.find("#preview_error_text").text(QBA.lingua.preview.error);
