@@ -5,7 +5,7 @@
 
 Name: %{name}
 Version: 1.0.0develhg186
-Release: 2
+Release: 3
 Summary: GORQL Editor helps writing SPARQL queries
 Packager: Alejandro Blanco <ablanco@yaco.es>
 Group: Applications/Internet
@@ -14,7 +14,7 @@ License: EUPL 1.1 License
 URL: http://www.yaco.es
 Source0: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
-Requires: nodejs = 0.6.17, make
+Requires: nodejs = 0.6.17, forever = 0.9.1, make
 BuildRequires: nodejs = 0.6.17, npm, make
 
 %description
@@ -99,6 +99,8 @@ fi
 
 %changelog
 
+* Wed May 23 2012 Alejandro Blanco <ablanco@yaco.es>
+- Require forever package
 * Wed May 09 2012 Alejandro Blanco <ablanco@yaco.es>
 - Remove docs and specs from the package
 * Fri Mar 09 2012 Alejandro Blanco <ablanco@yaco.es>
