@@ -34,6 +34,32 @@ necesarios para el funcionamiento de GORQL Editor.
 .. _NodeJS: http://nodejs.org/
 .. _NPM: http://npmjs.org/
 
+Forever
+-------
+
+Forever_ es una utilidad que se encarga de monitorizar procesos, y relanzarlos
+en caso de que se produzca algún tipo de error.
+
+.. _Forever: https://github.com/nodejitsu/forever
+
+Se puede instalar a partir de un RPM:
+
+*x86_64 RedHat 5*
+ Descarga-Forever-RH5_
+
+.. _Descarga-Forever-RH5: http://files.yaco.es/~ceic-ogov/dependencies/rh5/forever-0.9.1-1.x86_64.rpm
+
+*x86_64 RedHat 6*
+ Descarga-Forever-RH6_
+
+.. _Descarga-Forever-RH6: http://files.yaco.es/~ceic-ogov/dependencies/rh6/forever-0.9.1-1.x86_64.rpm
+
+Una vez descargado el paquete se instala ejecutando:
+
+.. code-block:: none
+
+ # rpm -Uvh forever-0.9.1-1.x86_64.rpm
+
 Otros
 -----
 
@@ -78,8 +104,6 @@ respectivamente.
 Para la gestión de este servicio se utiliza Forever_ que se encarga de que el
 servidor se relance en caso de que ocurra algún problema.
 
-.. _Forever: https://github.com/nodejitsu/forever
-
 *Ejemplos de salida*
 
 ::
@@ -113,6 +137,9 @@ settings.js
 grupos de parámetros: *global*, *development* y *production*. Que son opciones
 globales para todos los casos, específicas para entornos de desarrollo, y
 específicas para entornos de producción, respectivamente.
+
+Por defecto, si se arranca el visor mediante el script de servicio, el modo
+utilizado es *Production*.
 
 El formato es JSON. Las opciones de desarrollo y producción son las mismas, se
 utiliza un grupo u otro según se arranque el editor en un modo u otro.
