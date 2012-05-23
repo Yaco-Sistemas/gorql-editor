@@ -98,6 +98,10 @@
     </form>
     <section id="preview" style="display: none;">
         <button id="refreshPreview" class="floatr">${lingua.updatePreview}</button>
+        <p id="error" class="hidden ui-state-error ui-corner-all"><span class="ui-icon ui-icon-alert inline icon-vmiddle"></span><span id="preview_error_text" class="inline"></span></p>
+        <div id="loader" class="ui-state-highlight ui-corner-all">
+            <img src="images/highlight-loader.gif" alt="Loading" class="icon-vmiddle" /><span>${lingua.working}</span>
+        </div>
         <div id="viewport"></div>
         <div class="preview-tab">
             <div class="mtop1"><div></div><button id="closePreview">${lingua.closePreview}</button><div class="right"></div></div>

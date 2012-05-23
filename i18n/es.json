@@ -10,6 +10,7 @@
     "next": "Siguiente",
     "previous": "Anterior",
     "add": "Añadir",
+    "working": "Cargando...",
     "step1": {
         "title": "Éstas son las colecciones disponibles",
         "hint": "Recuerde que puede escoger más de una colección por categoría, y en varias categorías a la vez."
@@ -75,7 +76,6 @@
     },
     "client": {
         "preview": {
-            "working": "Cargando...",
             "error": "Se produjo un error.",
             "noresults": "No se encontraron resultados."
         },

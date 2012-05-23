@@ -10,6 +10,7 @@
     "next": "Next",
     "previous": "Previous",
     "add": "Add",
+    "working": "Working...",
     "step1": {
         "title": "These are the available collections",
         "hint": "Remember that you can choose more than one collection per category, and collections from several categories at the same time."
@@ -75,7 +76,6 @@
     },
     "client": {
         "preview": {
-            "working": "Working...",
             "error": "There was an error.",
             "noresults": "No results returned."
         },
