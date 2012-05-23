@@ -93,6 +93,7 @@
             "to": "to"
         },
         "timelineSliderValues": ["Millisecond", "Second", "Minute", "Hour",
-            "Day", "Week", "Month", "Year", "Decade", "Century", "Millennium"]
+            "Day", "Week", "Month", "Year", "Decade", "Century", "Millennium"],
+        "required": "Required field is missing."
     }
 }

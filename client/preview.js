@@ -28,6 +28,8 @@ if (typeof QBA === 'undefined') {
 
 QBA.preview = {};
 
+QBA.preview.slideInProgress = false;
+
 QBA.preview.init = function (domain, limit) {
     "use strict";
     QBA.preview.viewer = domain;
@@ -37,7 +39,7 @@ QBA.preview.init = function (domain, limit) {
 QBA.preview.callDV = function (chart, params) {
     "use strict";
     var func;
-    if (typeof DV.data === "undefined") {
+    if (typeof DV.data === "undefined" || QBA.preview.slideInProgress) {
         setTimeout(function () {
             QBA.preview.callDV(chart, params);
         }, 300);
@@ -168,15 +170,19 @@ QBA.preview.updateChart = function (preventEffect) {
 
 QBA.preview.slideEffect = function (show) {
     "use strict";
+    QBA.preview.slideInProgress = true;
     if (typeof QBA.preview.$containerEl === "undefined") {
         QBA.preview.$containerEl = $("#preview");
     }
     if (show) {
         $(".openPreview").addClass("hidden");
-        QBA.preview.$containerEl.show("slide", { direction: "up" }, 500);
+        QBA.preview.$containerEl.show("slide", { direction: "up" }, 500, function () {
+            QBA.preview.slideInProgress = false;
+        });
     } else {
         QBA.preview.$containerEl.hide("slide", { direction: "up" }, 500, function () {
             $(".openPreview").removeClass("hidden");
+            QBA.preview.slideInProgress = false;
         });
     }
 };

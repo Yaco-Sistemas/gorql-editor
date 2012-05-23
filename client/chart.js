@@ -148,7 +148,7 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
         }
         if (!ignoreRequire && p.is(".required")) {
             if (value === "") {
-                throw "Required field is missing";
+                throw QBA.lingua.required;
             }
         }
 
@@ -210,7 +210,7 @@ QBA.chart.getChartParams = function (chart, ignoreRequire, extraInfo) {
         }
         if (!ignoreRequire && p.is(".required")) {
             if (value === "") {
-                throw "Required field is missing";
+                throw QBA.lingua.required;
             }
         }
 

@@ -94,6 +94,7 @@
         },
         "timelineSliderValues": ["Milisegundos", "Segundos", "Minutos",
             "Horas", "Días", "Semanas", "Meses", "Años", "Décadas", "Siglos",
-            "Milenios"]
+            "Milenios"],
+        "required": "Falta un campo obligatorio."
     }
 }
