@@ -92,6 +92,7 @@ exports.index = function (request, response) {
                     previewLimit: app.exports.settings.previewLimit,
                     siteLogo: app.exports.settings.siteLogo,
                     siteTitle: app.exports.settings.siteTitle,
+                    staticUrl: app.exports.settings.staticUrl,
                     schema: { categories: schema },
                     schemaJSON: JSON.stringify(schema),
                     linguaJSON: JSON.stringify(response.lingua.content.client),

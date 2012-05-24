@@ -24,7 +24,7 @@
 
 exports.settings = {
     global: {
-        root: "",
+        staticUrl: "",
         debug: false,
         port: 3010,
         viewer: "http://gorql-viewer.ceic-ogov.yaco.es",

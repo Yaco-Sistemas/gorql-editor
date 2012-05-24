@@ -4,18 +4,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>${siteTitle}</title>
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-    <link href='/stylesheets/jquery-ui-1.8.20.custom.css' rel='stylesheet' type='text/css'>
+    <link href='${staticUrl}stylesheets/jquery-ui-1.8.20.custom.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="${viewer}/stylesheets/base.css" />
-    <link href='/stylesheets/style.css' rel='stylesheet' type='text/css'>
+    <link href='${staticUrl}stylesheets/style.css' rel='stylesheet' type='text/css'>
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="/javascripts/html5-min.js"></script>
+    <script type="text/javascript" src="${staticUrl}javascripts/html5-min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery-ui-1.8.20.custom.min.js"></script>
+    <script type="text/javascript" src="${staticUrl}javascripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="${staticUrl}javascripts/jquery-ui-1.8.20.custom.min.js"></script>
     <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>-->
     {{if debugJS}}{{partial "debug"}}{{else}}
-    <script type="text/javascript" src="/javascripts/qba.min.js"></script>
+    <script type="text/javascript" src="${staticUrl}javascripts/qba.min.js"></script>
     {{/if}}
     <script type="text/javascript" src="${viewer}/javascripts/dv-core.js"></script>
     {{if templates}}

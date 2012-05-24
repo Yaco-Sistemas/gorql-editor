@@ -58,6 +58,7 @@ app.configure(function () {
     app.set('languagesFilters', settings.global.language);
     app.set('siteLogo', settings.global.logo);
     app.set('siteTitle', settings.global.title);
+    app.set('staticUrl', settings.global.staticUrl);
 
     app.use(app.router);
 });
@@ -87,8 +88,8 @@ app.configure('production', function () {
 
 // Routes
 
-app.get(settings.global.root + '/', index.index);
-app.get(settings.global.root + '/form', index.form);
+app.get('/', index.index);
+app.get('/form', index.form);
 
 app.listen(settings.global.port);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
