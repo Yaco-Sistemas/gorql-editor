@@ -46,6 +46,7 @@ QBA.preview.callDV = function (chart, params) {
     } else {
         if (DV.data[0].results.length > 0) {
             DV.writeDataToTable($("#preview #viewport #preview_table")[0], 0);
+            QBA.preview.$loader.addClass("hidden");
             if (chart !== false) {
                 func = DV[chart];
                 $("#preview #viewport #preview_chart").html("");
@@ -55,17 +56,15 @@ QBA.preview.callDV = function (chart, params) {
                     } else if (chart === "mapea") {
                         DV.initMapea(QBA.preview.viewer);
                     }
+                    QBA.preview.$el.removeClass("hidden");
                     func("#preview #viewport #preview_chart",
                          "#preview #viewport #preview_table", params);
-                    QBA.preview.$loader.addClass("hidden");
-                    QBA.preview.$el.removeClass("hidden");
                 } catch (err) {
-                    QBA.preview.$loader.addClass("hidden");
+                    QBA.preview.$el.addClass("hidden");
                     QBA.preview.$error.find("#preview_error_text").text(QBA.lingua.preview.error);
                     QBA.preview.$error.removeClass("hidden");
                 }
             } else {
-                QBA.preview.$loader.addClass("hidden");
                 QBA.preview.$el.removeClass("hidden");
             }
         } else {

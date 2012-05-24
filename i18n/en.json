@@ -55,7 +55,6 @@
         "hlsmall": "Little",
         "hlmedium": "Quite",
         "hllarge": "Much",
-        "sizeLabel": "Space reserved for labels in pixels",
         "landscape": "Orientation",
         "horizontal": "Horizontal",
         "vertical": "Vertical",
