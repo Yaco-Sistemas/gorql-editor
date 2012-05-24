@@ -56,16 +56,16 @@ QBA.preview.callDV = function (chart, params) {
                     } else if (chart === "mapea") {
                         DV.initMapea(QBA.preview.viewer);
                     }
-                    QBA.preview.$el.removeClass("hidden");
+                    QBA.preview.$el.show("blind", 1000);
                     func("#preview #viewport #preview_chart",
                          "#preview #viewport #preview_table", params);
                 } catch (err) {
-                    QBA.preview.$el.addClass("hidden");
+                    QBA.preview.$el.hide();
                     QBA.preview.$error.find("#preview_error_text").text(QBA.lingua.preview.error);
                     QBA.preview.$error.removeClass("hidden");
                 }
             } else {
-                QBA.preview.$el.removeClass("hidden");
+                QBA.preview.$el.show("blind", 1000);
             }
         } else {
             QBA.preview.$loader.addClass("hidden");
@@ -92,7 +92,7 @@ QBA.preview.initQuery = function (SPARQL, preventEffect) {
     if (typeof QBA.preview.$loader === "undefined") {
         QBA.preview.$loader = $("#preview #loader");
     }
-    QBA.preview.$el.addClass("hidden");
+    QBA.preview.$el.hide();
     QBA.preview.$error.addClass("hidden");
     QBA.preview.$loader.removeClass("hidden");
 
