@@ -67,6 +67,7 @@ configureApp = function (app, opts) {
     "use strict";
 
     app.set('previewLimit', opts.previewLimit);
+    app.set('availableCharts', opts.availableCharts);
 };
 
 app.configure('development', function () {

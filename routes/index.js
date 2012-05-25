@@ -95,6 +95,7 @@ exports.index = function (request, response) {
                     staticUrl: app.exports.settings.staticUrl,
                     schema: { categories: schema },
                     schemaJSON: JSON.stringify(schema),
+                    availableCharts: JSON.stringify(app.exports.settings.availableCharts),
                     linguaJSON: JSON.stringify(response.lingua.content.client),
                     languagesFilters: languagesFilters,
                     templates: templates,

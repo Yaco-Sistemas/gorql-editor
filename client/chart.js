@@ -28,6 +28,25 @@ if (typeof QBA === 'undefined') {
 
 QBA.chart = {};
 
+QBA.chart.families = {
+    d3: [],
+    simile: [],
+    map: []
+};
+
+QBA.chart.init = function (availableCharts) {
+    "use strict";
+    if (availableCharts.hasOwnProperty("d3")) {
+        QBA.chart.families.d3 = availableCharts.d3;
+    }
+    if (availableCharts.hasOwnProperty("simile")) {
+        QBA.chart.families.simile = availableCharts.simile;
+    }
+    if (availableCharts.hasOwnProperty("map")) {
+        QBA.chart.families.map = availableCharts.map;
+    }
+};
+
 QBA.chart.getUrl = function () {
     "use strict";
     var query = QBA.theQuery.toSPARQL();
@@ -293,12 +312,6 @@ QBA.chart.updateChartModel = function () {
     });
 };
 
-QBA.chart.families = {
-    d3: ["bar", "line", "pie"],
-    simile: ["timeline"],
-    map: ["map", "mapea"]
-};
-
 QBA.chart.compatibleCharts = function (one, two) {
     "use strict";
     var result = false;
@@ -379,12 +392,16 @@ QBA.chart.selectBestChart = function () {
     "use strict";
     var map = false,
         timeline = false,
-        chart = "bar",
+        chart = QBA.chart.families.d3[0],
         fields = _.flatten(_.map(QBA.theQuery.getCategoriesWithCheckedCollections(), function (category) {
             return _.map(category.getCheckedCollections(), function (collection) {
                 return collection.getCheckedFields();
             });
         }));
+
+    if (typeof chart === "undefined") {
+        chart = _.flatten(_.values(QBA.chart.families))[0];
+    }
 
     _.each(fields, function (field) {
         var type = field.get("type");
@@ -397,10 +414,10 @@ QBA.chart.selectBestChart = function () {
 
     $("#step5 #chartType li.active").removeClass("active");
     $("#step5 #chartType input[type=radio]:checked").attr("checked", false);
-    if (map) {
-        chart = "map";
-    } else if (timeline) {
-        chart = "timeline";
+    if (map && QBA.chart.families.map.length > 0) {
+        chart = QBA.chart.families.map[0];
+    } else if (timeline && QBA.chart.families.timeline.length > 0) {
+        chart = QBA.chart.families.timeline[0];
     }
     $("#step5 #chartType #" + chart + "_chart").attr("checked", "checked").parent().addClass("active");
     $("#step5 .paramsContainer").css("display", "none");

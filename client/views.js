@@ -180,6 +180,7 @@ QBA.views.Step = Backbone.View.extend({
     renderS5: function () {
         "use strict";
         var hasContent = false,
+            chart_names,
             chart;
         QBA.theQuery.each(function (category) {
             _.each(category.getCheckedCollections(), function (collection) {
@@ -194,6 +195,13 @@ QBA.views.Step = Backbone.View.extend({
             $("#step5 #chartParams").addClass("hidden");
             $(".openPreview").addClass("hidden");
         } else {
+            chart_names = _.flatten(_.values(QBA.chart.families));
+            $("#chartType input[name=chart_type]").each(function (idx, radio) {
+                var name = radio.id.split('_')[0];
+                if (_.indexOf(chart_names, name) === -1) {
+                    $(radio).parent().hide();
+                }
+            });
             $(".openPreview").removeClass("hidden");
             QBA.chart.timelineSliders();
 

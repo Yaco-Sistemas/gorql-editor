@@ -44,10 +44,20 @@ exports.settings = {
     },
 
     development: {
-        previewLimit: 50
+        previewLimit: 50,
+        availableCharts: {
+            d3: ["bar", "line", "pie"],
+            simile: ["timeline"],
+            map: ["map", "mapea"]
+        }
     },
 
     production: {
-        previewLimit: 10
+        previewLimit: 10,
+        availableCharts: {
+            d3: ["bar", "line", "pie"],
+            simile: ["timeline"],
+            map: ["mapea"]
+        }
     }
 };
