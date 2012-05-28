@@ -43,6 +43,7 @@ exports.index = function (request, response) {
             keys,
             replacement,
             languagesFilters,
+            schemaObj,
             i,
             j;
 
@@ -84,6 +85,31 @@ exports.index = function (request, response) {
                 }
             }
 
+            schemaObj = {
+                categories: schema,
+                fieldsCounts: {
+                    perCollection: {},
+                    perField: {
+                        "string": 0,
+                        "number": 0,
+                        "date": 0,
+                        "coord": 0,
+                        "uri": 0
+                    }
+                }
+            };
+            for (i = 0; i < schema.length; i += 1) {
+                for (j = 0; j < schema[i].collections.length; j += 1) {
+                    schemaObj.fieldsCounts.perCollection[schema[i].collections[j].identifier] = {
+                        "string": 0,
+                        "number": 0,
+                        "date": 0,
+                        "coord": 0,
+                        "uri": 0
+                    };
+                }
+            }
+
             response.render('layout', {
                 layout: false,
                 locals: {
@@ -93,7 +119,7 @@ exports.index = function (request, response) {
                     siteLogo: app.exports.settings.siteLogo,
                     siteTitle: app.exports.settings.siteTitle,
                     staticUrl: app.exports.settings.staticUrl,
-                    schema: { categories: schema },
+                    schema: schemaObj,
                     schemaJSON: JSON.stringify(schema),
                     availableCharts: JSON.stringify(app.exports.settings.availableCharts),
                     linguaJSON: JSON.stringify(response.lingua.content.client),

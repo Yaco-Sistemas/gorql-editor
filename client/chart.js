@@ -416,8 +416,8 @@ QBA.chart.selectBestChart = function () {
     $("#step5 #chartType input[type=radio]:checked").attr("checked", false);
     if (map && QBA.chart.families.map.length > 0) {
         chart = QBA.chart.families.map[0];
-    } else if (timeline && QBA.chart.families.timeline.length > 0) {
-        chart = QBA.chart.families.timeline[0];
+    } else if (timeline && QBA.chart.families.simile.length > 0) {
+        chart = QBA.chart.families.simile[0];
     }
     $("#step5 #chartType #" + chart + "_chart").attr("checked", "checked").parent().addClass("active");
     $("#step5 .paramsContainer").css("display", "none");

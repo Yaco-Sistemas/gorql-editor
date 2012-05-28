@@ -128,6 +128,7 @@ QBA.models.Collection = Backbone.Model.extend({
         var result = {};
         step = step || 1;
         result.name = this.attributes.name;
+        result.identifier = this.attributes.identifier;
         result.checked = this.attributes.checked;
         if (step > 2) {
             result.fields = _.map(this.getCheckedFields(), function (field) {
@@ -371,6 +372,35 @@ QBA.models.CategoryList = Backbone.Collection.extend({
     getHigherJoinNumber: function () {
         "use strict";
         return this.getHigherNumber(this.getJoinList());
+    },
+
+    getFieldsCounts: function () {
+        "use strict";
+        var result = {
+                perCollection: {}
+            },
+            perField = {
+                "string": 0,
+                "number": 0,
+                "date": 0,
+                "coord": 0,
+                "uri": 0
+            };
+        result.perField = _.clone(perField);
+        this.each(function (category) {
+            _.each(category.getCheckedCollections(), function (collection) {
+                var id = collection.get("identifier");
+                if (!result.perCollection.hasOwnProperty(id)) {
+                    result.perCollection[id] = _.clone(perField);
+                }
+                _.each(collection.getCheckedFields(), function (field) {
+                    var type = field.get("type");
+                    result.perField[type] += 1;
+                    result.perCollection[id][type] += 1;
+                });
+            });
+        });
+        return result;
     }
 });
 

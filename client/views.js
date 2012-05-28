@@ -96,8 +96,10 @@ QBA.views.Step = Backbone.View.extend({
     render: function () {
         "use strict";
         var stepIdx = parseInt(this.step.substr(4), 10),
-            html = $.tmpl(this.step, QBA.theQuery.toJSON(stepIdx));
-        this.$el.html(html);
+            schema = QBA.theQuery.toJSON(stepIdx);
+
+        schema.fieldsCounts = QBA.theQuery.getFieldsCounts();
+        this.$el.html($.tmpl(this.step, schema));
         QBA.views.jQueryUI();
 
         if (this.step === "step1") {

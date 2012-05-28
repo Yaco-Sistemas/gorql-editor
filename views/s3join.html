@@ -2,11 +2,13 @@
     <legend>${lingua.step3.title}</legend>
     <p class="hint"><span class="ui-icon ui-icon-info inline"></span>${lingua.step3.hint}</p>
     <div>
+        {{if fieldsCounts.perField.uri > 0}}
         <label for="add_join_field" class="js">${lingua.step3.addJoin}: </label>
         <select name="add_join_field" id="addJoinField">
             <option value="false"></option>
             {{each(idx_cat, category) categories}}
             {{each(idx_col, collection) category.collections}}
+            {{if fieldsCounts.perCollection[collection.identifier].uri > 0}}
             <optgroup label="${collection.name}">
                 {{each(idx_fie, field) collection.fields}}
                 {{if field.type == "uri"}}
@@ -14,11 +16,15 @@
                 {{/if}}
                 {{/each}}
             </optgroup>
+            {{/if}}
             {{/each}}
             {{/each}}
         </select>
         <button id="addJoinButton" class="js">${lingua.add}</button>
         <input type="submit" class="no-js" name="join-collection" value="Join collection" />
+        {{else}}
+        <p class="ui-state-error"><span class="ui-icon ui-icon-alert inline"></span>TODO</p>
+        {{/if}}
     </div>
     <div id="joins"></div>
     <div class="no-js buttons">
