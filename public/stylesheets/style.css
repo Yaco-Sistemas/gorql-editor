@@ -422,6 +422,17 @@ div.filter-widget.range {
     margin: 10px 10px 10px 0;
 }
 
+p.ui-state-error.nofields {
+    position: relative;
+    margin: 0px;
+    padding: 3px 3px 3px 35px;
+}
+
+p.ui-state-error.nofields > span {
+    margin-left: 0;
+    left: 10px;
+}
+
 #chartType {
     width: 260px;
 }
@@ -503,6 +514,10 @@ div.filter-widget.range {
 .paramsContainer label.ui-widget {
     display: inline-block;
     margin-top: 0;
+}
+
+.parameter select {
+    margin: 0;
 }
 
 .parameter div.slider-container {

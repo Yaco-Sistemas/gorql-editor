@@ -71,7 +71,8 @@
         "lat": "Latitudes field",
         "long": "Longitudes field",
         "view": "View Chart and Data",
-        "empty": "At least one collection and one field must be chosen in the previous steps."
+        "empty": "At least one collection and one field must be chosen in the previous steps.",
+        "nofields": "You haven't chosen any valid field for this section."
     },
     "client": {
         "preview": {

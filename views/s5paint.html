@@ -35,6 +35,7 @@
             </div>
             <div class="parameter">
                 <label for="bar-series-param"><span class="required">*</span> ${lingua.step5.series}:</label>
+                {{if fieldsCounts.perField.number > 0}}
                 <select name="bar-series-param" multiple size=4 class="wide-field required">
                     {{each(idx_cat, category) categories}}
                     {{each(idx_col, collection) category.collections}}
@@ -50,6 +51,9 @@
                     {{/each}}
                     {{/each}}
                 </select>
+                {{else}}
+                <p class="ui-state-error ui-corner-all nofields"><span class="ui-icon ui-icon-alert inline icon-vmiddle"></span>${lingua.step5.nofields}</p>
+                {{/if}}
             </div>
             <div class="parameter">
                 <div id="bar-size-param" class="inline margin-right-40">
@@ -82,6 +86,7 @@
             </div>
             <div class="parameter">
                 <label for="line-series-param"><span class="required">*</span> ${lingua.step5.series}:</label>
+                {{if fieldsCounts.perField.number > 0}}
                 <select name="line-series-param" multiple size=4 class="wide-field required">
                     {{each(idx_cat, category) categories}}
                     {{each(idx_col, collection) category.collections}}
@@ -97,6 +102,9 @@
                     {{/each}}
                     {{/each}}
                 </select>
+                {{else}}
+                <p class="ui-state-error ui-corner-all nofields"><span class="ui-icon ui-icon-alert inline icon-vmiddle"></span>${lingua.step5.nofields}</p>
+                {{/if}}
             </div>
             <div class="parameter">
                 <div id="line-size-param" class="inline margin-right-40">
@@ -129,6 +137,7 @@
             </div>
             <div class="parameter">
                 <label for="pie-series-param"><span class="required">*</span> ${lingua.step5.series}:</label>
+                {{if fieldsCounts.perField.number > 0}}
                 <select name="pie-series-param" multiple size=4 class="wide-field required">
                     {{each(idx_cat, category) categories}}
                     {{each(idx_col, collection) category.collections}}
@@ -144,6 +153,9 @@
                     {{/each}}
                     {{/each}}
                 </select>
+                {{else}}
+                <p class="ui-state-error ui-corner-all nofields"><span class="ui-icon ui-icon-alert inline icon-vmiddle"></span>${lingua.step5.nofields}</p>
+                {{/if}}
             </div>
             <div class="parameter">
                 <div id="pie-size-param" class="inline margin-right-40">
@@ -176,6 +188,7 @@
             </div>
             <div class="parameter">
                 <label for="timeline-start-param"><span class="required">*</span> ${lingua.step5.start}:</label>
+                {{if fieldsCounts.perField.date > 0}}
                 <select name="timeline-start-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -192,9 +205,13 @@
                     {{/each}}
                     {{/each}}
                 </select>
+                {{else}}
+                <p class="ui-state-error ui-corner-all nofields"><span class="ui-icon ui-icon-alert inline icon-vmiddle"></span>${lingua.step5.nofields}</p>
+                {{/if}}
             </div>
             <div class="parameter">
                 <label for="timeline-end-param">${lingua.step5.end}:</label>
+                {{if fieldsCounts.perField.date > 0}}
                 <select name="timeline-end-param" class="wide-field">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -211,6 +228,9 @@
                     {{/each}}
                     {{/each}}
                 </select>
+                {{else}}
+                <p class="ui-state-error ui-corner-all nofields"><span class="ui-icon ui-icon-alert inline icon-vmiddle"></span>${lingua.step5.nofields}</p>
+                {{/if}}
             </div>
             <div class="parameter">
                 <label for="timeline-description-param">${lingua.step5.description}:</label>
@@ -247,6 +267,7 @@
         <div id="mapParams" class="paramsContainer" style="display: none;">
             <div class="parameter">
                 <label for="map-lat-param"><span class="required">*</span> ${lingua.step5.lat}:</label>
+                {{if fieldsCounts.perField.coord > 0}}
                 <select name="map-lat-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -263,9 +284,13 @@
                     {{/each}}
                     {{/each}}
                 </select>
+                {{else}}
+                <p class="ui-state-error ui-corner-all nofields"><span class="ui-icon ui-icon-alert inline icon-vmiddle"></span>${lingua.step5.nofields}</p>
+                {{/if}}
             </div>
             <div class="parameter">
                 <label for="map-long-param"><span class="required">*</span> ${lingua.step5.long}:</label>
+                {{if fieldsCounts.perField.coord > 0}}
                 <select name="map-long-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -282,6 +307,9 @@
                     {{/each}}
                     {{/each}}
                 </select>
+                {{else}}
+                <p class="ui-state-error ui-corner-all nofields"><span class="ui-icon ui-icon-alert inline icon-vmiddle"></span>${lingua.step5.nofields}</p>
+                {{/if}}
             </div>
             <div class="parameter">
                 <label for="map-description-param">${lingua.step5.description}:</label>
@@ -310,6 +338,7 @@
         <div id="mapeaParams" class="paramsContainer" style="display: none;">
             <div class="parameter">
                 <label for="mapea-lat-param"><span class="required">*</span> ${lingua.step5.lat}:</label>
+                {{if fieldsCounts.perField.coord > 0}}
                 <select name="mapea-lat-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -326,9 +355,13 @@
                     {{/each}}
                     {{/each}}
                 </select>
+                {{else}}
+                <p class="ui-state-error ui-corner-all nofields"><span class="ui-icon ui-icon-alert inline icon-vmiddle"></span>${lingua.step5.nofields}</p>
+                {{/if}}
             </div>
             <div class="parameter">
                 <label for="mapea-long-param"><span class="required">*</span> ${lingua.step5.long}:</label>
+                {{if fieldsCounts.perField.coord > 0}}
                 <select name="mapea-long-param" class="wide-field required">
                     <option value=""></option>
                     {{each(idx_cat, category) categories}}
@@ -345,6 +378,9 @@
                     {{/each}}
                     {{/each}}
                 </select>
+                {{else}}
+                <p class="ui-state-error ui-corner-all nofields"><span class="ui-icon ui-icon-alert inline icon-vmiddle"></span>${lingua.step5.nofields}</p>
+                {{/if}}
             </div>
             <div class="parameter">
                 <label for="mapea-description-param">${lingua.step5.description}:</label>

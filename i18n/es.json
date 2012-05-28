@@ -71,7 +71,8 @@
         "lat": "Campo con las latitudes",
         "long": "Campo con las longitudes",
         "view": "Vea los datos y el gráfico",
-        "empty": "Es imprescindible escoger alguna colección y algún campo en los pasos anteriores."
+        "empty": "Es imprescindible escoger alguna colección y algún campo en los pasos anteriores.",
+        "nofields": "No ha escogido ninún campo válido para este apartado."
     },
     "client": {
         "preview": {
