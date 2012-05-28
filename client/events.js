@@ -212,6 +212,8 @@ QBA.events = {
             "use strict";
             $("#openPreview").unbind("click");
             $("#refreshPreview").unbind("click");
+            $("#step2-wrapper #advanced").unbind("click");
+            $("#step2-wrapper #hideadvanced").unbind("click");
             $("#step2-wrapper input[name=prevS2]").unbind("click");
             $("#step2-wrapper input[name=nextS2]").unbind("click");
             $("#step2-wrapper input[name=done]").unbind("click");

@@ -33,7 +33,8 @@
         "title": "Filtre los contenidos de las colecciones",
         "addFilter": "Crear filtro para",
         "view": "Vea los datos",
-        "hint": "Para eliminar los resultados que no le interesen puede crear filtros para los campos seleccionados."
+        "hint": "Para eliminar los resultados que no le interesen puede crear filtros para los campos seleccionados.",
+        "empty": "Es imprescindible escoger algún campo en este mismo paso para poder filtrar."
     },
     "step5" : {
         "title": "Visualice los resultados",

@@ -33,7 +33,8 @@
         "title": "Filter the collections contents",
         "addFilter": "Add filter for",
         "view": "View Data",
-        "hint": "To remove uninteresting results you can create filters for the selected fields."
+        "hint": "To remove uninteresting results you can create filters for the selected fields.",
+        "empty": "At least one field must be chosen in this step to be able to filter."
     },
     "step5" : {
         "title": "Visualize the results",

@@ -1,7 +1,8 @@
 <fieldset class="filter">
     <legend>${lingua.step4.title}</legend>
     <p class="hint"><span class="ui-icon ui-icon-info inline"></span>${lingua.step4.hint}</p>
-    <div class="relative">
+    <p class="empty hidden ui-state-error ui-corner-all"><span class="ui-icon ui-icon-alert inline"></span>${lingua.step4.empty}</p>
+    <div class="relative" id="filterCreation">
         <label for="add_filter_field" class="js">${lingua.step4.addFilter}: </label>
         <select name="add_filter_field" id="addFilterField">
             <option value="false"></option>

@@ -171,6 +171,19 @@ QBA.views.Step = Backbone.View.extend({
 
     renderS4: function () {
         "use strict";
+        var hasContent = false;
+        QBA.theQuery.each(function (category) {
+            _.each(category.getCheckedCollections(), function (collection) {
+                hasContent = hasContent || (collection.getCheckedFields().length !== 0);
+            });
+        });
+        if (!hasContent) {
+            $("#step4 .empty").removeClass("hidden");
+            $("#step4 .hint").addClass("hidden");
+            $("#step4 #filterCreation").addClass("hidden");
+            $("#step4 #filters").addClass("hidden");
+        }
+
         _.each(QBA.theQuery.getUserFilterList(), function (userFilter) {
             var view = new QBA.views.Filter({
                 model: userFilter
