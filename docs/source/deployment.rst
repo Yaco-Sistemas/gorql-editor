@@ -17,19 +17,24 @@ NodeJS
 NodeJS es la tecnología sobre la que se ha construido GORQL Editor. Se puede
 instalar a partir de un RPM:
 
-*x86_64*
- Descarga-NodeJS_
+*x86_64 RedHat 5*
+ Descarga-NodeJS-RH5_
 
-.. _Descarga-NodeJS: http://files.yaco.es/~ceic-ogov/dependencies/rh5/nodejs-0.6.17-1.x86_64.rpm
+.. _Descarga-NodeJS-RH5: http://files.yaco.es/~ceic-ogov/dependencies/rh5/nodejs-0.6.17-1.x86_64.rpm
 
-Una vez descargado el paquete se instala ejecutando:
+*x86_64 RedHat 6*
+ Descarga-NodeJS-RH6_
 
-::
+.. _Descarga-NodeJS-RH6: http://files.yaco.es/~ceic-ogov/dependencies/rh6/nodejs-0.6.17-1.el6.x86_64.rpm
+
+Una vez descargado el paquete se instala ejecutando (ej RH5):
+
+.. code-block:: none
 
  # rpm -Uvh nodejs-0.6.17-1.x86_64.rpm
 
 Este paquete provee NodeJS_ y NPM_ (el sistema de paquetería de NodeJS)
-necesarios para el funcionamiento de GORQL Editor.
+necesarios para el funcionamiento de GORQL Viewer.
 
 .. _NodeJS: http://nodejs.org/
 .. _NPM: http://npmjs.org/
@@ -72,10 +77,15 @@ GORQL Editor
 Una vez instalado NodeJS, se puede desplegar GORQL Editor. Para ello se utiliza el
 paquete RPM:
 
-*x86_64*
- Descarga-GORQL-Editor_
+*x86_64 RedHat 5*
+ Descarga-GORQL-Editor-RH5_
 
-.. _Descarga-GORQL-Editor: http://files.yaco.es/~ceic-ogov/gorql-editor/devel/rh5/gorql-editor-1.0.0develhg186-2.x86_64.rpm
+.. _Descarga-GORQL-Editor-RH5: http://files.yaco.es/~ceic-ogov/gorql-editor/devel/rh5/gorql-editor-1.0.0develhg186-2.x86_64.rpm
+
+*x86_64 RedHat 6*
+ Descarga-GORQL-Editor-RH6_
+
+.. _Descarga-GORQL-Editor-RH6: http://files.yaco.es/~ceic-ogov/gorql-editor/devel/rh6/gorql-editor-1.0.0develhg186-2.x86_64.rpm
 
 Una vez descargado el paquete se instala ejecutando:
 
@@ -125,6 +135,21 @@ servidor se relance en caso de que ocurra algún problema.
  data:       uid  command script                 forever pid  logfile                           uptime
  data:   [0] ekL8 node    /opt/gorql-editor/app.js 8101    8102 /opt/gorql-editor/.forever/ekL8.log 0:0:39:15.924
 
+Esquema del EndPoint SPARQL
+---------------------------
+
+La estructura de los datos del EndPoint se define en un fichero JSON. Dicho
+fichero se puede guardar en cualquier parte, pero lo más habitual es que esté
+dentro del directorio *endpoints*. En dicho directorio se encuentran dos
+ficheros de ejemplo sobre datos de la DBpedia_, que es un proyecto que publica
+los datos de la Wikipedia_ a través de un Virtuoso_ en forma de *linked data*.
+
+.. _DBpedia: http://dbpedia.org/
+.. _Wikipedia: http://www.wikipedia.org/
+.. _Virtuoso: http://virtuoso.openlinksw.com/
+
+TODO
+
 Configuración
 -------------
 
@@ -156,11 +181,15 @@ Global
    desactivado. Por defecto, *false*.
  - **port**: Puerto en el que escucha el editor. Por defecto, *3010*.
  - **viewer**: Dominio en el que se encuentra GORQL Viewer. Por defecto,
-   *http://gorql-viewer.ceic-ogov.yaco.es*.
+   *http://gorql-viewer.ceic-ogov.yaco.es*. Es importante que no tenga */* al
+   final de la url.
  - **schema**: Fichero JSON con la definición de las colecciones del endpoint a
    utilizar. Por defecto, *endpoints/dbpedia.json*.
- - **languagesFilter**: Lista de idiomas para ofrecer al usuario en el filtro
-   de idioma. Por defecto se incluye inglés y español.
+ - **language**: Lista de idiomas para ofrecer al usuario en el filtro de
+   idioma. No se trata del idioma en el que se sirve la plataforma, sino en los
+   idiomas por los que se pueden filtrar los campos. Por defecto se incluye
+   inglés y español. Se trata de un objeto JSON con el idioma por defecto y la
+   lista de idiomas posibles.
  - **logo**: Ruta a la imagen para la cabecera del editor. Por defecto,
    *images/logo-big.png*.
  - **title**: Título del editor que aparecerá en la cabecera. Por defecto,
@@ -174,3 +203,11 @@ valores diferentes a los que el administrador haya configurado aquí:
 
  - **previewLimit**: Número máximo de registros mostrados en la tabla de
    resultados de la previsualización. Por ejemplo, *10*.
+ - **availableCharts**: Objeto JSON con la lista de gráficos disponibles para
+   el usuario, agrupados por familias. Para activar o desactivar un gráfico
+   sólo hay que añadirlo o quitarlo de la familia correspondiente. La lista
+   completa de gráficos según familias es:
+
+   - **d3**: *bar*, *line* y *pie*
+   - **simile**: *timeline*
+   - **map**: *map* y *mapea*

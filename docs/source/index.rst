@@ -9,12 +9,10 @@ GORQL Editor
 :Website: https://trac.yaco.es/ceic-ogov/
 :Release: |release|
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pretium
-aliquam tellus, non elementum felis tristique a. Donec bibendum malesuada neque
-et dictum. Ut nisi tortor, ullamcorper vitae egestas a, ultrices vel sapien.
-Etiam aliquet, mauris vel consectetur egestas, tortor nulla aliquet dolor, sed
-gravida massa diam vel nibh. Vivamus sed tincidunt massa. Sed ipsum eros, luctus
-quis dignissim eu, viverra ac nisi.
+GORQL Editor es el segundo componente del sistema GORQL. Su objetivo es
+ayudar al usuario a elaborar consultas sobre los datos disponibles, así como
+definir representaciones gráficas de los resultados obtenidos. Los resultados y
+el gráfico se muestran mediante GORQL Viewer.
 
 GORQL Editor se distribuye con licencia `EUPL o Licencia Pública de la Unión
 Europea <http://ec.europa.eu/idabc/eupl>`_. Esta licencia es una de las

@@ -1,53 +1,32 @@
 Motivación y principales conceptos
 ==================================
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pretium
-aliquam tellus, non elementum felis tristique a. Donec bibendum malesuada neque
-et dictum. Ut nisi tortor, ullamcorper vitae egestas a, ultrices vel sapien.
-Etiam aliquet, mauris vel consectetur egestas, tortor nulla aliquet dolor, sed
-gravida massa diam vel nibh. Vivamus sed tincidunt massa. Sed ipsum eros, luctus
-quis dignissim eu, viverra ac nisi. Aliquam hendrerit gravida justo, elementum
-auctor lectus vestibulum et. Pellentesque enim nisl, placerat eget rhoncus id,
-ullamcorper sed neque. Nullam feugiat convallis convallis. Proin gravida
-vehicula felis, eget porttitor tellus blandit sed.
+En la actualidad existen numerosas iniciativas OpenData que persiguen
+la publicación de la mayor cantidad de datos en formatos que faciliten
+la reutilización de los mismos. De esta forma se aumenta la transparencia
+de un gobierno u organización y se crea un mercado de reutilizadores
+dispuestos a crear aplicaciones cuya materia prima son los datos
+publicados.
 
-Quisque feugiat bibendum facilisis. Mauris nec massa ac ante dapibus convallis a
-ac nisi. Nullam urna turpis, convallis vel dictum in, suscipit id sem. In non
-auctor leo. Quisque tristique viverra nibh, eu consequat mi interdum sit amet.
-In facilisis bibendum nunc, sed ullamcorper dolor facilisis at. Vestibulum vitae
-odio a felis condimentum viverra nec non libero. Duis congue mauris vel quam
-posuere imperdiet. Cras eros sapien, vulputate vel rhoncus ut, pretium ac dui.
-Pellentesque placerat bibendum ligula nec rutrum. Donec id massa lorem. Proin
-quis diam lacus, et pellentesque massa. Mauris aliquam eros mi, non vestibulum
-erat. Fusce commodo egestas magna non dignissim. Cum sociis natoque penatibus et
-magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat.
+Sin embargo, el ciudadano medio no dispone de los conocimientos técnicos
+para manejar esa información y no puede encontrar utilidad a los datos
+publicados hasta que se crean aplicaciones que los usan.
 
-Maecenas tempor condimentum vulputate. Fusce nibh dui, laoreet et pulvinar sit
-amet, bibendum a magna. Fusce vulputate lorem ac lectus feugiat ornare. Praesent
-augue diam, consectetur non molestie a, vulputate at enim. In pharetra cursus
-erat eu suscipit. Duis lacus lacus, facilisis in viverra rhoncus, pretium sit
-amet metus. Aenean a neque nulla. Aliquam eu dapibus erat. Aenean interdum neque
-et ligula iaculis blandit. Maecenas malesuada pharetra quam, nec fermentum odio
-fringilla sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et
-ultrices posuere cubilia Curae; Maecenas fringilla sodales nulla, non mollis
-arcu molestie eu. In at molestie orci.
+Para cubrir esta necesidad surge GORQL, un conjunto de herramientas cuyo
+fin último es la posibilidad de que usuarios sin conocimientos específicos
+puedan reutilizar los datos publicados y compartirlos entre ellos.
 
-Nunc lacus urna, ullamcorper sed varius non, cursus et nulla. In vitae arcu sit
-amet eros scelerisque varius. Pellentesque habitant morbi tristique senectus et
-netus et malesuada fames ac turpis egestas. Etiam lacinia nibh eget diam
-vulputate ornare porta vel mauris. Morbi vel nisl arcu, ut porta risus. Mauris
-eleifend, est non feugiat convallis, ipsum mauris vulputate leo, a porta est
-purus id velit. Suspendisse interdum lobortis placerat. Aliquam erat volutpat.
-Curabitur congue velit consectetur felis volutpat a eleifend mi consectetur.
-Vestibulum non sem est, id laoreet nisl. Nulla laoreet bibendum lectus. Sed
-porta sapien vitae odio euismod blandit.
+Uno de los objetivos de GORQL es por tanto, la facilidad de uso. Esta
+característica primará frente a todas las demás. Es por ello que GORQL
+no admitirá cualquier tipo de reutilización y las aplicaciones avanzadas
+con alta interacción y mezcla de datos (mashups) siguen teniendo un
+mercado específico para usuarios técnicos avanzados.
 
-Morbi sed sapien eget diam scelerisque euismod. Proin augue quam, euismod et
-dictum et, tincidunt vel augue. Maecenas porta, ipsum nec volutpat condimentum,
-enim risus varius nisi, non tempor elit urna sed nulla. Sed eu ultricies turpis.
-Praesent mollis imperdiet ipsum. Aenean quis neque nibh, a imperdiet quam.
-Aenean fringilla blandit ante eu accumsan. Duis malesuada, sapien vitae
-malesuada vehicula, quam justo sodales sem, vel porttitor leo enim non dolor.
-Proin posuere cursus quam, ut dignissim arcu tempor sed. Maecenas id eros nunc,
-nec egestas magna. In consectetur volutpat urna, ultrices tristique est sodales
-a. Maecenas tempor tincidunt est et porttitor. 
+Esta documentación cubre el módulo GORQL Editor que es el encargado de ayudar
+al usuario en la elaboración de consultas SPARQL. GORQL Editor por sí sólo no
+cubre los objetivos arriba descritos y necesita el uso de otros módulos como
+GORQL Viewer para obtener el sistema final deseado.
+
+GORQL Editor no está concebido para ser usado de forma independiente, necesita
+de GORQL Viewer para mostrar las previsualizaciones y los resultados de la
+consulta final.
