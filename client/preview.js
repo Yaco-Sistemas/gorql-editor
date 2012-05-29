@@ -61,16 +61,13 @@ QBA.preview.callDV = function (chart, params) {
                          "#preview #viewport #preview_table", params);
                 } catch (err) {
                     QBA.preview.$el.hide();
-                    QBA.preview.$error.find("#preview_error_text").text(QBA.lingua.preview.error);
-                    QBA.preview.$error.removeClass("hidden");
+                    QBA.preview.processError(QBA.lingua.preview.error);
                 }
             } else {
                 QBA.preview.$el.show("blind", 1000);
             }
         } else {
-            QBA.preview.$loader.addClass("hidden");
-            QBA.preview.$error.find("#preview_error_text").text(QBA.lingua.preview.noresults);
-            QBA.preview.$error.removeClass("hidden");
+            QBA.preview.processError(QBA.lingua.preview.noresults);
         }
     }
 };
@@ -78,10 +75,6 @@ QBA.preview.callDV = function (chart, params) {
 QBA.preview.initQuery = function (SPARQL, preventEffect) {
     "use strict";
     var html;
-
-    if (typeof DV.data !== "undefined") {
-        delete DV.data;
-    }
 
     if (typeof QBA.preview.$el === "undefined") {
         QBA.preview.$el = $("#preview #viewport");
@@ -101,6 +94,14 @@ QBA.preview.initQuery = function (SPARQL, preventEffect) {
         QBA.preview.slideEffect(true);
     }
 
+    if (typeof DV === "undefined") {
+        throw QBA.lingua.preview.noDV;
+    }
+
+    if (typeof DV.data !== "undefined") {
+        delete DV.data;
+    }
+
     html = "<script type='text/javascript' src='" + QBA.preview.viewer;
     html += "/viewer/?query=" + encodeURIComponent(SPARQL);
     html += "&amp;embedded=true&amp;idx=0'></script>";
@@ -108,10 +109,24 @@ QBA.preview.initQuery = function (SPARQL, preventEffect) {
     return html;
 };
 
+QBA.preview.processError = function (err) {
+    "use strict";
+    QBA.preview.$loader.addClass("hidden");
+    QBA.preview.$error.find("#preview_error_text").text(err);
+    QBA.preview.$error.removeClass("hidden");
+};
+
 QBA.preview.updateTable = function (preventEffect) {
     "use strict";
     var SPARQL = QBA.theQuery.toSPARQL() + " LIMIT " + QBA.preview.limit,
+        html;
+
+    try {
         html = QBA.preview.initQuery(SPARQL, preventEffect);
+    } catch (err1) {
+        QBA.preview.processError(err1);
+        return;
+    }
 
     html += "<table id='preview_table' class='dv_table'></table>";
 
@@ -119,18 +134,22 @@ QBA.preview.updateTable = function (preventEffect) {
 
     try {
         QBA.preview.callDV(false);
-    } catch (err) {
-        QBA.preview.$loader.addClass("hidden");
-        QBA.preview.$error.find("#preview_error_text").text(err);
-        QBA.preview.$error.removeClass("hidden");
+    } catch (err2) {
+        QBA.preview.processError(err2);
     }
 };
 
 QBA.preview.updateChart = function (preventEffect) {
     "use strict";
     var SPARQL = QBA.theQuery.toSPARQL(),
-        html = QBA.preview.initQuery(SPARQL, preventEffect),
-        radio = $("input[name=chart_type]:checked")[0];
+        radio = $("input[name=chart_type]:checked")[0],
+        html;
+
+    try {
+        html = QBA.preview.initQuery(SPARQL, preventEffect);
+    } catch (err1) {
+        QBA.preview.processError(err1);
+    }
 
     if (radio.value === "map") {
         html += "<link rel='stylesheet' href='" + QBA.preview.viewer + "/javascripts/theme/default/style.css' />";
@@ -160,10 +179,8 @@ QBA.preview.updateChart = function (preventEffect) {
 
     try {
         QBA.preview.callDV(radio.value, QBA.chart.getChartParams(radio.value));
-    } catch (err) {
-        QBA.preview.$loader.addClass("hidden");
-        QBA.preview.$error.find("#preview_error_text").text(err);
-        QBA.preview.$error.removeClass("hidden");
+    } catch (err2) {
+        QBA.preview.processError(err2);
     }
 };
 

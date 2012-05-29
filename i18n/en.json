@@ -78,7 +78,8 @@
     "client": {
         "preview": {
             "error": "There was an error.",
-            "noresults": "No results returned."
+            "noresults": "No results returned.",
+            "noDV": "Couldn't establish connection with GORQL Viewer."
         },
         "filters": {
             "string": ["is equal", "contains", "is in this language:"],

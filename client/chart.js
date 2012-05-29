@@ -81,6 +81,9 @@ QBA.chart.openViewerChartAndData = function () {
 
 QBA.chart.fillFormWithDefaultValues = function (chart) {
     "use strict";
+    if (typeof DV === "undefined") {
+        return;
+    }
     if (typeof DV.defaults === "undefined") {
         return;
     }

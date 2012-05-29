@@ -78,7 +78,8 @@
     "client": {
         "preview": {
             "error": "Se produjo un error.",
-            "noresults": "No se encontraron resultados."
+            "noresults": "No se encontraron resultados.",
+            "noDV": "No se pudo conectar con GORQL Viewer."
         },
         "filters": {
             "string": ["sea igual a", "contenga", "esté en el idioma"],
