@@ -142,13 +142,269 @@ La estructura de los datos del EndPoint se define en un fichero JSON. Dicho
 fichero se puede guardar en cualquier parte, pero lo más habitual es que esté
 dentro del directorio *endpoints*. En dicho directorio se encuentran dos
 ficheros de ejemplo sobre datos de la DBpedia_, que es un proyecto que publica
-los datos de la Wikipedia_ a través de un Virtuoso_ en forma de *linked data*.
+los datos de la Wikipedia_ a través de un *endpoint* SPARQL en forma de *linked
+data*.
 
 .. _DBpedia: http://dbpedia.org/
 .. _Wikipedia: http://www.wikipedia.org/
-.. _Virtuoso: http://virtuoso.openlinksw.com/
 
-TODO
+El contenido del fichero se clasifica en **categorías** que a su vez están
+compuestas de **colecciones (datasets)**, y éstas de una **definición**,
+**prefijos** y **campos**. Los campos son a su vez objetos con su nombre y
+otros parámetros.
+
+El fichero es directamente una lista de categorías en formato JSON_. Cada
+categoría es un objeto con sus propiedades y una lista de colecciones.
+
+.. _JSON: http://www.json.org/
+
+Categorías
+~~~~~~~~~~
+
+Un **categoría** respresenta un grupo de colecciones, y tiene la siguiente
+estructura:
+
+.. code-block:: javascript
+
+    {
+        "name": "Nombre para la interfaz",
+        "collections": [{...}, {...}, {...}, ...]
+    }
+
+Como se puede ver, cada categoría sólo tiene dos atributos: un nombre para la
+interfaz y una lista de colecciones.
+
+Colecciones
+~~~~~~~~~~~
+
+Una **colección** representa un grupo de elementos del mismo tipo y que tienen
+los mismos campos, y tiene la siguiente estructura:
+
+.. code-block:: javascript
+
+    {
+        "name": "Nombre para la interfaz",
+        "identifier": "nombre_codigo_unico",
+        "definition": ["<def1>", "<def2>", ...],
+        "prefixes": {
+            "pref_key_1": "<prefix1>",
+            "pref_key_2": "<prefix2>",
+            ...
+        },
+        "fields": [{...}, {...}, {...}, ...]
+    }
+
+Los atributos que componen las colecciones son:
+
+*name*
+    Un nombre para mostrar al usuario en la interfaz.
+
+*identifier*
+    Un identificador único de uso interno. No debe repetirse, y no puede
+    contener caracteres especiales (Especificación_).
+
+.. _Especificación: http://www.w3.org/TR/sparql11-query/#rVARNAME
+
+*definition*
+    Una serie de condiciones SPARQL que definen la colección. Se explica con
+    mayor detalle a continuación.
+
+*prefixes*
+    Una lista de prefijos SPARQL. Se explica con mayor detalle a continuación.
+
+*fields*
+    Una lista con los campos de la colección.
+
+El atributo **definition** es una lista de patrones SPARQL que permiten definir
+la colección como tal. En SPARQL, los elementos que forman la sección WHERE se
+suelen llamar *patterns*, y son condiciones que deben cumplir las tripletas
+para ser escogidas. Esta lista de patterns son las condiciones que una tripleta
+debe cumplir para ser considerada parte de la colecciones.
+
+El formato en el que se escriben es muy parecido al de SPARQL. En SPARQL cada
+pattern está compuesto de 3 elementos: sujeto, predicado y objeto, en ese
+orden. Es decir, algo como:
+
+.. code-block:: none
+
+    ?subject ?predicate ?object .
+
+Donde los elementos pueden ser variables o literales. En el caso del campo
+*definition* los patterns son del tipo:
+
+.. code-block:: none
+
+    predicate object
+
+Donde no aparece el sujeto (que será una variable en la consulta SPARQL final),
+y el predicado y el objeto no pueden ser variables, deben ser literales. Hay
+que destacar también la ausencia del "." al final.
+
+Un ejemplo para definir una colección como "Novelistas españoles" a partir de
+los datos de la DBpedia_ sería:
+
+.. code-block:: javascript
+
+    "definition": [
+        "<http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Spanish_novelists>"
+    ]
+
+La condición que se está estableciendo en este caso es que los objetos tengan
+como valor del atributo `<http://purl.org/dc/terms/subject>` el literal
+`<http://dbpedia.org/resource/Category:Spanish_novelists>`. Todo objeto que
+cumpla esta condición será un miembro de la colección. En este ejemplo sólo hay
+una condición, pero podrían ser varias, y por ello el atributo *definition*
+debe ser una lista.
+
+El atributo **prefixes** es un diccionario de prefijos SPARQL, donde la clave
+es el nombre en código del prefijo, y que se usará después para asignar
+prefijos a los campos, y el valor es la URI_ del prefijo.
+
+.. _URI: http://www.w3.org/TR/2004/REC-rdf-concepts-20040210/#dfn-URI-reference
+
+En SPARQL los prefijos se utilizan para que sea más cómodo, al escribir los
+patterns del WHERE, especificar el *namespace* de cada literal. La sintaxis
+SPARQL es:
+
+.. code-block:: none
+
+    PREFIX code: <http://www.example.com/uri>
+
+Mientras que en el atributo *prefixes* se escribiría como un par clave valor
+tal que así:
+
+.. code-block:: none
+
+    "code": "<http://www.example.com/uri>"
+
+La clave en JSON debe ser una cadena, de ahí las comillas. Un ejemplo completo
+del diccionario con los prefijos sería:
+
+.. code-block:: javascript
+
+    "prefixes": {
+        "rdfs": "<http://www.w3.org/2000/01/rdf-schema#>",
+        "dbpprop": "<http://dbpedia.org/property/>"
+    }
+
+Al generarse la consulta este diccionario de prefijos se trasladaría a la
+sintaxis de SPARQL. La clave de cada elemento del diccionario es la que se debe
+usar luego en los nombres código de los campos que pertenezcan a ese namespace.
+
+Campos
+~~~~~~
+
+Un **campo** tiene la siguiente estructura:
+
+.. code-block:: javascript
+
+    {
+        "code": "prefijo:nombre_codigo",
+        "name": "Nombre para la interfaz",
+        "type": "type_name",
+        "parameters": {
+            "param1": param_value1,
+            "param2": param_value2,
+            ...
+        }
+    }
+
+Los atributos que componen los campos son:
+
+*code*
+    Pareja de prefijo y nombre del campo en el endpoint. No puede repetirse
+    dentro de una colección. El prefijo es la clave del diccionario de
+    prefijos para el prefijo deseado. No puede contener caracteres especiales
+    (`Especificación`__).
+
+.. _Especif2: http://www.w3.org/TR/sparql11-query/#rPNAME_LN
+
+__ Especif2_
+
+*name*
+    Un nombre para mostrar al usuario en la interfaz.
+
+*type*
+    El tipo al que pertenece el campo. Si la fuente de datos es de calidad,
+    el valor de este campo en todos los objetos de la colección será del
+    mismo tipo. Los posibles valores son:
+
+    string
+        Cadena de texto.
+    number
+        Número, puede ser entero o flotante.
+    date
+        Fecha en formato YYYY-MM-DD.
+    coord
+        Coordenada geográfica, latitud o longitud.
+    uri
+        URI_ a otros objetos del endpoint.
+
+*parameters*
+    Objeto **opcional** con los parámetros del widget de filtrado
+    correspondiente al tipo del campo. Es decir, aquí se definen con qué
+    valores y opciones se mostrará la interfaz de usuario para filtrar por
+    este campo. Al ser opcional este atributo puede no aparecer.
+
+En la interfaz para definición de filtros se muestran una serie de controles y
+widgets, mediante los **parameters** de cada campo se controla qué permite
+dicha interfaz hacer. Estos *parameters* dependen del tipo del campo:
+
+- *string*: Ninguno.
+- *number*:
+
+  - *min*: Mínimo valor para el filtro.
+  - *max*: Máximo valor para el filtro.
+  - *step*: Salto mínimo entre un valor posible y el siguiente.
+
+- *date*:
+
+  - *min*: Mínimo valor para el filtro.
+  - *max*: Máximo valor para el filtro.
+
+- *coord*: Los mismos que para el tipo number.
+- *uri*: Ninguno.
+
+Que un tipo de campo no tenga parámetros no quiere decir que no se pueda
+filtrar por los campos de dicho tipo, tan sólo que los filtros posibles son
+iguales idenpendientemente del campo que sea (mientras sea de ese tipo).
+
+Ejemplo de un campo de typo "date":
+
+.. code-block:: javascript
+
+    {
+        "code": "dbpprop:releaseDate",
+        "name": "Fecha de publicación",
+        "type": "date",
+        "parameters": {
+            "min": "1000-01-01",
+            "max": "2050-01-01"
+        }
+    }
+
+Y otro de tipo "number":
+
+.. code-block:: javascript
+
+    {
+        "code": "dbpedia-owl:populationTotal",
+        "name": "Población",
+        "type": "number",
+        "parameters": {
+            "min": 0,
+            "max": 50000000,
+            "step": 10000
+        }
+    }
+
+Es decir, que para los filtros del campo "Población" el mínimo valor que puede
+introducir el usuario es cero, el máximo 50 millones, y cada paso es de 10000
+habitantes.
+
+Con esto se completa el contenido del esquema del endpoint. En el directorio
+`/opt/gorql-editor/endpoints/` se encuentran dos ficheros de ejemplo con
+esquemas completos para colecciones de datos de la DBpedia_.
 
 Configuración
 -------------
@@ -174,26 +430,26 @@ El fichero trae una configuración de ejemplo.
 Global
 ''''''
 
- - **staticUrl**: Ruta donde se sirven los ficheros estáticos, sólo es necesario
-   modificar este parámetro si se desea servir los ficheros estáticos por
-   separado. Por defecto, *""*.
- - **debug**: Modo depuración, para el funcionamiento normal debe estar
-   desactivado. Por defecto, *false*.
- - **port**: Puerto en el que escucha el editor. Por defecto, *3010*.
- - **viewer**: Dominio en el que se encuentra GORQL Viewer. Por defecto,
-   *http://gorql-viewer.ceic-ogov.yaco.es*. Es importante que no tenga */* al
-   final de la url.
- - **schema**: Fichero JSON con la definición de las colecciones del endpoint a
-   utilizar. Por defecto, *endpoints/dbpedia.json*.
- - **language**: Lista de idiomas para ofrecer al usuario en el filtro de
-   idioma. No se trata del idioma en el que se sirve la plataforma, sino en los
-   idiomas por los que se pueden filtrar los campos. Por defecto se incluye
-   inglés y español. Se trata de un objeto JSON con el idioma por defecto y la
-   lista de idiomas posibles.
- - **logo**: Ruta a la imagen para la cabecera del editor. Por defecto,
-   *images/logo-big.png*.
- - **title**: Título del editor que aparecerá en la cabecera. Por defecto,
-   *Asistente de Construcción de Consultas*.
+- **staticUrl**: Ruta donde se sirven los ficheros estáticos, sólo es necesario
+  modificar este parámetro si se desea servir los ficheros estáticos por
+  separado. Por defecto, *""*.
+- **debug**: Modo depuración, para el funcionamiento normal debe estar
+  desactivado. Por defecto, *false*.
+- **port**: Puerto en el que escucha el editor. Por defecto, *3010*.
+- **viewer**: Dominio en el que se encuentra GORQL Viewer. Por defecto,
+  *http://gorql-viewer.ceic-ogov.yaco.es*. Es importante que no tenga */* al
+  final de la url.
+- **schema**: Fichero JSON con la definición de las colecciones del endpoint a
+  utilizar. Por defecto, *endpoints/dbpedia.json*.
+- **language**: Lista de idiomas para ofrecer al usuario en el filtro de
+  idioma. No se trata del idioma en el que se sirve la plataforma, sino en los
+  idiomas por los que se pueden filtrar los campos. Por defecto se incluye
+  inglés y español. Se trata de un objeto JSON con el idioma por defecto y la
+  lista de idiomas posibles.
+- **logo**: Ruta a la imagen para la cabecera del editor. Por defecto,
+  *images/logo-big.png*.
+- **title**: Título del editor que aparecerá en la cabecera. Por defecto,
+  *Asistente de Construcción de Consultas*.
 
 Development y Production
 ''''''''''''''''''''''''
@@ -201,13 +457,13 @@ Development y Production
 Las siguientes son opciones de la plataforma, el usuario final no podrá escoger
 valores diferentes a los que el administrador haya configurado aquí:
 
- - **previewLimit**: Número máximo de registros mostrados en la tabla de
-   resultados de la previsualización. Por ejemplo, *10*.
- - **availableCharts**: Objeto JSON con la lista de gráficos disponibles para
-   el usuario, agrupados por familias. Para activar o desactivar un gráfico
-   sólo hay que añadirlo o quitarlo de la familia correspondiente. La lista
-   completa de gráficos según familias es:
+- **previewLimit**: Número máximo de registros mostrados en la tabla de
+  resultados de la previsualización. Por ejemplo, *10*.
+- **availableCharts**: Objeto JSON con la lista de gráficos disponibles para
+  el usuario, agrupados por familias. Para activar o desactivar un gráfico
+  sólo hay que añadirlo o quitarlo de la familia correspondiente. La lista
+  completa de gráficos según familias es:
 
-   - **d3**: *bar*, *line* y *pie*
-   - **simile**: *timeline*
-   - **map**: *map* y *mapea*
+  - **d3**: *bar*, *line* y *pie*
+  - **simile**: *timeline*
+  - **map**: *map* y *mapea*
