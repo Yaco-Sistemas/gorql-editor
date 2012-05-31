@@ -451,6 +451,11 @@ Global
 - **title**: Título del editor que aparecerá en la cabecera. Por defecto,
   *Asistente de Construcción de Consultas*.
 
+.. note::
+
+    Para personalizar el aspecto de la cabecera del editor hay que modificar
+    los parámetros **logo** y **title** que se acaban de comentar.
+
 Development y Production
 ''''''''''''''''''''''''
 

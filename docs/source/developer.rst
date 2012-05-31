@@ -150,7 +150,7 @@ correspondientes directorios de generación:
 .. code-block:: bash
 
     cp ceic-ogov-assistant/specs/nodejs.spec /usr/src/redhat/SPECS/
-    cp node-v0.6.15.tar.gz /usr/src/redhat/SOURCES/
+    cp node-v0.6.17.tar.gz /usr/src/redhat/SOURCES/
 
 Con esto queda preparada la generación del paquete, para ello sólo hay que
 ejecutar los siguientes comandos:
