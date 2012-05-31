@@ -441,11 +441,18 @@ Global
   final de la url.
 - **schema**: Fichero JSON con la definición de las colecciones del endpoint a
   utilizar. Por defecto, *endpoints/dbpedia.json*.
-- **language**: Lista de idiomas para ofrecer al usuario en el filtro de
-  idioma. No se trata del idioma en el que se sirve la plataforma, sino en los
-  idiomas por los que se pueden filtrar los campos. Por defecto se incluye
-  inglés y español. Se trata de un objeto JSON con el idioma por defecto y la
-  lista de idiomas posibles.
+- **language**: Objeto con los idiomas para ofrecer al usuario en el filtro de
+  idioma, y opcionalmente un idioma por defecto para el filtro. No se refiere
+  al idioma en que se le sirve la plataforma al usuario.
+
+  - **defaultFilter**: Código del idioma por defecto. Si se configura y no es
+    la cadena vacía, entonces al usuario no se le permite crear filtros de
+    idioma, sino que se filtra siempre por el idioma aquí configurado. Por
+    defecto, *es*.
+  - **userFilters**: Lista con los idiomas por los que el usuario podrá filtrar,
+    no es necesario rellenarlo si el parámetro *defaultFilter* está presente.
+    Por defecto se incluye inglés y español.
+
 - **logo**: Ruta a la imagen para la cabecera del editor. Por defecto,
   *images/logo-big.png*.
 - **title**: Título del editor que aparecerá en la cabecera. Por defecto,
