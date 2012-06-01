@@ -4,7 +4,7 @@
 %define docdir /usr/share/doc/%{name}-%{version}
 
 Name: %{name}
-Version: 1.0.0develhg186
+Version: 1.0.0
 Release: 3
 Summary: GORQL Editor helps writing SPARQL queries
 Packager: Alejandro Blanco <ablanco@yaco.es>
@@ -44,6 +44,7 @@ mkdir -p `dirname $RPM_BUILD_ROOT%{installdir}`
 mkdir -p $RPM_BUILD_ROOT%{docdir}
 mv %{installdir}/COPYING $RPM_BUILD_ROOT%{docdir}/
 mv %{installdir}/README $RPM_BUILD_ROOT%{docdir}/
+mv %{installdir}/CHANGES.rst $RPM_BUILD_ROOT%{docdir}/
 mv %{installdir} `dirname $RPM_BUILD_ROOT%{installdir}`/
 
 # create empty directory to put symlinks later
@@ -55,6 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %doc %{docdir}/COPYING
 %doc %{docdir}/README
+%doc %{docdir}/CHANGES.rst
 %{installdir}/node_modules
 %{installdir}/client
 %{installdir}/public

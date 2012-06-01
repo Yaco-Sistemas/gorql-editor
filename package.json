@@ -1,6 +1,6 @@
 {
     "name": "gorql-editor",
-    "version": "1.0.0devel",
+    "version": "1.0.0",
     "private": true,
     "dependencies": {
         "express": "2.5.4",
