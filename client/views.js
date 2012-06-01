@@ -38,10 +38,26 @@ QBA.views.init = function () {
 
 QBA.views.jQueryUI = function (elem) {
     "use strict";
+    var datepickerCB = function (idx, node) {
+            node = $(node);
+            var max = node.attr("max"),
+                min = node.attr("min");
+            if (typeof max === "udefined") {
+                max = "0001-01-01";
+            }
+            if (typeof min === "udefined") {
+                min = "5000-01-01";
+            }
+            node.datepicker({
+                "dateFormat": "yy-mm-dd",
+                "minDate": min,
+                "maxDate": max
+            });
+        };
     if (typeof elem === 'undefined') {
         $(".tabable").tabs();
         $(".accordionable").accordion();
-        $(".datepicker").datepicker({ "dateFormat": "yy-mm-dd" });
+        $(".datepicker").each(datepickerCB);
         $("#advanced, #addJoinButton, #addFilterButton").button({ icons: { primary: "ui-icon-plusthick" }});
         $("#hideadvanced").button({ icons: { primary: "ui-icon-minusthick" }});
         $("#prevS2, #prevS5").button({ icons: { primary: "ui-icon-arrowthick-1-w" }});
@@ -57,7 +73,7 @@ QBA.views.jQueryUI = function (elem) {
     } else {
         $(elem).find(".tabable").tabs();
         $(elem).find(".accordionable").accordion();
-        $(elem).find(".datepicker").datepicker({ "dateFormat": "yy-mm-dd" });
+        $(elem).find(".datepicker").each(datepickerCB);
         $(elem).find("#refreshPreview").button({ icons: { primary: "ui-icon-arrowrefresh-1-e" }});
         $(elem).find(".remove").button({ icons: { primary: "ui-icon-closethick" }, text: false });
     }

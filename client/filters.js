@@ -177,14 +177,15 @@ QBA.filters.filterWidgets = {
 
         render: function () {
             "use strict";
-            var value = this.model.get("value"),
+            var parameters = this.model.get("field").get("parameters"),
+                value = this.model.get("value"),
                 html;
 
             if (!_.isString(value)) {
                 value = "";
             }
 
-            html = "<input type='date' class='filter-widget datepicker' name='filter_widget_" + this.model.get("number") + "' value='" + value + "'/>";
+            html = "<input type='date' class='filter-widget datepicker' name='filter_widget_" + this.model.get("number") + "' value='" + value + "' max='" + parameters.max + "' min='" + parameters.min + "'/>";
             this.$el.append(html);
 
             return this;
@@ -212,7 +213,8 @@ QBA.filters.filterWidgets = {
 
         render: function () {
             "use strict";
-            var value = this.model.get("value"),
+            var parameters = this.model.get("field").get("parameters"),
+                value = this.model.get("value"),
                 html;
 
             if (!_.isArray(value)) {
@@ -220,10 +222,10 @@ QBA.filters.filterWidgets = {
             }
 
             html = "<input type='date' class='filter-widget from datepicker' name='filter_widget_" + this.model.get("number");
-            html += "_from' value='" + value[0] + "'/>";
+            html += "_from' value='" + value[0] + "' max='" + parameters.max + "' min='" + parameters.min + "'/>";
             html += "<span class='filter-widget'> " + QBA.lingua.filterWidgets.to + " </span>";
             html += "<input type='date' class='filter-widget to datepicker' name='filter_widget_" + this.model.get("number");
-            html += "_to' value='" + value[1] + "'/>";
+            html += "_to' value='" + value[1] + "' max='" + parameters.max + "' min='" + parameters.min + "'/>";
             this.$el.append(html);
             return this;
         },
