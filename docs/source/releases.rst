@@ -1,3 +1,12 @@
+1.0.1
+=====
+
+Lista de cambios
+----------------
+
+- Soporte de chkconfig.
+- TODO
+
 1.0.0
 =====
 
