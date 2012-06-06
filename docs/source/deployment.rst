@@ -74,6 +74,9 @@ con lo que al instalarlo se instalan también sus dependencias.
 GORQL Editor
 ============
 
+Instalación
+-----------
+
 Una vez instalado NodeJS, se puede desplegar GORQL Editor. Para ello se utiliza el
 paquete RPM:
 
@@ -102,6 +105,23 @@ encuentran en `/opt/gorql-editor/.forever/`.
 El servidor escucha, con la configuración por defecto, en el **puerto 3010**.
 La configuración del mismo se encuentra en el fichero `settings.js` en el
 directorio `/etc/gorql-editor/`.
+
+Actualización
+-------------
+
+La actualización de GORQL Editor a nuevas versiones es muy sencilla, dado que
+el componente no mantiene un estado. Simplemente hay que actualizar el rpm:
+
+.. code-block:: none
+
+ service gorql-editor stop
+ rpm -Uvh gorql-editor-X.Y.Z-W.x86_64.rpm
+ service gorql-editor start
+
+Obviamente hay que sustituir X, Y, Z y W por los números de versión
+correspondientes.
+
+Con estos comandos queda actualizado el editor.
 
 Gestión del servicio
 --------------------
