@@ -2,6 +2,11 @@
 Manual de despliegue
 ====================
 
+Componentes
+===========
+
+.. image:: _images/componentes.png
+
 Entorno de desarrollo
 =====================
 
