@@ -1,11 +1,12 @@
-1.0.1
+1.1.0
 =====
 
 Lista de cambios
 ----------------
 
 - Soporte de chkconfig.
-- TODO
+- Diagrama de componentes.
+- Documentación de actualización.
 
 1.0.0
 =====
