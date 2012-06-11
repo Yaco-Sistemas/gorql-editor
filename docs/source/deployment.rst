@@ -88,18 +88,18 @@ paquete RPM:
 *x86_64 RedHat 5*
  Descarga-GORQL-Editor-RH5_
 
-.. _Descarga-GORQL-Editor-RH5: http://files.yaco.es/~ceic-ogov/gorql-editor/1.0/rh5/gorql-editor-1.0.0-3.x86_64.rpm
+.. _Descarga-GORQL-Editor-RH5: http://files.yaco.es/~ceic-ogov/gorql-editor/1.1/rh5/gorql-editor-1.1.0-3.x86_64.rpm
 
 *x86_64 RedHat 6*
  Descarga-GORQL-Editor-RH6_
 
-.. _Descarga-GORQL-Editor-RH6: http://files.yaco.es/~ceic-ogov/gorql-editor/1.0/rh6/gorql-editor-1.0.0-3.x86_64.rpm
+.. _Descarga-GORQL-Editor-RH6: http://files.yaco.es/~ceic-ogov/gorql-editor/1.1/rh6/gorql-editor-1.1.0-3.x86_64.rpm
 
 Una vez descargado el paquete se instala ejecutando:
 
 ::
 
- # rpm -Uvh gorql-editor-1.0.0-3.x86_64.rpm
+ # rpm -Uvh gorql-editor-1.1.0-3.x86_64.rpm
 
 Este paquete incluye GORQL Editor y todas las librerías que utiliza, y crea un
 script de servicio para el arranque y parada del servidor.
