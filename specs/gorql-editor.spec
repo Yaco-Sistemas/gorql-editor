@@ -43,7 +43,7 @@ rm -f %{installdir}/make_dev_rpm.sh
 mkdir -p `dirname $RPM_BUILD_ROOT%{installdir}`
 mkdir -p $RPM_BUILD_ROOT%{docdir}
 mv %{installdir}/COPYING $RPM_BUILD_ROOT%{docdir}/
-mv %{installdir}/README $RPM_BUILD_ROOT%{docdir}/
+mv %{installdir}/README.md $RPM_BUILD_ROOT%{docdir}/
 mv %{installdir}/CHANGES.rst $RPM_BUILD_ROOT%{docdir}/
 mv %{installdir} `dirname $RPM_BUILD_ROOT%{installdir}`/
 
@@ -55,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %doc %{docdir}/COPYING
-%doc %{docdir}/README
+%doc %{docdir}/README.md
 %doc %{docdir}/CHANGES.rst
 %{installdir}/node_modules
 %{installdir}/client
