@@ -23,7 +23,8 @@ cd ../../
 node --debug app.js
 ```
 
-And now you can open http://localhost:3010/ in your favourite browser :)
+And now you can open [http://localhost:3010/](http://localhost:3010/) in your 
+favourite browser :)
 
 ## Documentation
 
