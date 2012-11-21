@@ -27,7 +27,7 @@ exports.settings = {
         staticUrl: "",
         debug: false,
         port: 3010,
-        viewer: "http://gorql-viewer.ceic-ogov.yaco.es",
+        viewer: "http://viewer.gorql.com",
         schema: "endpoints/dbpedia.json",
         language: {
             defaultFilter: "es",
@@ -57,7 +57,7 @@ exports.settings = {
         availableCharts: {
             d3: ["bar", "line", "pie"],
             simile: ["timeline"],
-            map: ["mapea"]
+            map: ["map"]
         }
     }
 };

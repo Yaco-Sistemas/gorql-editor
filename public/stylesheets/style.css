@@ -196,6 +196,10 @@ body.js .no-js,
     display: none !important;
 }
 
+body.js li.tab.disabled {
+    display: none;
+}
+
 body.js ul.category,
 body.js ul.collection {
     margin: 0px;
@@ -228,6 +232,11 @@ body.js #step2-wrapper {
 
 body.js #step2-wrapper .lateral-padding {
     padding: 0px 12px 0px 12px;
+}
+
+body.js #step2-wrapper input[name=done].disabled {
+    opacity: .35;
+    filter: Alpha(Opacity=35);
 }
 
 body.js #step3 {

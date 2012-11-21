@@ -34,6 +34,8 @@ QBA.views.init = function () {
     $(".accordionable h3").each(function () {
         QBA.views.initAccordionPanel(this);
     });
+
+    QBA.views.Step.prototype.navigationS1();
 };
 
 QBA.views.jQueryUI = function (elem) {
@@ -140,6 +142,23 @@ QBA.views.Step = Backbone.View.extend({
         $(".accordionable h3").each(function () {
             QBA.views.initAccordionPanel(this);
         });
+        this.navigationS1();
+    },
+
+    navigationS1: function () {
+        "use strict";
+        var count = 0;
+        QBA.theQuery.each(function (category) {
+            count += category.getCheckedCollections().length;
+        });
+        if (count === 0) {
+            $("#nextS1").button({ disabled: true });
+            $("#ls2").parent().addClass("disabled");
+        } else {
+            $("#nextS1").button({ disabled: false });
+            $("#ls2").parent().removeClass("disabled");
+        }
+        this.navigationS2();
     },
 
     renderS2: function () {
@@ -168,6 +187,29 @@ QBA.views.Step = Backbone.View.extend({
             $(".accordionable h3").each(function () {
                 QBA.views.initAccordionPanel(this);
             });
+        }
+        this.navigationS2();
+    },
+
+    navigationS2: function () {
+        "use strict";
+        var count = 0;
+        QBA.theQuery.each(function (category) {
+            _.each(category.getCheckedCollections(), function (collection) {
+                count += collection.getCheckedFields().length;
+            });
+        });
+        if (count === 0) {
+            $("#step2-wrapper input[name=done]").addClass("disabled");
+        } else {
+            $("#step2-wrapper input[name=done]").removeClass("disabled");
+        }
+        if (count <= 1) {
+            $("#nextS2").button({ disabled: true });
+            $("#ls5").parent().addClass("disabled");
+        } else {
+            $("#nextS2").button({ disabled: false });
+            $("#ls5").parent().removeClass("disabled");
         }
     },
 

@@ -31,11 +31,11 @@ QBA.events = {
 
     navigation: function () {
         "use strict";
-        $("li.tab a").click(function () {
-            var step = this.href.split('#')[1],
+        $("li.tab a").click(function (evt) {
+            var step,
                 view;
 
-            step = step.split('-')[0]; // For step2 wrapper
+            step = this.href.split('#')[1].split('-')[0]; // For step2 wrapper
 
             // Release old events of the target tab
             QBA.events[step].release();
@@ -102,6 +102,9 @@ QBA.events = {
                     // TODO error
                     alert('error');
                 }
+
+                // the view might not exists, so prototype
+                QBA.views.Step.prototype.navigationS1();
             });
 
             $("#step1 #nextS1").click(function (evt) {
@@ -159,6 +162,8 @@ QBA.events = {
 
                 // (Shake, Shake, Shake) Shake Your Booty :)
                 QBA.preview.shakeEffect();
+
+                QBA.events.views.step2.navigationS2();
             });
 
             $("#openPreview").click(function (evt) {
@@ -186,7 +191,9 @@ QBA.events = {
             $("#step2-wrapper input[name=done]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
-                QBA.chart.openViewerData();
+                if (!$(evt.target).is(".disabled")) {
+                    QBA.chart.openViewerData();
+                }
             });
 
             $("#step2-wrapper #advanced").click(function (evt) {
