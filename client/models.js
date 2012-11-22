@@ -328,6 +328,35 @@ QBA.models.CategoryList = Backbone.Collection.extend({
         return SPARQL;
     },
 
+    getPrettyLabels: function () {
+        "use strict";
+        var labels = "",
+            length,
+            fields,
+            checkedCollections;
+
+        checkedCollections = this.map(function (category) {
+            return category.getCheckedCollections();
+        });
+
+        fields = _.flatten(_.map(checkedCollections, function (collections) {
+            return _.flatten(_.map(collections, function (collection) {
+                return collection.getCheckedFields();
+            }));
+        }));
+
+        length = fields.length;
+
+        _.each(fields, function (field, idx) {
+            labels += field.get("name");
+            if (idx < length - 1) {
+                labels += ",";
+            }
+        });
+
+        return labels;
+    },
+
     getCategoriesWithCheckedCollections: function () {
         "use strict";
         return this.filter(function (category) {

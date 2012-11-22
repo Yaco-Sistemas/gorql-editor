@@ -49,8 +49,10 @@ QBA.chart.init = function (availableCharts) {
 
 QBA.chart.getUrl = function () {
     "use strict";
-    var query = QBA.theQuery.toSPARQL();
-    return QBA.preview.viewer + "/viewer/?query=" + encodeURIComponent(query);
+    var query = QBA.theQuery.toSPARQL(),
+        labels = QBA.theQuery.getPrettyLabels();
+    return QBA.preview.viewer + "/viewer/?query=" + encodeURIComponent(query) +
+        "&prettyHeaders=" + encodeURIComponent(labels);
 };
 
 QBA.chart.openViewerData = function () {
