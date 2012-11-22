@@ -374,6 +374,7 @@ QBA.events = {
                 $(this).parent().parent().find("li.active").removeClass("active");
                 $(this).parent().addClass("active");
                 QBA.chart.autoSelectOptions(chart);
+                QBA.events.views.step5.navigationS5();
                 // (Shake, Shake, Shake) Shake Your Booty :)
                 QBA.preview.shakeEffect();
             });
@@ -386,12 +387,14 @@ QBA.events = {
 
             $("#step5 div.parameter input, #step5 div.parameter select").change(function () {
                 QBA.chart.updateChartModel();
+                QBA.events.views.step5.navigationS5();
                 // (Shake, Shake, Shake) Shake Your Booty :)
                 QBA.preview.shakeEffect();
             });
 
             $("#step5 div.parameter button").click(function () {
                 QBA.chart.updateChartModel();
+                QBA.events.views.step5.navigationS5();
                 // (Shake, Shake, Shake) Shake Your Booty :)
                 QBA.preview.shakeEffect();
             });
@@ -409,7 +412,9 @@ QBA.events = {
             $("#step5 input[name=done-chart]").click(function (evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
-                QBA.chart.openViewerChartAndData();
+                if (!$(evt.target).is(".disabled")) {
+                    QBA.chart.openViewerChartAndData();
+                }
             });
 
             $("#step5 #prevS5").click(function (evt) {

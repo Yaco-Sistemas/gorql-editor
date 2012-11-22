@@ -234,7 +234,8 @@ body.js #step2-wrapper .lateral-padding {
     padding: 0px 12px 0px 12px;
 }
 
-body.js #step2-wrapper input[name=done].disabled {
+body.js #step2-wrapper input[name=done].disabled,
+body.js #step5 input[name=done-chart].disabled {
     opacity: .35;
     filter: Alpha(Opacity=35);
 }
@@ -412,6 +413,17 @@ input[type=radio] {
     border: 1px solid #037fda;
     background: #037fda url(images/ui-bg_highlight-soft_25_037fda_1x100.png) 50% 50% repeat-x;
     color: #ffffff;
+}
+
+.ui-widget input[type=submit].ui-state-disabled:hover,
+.ui-widget input[type=submit].ui-state-disabled:focus,
+.ui-widget input[type=submit].disabled:hover,
+.ui-widget input[type=submit].disabled:focus,
+.ui-widget button.ui-state-disabled:hover,
+.ui-widget button.ui-state-disabled:focus {
+    border: 1px solid #D1D1D1;
+    background: #E0E0E0 url(images/ui-bg_highlight-soft_50_e0e0e0_1x100.png) 50% 50% repeat-x;
+    color: #005CBF;
 }
 
 .ui-widget input[type=submit]:active,

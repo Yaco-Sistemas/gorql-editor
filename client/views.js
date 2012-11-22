@@ -211,6 +211,7 @@ QBA.views.Step = Backbone.View.extend({
             $("#nextS2").button({ disabled: false });
             $("#ls5").parent().removeClass("disabled");
         }
+        this.navigationS5();
     },
 
     renderS3: function () {
@@ -282,6 +283,18 @@ QBA.views.Step = Backbone.View.extend({
             chart = QBA.chart.loadChartModel(chart);
             QBA.chart.fillFormWithDefaultValues(chart);
             QBA.chart.autoSelectOptions(chart);
+        }
+        this.navigationS5();
+    },
+
+    navigationS5: function () {
+        "use strict";
+        var chart = $("#step5 #chartType input[type=radio]:checked").val();
+        try {
+            QBA.chart.getChartParams(chart);
+            $("#step5 input[name=done-chart]").removeClass("disabled");
+        } catch (error) {
+            $("#step5 input[name=done-chart]").addClass("disabled");
         }
     }
 });
