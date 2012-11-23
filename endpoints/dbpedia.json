@@ -45,6 +45,26 @@
                     }
                 },
                 {
+                    "code": "dbpedia-owl:populationMetro",
+                    "name": "Población área metropolitana",
+                    "type": "number",
+                    "parameters": {
+                        "min": 0,
+                        "max": 50000000,
+                        "step": 10000
+                    }
+                },
+                {
+                    "code": "dbpedia-owl:populationDensity",
+                    "name": "Densidad de población",
+                    "type": "number",
+                    "parameters": {
+                        "min": 0,
+                        "max": 10000,
+                        "step": 100
+                    }
+                },
+                {
                     "code": "geo:lat",
                     "name": "Latitud",
                     "type": "coord",
