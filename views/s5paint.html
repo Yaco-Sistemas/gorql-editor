@@ -138,7 +138,7 @@
             <div class="parameter">
                 <label for="pie-series-param"><span class="required">*</span> ${lingua.step5.series}:</label>
                 {{if fieldsCounts.perField.number > 0}}
-                <select name="pie-series-param" multiple size=4 class="wide-field required">
+                <select name="pie-series-param" class="wide-field required">
                     {{each(idx_cat, category) categories}}
                     {{each(idx_col, collection) category.collections}}
                     {{if fieldsCounts.perCollection[collection.identifier].number > 0}}
