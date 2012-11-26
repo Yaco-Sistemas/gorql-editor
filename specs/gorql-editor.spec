@@ -5,7 +5,7 @@
 
 Name: %{name}
 Version: 1.2.0
-Release: 4
+Release: 5
 Summary: GORQL Editor helps writing SPARQL queries
 Packager: Alejandro Blanco <ablanco@yaco.es>
 Group: Applications/Internet
@@ -33,7 +33,8 @@ cd %{installdir}/public/javascripts/
 make all
 
 # clean files not needed
-rm -rf %{installdir}/.hg
+rm -rf %{installdir}/.git
+rm -f %{installdir}/.gitignore
 rm -rf %{installdir}/docs
 rm -rf %{installdir}/specs
 rm -f %{installdir}/make_dev_rpm.sh
@@ -101,6 +102,8 @@ fi
 
 %changelog
 
+* Mon Nov 26 2012 Alejandro Blanco <ablanco@yaco.es>
+- Remove git files instead of mercurial files
 * Fri Nov 09 2012 Alejandro Blanco <ablanco@yaco.es>
 - Update required nodejs and forever versions
 * Wed May 23 2012 Alejandro Blanco <ablanco@yaco.es>

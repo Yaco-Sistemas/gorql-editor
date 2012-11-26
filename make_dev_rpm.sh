@@ -3,6 +3,7 @@
 PACKAGE="gorql-editor"
 CURRENT_DIR=`pwd`
 BUILD_ROOT=/root/rpmbuild
+TAG="1.2.0"
 
 if [ -d /tmp/${PACKAGE} ]
 then
@@ -10,9 +11,9 @@ then
     git pull origin master
 else
     git clone git://github.com/Yaco-Sistemas/gorql-editor.git /tmp/${PACKAGE}
+    cd /tmp/${PACKAGE}
 fi
-
-TAG="${VERSION}devel"
+git checkout ${TAG}
 
 cd /tmp/
 mv ${PACKAGE} ${PACKAGE}-${TAG}
