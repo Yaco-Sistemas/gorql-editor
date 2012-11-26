@@ -1,10 +1,17 @@
-1.1.1
+1.2.0
 =====
 
 Lista de cambios
 ----------------
 
-- TODO
+- Nuevas versiones de las dependencias, soporte de nodejs 0.8.X.
+- Desactivación de los botones de navegación cuando el usuario no ha escogido
+  las opciones mínimas en un paso del asistente.
+- Generación de nombres legibles y amigables para la tabla de resultados, se
+  envían en la query generada para el Viewer.
+- Eliminación de la posibilidad de escoger más de un campo para los datos en
+  las gráficas de sectores, dado que en dichas gráficas las series de datos se
+  ignorar.
 
 1.1.0
 =====

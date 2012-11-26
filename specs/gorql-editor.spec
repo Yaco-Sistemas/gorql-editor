@@ -4,7 +4,7 @@
 %define docdir /usr/share/doc/%{name}-%{version}
 
 Name: %{name}
-Version: 1.1.1develhg265
+Version: 1.2.0
 Release: 4
 Summary: GORQL Editor helps writing SPARQL queries
 Packager: Alejandro Blanco <ablanco@yaco.es>
